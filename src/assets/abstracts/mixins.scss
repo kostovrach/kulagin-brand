@@ -1,0 +1,50 @@
+@use './functions' as *;
+@use './colors' as *;
+@use './variables' as *;
+
+@mixin block-title() {
+    font-family: 'Fira-Extra';
+    font-weight: bold;
+    font-size: lineScale(96, 32, 480, 1440);
+    line-height: 1;
+    text-transform: uppercase;
+    max-width: 15ch;
+}
+@mixin block-layout() {
+    min-width: fit-content;
+    min-height: 100lvh;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: grid;
+    grid-auto-flow: column;
+}
+@mixin decorative-text() {
+    text-transform: uppercase;
+    font-size: lineScale(1000, 320, 480, 1440);
+    line-height: 0.7;
+    font-weight: $fw-med;
+    user-select: none;
+}
+@mixin gradient-text-hover() {
+    @supports (background-clip: text) {
+        color: transparent;
+        background-clip: text;
+        background-image: linear-gradient(90deg, $c-accent 50%, $c-111111 50%);
+        background-size: 200% 200%;
+        background-position: -100% -100%;
+        transition: background-position $td $tf;
+        @media (pointer: fine) {
+            &:hover {
+                background-position: -200% -200%;
+            }
+        }
+    }
+    @supports not (background-clip: text) {
+        transition: color $td $tf;
+        @media (pointer: fine) {
+            &:hover {
+                color: $c-accent;
+            }
+        }
+    }
+}
