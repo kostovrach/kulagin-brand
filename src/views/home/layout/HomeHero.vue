@@ -3,8 +3,14 @@
         <div class="home-hero__container layout">
             <div class="home-hero__head">
                 <div class="layout__titlebox">
-                    <h1 class="home-hero__title">Помогаю бизнесу зарабатывать</h1>
-                    <p class="home-hero__subtitle">
+                    <h1 class="home-hero__title" v-animateonscroll="{ enterClass: 'fade-bottom' }">
+                        Помогаю бизнесу зарабатывать
+                    </h1>
+                    <p
+                        class="home-hero__subtitle"
+                        v-animateonscroll="{ enterClass: 'fade-bottom' }"
+                        style="animation-delay: 0.2s"
+                    >
                         Консультации по&nbsp;рекламе и&nbsp;брендингу, по&nbsp;личностному росту и ведению бизнеса.
                     </p>
                 </div>
@@ -12,32 +18,36 @@
                     <img class="home-hero__image" src="/img/content/face.png" alt="Игорь Кулагин" />
                 </picture>
             </div>
-            <div class="home-hero__body">
-                <div class="home-hero__decorative-text">Кулагин</div>
+            <div class="home-hero__body fade-right" style="animation-delay: 0.3s;">
                 <Sticker
-                    class="home-hero__sticker"
+                    v-draggable="{ left: 50, top: 400 }"
+                    style="rotate: -10deg"
                     variant="default"
                     textAccent="от 120%"
                     textMain="средний рост конверсии"
                 />
                 <Sticker
-                    class="home-hero__sticker"
+                    v-draggable="{ left: 1040, top: 300 }"
+                    style="rotate: 5deg"
                     variant="black"
                     textAccent="от 120%"
                     textMain="средний рост конверсии"
                 />
                 <Sticker
-                    class="home-hero__sticker"
+                    v-draggable="{ left: 1300, top: 600 }"
+                    style="rotate: -15deg"
                     variant="red"
                     textAccent="от 120%"
                     textMain="средний рост конверсии"
                 />
                 <Sticker
-                    class="home-hero__sticker"
+                    v-draggable="{ left: 2100, top: 250 }"
+                    style="rotate: 2deg"
                     variant="grey"
                     textAccent="от 120%"
                     textMain="средний рост конверсии"
                 />
+                <span class="home-hero__decorative-text">Кулагин</span>
             </div>
         </div>
     </section>
@@ -51,12 +61,15 @@ import Sticker from '@/components/Sticker/Sticker.vue';
 @use '@/assets/abstracts' as *;
 
 .home-hero {
-    // &__container {
-    // }
+    min-width: fit-content;
+    &__container {
+        @include block;
+    }
     &__head {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        max-height: calc(100lvh - rem(128));
     }
     &__titlebox {
         display: flex;
@@ -77,8 +90,9 @@ import Sticker from '@/components/Sticker/Sticker.vue';
     &__image-container {
         position: relative;
         max-width: rem(640);
-        height: 100%;
+        min-height: rem(340);
         overflow: hidden;
+        margin-top: rem(32);
         &::before {
             content: '';
             position: absolute;
@@ -103,21 +117,6 @@ import Sticker from '@/components/Sticker/Sticker.vue';
     }
     &__decorative-text {
         @include decorative-text;
-    }
-    &__sticker {
-        position: absolute;
-        &:nth-child(4n) {
-            bottom: 45%;
-            rotate: -10deg;
-        }
-        &:nth-child(4n+1) {
-            bottom: 60%;
-            rotate: 5deg;
-        }
-        &:nth-child(4n+2) {
-            bottom: 0%;
-            rotate: -15deg;
-        }
     }
 }
 </style>

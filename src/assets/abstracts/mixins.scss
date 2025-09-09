@@ -2,6 +2,9 @@
 @use './colors' as *;
 @use './variables' as *;
 
+@mixin block() {
+    padding: rem(128) rem(32);
+}
 @mixin block-title() {
     font-family: 'Fira-Extra';
     font-weight: bold;
@@ -24,6 +27,7 @@
     line-height: 0.7;
     font-weight: $fw-med;
     user-select: none;
+    pointer-events: none;
 }
 @mixin gradient-text-hover() {
     @supports (background-clip: text) {
