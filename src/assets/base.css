@@ -88,9 +88,9 @@ button::-moz-focus-inner {
 a {
     color: inherit;
 }
-a[href^="http"]:empty::before {
+/* a[href^="http"]:empty::before {
 	content: attr(href);
-}
+} */
 a,
 a:visited {
 	text-decoration: none;

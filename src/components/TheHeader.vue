@@ -3,7 +3,7 @@
         <div class="header__container">
             <div class="header__logo-container">
                 <router-link class="header__logo" to="/">игорь кулагин</router-link>
-                <a class="header__sublogo" href="/">KULAGIN GROUP</a>
+                <router-link class="header__sublogo" to="/">KULAGIN GROUP</router-link>
             </div>
             <div class="header__controls">
                 <nav class="header__nav">
@@ -28,6 +28,7 @@
 
 .header {
     position: fixed;
+    z-index: 10;
     top: 0;
     left: 0;
     width: 100vw;

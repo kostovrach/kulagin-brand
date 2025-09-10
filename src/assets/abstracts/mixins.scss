@@ -2,8 +2,19 @@
 @use './colors' as *;
 @use './variables' as *;
 
-@mixin block() {
+@mixin horizontal-layout() {
+    min-width: max-content;
+    height: 100lvh;
+    min-height: fit-content;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: grid;
+    grid-auto-flow: column;
+    gap: rem(64);
     padding: rem(128) rem(32);
+}
+@mixin horizontal-max-height() {
+    max-height: calc(100lvh - rem(128) * 2);
 }
 @mixin block-title() {
     font-family: 'Fira-Extra';

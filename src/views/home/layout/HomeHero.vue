@@ -1,6 +1,6 @@
 <template>
     <section class="home-hero">
-        <div class="home-hero__container layout">
+        <div class="home-hero__container">
             <div class="home-hero__head">
                 <div class="layout__titlebox">
                     <h1 class="home-hero__title" v-animateonscroll="{ enterClass: 'fade-bottom' }">
@@ -14,46 +14,107 @@
                         Консультации по&nbsp;рекламе и&nbsp;брендингу, по&nbsp;личностному росту и ведению бизнеса.
                     </p>
                 </div>
-                <picture class="home-hero__image-container">
+                <!-- Временное изображение -->
+
+                <!-- <picture class="home-hero__image-container">
                     <img class="home-hero__image" src="/img/content/face.png" alt="Игорь Кулагин" />
-                </picture>
+                </picture> -->
+
+                <!---->
             </div>
-            <div class="home-hero__body fade-right" style="animation-delay: 0.3s;">
+            <div
+                class="home-hero__body"
+                v-animateonscroll="{ enterClass: 'fade-right', threshold: 0.05 }"
+                style="animation-delay: 0.4s"
+            >
+                <ButtonPrimary
+                    style="position: absolute; left: 600px; top: 170px"
+                    type="router-link"
+                    to="/"
+                    variant="red"
+                >
+                    Услуги
+                </ButtonPrimary>
+                <ButtonPrimary
+                    style="position: absolute; left: 2000px; top: 200px"
+                    type="router-link"
+                    to="/"
+                    variant="grey"
+                >
+                    Студия
+                </ButtonPrimary>
+                <ButtonPrimary
+                    style="position: absolute; left: 3000px; top: 550px"
+                    type="router-link"
+                    to="/"
+                    variant="grey"
+                >
+                    Увлечения
+                </ButtonPrimary>
                 <Sticker
-                    v-draggable="{ left: 50, top: 400 }"
+                    v-draggable="{ left: -100, top: 500 }"
                     style="rotate: -10deg"
                     variant="default"
                     textAccent="от 120%"
                     textMain="средний рост конверсии"
                 />
                 <Sticker
-                    v-draggable="{ left: 1040, top: 300 }"
+                    v-draggable="{ left: 1100, top: 300 }"
                     style="rotate: 5deg"
                     variant="black"
                     textAccent="от 120%"
                     textMain="средний рост конверсии"
                 />
                 <Sticker
-                    v-draggable="{ left: 1300, top: 600 }"
+                    v-draggable="{ left: 1500, top: 540 }"
                     style="rotate: -15deg"
                     variant="red"
                     textAccent="от 120%"
                     textMain="средний рост конверсии"
                 />
                 <Sticker
-                    v-draggable="{ left: 2100, top: 250 }"
+                    v-draggable="{ left: 2430, top: 350 }"
                     style="rotate: 2deg"
                     variant="grey"
                     textAccent="от 120%"
                     textMain="средний рост конверсии"
                 />
-                <span class="home-hero__decorative-text">Кулагин</span>
+                <picture class="home-hero__text-image-container">
+                    <img class="home-hero__text-image" src="/img/kulagin.svg" alt="КУЛАГИН" />
+                </picture>
+                <div class="home-hero__interactive home-hero__interactive--face">
+                    <picture
+                        v-draggable="{ axis: 'y', container: 'parent' }"
+                        class="home-hero__interactive--face-container"
+                    >
+                        <img src="/img/content/face.png" alt="#" />
+                    </picture>
+                </div>
+            </div>
+            <div class="home-hero__footer">
+                <Sticker
+                    v-draggable="{ left: 0, top: 75 }"
+                    style="rotate: -5deg"
+                    variant="black"
+                    textAccent="от 120%"
+                    textMain="средний рост конверсии"
+                />
+                <SectionHint class="home-hero__hint" image="/img/content/smiling.gif">
+                    <template #title>Как превратить свой бренд в источник дохода?</template>
+                    <template #text
+                        >Мой опыт и&nbsp;знания смогут сократить путь к&nbsp;результатам, экономя несколько лет
+                        усилий.</template
+                    >
+                    <template #media-description>Про уникальный опыт</template>
+                </SectionHint>
             </div>
         </div>
     </section>
 </template>
 
 <script setup>
+import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
+import SectionHint from '@/components/SectionHint/SectionHint.vue';
 import Sticker from '@/components/Sticker/Sticker.vue';
 </script>
 
@@ -63,13 +124,13 @@ import Sticker from '@/components/Sticker/Sticker.vue';
 .home-hero {
     min-width: fit-content;
     &__container {
-        @include block;
+        @include horizontal-layout;
     }
     &__head {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        max-height: calc(100lvh - rem(128));
+        @include horizontal-max-height;
     }
     &__titlebox {
         display: flex;
@@ -87,36 +148,78 @@ import Sticker from '@/components/Sticker/Sticker.vue';
         max-width: 40ch;
         margin-top: rem(32);
     }
-    &__image-container {
+    // Временное изображение
+    //
+    // &__image-container {
+    //     position: relative;
+    //     max-width: rem(640);
+    //     // min-height: rem(340);
+    //     max-height: 100%;
+    //     overflow: hidden;
+    //     margin-top: rem(32);
+    //     &::before {
+    //         content: '';
+    //         position: absolute;
+    //         top: 25%;
+    //         left: 50%;
+    //         translate: -50% 0;
+    //         width: 100%;
+    //         aspect-ratio: 1;
+    //         border-radius: 50%;
+    //         background-color: $c-accent;
+    //         pointer-events: none;
+    //     }
+    // }
+    // &__image {
+    //     position: absolute;
+    //     z-index: 1;
+    //     width: 100%;
+    //     height: 100%;
+    //     object-fit: contain;
+    // }
+    
+    &__body {
         position: relative;
-        max-width: rem(640);
-        min-height: rem(340);
-        overflow: hidden;
-        margin-top: rem(32);
-        &::before {
-            content: '';
-            position: absolute;
-            top: 25%;
-            left: 50%;
-            translate: -50% 0;
-            width: 100%;
-            aspect-ratio: 1;
-            border-radius: 50%;
-            background-color: $c-accent;
-        }
     }
-    &__image {
-        position: relative;
-        z-index: 1;
+    &__text-image-container {
+        width: 100%;
+        height: 100%;
+        user-select: none;
+    }
+    &__text-image {
         width: 100%;
         height: 100%;
         object-fit: contain;
     }
-    &__body {
-        position: relative;
+    &__interactive {
+        &--face {
+            position: absolute;
+            top: rem(-330);
+            right: rem(480);
+            width: rem(415);
+            height: rem(800);
+            pointer-events: none;
+            &-container {
+                width: rem(415);
+                height: rem(485);
+                pointer-events: auto;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    rotate: 5deg;
+                    transform: scaleY(-1);
+                }
+            }
+        }
     }
-    &__decorative-text {
-        @include decorative-text;
+    &__footer {
+        position: relative;
+        display: flex;
+    }
+    &__hint {
+        grid-row: 2;
+        align-self: flex-end;
     }
 }
 </style>

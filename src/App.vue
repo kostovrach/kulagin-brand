@@ -29,15 +29,6 @@ main.page {
     -ms-overflow-style: none;
 }
 
-.layout {
-    min-width: max-content;
-    min-height: 100lvh;
-    overflow-x: auto;
-    overflow-y: hidden;
-    display: grid;
-    grid-auto-flow: column;
-}
-
 .fade-bottom {
     opacity: 0;
     translate: 0 rem(64);
