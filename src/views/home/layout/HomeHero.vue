@@ -3,12 +3,12 @@
         <div class="home-hero__container">
             <div class="home-hero__head">
                 <div class="layout__titlebox">
-                    <h1 class="home-hero__title" v-animateonscroll="{ enterClass: 'fade-bottom' }">
+                    <h1 class="home-hero__title" v-animateonscroll="{ enterClass: 'fade-bottom-rotate' }">
                         Помогаю бизнесу зарабатывать
                     </h1>
                     <p
                         class="home-hero__subtitle"
-                        v-animateonscroll="{ enterClass: 'fade-bottom' }"
+                        v-animateonscroll="{ enterClass: 'fade-bottom-rotate' }"
                         style="animation-delay: 0.2s"
                     >
                         Консультации по&nbsp;рекламе и&nbsp;брендингу, по&nbsp;личностному росту и ведению бизнеса.
@@ -22,11 +22,7 @@
 
                 <!---->
             </div>
-            <div
-                class="home-hero__body"
-                v-animateonscroll="{ enterClass: 'fade-right', threshold: 0.05 }"
-                style="animation-delay: 0.4s"
-            >
+            <div class="home-hero__body fade-right" style="animation-delay: 0.6s">
                 <ButtonPrimary
                     style="position: absolute; left: 600px; top: 170px"
                     type="router-link"
@@ -80,7 +76,7 @@
                     textMain="средний рост конверсии"
                 />
                 <picture class="home-hero__text-image-container">
-                    <img class="home-hero__text-image" src="/img/kulagin.svg" alt="КУЛАГИН" />
+                    <img class="home-hero__text-image" src="/img/masks/kulagin.svg" alt="КУЛАГИН" />
                 </picture>
                 <div class="home-hero__interactive home-hero__interactive--face">
                     <picture
@@ -177,7 +173,7 @@ import Sticker from '@/components/Sticker/Sticker.vue';
     //     height: 100%;
     //     object-fit: contain;
     // }
-    
+
     &__body {
         position: relative;
     }

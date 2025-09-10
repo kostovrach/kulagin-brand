@@ -2,6 +2,7 @@
     <main class="page" ref="containerRef">
         <ScrollProgressBar :progress="scrollProgress" position="top" :show-when-scrolling="isScrolling" />
         <HomeHero />
+        <HomeBrand />
     </main>
 </template>
 
@@ -9,6 +10,7 @@
 import { useHorizontalScroll } from '@/composables/useHorizontalScroll';
 import ScrollProgressBar from '@/components/ProgressBar/ProgressBar.vue';
 import HomeHero from './layout/HomeHero.vue';
+import HomeBrand from './layout/HomeBrand.vue';
 
 const { containerRef, scrollProgress, isScrolling } = useHorizontalScroll();
 </script>

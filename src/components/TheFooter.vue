@@ -46,9 +46,7 @@
                     <a class="footer__link" href="/">Конфиденциальность</a>
                     <a class="footer__link" href="/">Оферта</a>
                     <a class="footer__link" href="/">Пользовательское соглашение</a>
-                    
                 </div>
-                
             </div>
         </div>
     </footer>
@@ -66,7 +64,7 @@
     left: 0;
     width: 100vw;
     mix-blend-mode: difference;
-    padding: rem(16) rem(32);
+    padding: rem(16) rem(64);
     pointer-events: none;
     &__container {
         display: flex;
@@ -99,16 +97,16 @@
                     // isolation: isolate;
                     // z-index: 1;
                     // mix-blend-mode: normal;
-                    &:nth-of-type(4n+1) {
+                    &:nth-of-type(4n + 1) {
                         rotate: -6deg;
                     }
-                    &:nth-of-type(4n+2) {
+                    &:nth-of-type(4n + 2) {
                         rotate: -9deg;
                     }
-                    &:nth-of-type(4n+3) {
+                    &:nth-of-type(4n + 3) {
                         rotate: -4deg;
                     }
-                    &:nth-of-type(4n+4) {
+                    &:nth-of-type(4n + 4) {
                         rotate: -13deg;
                     }
                 }
@@ -120,7 +118,6 @@
         align-items: center;
         flex-wrap: wrap;
         gap: rem(32);
-
     }
     &__link {
         cursor: pointer;

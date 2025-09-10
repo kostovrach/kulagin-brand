@@ -10,7 +10,6 @@
             <span></span>
             <span></span>
             <span></span>
-            <!-- <TheSvgSprite type="arrow" :size="96" /> -->
         </div>
         <span v-if="secondPart">{{ secondPart }}</span>
     </component>
@@ -18,7 +17,6 @@
 
 <script setup>
 import { computed, useSlots } from 'vue';
-import TheSvgSprite from '../TheSvgSprite.vue';
 
 const props = defineProps({
     type: {
@@ -103,6 +101,7 @@ const secondPart = computed(() => {
     $p: &;
 
     position: relative;
+    z-index: 2;
     width: fit-content;
     aspect-ratio: 1;
     display: flex;
@@ -162,8 +161,9 @@ const secondPart = computed(() => {
             display: block;
             position: absolute;
             width: rem(4);
-            background-image: linear-gradient(to top, currentColor 50%, transparent 50%);
+            background-image: linear-gradient(to top, currentColor 49%, transparent 50%);
             background-size: 200% 200%;
+            // background-position: -0.1% -0.1%;
             transition: background-position $td $tf;
         }
         :nth-child(1) {

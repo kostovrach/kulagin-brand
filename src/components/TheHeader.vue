@@ -32,7 +32,7 @@
     top: 0;
     left: 0;
     width: 100vw;
-    padding: rem(16) rem(32);
+    padding: rem(16) rem(64);
     pointer-events: none;
     &__container {
         display: flex;

@@ -80,7 +80,7 @@ const props = defineProps({
                 }
                 #{$p}__media-image-container,
                 #{$p}__media-video {
-                    &::before{
+                    &::before {
                         opacity: 0;
                     }
                 }

@@ -19,7 +19,12 @@ body {
 }
 
 main.page {
+    width: 100vw;
     height: 100lvh;
+    min-height: fit-content;
+    display: grid;
+    grid-auto-flow: column;
+    overflow-x: auto;
     overflow-y: hidden;
 
     &::-webkit-scrollbar {
@@ -56,6 +61,24 @@ main.page {
         to {
             opacity: 1;
             translate: 0 0;
+        }
+    }
+}
+.fade-bottom-rotate {
+    opacity: 0;
+    translate: 0 rem(64);
+    transform-origin: top left;
+    animation: fade-bottom-rotate $td $tf forwards;
+    @keyframes fade-bottom-rotate {
+        from {
+            opacity: 0;
+            translate: 0 rem(64);
+            rotate: 45deg;
+        }
+        to {
+            opacity: 1;
+            translate: 0 0;
+            rotate: 0;
         }
     }
 }
