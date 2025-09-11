@@ -16,9 +16,9 @@
                 </div>
                 <!-- Временное изображение -->
 
-                <!-- <picture class="home-hero__image-container">
+                <picture class="home-hero__image-container">
                     <img class="home-hero__image" src="/img/content/face.png" alt="Игорь Кулагин" />
-                </picture> -->
+                </picture>
 
                 <!---->
             </div>
@@ -117,6 +117,7 @@ import Sticker from '@/components/Sticker/Sticker.vue';
 @use '@/assets/abstracts' as *;
 
 .home-hero {
+    position: relative;
     min-width: fit-content;
     &__container {
         @include horizontal-layout;
@@ -145,33 +146,35 @@ import Sticker from '@/components/Sticker/Sticker.vue';
     }
     // Временное изображение
     //
-    // &__image-container {
-    //     position: relative;
-    //     max-width: rem(640);
-    //     // min-height: rem(340);
-    //     max-height: 100%;
-    //     overflow: hidden;
-    //     margin-top: rem(32);
-    //     &::before {
-    //         content: '';
-    //         position: absolute;
-    //         top: 25%;
-    //         left: 50%;
-    //         translate: -50% 0;
-    //         width: 100%;
-    //         aspect-ratio: 1;
-    //         border-radius: 50%;
-    //         background-color: $c-accent;
-    //         pointer-events: none;
-    //     }
-    // }
-    // &__image {
-    //     position: absolute;
-    //     z-index: 1;
-    //     width: 100%;
-    //     height: 100%;
-    //     object-fit: contain;
-    // }
+    &__image-container {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: rem(640);
+        height: rem(340);
+        max-height: 100%;
+        overflow: hidden;
+        margin-top: rem(32);
+        &::before {
+            content: '';
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            translate: -50% 0;
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background-color: $c-accent;
+            pointer-events: none;
+        }
+    }
+    &__image {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
 
     &__body {
         position: relative;

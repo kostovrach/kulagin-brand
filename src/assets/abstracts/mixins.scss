@@ -30,17 +30,17 @@
     user-select: none;
     pointer-events: none;
 }
-@mixin gradient-text-hover() {
+@mixin gradient-text-hover($main-color: $c-111111, $accent-color: $c-accent) {
     @supports (background-clip: text) {
         color: transparent;
         background-clip: text;
-        background-image: linear-gradient(90deg, $c-accent 50%, $c-111111 50%);
-        background-size: 200% 200%;
-        background-position: -100% -100%;
+        background-image: linear-gradient(90deg, $accent-color 50%, $main-color 50%);
+        background-size: 250% 200%;
+        background-position: -80% -100%;
         transition: background-position $td $tf;
         @media (pointer: fine) {
             &:hover {
-                background-position: -200% -200%;
+                background-position: -160% -200%;
             }
         }
     }

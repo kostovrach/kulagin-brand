@@ -34,6 +34,7 @@
     width: 100vw;
     padding: rem(16) rem(64);
     pointer-events: none;
+    mix-blend-mode: difference; // <-----
     &__container {
         display: flex;
         align-items: center;
@@ -43,6 +44,7 @@
         display: flex;
         align-items: center;
         gap: rem(32);
+        color: $c-F3F2EE; // <-----
     }
     &__logo {
         text-transform: uppercase;
@@ -57,7 +59,7 @@
         font-size: rem(14);
         font-weight: $fw-semi;
         pointer-events: auto;
-        @include gradient-text-hover;
+        @include gradient-text-hover($main-color: $c-FFFFFF, $accent-color: $c-0FD2D3); // <----- 
     }
     &__controls {
         display: flex;
@@ -74,21 +76,22 @@
             font-size: rem(14);
             font-weight: $fw-semi;
             pointer-events: auto;
-            @include gradient-text-hover;
+        @include gradient-text-hover($main-color: $c-FFFFFF, $accent-color: $c-0FD2D3); // <----- 
         }
     }
     &__button {
         cursor: pointer;
         position: relative;
         text-transform: uppercase;
+        color: $c-FFFFFF; // <----- 
         font-size: rem(14);
         font-weight: $fw-semi;
         padding: rem(14) rem(32);
         border-radius: rem(32);
         box-shadow:
-            0 0 15px rgba($c-111111, 0.1),
-            inset 0 0 15px rgba($c-111111, 0.1);
-        border: rem(1) solid $c-FFFFFF;
+            0 0 15px rgba($c-FFFFFF, 0.1), // <----- 
+            inset 0 0 15px rgba($c-FFFFFF, 0.1); // <----- 
+        border: rem(1) solid $c-000000; // <----- 
         overflow: hidden;
         transition: color $td $tf;
         pointer-events: auto;
@@ -99,7 +102,7 @@
             inset: 0;
             pointer-events: none;
             border-radius: inherit;
-            background-image: linear-gradient(90deg, $c-accent 40%, $c-FFFFFF 50%);
+            background-image: linear-gradient(90deg, $c-0FD2D3 40%, $c-000000 50%); // <----- 
             background-size: 250% 200%;
             background-position: -80% -100%;
             transition: background-position $td $tf;
@@ -113,8 +116,8 @@
             }
         }
         &:active {
-            color: $c-main;
-            background-color: $c-111111;
+            color: $c-000000; // <----- 
+            background-color: $c-FFFFFF; // <----- 
             scale: 0.95;
             &::before {
                 display: none;

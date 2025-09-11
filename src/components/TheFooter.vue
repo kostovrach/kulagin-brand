@@ -63,7 +63,7 @@
     bottom: 0;
     left: 0;
     width: 100vw;
-    mix-blend-mode: difference;
+    mix-blend-mode: difference; // <----- 
     padding: rem(16) rem(64);
     pointer-events: none;
     &__container {
@@ -93,10 +93,6 @@
             @media (pointer: fine) {
                 &:hover {
                     background: var(--color);
-                    // position: relative;
-                    // isolation: isolate;
-                    // z-index: 1;
-                    // mix-blend-mode: normal;
                     &:nth-of-type(4n + 1) {
                         rotate: -6deg;
                     }
@@ -124,9 +120,9 @@
         text-transform: uppercase;
         font-family: 'Inter', sans-serif;
         font-size: rem(14);
-        font-weight: $fw-med;
+        font-weight: $fw-semi;
         pointer-events: auto;
-        @include gradient-text-hover;
+        @include gradient-text-hover($main-color: $c-FFFFFF, $accent-color: $c-0FD2D3);
     }
 }
 </style>
