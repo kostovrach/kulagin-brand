@@ -23,11 +23,6 @@ function initDraggable(el, options) {
         }
     }
 
-    // const container =
-    //     typeof options?.container === 'string' && options.container !== 'parent'
-    //         ? document.querySelector(options.container)
-    //         : el.closest('section') || document.body;
-
     if (options?.left != null) el.style.left = options.left + 'px';
     if (options?.top != null) el.style.top = options.top + 'px';
     el.style.position = 'absolute';
@@ -74,9 +69,6 @@ function initDraggable(el, options) {
         if (constraintContainer) {
             const containerRect = constraintContainer.getBoundingClientRect();
             const elRect = el.getBoundingClientRect();
-
-            // const currentLeft = parseFloat(el.style.left || 0);
-            // const currentTop = parseFloat(el.style.top || 0);
 
             const containerLeft = containerRect.left + window.scrollX;
             const containerTop = containerRect.top + window.scrollY;

@@ -97,10 +97,9 @@
                 />
                 <SectionHint class="home-hero__hint" image="/img/content/smiling.gif">
                     <template #title>Как превратить свой бренд в источник дохода?</template>
-                    <template #text
-                        >Мой опыт и&nbsp;знания смогут сократить путь к&nbsp;результатам, экономя несколько лет
-                        усилий.</template
-                    >
+                    <template #text>
+                        Мой опыт и&nbsp;знания смогут сократить путь к&nbsp;результатам, экономя несколько лет усилий.
+                    </template>
                     <template #media-description>Про уникальный опыт</template>
                 </SectionHint>
             </div>

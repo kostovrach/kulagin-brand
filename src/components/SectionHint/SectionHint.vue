@@ -17,7 +17,7 @@
             </video>
 
             <div class="section-hint__media-button">
-                <span> <TheSvgSprite type="play" :size="11" style="translate: 1px 0" /></span>
+                <span> <TheSvgSprite type="play" :size="11" /></span>
                 <p>
                     <slot name="media-description"></slot>
                 </p>
@@ -146,7 +146,7 @@ const props = defineProps({
                 justify-content: center;
                 width: rem(48);
                 aspect-ratio: 1;
-                border: rem(2) solid $c-111111;
+                border: rem(2) solid currentColor;
                 border-radius: 50%;
             }
             > p {

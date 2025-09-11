@@ -103,6 +103,7 @@ const secondPart = computed(() => {
     position: relative;
     z-index: 2;
     width: fit-content;
+    height: fit-content;
     aspect-ratio: 1;
     display: flex;
     align-items: center;
@@ -112,8 +113,9 @@ const secondPart = computed(() => {
     font-weight: $fw-bold;
     border-radius: 50%;
     padding: rem(34);
-    box-shadow: 1px 1px 1px $c-111111;
+    box-shadow: rem(1) rem(1) rem(1) $c-111111;
     overflow: hidden;
+    transition: background-color $td $tf;
     &::before {
         content: '';
         position: absolute;
@@ -122,10 +124,15 @@ const secondPart = computed(() => {
         background-image: url('/img/patterns/variant2.png');
         opacity: 0.4;
         pointer-events: none;
+        transition: opacity;
     }
 
     @media (pointer: fine) {
         &:hover {
+            background-color: $c-111111;
+            &::before{
+                opacity: 0;
+            }
             #{$p}__icon {
                 > * {
                     background-position: 100% 100%;
@@ -161,9 +168,8 @@ const secondPart = computed(() => {
             display: block;
             position: absolute;
             width: rem(4);
-            background-image: linear-gradient(to top, currentColor 49%, transparent 50%);
+            background-image: linear-gradient(to top, $c-FFFFFF 49%, transparent 50%);
             background-size: 200% 200%;
-            // background-position: -0.1% -0.1%;
             transition: background-position $td $tf;
         }
         :nth-child(1) {

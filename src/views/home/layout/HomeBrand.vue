@@ -30,13 +30,36 @@
                     <img class="home-brand__image" src="/img/content/singing.jpg" alt="#" />
                 </picture>
             </div>
+            <div class="home-brand__hint">
+                <SectionHint class="home-hero__hint" image="/img/content/singing.jpg">
+                    <template #title>Пир для маркетологов</template>
+                    <template #text>
+                        Мы обсудим эффективность и&nbsp;скорость бизнес-процессов. Мы поговорим о том, как принести
+                        и&nbsp;удержать больше лидов.
+                    </template>
+                    <template #media-description>уникальный опыт</template>
+                </SectionHint>
+            </div>
+            <FormPrimary image="/img/content/temp.jpg">
+                <template #title>Ваш бренд не приносит прибыль?</template>
+                <template #description>
+                    Заполните форму и я свяжусь с&nbsp;вами, чтобы обсудить вашу точку «А». Ещё можно
+                    <a href="tel:">позвонить</a> или <a href="mailto:">написать</a>.
+                </template>
+            </FormPrimary>
+            <div class="home-brand__footer">
+                <picture class="home-brand__footer-image-container">
+                    <img class="home-brand__footer-image" src="/img/content/smiling.gif" alt="Игорь Кулагин" />
+                </picture>
+            </div>
         </div>
     </section>
 </template>
 
 <script setup>
 import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
-// import SectionHint from '@/components/SectionHint/SectionHint.vue';
+import SectionHint from '@/components/SectionHint/SectionHint.vue';
+import FormPrimary from '@/components/FormPrimary/FormPrimary.vue';
 </script>
 
 <style lang="scss" scoped>
@@ -44,6 +67,7 @@ import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
 
 .home-brand {
     min-width: fit-content;
+    color: $c-F3F2EE;
     background-color: $c-111111;
     &__container {
         @include horizontal-layout;
@@ -80,6 +104,27 @@ import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
         width: 100%;
         height: 100%;
         object-fit: cover;
+    }
+    &__hint {
+        display: flex;
+        align-items: flex-end;
+    }
+    &__footer {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 rem(64);
+        &-image-container {
+            max-width: rem(380);
+            max-height: rem(524);
+            rotate: 5deg;
+        }
+        &-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     }
 }
 </style>
