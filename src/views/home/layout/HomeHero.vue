@@ -3,20 +3,14 @@
         <div class="hero__container">
             <div class="hero__head">
                 <div class="layout__titlebox">
-                    <h1 class="hero__title" v-animateonscroll="{ enterClass: 'fade-bottom-rotate' }">
-                        Помогаю бизнесу зарабатывать
-                    </h1>
-                    <p
-                        class="hero__subtitle"
-                        v-animateonscroll="{ enterClass: 'fade-bottom-rotate' }"
-                        style="animation-delay: 0.2s"
-                    >
+                    <h1 class="hero__title fade-bottom-rotate">Помогаю бизнесу зарабатывать</h1>
+                    <p class="hero__subtitle fade-bottom-rotate" style="animation-delay: 0.2s">
                         Консультации по&nbsp;рекламе и&nbsp;брендингу, по&nbsp;личностному росту и ведению бизнеса.
                     </p>
                 </div>
                 <!-- Временное изображение -->
 
-                <picture class="hero__image-container">
+                <picture class="hero__image-container fade-scale">
                     <img class="hero__image" src="/img/content/face.png" alt="Игорь Кулагин" />
                 </picture>
 
@@ -145,7 +139,7 @@ import Sticker from '@/components/Sticker/Sticker.vue';
     //
     &__image-container {
         position: relative;
-        bottom: -$py;
+        bottom: calc($py * -1);
         width: rem(640);
         min-height: rem(340);
         max-height: 100%;

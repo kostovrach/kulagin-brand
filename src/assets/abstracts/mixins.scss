@@ -14,7 +14,7 @@
 @mixin horizontal-max-height() {
     max-height: calc(100lvh - $py * 2);
 }
-@mixin block-title($max-width: 15ch, $font-size: lineScale(96, 32, 480, 1440)) {
+@mixin block-title($max-width: 15ch, $font-size: lineScale-y(96, 32, 480, 1080)) {
     font-family: 'Fira-Extra', sans-serif;
     font-weight: $fw-bold;
     font-size: $font-size;

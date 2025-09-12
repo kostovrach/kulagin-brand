@@ -119,7 +119,7 @@
                 </div>
             </div>
             <div class="projects__divider--type2">
-                <ButtonPrimary type="router-link" to="/" variant="black">Все проекты</ButtonPrimary>
+                <ButtonPrimary type="router-link" to="/projects" variant="black">Все проекты</ButtonPrimary>
                 <img class="projects__divider--type2-arrow" src="/img/arrow-small.svg" />
             </div>
             <Contact />
@@ -232,7 +232,7 @@ import Contact from '@/components/Contact/Contact.vue';
                 gap: rem(24);
             }
             &-image-container {
-                height: 100%;
+                max-height: 100%;
                 &:nth-of-type(1) {
                     grid-area: image-1;
                     max-width: rem(81);
@@ -284,7 +284,7 @@ import Contact from '@/components/Contact/Contact.vue';
             align-self: flex-end;
             position: relative;
             left: rem(-96);
-            bottom: -$py;
+            bottom: calc($py * -1);
             user-select: none;
             &-arrow {
                 translate: 20% 100%;

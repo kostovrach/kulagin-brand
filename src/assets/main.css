@@ -1,7 +1,2 @@
 @import './base.css';
 @import './fonts.css';
-
-html,
-body {
-    font-family: 'Fira', sans-serif;
-}

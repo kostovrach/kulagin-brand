@@ -9,9 +9,9 @@
                 <nav class="header__nav">
                     <router-link class="header__nav-link" to="/">Обо мне</router-link>
                     <router-link class="header__nav-link" to="/">Услуги</router-link>
-                    <router-link class="header__nav-link" to="/">Все Проекты</router-link>
+                    <router-link class="header__nav-link" to="/projects">Все Проекты</router-link>
                     <router-link class="header__nav-link" to="/">Хобби</router-link>
-                    <router-link class="header__nav-link" to="/">Блог</router-link>
+                    <router-link class="header__nav-link" to="/blog">Блог</router-link>
                     <router-link class="header__nav-link" to="/">Маркетологам</router-link>
                     <router-link class="header__nav-link" to="/">Контакты</router-link>
                 </nav>

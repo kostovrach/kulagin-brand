@@ -79,7 +79,7 @@ const socials = [
         grid-template-columns: repeat(7, auto);
         grid-template-rows: repeat(4, auto);
         grid-template-areas:
-            'link-1 link-2 . . desc desc .'
+            'link-1 . link-2 . desc desc .'
             '. title title title title link-3 .'
             '. . arrow button button button .'
             '. . link-4 . link-5 . link-6';
@@ -132,9 +132,9 @@ const socials = [
         }
         &:nth-of-type(3) {
             grid-area: link-3;
-            max-width: rem(200);
+            max-width: rem(180);
             rotate: 8deg;
-            translate: rem(-40) 0;
+            translate: -10% 0;
         }
         &:nth-of-type(4) {
             grid-area: link-4;
@@ -155,7 +155,7 @@ const socials = [
     }
     &__title {
         grid-area: title;
-        @include block-title($max-width: initial, $font-size: lineScale(120, 32, 480, 1440));
+        @include block-title($max-width: initial, $font-size: lineScale-y(120, 32, 480, 1080));
         :nth-child(2) {
             padding-left: lineScale(96, 32, 480, 1440);
         }

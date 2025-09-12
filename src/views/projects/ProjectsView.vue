@@ -1,12 +1,10 @@
 <template>
     <main class="page page--horizontal" ref="containerRef">
         <ScrollProgressBar :progress="scrollProgress" position="top" :show-when-scrolling="isScrolling" />
-        <HomeHero />
-        <HomeBrand />
-        <HomeProjects />
-        <PageNavigator to="/" image="/img/content/singing.gif">
+        <ProjectsMain />
+        <PageNavigator to="/hobby" image="/img/content/flower.gif">
             <template #tag>Далее</template>
-            <template #title>Услуги</template>
+            <template #title>хобби</template>
         </PageNavigator>
     </main>
 </template>
@@ -14,10 +12,7 @@
 <script setup>
 import { useHorizontalScroll } from '@/composables/useHorizontalScroll';
 import ScrollProgressBar from '@/components/ProgressBar/ProgressBar.vue';
-
-import HomeHero from './layout/HomeHero.vue';
-import HomeBrand from './layout/HomeBrand.vue';
-import HomeProjects from './layout/HomeProjects.vue';
+import ProjectsMain from './layout/ProjectsMain.vue';
 import PageNavigator from '@/components/PageNavigator/PageNavigator.vue';
 
 const { containerRef, scrollProgress, isScrolling } = useHorizontalScroll();

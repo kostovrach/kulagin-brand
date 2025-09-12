@@ -43,9 +43,11 @@ const props = defineProps({
         }
     }
     &__container {
+        height: 100%;
         @include horizontal-layout;
     }
     &__body {
+        height: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;

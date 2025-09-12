@@ -14,24 +14,26 @@ import TheHeader from './components/TheHeader.vue';
 
 html,
 body {
+    font-family: 'Fira', sans-serif;
     color: $c-text;
     background-color: $c-main;
 }
 
 main.page {
     width: 100vw;
-    height: 100lvh;
-    min-height: fit-content;
-    display: grid;
-    grid-auto-flow: column;
-    overflow-x: auto;
-    overflow-y: hidden;
-
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     &::-webkit-scrollbar {
         display: none;
     }
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    &--horizontal {
+        height: 100lvh;
+        min-height: fit-content;
+        display: grid;
+        grid-auto-flow: column;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
 }
 
 .fade-bottom {
@@ -68,7 +70,7 @@ main.page {
     opacity: 0;
     translate: 0 rem(64);
     transform-origin: top left;
-    animation: fade-bottom-rotate $td $tf forwards;
+    animation: fade-bottom-rotate $td $tf-spring forwards;
     @keyframes fade-bottom-rotate {
         from {
             opacity: 0;
@@ -79,6 +81,20 @@ main.page {
             opacity: 1;
             translate: 0 0;
             rotate: 0;
+        }
+    }
+}
+.fade-scale {
+    opacity: 0;
+    animation: fade-scale $td $tf-spring forwards;
+    @keyframes fade-scale {
+        from {
+            opacity: 0;
+            scale: 1.5;
+        }
+        to {
+            opacity: 1;
+            scale: 1;
         }
     }
 }

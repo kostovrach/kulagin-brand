@@ -9,7 +9,7 @@
                 <ButtonPrimary
                     style="position: absolute; left: 10%; bottom: -10%"
                     type="router-link"
-                    to="/"
+                    to="/blog"
                     variant="red"
                 >
                     Блог

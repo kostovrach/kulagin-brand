@@ -48,11 +48,13 @@ const props = defineProps({
         text-transform: uppercase;
         font-weight: $fw-semi;
         &--accent {
+            max-width: fit-content;
             font-size: lineScale(60, 40, 480, 1440);
             line-height: 1;
             white-space: nowrap;
         }
         &--main {
+            max-width: 13ch;
             font-size: lineScale(22, 18, 480, 1440);
         }
     }
