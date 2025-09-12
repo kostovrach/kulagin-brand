@@ -11,7 +11,13 @@
                 </div>
                 <form class="form-primary__form" @submit.prevent="submitForm">
                     <div class="form-primary__inputbox">
-                        <input id="name" v-model="form.name" type="text" placeholder="Иван Иванович" autocomplete="name" />
+                        <input
+                            id="name"
+                            v-model="form.name"
+                            type="text"
+                            placeholder="Иван Иванович"
+                            autocomplete="name"
+                        />
                         <label for="name">Ваше имя</label>
                         <span class="form-primary__error">{{ errors.name }}</span>
                     </div>
@@ -27,7 +33,13 @@
                         <span class="form-primary__error">{{ errors.tel }}</span>
                     </div>
                     <div class="form-primary__inputbox">
-                        <input id="email" v-model="form.email" type="email" placeholder="example@yandex.ru" autocomplete="email" />
+                        <input
+                            id="email"
+                            v-model="form.email"
+                            type="email"
+                            placeholder="example@yandex.ru"
+                            autocomplete="email"
+                        />
                         <label for="email">Электронная почта</label>
                         <span class="form-primary__error">{{ errors.email }}</span>
                     </div>
@@ -71,7 +83,7 @@ function validate() {
     let valid = true;
 
     errors.email = form.email ? (/\S+@\S+\.\S+/.test(form.email) ? '' : 'Неверный e-mail') : '';
-    errors.general = !form.tel && !form.email ? 'Заполните хотя бы одно из полей контактной информации' : ''
+    errors.general = !form.tel && !form.email ? 'Заполните хотя бы одно из полей контактной информации' : '';
 
     if (errors.email || errors.general) valid = false;
 
@@ -83,10 +95,10 @@ async function submitForm() {
 
     isSubmitting.value = true;
 
-    const API_URL = import.meta.env.VITE_API_URL
+    const API_URL = import.meta.env.VITE_API_URL;
 
     try {
-        const response = await fetch(`${API_URL}`, {
+        const response = await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(form),
@@ -121,11 +133,7 @@ async function submitForm() {
     }
     &__title {
         grid-column: span 4;
-        max-width: 20ch;
-        text-transform: uppercase;
-        font-family: 'Fira-Extra', sans-serif;
-        font-size: lineScale(96, 40, 480, 1440);
-        font-weight: $fw-bold;
+        @include block-title($max-width: 20ch);
     }
     &__body {
         grid-column: 2 / span 3;
@@ -268,53 +276,7 @@ async function submitForm() {
         }
     }
     &__button {
-        cursor: pointer;
-        box-sizing: border-box;
-        position: relative;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: rem(32);
-        padding: rem(14) rem(32);
-        border: rem(2) solid $c-accent;
-        border-radius: rem(32);
-        &::before {
-            content: '';
-            position: absolute;
-            z-index: 0;
-            inset: 0;
-            pointer-events: none;
-            border-radius: inherit;
-            background-image: linear-gradient(90deg, $c-accent 40%, transparent 50%);
-            background-size: 250% 200%;
-            background-position: -80% -100%;
-            transition: background-position $td $tf;
-        }
-        @media (pointer: fine) {
-            &:hover {
-                color: $c-main;
-                &::before {
-                    background-position: -165% -200%;
-                }
-            }
-        }
-        &:active {
-            opacity: 0.8;
-        }
-        > * {
-            position: relative;
-            z-index: 1;
-        }
-        &-text {
-            text-transform: uppercase;
-            font-size: lineScale(24, 18, 480, 1440);
-            font-weight: $fw-semi;
-            line-height: 1;
-        }
-        &-icon {
-            rotate: -45deg;
-        }
+        @include button-secondary($padding: rem(14) rem(32), $border-color: $c-accent, $background: transparent);
     }
 }
 </style>

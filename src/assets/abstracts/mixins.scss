@@ -2,33 +2,25 @@
 @use './colors' as *;
 @use './variables' as *;
 
-@mixin horizontal-layout() {
+@mixin horizontal-layout($gap: rem(64), $padding: $py $px) {
     min-width: max-content;
     height: 100%;
     min-height: fit-content;
     display: grid;
     grid-auto-flow: column;
-    gap: rem(64);
-    padding: rem(128) rem(64);
+    gap: $gap;
+    padding: $padding;
 }
 @mixin horizontal-max-height() {
-    max-height: calc(100lvh - rem(128) * 2);
+    max-height: calc(100lvh - $py * 2);
 }
-@mixin block-title() {
-    font-family: 'Fira-Extra';
-    font-weight: bold;
-    font-size: lineScale(96, 32, 480, 1440);
+@mixin block-title($max-width: 15ch, $font-size: lineScale(96, 32, 480, 1440)) {
+    font-family: 'Fira-Extra', sans-serif;
+    font-weight: $fw-bold;
+    font-size: $font-size;
     line-height: 1;
     text-transform: uppercase;
-    max-width: 15ch;
-}
-@mixin decorative-text() {
-    text-transform: uppercase;
-    font-size: lineScale(1000, 320, 480, 1440);
-    line-height: 0.7;
-    font-weight: $fw-med;
-    user-select: none;
-    pointer-events: none;
+    max-width: $max-width;
 }
 @mixin gradient-text-hover($main-color: $c-111111, $accent-color: $c-accent) {
     @supports (background-clip: text) {
@@ -50,6 +42,83 @@
             &:hover {
                 color: $c-accent;
             }
+        }
+    }
+}
+@mixin button-secondary(
+    $width: 100%,
+    $color: $c-F3F2EE,
+    $padding: rem(14) rem(64),
+    $border-color: transparent,
+    $background: $c-111111,
+    $hover-background: $c-accent
+) {
+    cursor: pointer;
+    box-sizing: border-box;
+    position: relative;
+    width: $width;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: rem(32);
+    color: $color;
+    text-transform: uppercase;
+    font-size: lineScale(32, 24, 480, 1440);
+    line-height: 1;
+    font-weight: $fw-bold;
+    padding: $padding;
+    border: rem(2) solid $border-color;
+    border-radius: rem(32);
+    transition: color $td $tf;
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        pointer-events: none;
+        border-radius: inherit;
+        background-image: linear-gradient(90deg, $hover-background 40%, $background 50%);
+        background-size: 250% 200%;
+        background-position: -80% -100%;
+        transition: background-position $td $tf;
+    }
+    @media (pointer: fine) {
+        &:hover {
+            &::before {
+                background-position: -165% -200%;
+            }
+            > span svg {
+                animation: arrow-translate calc($td * 1.2) $tf;
+            }
+        }
+    }
+    &:active {
+        opacity: 0.8;
+    }
+    > * {
+        position: relative;
+        z-index: 1;
+    }
+    > span:has(svg) {
+        rotate: -45deg;
+        overflow: hidden;
+    }
+    @keyframes arrow-translate {
+        0% {
+            translate: 0 0;
+            opacity: 1;
+        }
+        45% {
+            translate: 100% 0;
+            opacity: 0;
+        }
+        55% {
+            translate: -100% 0;
+            opacity: 0;
+        }
+        100% {
+            translate: 0 0;
+            opacity: 1;
         }
     }
 }

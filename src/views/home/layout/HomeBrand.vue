@@ -1,9 +1,9 @@
 <template>
-    <section class="home-brand">
-        <div class="home-brand__container">
-            <div class="home-brand__body">
-                <picture class="home-brand__sticker-container" v-draggable="{ left: -60, top: -75 }">
-                    <img class="home-brand__sticker" src="/img/stickers/theplace.png" alt="ThePlace" />
+    <section class="brand">
+        <div class="brand__container">
+            <div class="brand__body">
+                <picture class="brand__sticker-container" v-draggable="{ left: -60, top: -75 }">
+                    <img class="brand__sticker" src="/img/stickers/theplace.png" alt="ThePlace" />
                 </picture>
 
                 <ButtonPrimary
@@ -17,20 +17,17 @@
                 <ButtonPrimary style="position: absolute; left: 70%; top: -10%" type="router-link" to="/" variant="red">
                     Маркетологам
                 </ButtonPrimary>
-                <picture class="home-brand__image-container" style="--mask: url('/img/masks/b.svg'); --ratio: 457/692">
-                    <img class="home-brand__image" src="/img/content/singing.gif" alt="#" />
+                <picture class="brand__image-container" style="--mask: url('/img/masks/b.svg'); --ratio: 457/692">
+                    <img class="brand__image" src="/img/content/singing.gif" alt="#" />
                 </picture>
-                <picture class="home-brand__image-container" style="--mask: url('/img/masks/ra.svg'); --ratio: 256/173">
-                    <img class="home-brand__image" src="/img/content/temp.jpg" alt="#" />
+                <picture class="brand__image-container" style="--mask: url('/img/masks/ra.svg'); --ratio: 256/173">
+                    <img class="brand__image" src="/img/content/temp.jpg" alt="#" />
                 </picture>
-                <picture
-                    class="home-brand__image-container"
-                    style="--mask: url('/img/masks/nd.svg'); --ratio: 1087/692"
-                >
-                    <img class="home-brand__image" src="/img/content/singing.jpg" alt="#" />
+                <picture class="brand__image-container" style="--mask: url('/img/masks/nd.svg'); --ratio: 1087/692">
+                    <img class="brand__image" src="/img/content/singing.jpg" alt="#" />
                 </picture>
             </div>
-            <div class="home-brand__hint">
+            <div class="brand__hint">
                 <SectionHint class="home-hero__hint" image="/img/content/singing.jpg">
                     <template #title>Пир для маркетологов</template>
                     <template #text>
@@ -47,9 +44,9 @@
                     <a href="tel:">позвонить</a> или <a href="mailto:">написать</a>.
                 </template>
             </FormPrimary>
-            <div class="home-brand__footer">
-                <picture class="home-brand__footer-image-container">
-                    <img class="home-brand__footer-image" src="/img/content/smiling.gif" alt="Игорь Кулагин" />
+            <div class="brand__footer">
+                <picture class="brand__footer-image-container">
+                    <img class="brand__footer-image" src="/img/content/smiling.gif" alt="Игорь Кулагин" />
                 </picture>
             </div>
         </div>
@@ -65,7 +62,7 @@ import FormPrimary from '@/components/FormPrimary/FormPrimary.vue';
 <style lang="scss" scoped>
 @use '@/assets/abstracts' as *;
 
-.home-brand {
+.brand {
     min-width: fit-content;
     color: $c-F3F2EE;
     background-color: $c-111111;

@@ -27,7 +27,7 @@ const props = defineProps({
     variant: {
         type: String,
         default: 'red',
-        validator: (val) => ['red', 'grey'].includes(val),
+        validator: (val) => ['red', 'grey', 'black'].includes(val),
     },
     to: { type: String },
     href: { type: String },
@@ -124,13 +124,13 @@ const secondPart = computed(() => {
         background-image: url('/img/patterns/variant2.png');
         opacity: 0.4;
         pointer-events: none;
-        transition: opacity;
+        transition: opacity $td $tf;
     }
 
     @media (pointer: fine) {
         &:hover {
             background-color: $c-111111;
-            &::before{
+            &::before {
                 opacity: 0;
             }
             #{$p}__icon {
@@ -198,6 +198,10 @@ const secondPart = computed(() => {
     &--grey {
         background-color: $c-FFFFFF;
         color: $c-111111;
+    }
+    &--black {
+        background-color: $c-111111;
+        color: $c-FFFFFF;
     }
 }
 </style>

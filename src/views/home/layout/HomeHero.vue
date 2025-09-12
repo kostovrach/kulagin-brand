@@ -1,13 +1,13 @@
 <template>
-    <section class="home-hero">
-        <div class="home-hero__container">
-            <div class="home-hero__head">
+    <section class="hero">
+        <div class="hero__container">
+            <div class="hero__head">
                 <div class="layout__titlebox">
-                    <h1 class="home-hero__title" v-animateonscroll="{ enterClass: 'fade-bottom-rotate' }">
+                    <h1 class="hero__title" v-animateonscroll="{ enterClass: 'fade-bottom-rotate' }">
                         Помогаю бизнесу зарабатывать
                     </h1>
                     <p
-                        class="home-hero__subtitle"
+                        class="hero__subtitle"
                         v-animateonscroll="{ enterClass: 'fade-bottom-rotate' }"
                         style="animation-delay: 0.2s"
                     >
@@ -16,13 +16,13 @@
                 </div>
                 <!-- Временное изображение -->
 
-                <picture class="home-hero__image-container">
-                    <img class="home-hero__image" src="/img/content/face.png" alt="Игорь Кулагин" />
+                <picture class="hero__image-container">
+                    <img class="hero__image" src="/img/content/face.png" alt="Игорь Кулагин" />
                 </picture>
 
-                <!---->
+                <!-- -->
             </div>
-            <div class="home-hero__body fade-right" style="animation-delay: 0.6s">
+            <div class="hero__body fade-right" style="animation-delay: 0.6s">
                 <ButtonPrimary
                     style="position: absolute; left: 600px; top: 170px"
                     type="router-link"
@@ -75,19 +75,16 @@
                     textAccent="от 120%"
                     textMain="средний рост конверсии"
                 />
-                <picture class="home-hero__text-image-container">
-                    <img class="home-hero__text-image" src="/img/masks/kulagin.svg" alt="КУЛАГИН" />
+                <picture class="hero__text-image-container">
+                    <img class="hero__text-image" src="/img/masks/kulagin.svg" alt="КУЛАГИН" />
                 </picture>
-                <div class="home-hero__interactive home-hero__interactive--face">
-                    <picture
-                        v-draggable="{ axis: 'y', container: 'parent' }"
-                        class="home-hero__interactive--face-container"
-                    >
+                <div class="hero__interactive hero__interactive--face">
+                    <picture v-draggable="{ axis: 'y', container: 'parent' }" class="hero__interactive--face-container">
                         <img src="/img/content/face.png" alt="#" />
                     </picture>
                 </div>
             </div>
-            <div class="home-hero__footer">
+            <div class="hero__footer">
                 <Sticker
                     v-draggable="{ left: 0, top: 75 }"
                     style="rotate: -5deg"
@@ -95,7 +92,7 @@
                     textAccent="от 120%"
                     textMain="средний рост конверсии"
                 />
-                <SectionHint class="home-hero__hint" image="/img/content/smiling.gif">
+                <SectionHint class="hero__hint" image="/img/content/smiling.gif">
                     <template #title>Как превратить свой бренд в источник дохода?</template>
                     <template #text>
                         Мой опыт и&nbsp;знания смогут сократить путь к&nbsp;результатам, экономя несколько лет усилий.
@@ -116,7 +113,7 @@ import Sticker from '@/components/Sticker/Sticker.vue';
 <style lang="scss" scoped>
 @use '@/assets/abstracts' as *;
 
-.home-hero {
+.hero {
     position: relative;
     min-width: fit-content;
     &__container {
@@ -147,11 +144,10 @@ import Sticker from '@/components/Sticker/Sticker.vue';
     // Временное изображение
     //
     &__image-container {
-        position: absolute;
-        left: 0;
-        bottom: 0;
+        position: relative;
+        bottom: -$py;
         width: rem(640);
-        height: rem(340);
+        min-height: rem(340);
         max-height: 100%;
         overflow: hidden;
         margin-top: rem(32);
@@ -175,7 +171,8 @@ import Sticker from '@/components/Sticker/Sticker.vue';
         height: 100%;
         object-fit: contain;
     }
-
+    //
+    /////
     &__body {
         position: relative;
     }

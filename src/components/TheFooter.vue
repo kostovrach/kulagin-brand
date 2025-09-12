@@ -63,7 +63,7 @@
     bottom: 0;
     left: 0;
     width: 100vw;
-    mix-blend-mode: difference; // <----- 
+    mix-blend-mode: difference; // <-----
     padding: rem(16) rem(64);
     pointer-events: none;
     &__container {

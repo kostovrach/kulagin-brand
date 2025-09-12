@@ -59,7 +59,7 @@
         font-size: rem(14);
         font-weight: $fw-semi;
         pointer-events: auto;
-        @include gradient-text-hover($main-color: $c-FFFFFF, $accent-color: $c-0FD2D3); // <----- 
+        @include gradient-text-hover($main-color: $c-FFFFFF, $accent-color: $c-0FD2D3); // <-----
     }
     &__controls {
         display: flex;
@@ -76,22 +76,23 @@
             font-size: rem(14);
             font-weight: $fw-semi;
             pointer-events: auto;
-        @include gradient-text-hover($main-color: $c-FFFFFF, $accent-color: $c-0FD2D3); // <----- 
+            @include gradient-text-hover($main-color: $c-FFFFFF, $accent-color: $c-0FD2D3); // <-----
         }
     }
     &__button {
         cursor: pointer;
         position: relative;
         text-transform: uppercase;
-        color: $c-FFFFFF; // <----- 
+        color: $c-FFFFFF; // <-----
         font-size: rem(14);
-        font-weight: $fw-semi;
+        font-weight: $fw-med;
         padding: rem(14) rem(32);
         border-radius: rem(32);
         box-shadow:
-            0 0 15px rgba($c-FFFFFF, 0.1), // <----- 
-            inset 0 0 15px rgba($c-FFFFFF, 0.1); // <----- 
-        border: rem(1) solid $c-000000; // <----- 
+            0 0 15px rgba($c-FFFFFF, 0.1),
+            // <-----
+            inset 0 0 15px rgba($c-FFFFFF, 0.1); // <-----
+        border: rem(1) solid $c-000000; // <-----
         overflow: hidden;
         transition: color $td $tf;
         pointer-events: auto;
@@ -102,22 +103,22 @@
             inset: 0;
             pointer-events: none;
             border-radius: inherit;
-            background-image: linear-gradient(90deg, $c-0FD2D3 40%, $c-000000 50%); // <----- 
+            background-image: linear-gradient(90deg, $c-0FD2D3 40%, $c-000000 50%); // <-----
             background-size: 250% 200%;
             background-position: -80% -100%;
             transition: background-position $td $tf;
         }
         @media (pointer: fine) {
             &:hover {
-                color: $c-main;
+                color: $c-111111;
                 &::before {
                     background-position: -165% -200%;
                 }
             }
         }
         &:active {
-            color: $c-000000; // <----- 
-            background-color: $c-FFFFFF; // <----- 
+            color: $c-000000; // <-----
+            background-color: $c-FFFFFF; // <-----
             scale: 0.95;
             &::before {
                 display: none;
