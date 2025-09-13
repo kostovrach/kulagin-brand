@@ -71,13 +71,14 @@
                     textMain="средний рост конверсии"
                 />
                 <picture class="hero__text-image-container">
-                    <img class="hero__text-image" src="/img/masks/kulagin.svg" alt="КУЛАГИН" />
+                    <source media="(max-width: 768px)" srcset="/img/kulagin-y.svg" />
+                    <img class="hero__text-image" src="/img/kulagin-x.svg" alt="КУЛАГИН" />
                 </picture>
-                <div class="hero__interactive hero__interactive--face">
+                <!-- <div class="hero__interactive hero__interactive--face">
                     <picture v-draggable="{ axis: 'y', container: 'parent' }" class="hero__interactive--face-container">
                         <img src="/img/content/personal-views/face.png" alt="#" />
                     </picture>
-                </div>
+                </div> -->
             </div>
             <div class="hero__footer">
                 <Sticker
@@ -210,6 +211,14 @@ import Sticker from '@/components/Sticker/Sticker.vue';
     &__hint {
         grid-row: 2;
         align-self: flex-end;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        &__image-container {
+            position: initial;
+        }
     }
 }
 </style>

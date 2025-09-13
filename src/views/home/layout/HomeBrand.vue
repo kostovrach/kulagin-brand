@@ -128,4 +128,14 @@ import FormPrimary from '@/components/FormPrimary/FormPrimary.vue';
         }
     }
 }
+
+@media (max-width: 768px) {
+    .brand {
+        &__body {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+}
 </style>

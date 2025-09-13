@@ -24,6 +24,10 @@
                     <span class="contact__button-text">Напиши мне, я не кусаюсь!</span>
                     <span class="contact__button-icon"><TheSvgSprite type="arrow" /></span>
                 </router-link>
+                <p class="contact__caption">
+                    *Instagram принадлежит компании Meta, которая признана экстремистской организацией и запрещена
+                    на&nbsp;территории РФ
+                </p>
             </div>
         </div>
     </div>
@@ -82,7 +86,7 @@ const socials = [
             'link-1 . link-2 . desc desc .'
             '. title title title title link-3 .'
             '. . arrow button button button .'
-            '. . link-4 . link-5 . link-6';
+            'caption caption link-4 . link-5 . link-6';
     }
     &__link {
         display: block;
@@ -175,6 +179,16 @@ const socials = [
     &__arrow {
         grid-area: arrow;
         justify-self: flex-end;
+    }
+    &__caption {
+        grid-area: caption;
+        max-width: 50ch;
+        align-self: flex-end;
+        font-family: 'Inter', sans-serif;
+        font-style: italic;
+        font-size: rem(14);
+        font-weight: $fw-med;
+        opacity: 0.25;
     }
     &__button {
         grid-area: button;

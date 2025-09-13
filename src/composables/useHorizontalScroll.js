@@ -1,4 +1,4 @@
-import { ref, onMounted, onUnmounted, nextTick } from 'vue';
+import { ref, onMounted, onUnmounted, nextTick, computed } from 'vue';
 
 export function useHorizontalScroll(options = {}) {
     const {
@@ -8,11 +8,16 @@ export function useHorizontalScroll(options = {}) {
         keyboardStepRatio = 0.8,
         wheelSensitivity = 1,
         touchSensitivity = 1,
+        breakpoint = 768,
     } = options;
 
     const containerRef = ref(null);
     const scrollProgress = ref(0);
     const isScrolling = ref(false);
+    const isDesktop = ref(true);
+    const isEnabled = ref(true);
+
+    const isActive = computed(() => isDesktop.value && isEnabled.value);
 
     let current = 0;
     let target = 0;
@@ -22,12 +27,14 @@ export function useHorizontalScroll(options = {}) {
     let lastTouchTime = 0;
     let touchVelocities = [];
     let rafId = null;
-
     let lastWheelTime = 0;
+    let mediaQuery = null;
+    let resizeObserver = null;
+
     const wheelDebounceTime = 16;
 
     function animate() {
-        if (!containerRef.value) return;
+        if (!containerRef.value || !isActive.value) return;
 
         if (Math.abs(target - current) < 0.5 && Math.abs(inertiaVelocity) > minInertiaVelocity) {
             target += inertiaVelocity;
@@ -47,12 +54,11 @@ export function useHorizontalScroll(options = {}) {
         }
 
         containerRef.value.scrollLeft = current;
-
         updateScrollProgress();
 
         const needsContinue = Math.abs(target - current) > 0.5 || Math.abs(inertiaVelocity) > minInertiaVelocity;
 
-        if (needsContinue) {
+        if (needsContinue && isActive.value) {
             rafId = requestAnimationFrame(animate);
             isScrolling.value = true;
         } else {
@@ -63,7 +69,7 @@ export function useHorizontalScroll(options = {}) {
     }
 
     function startAnimation() {
-        if (!isAnimating && containerRef.value) {
+        if (!isAnimating && containerRef.value && isActive.value) {
             isAnimating = true;
             rafId = requestAnimationFrame(animate);
         }
@@ -77,6 +83,8 @@ export function useHorizontalScroll(options = {}) {
     }
 
     function handleWheel(e) {
+        if (!isActive.value) return;
+
         e.preventDefault();
 
         const now = performance.now();
@@ -92,11 +100,12 @@ export function useHorizontalScroll(options = {}) {
         target = Math.max(0, Math.min(target, maxScroll));
 
         inertiaVelocity = 0;
-
         startAnimation();
     }
 
     function handleTouchStart(e) {
+        if (!isActive.value) return;
+
         const touch = e.touches[0];
         lastTouchX = touch.clientX;
         lastTouchTime = performance.now();
@@ -105,6 +114,8 @@ export function useHorizontalScroll(options = {}) {
     }
 
     function handleTouchMove(e) {
+        if (!isActive.value) return;
+
         e.preventDefault();
 
         if (!containerRef.value) return;
@@ -117,7 +128,6 @@ export function useHorizontalScroll(options = {}) {
         if (deltaTime > 0) {
             const velocity = deltaX / deltaTime;
             touchVelocities.push({ velocity, time: now });
-
             touchVelocities = touchVelocities.filter((v) => now - v.time < 100);
         }
 
@@ -132,6 +142,8 @@ export function useHorizontalScroll(options = {}) {
     }
 
     function handleTouchEnd() {
+        if (!isActive.value) return;
+
         if (touchVelocities.length > 0) {
             const avgVelocity = touchVelocities.reduce((sum, v) => sum + v.velocity, 0) / touchVelocities.length;
             inertiaVelocity = avgVelocity * 10;
@@ -142,7 +154,7 @@ export function useHorizontalScroll(options = {}) {
     }
 
     function handleKeydown(e) {
-        if (!containerRef.value) return;
+        if (!isActive.value || !containerRef.value) return;
 
         const step = window.innerWidth * keyboardStepRatio;
         let shouldHandle = false;
@@ -175,8 +187,41 @@ export function useHorizontalScroll(options = {}) {
         }
     }
 
-    function scrollTo(position, smooth = true) {
+    function handleMediaQueryChange(e) {
+        isDesktop.value = e.matches;
+
+        if (!isDesktop.value) {
+            stopAnimation();
+            resetScrollState();
+        } else {
+            syncWithNativeScroll();
+        }
+    }
+
+    function stopAnimation() {
+        if (rafId) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+        }
+        isAnimating = false;
+        isScrolling.value = false;
+        inertiaVelocity = 0;
+    }
+
+    function resetScrollState() {
+        scrollProgress.value = 0;
+    }
+
+    function syncWithNativeScroll() {
         if (!containerRef.value) return;
+
+        current = containerRef.value.scrollLeft;
+        target = current;
+        updateScrollProgress();
+    }
+
+    function scrollTo(position, smooth = true) {
+        if (!containerRef.value || !isActive.value) return;
 
         const maxScroll = containerRef.value.scrollWidth - containerRef.value.clientWidth;
         target = Math.max(0, Math.min(position, maxScroll));
@@ -198,9 +243,7 @@ export function useHorizontalScroll(options = {}) {
     function setupListeners() {
         if (!containerRef.value) return;
 
-        current = containerRef.value.scrollLeft;
-        target = current;
-        updateScrollProgress();
+        syncWithNativeScroll();
 
         containerRef.value.addEventListener('wheel', handleWheel, { passive: false });
         containerRef.value.addEventListener('touchstart', handleTouchStart, { passive: false });
@@ -220,20 +263,83 @@ export function useHorizontalScroll(options = {}) {
         containerRef.value.removeEventListener('touchmove', handleTouchMove);
         containerRef.value.removeEventListener('touchend', handleTouchEnd);
         window.removeEventListener('keydown', handleKeydown);
+
+        containerRef.value.removeAttribute('aria-label');
+        containerRef.value.removeAttribute('tabindex');
+    }
+
+    function setupMediaQuery() {
+        mediaQuery = window.matchMedia(`(min-width: ${breakpoint + 1}px)`);
+        isDesktop.value = mediaQuery.matches;
+
+        if (mediaQuery.addEventListener) {
+            mediaQuery.addEventListener('change', handleMediaQueryChange);
+        } else {
+            mediaQuery.addListener(handleMediaQueryChange);
+        }
+    }
+
+    function cleanupMediaQuery() {
+        if (!mediaQuery) return;
+
+        if (mediaQuery.removeEventListener) {
+            mediaQuery.removeEventListener('change', handleMediaQueryChange);
+        } else {
+            mediaQuery.removeListener(handleMediaQueryChange);
+        }
+        mediaQuery = null;
+    }
+
+    function enable() {
+        isEnabled.value = true;
+        if (isDesktop.value && containerRef.value) {
+            syncWithNativeScroll();
+        }
+    }
+
+    function disable() {
+        isEnabled.value = false;
+        stopAnimation();
+        resetScrollState();
+    }
+
+    function toggle() {
+        if (isEnabled.value) {
+            disable();
+        } else {
+            enable();
+        }
     }
 
     onMounted(() => {
+        setupMediaQuery();
+
         nextTick(() => {
-            setupListeners();
+            if (containerRef.value) {
+                setupListeners();
+            }
         });
     });
 
     onUnmounted(() => {
         removeListeners();
-        if (rafId) {
-            cancelAnimationFrame(rafId);
-        }
+        cleanupMediaQuery();
+        stopAnimation();
     });
 
-    return { containerRef, scrollProgress, isScrolling, scrollTo, scrollBy, setupListeners, removeListeners };
+    return {
+        containerRef,
+        scrollProgress,
+        isScrolling,
+        isDesktop,
+        isEnabled,
+        isActive,
+        scrollTo,
+        scrollBy,
+        enable,
+        disable,
+        toggle,
+        setupListeners,
+        removeListeners,
+    };
 }

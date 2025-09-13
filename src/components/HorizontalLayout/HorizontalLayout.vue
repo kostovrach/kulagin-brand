@@ -22,7 +22,7 @@ const props = defineProps({
 .page-horizontal {
     width: 100vw;
     height: 100lvh;
-    min-height: fit-content;
+    // min-height: fit-content;
 
     display: grid;
     grid-auto-flow: column;
@@ -34,6 +34,13 @@ const props = defineProps({
     -ms-overflow-style: none;
     &::-webkit-scrollbar {
         display: none;
+    }
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+
+        // overflow-x: clip;
+        overflow-y: initial;
     }
 }
 </style>

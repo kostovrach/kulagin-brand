@@ -126,7 +126,12 @@
                 <ButtonPrimary type="router-link" to="/projects" variant="black">Все проекты</ButtonPrimary>
                 <img class="projects__divider--type2-arrow" src="/img/arrow-small.svg" />
             </div>
-            <Contact />
+            <div class="projects__footer">
+                <div class="projects__interactive">
+                    <img v-draggable="{ container: 'parent', axis: 'y', top: 610 }" src="/img/flag.png" alt="#" />
+                </div>
+                <Contact />
+            </div>
         </div>
     </section>
 </template>
@@ -302,6 +307,25 @@ import Contact from '@/components/Contact/Contact.vue';
             &-arrow {
                 translate: rem(32) rem(-48);
             }
+        }
+    }
+    &__footer {
+        position: relative;
+    }
+    &__interactive {
+        width: rem(282);
+        height: rem(950);
+        position: absolute;
+        left: 0;
+        bottom: rem(-390);
+        @media (max-width: 768px) {
+            display: none;
+        }
+        img {
+            width: 100%;
+            height: rem(515);
+            object-fit: contain;
+            pointer-events: auto;
         }
     }
 }
