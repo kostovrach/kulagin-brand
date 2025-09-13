@@ -68,7 +68,11 @@
             <div class="projects__divider--type1">
                 <img class="projects__divider--type1-arrow" src="/img/arrow.svg" />
                 <picture class="projects__divider--type1-image-container">
-                    <img class="projects__divider--type1-image" src="/img/content/igor.png" alt="Игорь Кулагин" />
+                    <img
+                        class="projects__divider--type1-image"
+                        src="/img/content/personal-views/igor.png"
+                        alt="Игорь Кулагин"
+                    />
                 </picture>
             </div>
             <div class="projects__item--type2">
@@ -81,7 +85,7 @@
                 <img
                     v-draggable="{ left: 550, top: 100 }"
                     style="rotate: -12deg; max-width: 160px; pointer-events: auto"
-                    src="/img/content/singing.gif"
+                    src="/img/content/personal-views/singing.gif"
                     alt="#"
                 />
                 <img

@@ -1,5 +1,5 @@
 <template>
-    <section class="form-primary">
+    <section :class="['form-primary', `form-primary--${props.theme}`]">
         <div class="form-primary__container">
             <h2 class="form-primary__title"><slot name="title"></slot></h2>
             <div class="form-primary__body">
@@ -61,6 +61,7 @@ import InputMask from 'primevue/inputmask';
 import TheSvgSprite from '../TheSvgSprite.vue';
 
 const props = defineProps({
+    theme: { type: String, default: 'dark' },
     image: { type: String },
 });
 
@@ -95,10 +96,10 @@ async function submitForm() {
 
     isSubmitting.value = true;
 
-    const API_URL = import.meta.env.VITE_API_URL;
+    const API_FORM = import.meta.env.VITE_FORM_URL;
 
     try {
-        const response = await fetch(API_URL, {
+        const response = await fetch(API_FORM, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(form),
@@ -121,9 +122,23 @@ async function submitForm() {
 @use '@/assets/abstracts' as *;
 
 .form-primary {
+    $p: &;
+
+    height: 100%;
     min-width: fit-content;
     color: inherit;
     background-color: inherit;
+
+    &--dark {
+        #{$p}__button {
+            @include button-secondary($padding: rem(14) rem(32), $border-color: $c-accent, $background: transparent);
+        }
+    }
+    &--light {
+        #{$p}__button {
+            @include button-secondary($padding: rem(14) rem(32));
+        }
+    }
     &__container {
         height: 100%;
         display: grid;
@@ -141,7 +156,7 @@ async function submitForm() {
     }
     &__subtitle {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         gap: rem(16);
         &-image-container {
             max-width: rem(105);
@@ -197,7 +212,7 @@ async function submitForm() {
                 }
                 input,
                 label {
-                    opacity: 0.5;
+                    opacity: 0.75;
                 }
             }
         }
@@ -213,7 +228,7 @@ async function submitForm() {
         }
         input,
         label {
-            opacity: 0.25;
+            opacity: 0.5;
         }
         input {
             width: 100%;
@@ -274,9 +289,6 @@ async function submitForm() {
             font-weight: $fw-semi;
             pointer-events: none;
         }
-    }
-    &__button {
-        @include button-secondary($padding: rem(14) rem(32), $border-color: $c-accent, $background: transparent);
     }
 }
 </style>

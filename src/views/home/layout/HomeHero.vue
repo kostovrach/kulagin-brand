@@ -11,7 +11,7 @@
                 <!-- Временное изображение -->
 
                 <picture class="hero__image-container fade-scale">
-                    <img class="hero__image" src="/img/content/face.png" alt="Игорь Кулагин" />
+                    <img class="hero__image" src="/img/content/personal-views/face.png" alt="Игорь Кулагин" />
                 </picture>
 
                 <!-- -->
@@ -27,8 +27,9 @@
                 </ButtonPrimary>
                 <ButtonPrimary
                     style="position: absolute; left: 2000px; top: 200px"
-                    type="router-link"
-                    to="/"
+                    type="a"
+                    href="https://kulaginbrand.ru"
+                    target="_blank"
                     variant="grey"
                 >
                     Студия
@@ -36,7 +37,7 @@
                 <ButtonPrimary
                     style="position: absolute; left: 3000px; top: 550px"
                     type="router-link"
-                    to="/"
+                    to="/hobby"
                     variant="grey"
                 >
                     Увлечения
@@ -74,7 +75,7 @@
                 </picture>
                 <div class="hero__interactive hero__interactive--face">
                     <picture v-draggable="{ axis: 'y', container: 'parent' }" class="hero__interactive--face-container">
-                        <img src="/img/content/face.png" alt="#" />
+                        <img src="/img/content/personal-views/face.png" alt="#" />
                     </picture>
                 </div>
             </div>
@@ -86,7 +87,7 @@
                     textAccent="от 120%"
                     textMain="средний рост конверсии"
                 />
-                <SectionHint class="hero__hint" image="/img/content/smiling.gif">
+                <SectionHint class="hero__hint" image="/img/content/personal-views/smiling.gif">
                     <template #title>Как превратить свой бренд в источник дохода?</template>
                     <template #text>
                         Мой опыт и&nbsp;знания смогут сократить путь к&nbsp;результатам, экономя несколько лет усилий.

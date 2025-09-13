@@ -10,12 +10,12 @@
                     <router-link class="header__nav-link" to="/">Обо мне</router-link>
                     <router-link class="header__nav-link" to="/">Услуги</router-link>
                     <router-link class="header__nav-link" to="/projects">Все Проекты</router-link>
-                    <router-link class="header__nav-link" to="/">Хобби</router-link>
+                    <router-link class="header__nav-link" to="/hobby">Хобби</router-link>
                     <router-link class="header__nav-link" to="/blog">Блог</router-link>
                     <router-link class="header__nav-link" to="/">Маркетологам</router-link>
-                    <router-link class="header__nav-link" to="/">Контакты</router-link>
+                    <router-link class="header__nav-link" to="/contact">Контакты</router-link>
                 </nav>
-                <button class="header__button">Связаться со мной</button>
+                <router-link class="header__button" to="/contact">Связаться со мной</router-link>
             </div>
         </div>
     </header>

@@ -37,26 +37,44 @@
                             <img class="hero__map-image" src="/img/map.svg" alt="Карта мира" />
                         </picture>
                     </div>
-                    <ul class="hero__list fade-right" style="animation-delay: 0.6s">
-                        <li v-for="item in cases" :key="item.id" class="hero__item">
-                            <div class="hero__item-titlebox">
-                                <span class="hero__item-tag">{{ item.location }}</span>
-                                <h2 class="hero__item-title">{{ item.title }}</h2>
-                            </div>
-                            <div class="hero__item-body">
-                                <ul class="hero__item-list">
-                                    <li v-for="service in item.services" :key="service">{{ service }}</li>
-                                </ul>
-                                <p class="hero__item-desc">{{ item.description }}</p>
-                            </div>
-                            <a class="hero__item-button" :href="item.link" target="_blank" rel="noopener noreferrer">
-                                <span class="hero__item-button-text">Открыть проект</span>
-                                <span class="hero__item-button-icon">
-                                    <TheSvgSprite type="arrow" :size="10" />
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
+                    <div class="hero__list fade-right" style="animation-delay: 0.6s">
+                        <ul class="hero__list-wrapper" v-if="!projectsLoading">
+                            <li class="hero__item" v-for="item in projects" :key="item.id">
+                                <div class="hero__item-titlebox">
+                                    <span class="hero__item-tag">{{ item.location }}</span>
+                                    <h2 class="hero__item-title">{{ item.title }}</h2>
+                                </div>
+                                <div class="hero__item-body">
+                                    <ul class="hero__item-list">
+                                        <li v-for="service in item.services" :key="service">{{ service }}</li>
+                                    </ul>
+                                    <p class="hero__item-desc">{{ item.description }}</p>
+                                </div>
+                                <a
+                                    class="hero__item-button"
+                                    :href="item.link"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <span class="hero__item-button-text">Открыть проект</span>
+                                    <span class="hero__item-button-icon">
+                                        <TheSvgSprite type="arrow" :size="10" />
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="hero__list-loader" v-else>
+                            <li class="hero__list-loader-item" v-for="loader in 10" :key="loader">
+                                <Skeleton
+                                    v-for="n in 3"
+                                    :key="n"
+                                    height="100%"
+                                    borderRadius="1rem"
+                                    :dt="{ root: { background: '#ececec', animationBackground: '#f7f9f7' } }"
+                                />
+                            </li>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -64,8 +82,18 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
+
 import TheSvgSprite from '@/components/TheSvgSprite.vue';
 import Sticker from '@/components/Sticker/Sticker.vue';
+import Skeleton from 'primevue/skeleton';
+
+// data =============================================
+
+const PROJECTS_URL = import.meta.env.VITE_PROJECTS_URL;
+
+const projects = ref([]);
+const projectsLoading = ref(false);
 
 const points = [
     {
@@ -133,120 +161,27 @@ const points = [
     },
 ];
 
-const cases = [
-    {
-        id: 1,
-        location: 'КАНАДА',
-        title: 'Home wright',
-        services: ['Брендинг', 'Сайт', 'Поддержка'],
-        description: 'Сайт для инспекторов недвижимости',
-        link: '/',
-    },
-    {
-        id: 2,
-        location: 'Китай',
-        title: 'Современный Дом',
-        services: ['Поддержка'],
-        description: 'Сайт для инспекторов недвижимости',
-        link: '/',
-    },
-    {
-        id: 3,
-        location: 'Россия, москва',
-        title: 'квадратика',
-        services: ['Брендинг', 'Сайт'],
-        description: 'Сайт для инспекторов недвижимости',
-        link: '/',
-    },
-    {
-        id: 4,
-        location: 'германия',
-        title: 'SolidHome',
-        services: ['Брендинг', 'Сайт', 'Поддержка'],
-        description: 'Сайт для инспекторов недвижимости',
-        link: '/',
-    },
-    {
-        id: 5,
-        location: 'Россия, Самара',
-        title: 'TrustBuild',
-        services: ['Брендинг', 'Сайт'],
-        description: 'Сайт для инспекторов недвижимости',
-        link: '/',
-    },
-    {
-        id: 6,
-        location: 'КАНАДА',
-        title: 'Дом Строй',
-        services: ['Брендинг', 'Сайт'],
-        description: 'Сайт для инспекторов недвижимости',
-        link: '/',
-    },
-    {
-        id: 7,
-        location: 'Казахстан',
-        title: 'ModernHome',
-        services: ['Брендинг', 'Сайт'],
-        description: 'Сайт для инспекторов недвижимости',
-        link: '/',
-    },
-    {
-        id: 8,
-        location: 'КАНАДА',
-        title: 'Home wright',
-        services: ['Брендинг', 'Сайт', 'Поддержка'],
-        description: 'Сайт для инспекторов недвижимости',
-        link: '/',
-    },
-    {
-        id: 9,
-        location: 'Китай',
-        title: 'Современный Дом',
-        services: ['Поддержка'],
-        description: 'Сайт для инспекторов недвижимости',
-        link: '/',
-    },
-    {
-        id: 10,
-        location: 'Россия, москва',
-        title: 'квадратика',
-        services: ['Брендинг', 'Сайт'],
-        description: 'Сайт для инспекторов недвижимости',
-        link: '/',
-    },
-    {
-        id: 11,
-        location: 'германия',
-        title: 'SolidHome',
-        services: ['Брендинг', 'Сайт', 'Поддержка'],
-        description: 'Сайт для инспекторов недвижимости',
-        link: '/',
-    },
-    {
-        id: 12,
-        location: 'Россия, Самара',
-        title: 'TrustBuild',
-        services: ['Брендинг', 'Сайт'],
-        description: 'Сайт для инспекторов недвижимости',
-        link: '/',
-    },
-    {
-        id: 13,
-        location: 'КАНАДА',
-        title: 'Дом Строй',
-        services: ['Брендинг', 'Сайт'],
-        description: 'Сайт для инспекторов недвижимости',
-        link: '/',
-    },
-    {
-        id: 14,
-        location: 'Казахстан',
-        title: 'ModernHome',
-        services: ['Брендинг', 'Сайт'],
-        description: 'Сайт для инспекторов недвижимости',
-        link: '/',
-    },
-];
+//====================================================
+
+async function fetchProjects() {
+    projectsLoading.value = true;
+
+    try {
+        const response = await fetch(PROJECTS_URL);
+
+        if (!response.ok) throw new Error(response.status);
+
+        projects.value = await response.json();
+    } catch (err) {
+        console.error('Ошибка загрузки проектов:', err);
+    } finally {
+        projectsLoading.value = false;
+    }
+}
+
+onMounted(() => {
+    fetchProjects();
+});
 </script>
 
 <style lang="scss" scoped>
@@ -292,10 +227,29 @@ const cases = [
         }
     }
     &__list {
-        display: grid;
-        grid-auto-flow: column dense;
-        grid-template-rows: repeat(2, 1fr);
-        gap: rem(24);
+        &-wrapper,
+        &-loader {
+            height: 100%;
+            display: grid;
+            grid-auto-flow: column dense;
+            grid-template-rows: repeat(2, 1fr);
+            gap: rem(24);
+        }
+        &-loader-item {
+            width: rem(230);
+            display: flex;
+            flex-direction: column;
+            gap: rem(24);
+            :nth-child(3n + 1) {
+                max-height: rem(48);
+            }
+            :nth-child(3n + 2) {
+                max-height: rem(16);
+            }
+            :nth-child(3n + 3) {
+                max-height: rem(16);
+            }
+        }
     }
     &__item {
         max-width: rem(230);

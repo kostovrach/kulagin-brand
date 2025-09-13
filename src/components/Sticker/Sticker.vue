@@ -54,7 +54,7 @@ const props = defineProps({
             white-space: nowrap;
         }
         &--main {
-            max-width: 13ch;
+            max-width: 15ch;
             font-size: lineScale(22, 18, 480, 1440);
         }
     }

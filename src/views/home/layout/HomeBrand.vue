@@ -18,17 +18,17 @@
                     Маркетологам
                 </ButtonPrimary>
                 <picture class="brand__image-container" style="--mask: url('/img/masks/b.svg'); --ratio: 457/692">
-                    <img class="brand__image" src="/img/content/singing.gif" alt="#" />
+                    <img class="brand__image" src="/img/content/personal-views/singing.gif" alt="#" />
                 </picture>
                 <picture class="brand__image-container" style="--mask: url('/img/masks/ra.svg'); --ratio: 256/173">
                     <img class="brand__image" src="/img/content/temp.jpg" alt="#" />
                 </picture>
                 <picture class="brand__image-container" style="--mask: url('/img/masks/nd.svg'); --ratio: 1087/692">
-                    <img class="brand__image" src="/img/content/singing.jpg" alt="#" />
+                    <img class="brand__image" src="/img/content/personal-views/singing.jpg" alt="#" />
                 </picture>
             </div>
             <div class="brand__hint">
-                <SectionHint class="home-hero__hint" image="/img/content/singing.jpg">
+                <SectionHint class="home-hero__hint" image="/img/content/personal-views/singing.jpg">
                     <template #title>Пир для маркетологов</template>
                     <template #text>
                         Мы обсудим эффективность и&nbsp;скорость бизнес-процессов. Мы поговорим о том, как принести
@@ -46,7 +46,11 @@
             </FormPrimary>
             <div class="brand__footer">
                 <picture class="brand__footer-image-container">
-                    <img class="brand__footer-image" src="/img/content/smiling.gif" alt="Игорь Кулагин" />
+                    <img
+                        class="brand__footer-image"
+                        src="/img/content/personal-views/smiling.gif"
+                        alt="Игорь Кулагин"
+                    />
                 </picture>
             </div>
         </div>
