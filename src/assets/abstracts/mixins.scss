@@ -13,12 +13,19 @@
 
     @media (max-width: 768px) {
         max-width: 100vw;
+        min-width: initial;
+        overflow-x: clip;
+
         display: flex;
         flex-direction: column;
+        gap: rem(128);
     }
 }
 @mixin horizontal-max-height() {
     max-height: calc(100lvh - $py * 2);
+    @media (max-width: 768px) {
+        max-height: 100%;
+    }
 }
 @mixin block-title($max-width: 15ch, $font-size: lineScale-y(96, 32, 480, 1080)) {
     font-family: 'Fira-Extra', sans-serif;
@@ -27,6 +34,9 @@
     line-height: 1;
     text-transform: uppercase;
     max-width: $max-width;
+    @media (max-width: 768px) {
+        font-size: lineScale(96, 32, 480, 1440);
+    }
 }
 @mixin gradient-text-hover($main-color: $c-111111, $accent-color: $c-accent) {
     @supports (background-clip: text) {

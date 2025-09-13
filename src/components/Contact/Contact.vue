@@ -144,7 +144,7 @@ const socials = [
             grid-area: link-4;
             max-width: rem(160);
             rotate: 11deg;
-            translate: 0 rem(64);
+            translate: 0 rem(32);
         }
         &:nth-of-type(5) {
             grid-area: link-5;
@@ -195,6 +195,23 @@ const socials = [
         align-self: flex-end;
         margin: rem(32) 0 0 rem(32);
         @include button-secondary($width: fit-content);
+    }
+}
+
+@media (max-width: 768px) {
+    .contact {
+        &__body {
+            grid-template-columns: repeat(5, auto); // 7
+            grid-template-rows: repeat(7, auto); // 4
+            grid-template-areas:
+                'link-1 desc desc desc desc'
+                '. . link-2 . .'
+                'title title title . link-3'
+                'arrow . . . . '
+                'button button button button button'
+                'link-4 . link-5 . link-6 '
+                'caption caption caption caption caption';
+        }
     }
 }
 </style>

@@ -159,4 +159,13 @@ const props = defineProps({
         }
     }
 }
+
+@media (max-width: 768px) {
+    .section-hint {
+        width: 100%;
+        &__title {
+            max-width: initial;
+        }
+    }
+}
 </style>

@@ -124,8 +124,7 @@ async function submitForm() {
 .form-primary {
     $p: &;
 
-    height: 100%;
-    min-width: fit-content;
+    max-height: 100%;
     color: inherit;
     background-color: inherit;
 
@@ -144,7 +143,11 @@ async function submitForm() {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         align-content: space-between;
+        gap: rem(32);
         @include horizontal-max-height;
+        @media (max-width: 768px) {
+            grid-template-columns: repeat(4, auto);
+        }
     }
     &__title {
         grid-column: span 4;

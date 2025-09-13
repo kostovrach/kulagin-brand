@@ -36,10 +36,12 @@ const props = defineProps({
         display: none;
     }
     @media (max-width: 768px) {
+        height: initial;
+
         display: flex;
         flex-direction: column;
 
-        // overflow-x: clip;
+        overflow-x: clip;
         overflow-y: initial;
     }
 }

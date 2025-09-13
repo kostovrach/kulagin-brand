@@ -5,19 +5,22 @@
                 <h2 class="projects__title">собственные проекты.</h2>
                 <div class="projects__item--type1">
                     <img
-                        v-draggable="{ left: 650, top: 320 }"
-                        style="rotate: -12deg; max-width: 120px; pointer-events: auto"
-                        src="/img/content/flower.gif"
-                        alt="#"
-                    />
-                    <img
-                        v-draggable="{ left: 1300, top: -120 }"
+                        class="projects__item--type1-interactive"
+                        v-draggable="{ left: 95, top: -20 }"
                         style="width: 297px; max-height: 136px; object-fit: cover; pointer-events: auto"
                         src="/img/content/arabeska/image2.jpg"
                         alt="#"
                     />
+                    <img
+                        class="projects__item--type1-interactive"
+                        v-draggable="{ left: 50, top: 70 }"
+                        style="rotate: -12deg; max-width: 120px; pointer-events: auto"
+                        src="/img/content/flower.gif"
+                        alt="#"
+                    />
                     <Sticker
-                        v-draggable="{ left: 200, top: 300 }"
+                        class="projects__item--type1-interactive"
+                        v-draggable="{ left: 18, top: 60 }"
                         style="rotate: 7deg"
                         variant="red"
                         textMain="средний рост конверсии"
@@ -77,25 +80,29 @@
             </div>
             <div class="projects__item--type2">
                 <img
-                    v-draggable="{ left: 300, top: 150 }"
+                    class="projects__item--type2-interactive"
+                    v-draggable="{ left: 25, top: 20 }"
                     style="rotate: 5deg; max-width: 120px; pointer-events: auto"
                     src="/img/content/temp.jpg"
                     alt="#"
                 />
                 <img
-                    v-draggable="{ left: 550, top: 100 }"
+                    class="projects__item--type2-interactive"
+                    v-draggable="{ left: 55, top: 0 }"
                     style="rotate: -12deg; max-width: 160px; pointer-events: auto"
                     src="/img/content/personal-views/singing.gif"
                     alt="#"
                 />
                 <img
-                    v-draggable="{ left: 650, top: 500 }"
+                    class="projects__item--type2-interactive"
+                    v-draggable="{ left: 57, top: 65 }"
                     style="rotate: -12deg; max-width: 96px; pointer-events: auto"
                     src="/img/content/temp.jpg"
                     alt="#"
                 />
                 <Sticker
-                    v-draggable="{ left: 800, top: 550 }"
+                    class="projects__item--type2-interactive"
+                    v-draggable="{ left: 75, top: 80 }"
                     style="rotate: -12deg"
                     variant="red"
                     textMain="средний рост конверсии"
@@ -128,7 +135,7 @@
             </div>
             <div class="projects__footer">
                 <div class="projects__interactive">
-                    <img v-draggable="{ container: 'parent', axis: 'y', top: 610 }" src="/img/flag.png" alt="#" />
+                    <img v-draggable="{ container: 'parent', axis: 'y', top: 64 }" src="/img/flag.png" alt="#" />
                 </div>
                 <Contact />
             </div>
@@ -147,7 +154,7 @@ import Contact from '@/components/Contact/Contact.vue';
 
 .projects {
     position: relative;
-    min-width: fit-content;
+    // min-width: fit-content;
     &__container {
         @include horizontal-layout($gap: 0);
     }
@@ -162,6 +169,7 @@ import Contact from '@/components/Contact/Contact.vue';
     &__item {
         &--type1 {
             position: relative;
+            width: fit-content;
             height: 100%;
             &-wrapper {
                 height: 100%;
@@ -226,6 +234,7 @@ import Contact from '@/components/Contact/Contact.vue';
         }
         &--type2 {
             position: relative;
+            width: fit-content;
             height: 100%;
             &-wrapper {
                 height: 100%;
@@ -318,14 +327,59 @@ import Contact from '@/components/Contact/Contact.vue';
         position: absolute;
         left: 0;
         bottom: rem(-390);
-        @media (max-width: 768px) {
-            display: none;
-        }
         img {
             width: 100%;
             height: rem(515);
             object-fit: contain;
             pointer-events: auto;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .projects {
+        &__interactive {
+            display: none;
+        }
+        &__item {
+            &--type1-interactive,
+            &--type2-interactive {
+                display: none;
+            }
+            &--type1-wrapper {
+                width: fit-content;
+                grid-template-columns: repeat(9, auto);
+                grid-template-rows: repeat(5, auto);
+                grid-template-areas:
+                    ' title title title title image-2 image-3 .'
+                    'image-1 image-1 image-1 image-1 desc desc desc'
+                    'image-1 image-1 image-1 image-1 image-4 image-4 .'
+                    'image-1 image-1 image-1 image-1 image-4 image-4 .'
+                    'image-1 image-1 image-1 image-1 image-4 image-4 image-5';
+            }
+            &--type2-wrapper {
+                width: fit-content;
+                grid-template-columns: repeat(7, auto); //10
+                grid-template-rows: repeat(5, auto); // 4
+                gap: rem(8);
+                grid-template-areas:
+                    '. image-2 image-2 image-2 . . . . . .'
+                    '. image-2 image-2 image-2 image-3 image-3 image-3 image-3 desc desc'
+                    'image-1 image-2 image-2 image-2 image-3 image-3 image-3 image-3 image-4 .'
+                    'title title title title image-3 image-3 image-3 image-3 image-4 image-5'
+                    '. . . . image-3 image-3 image-3 image-3 . image-5';
+                grid-template-areas:
+                    '. image-2 image-2 desc desc desc'
+                    'image-1 image-2 image-2 image-3 image-3 image-3'
+                    'title title title image-3 image-3 image-3'
+                    '. image-4 image-4 image-3 image-3 image-3'
+                    '. . . image-5 image-5 .';
+            }
+        }
+        &__divider {
+            &--type1 {
+                display: none;
+            }
         }
     }
 }

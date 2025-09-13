@@ -3,14 +3,14 @@
         <div class="hero__container">
             <div class="hero__body">
                 <Sticker
-                    v-draggable="{ left: 900, top: 120 }"
+                    v-draggable="{ left: 50, top: 15 }"
                     style="rotate: 15deg"
                     variant="red"
                     textAccent="250+"
                     textMain="компаний по всему миру"
                 />
                 <Sticker
-                    v-draggable="{ left: 650, top: 600 }"
+                    v-draggable="{ left: 35, top: 70 }"
                     style="rotate: -15deg"
                     variant="black"
                     textAccent="65+"

@@ -17,16 +17,11 @@
                 <!-- -->
             </div>
             <div class="hero__body fade-right" style="animation-delay: 0.6s">
-                <ButtonPrimary
-                    style="position: absolute; left: 600px; top: 170px"
-                    type="router-link"
-                    to="/"
-                    variant="red"
-                >
+                <ButtonPrimary style="position: absolute; left: 12%; top: 15%" type="router-link" to="/" variant="red">
                     Услуги
                 </ButtonPrimary>
                 <ButtonPrimary
-                    style="position: absolute; left: 2000px; top: 200px"
+                    style="position: absolute; left: 45%; top: 5%"
                     type="a"
                     href="https://kulaginbrand.ru"
                     target="_blank"
@@ -35,7 +30,7 @@
                     Студия
                 </ButtonPrimary>
                 <ButtonPrimary
-                    style="position: absolute; left: 3000px; top: 550px"
+                    style="position: absolute; left: 66%; top: 55%"
                     type="router-link"
                     to="/hobby"
                     variant="grey"
@@ -43,28 +38,28 @@
                     Увлечения
                 </ButtonPrimary>
                 <Sticker
-                    v-draggable="{ left: -100, top: 500 }"
+                    v-draggable="{ left: -3, top: 55 }"
                     style="rotate: -10deg"
                     variant="default"
                     textAccent="от 120%"
                     textMain="средний рост конверсии"
                 />
                 <Sticker
-                    v-draggable="{ left: 1100, top: 300 }"
+                    v-draggable="{ left: 25, top: 35 }"
                     style="rotate: 5deg"
                     variant="black"
                     textAccent="от 120%"
                     textMain="средний рост конверсии"
                 />
                 <Sticker
-                    v-draggable="{ left: 1500, top: 540 }"
+                    v-draggable="{ left: 35, top: 80 }"
                     style="rotate: -15deg"
                     variant="red"
                     textAccent="от 120%"
                     textMain="средний рост конверсии"
                 />
                 <Sticker
-                    v-draggable="{ left: 2430, top: 350 }"
+                    v-draggable="{ left: 55, top: 40 }"
                     style="rotate: 2deg"
                     variant="grey"
                     textAccent="от 120%"
@@ -82,7 +77,7 @@
             </div>
             <div class="hero__footer">
                 <Sticker
-                    v-draggable="{ left: 0, top: 75 }"
+                    v-draggable="{ left: 0, top: 5 }"
                     style="rotate: -5deg"
                     variant="black"
                     textAccent="от 120%"
@@ -111,7 +106,6 @@ import Sticker from '@/components/Sticker/Sticker.vue';
 
 .hero {
     position: relative;
-    min-width: fit-content;
     &__container {
         @include horizontal-layout;
     }
@@ -142,7 +136,7 @@ import Sticker from '@/components/Sticker/Sticker.vue';
     &__image-container {
         position: relative;
         bottom: calc($py * -1);
-        width: rem(640);
+        max-width: rem(640);
         min-height: rem(340);
         max-height: 100%;
         overflow: hidden;

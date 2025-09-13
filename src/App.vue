@@ -19,23 +19,6 @@ body {
     background-color: $c-main;
 }
 
-main.page {
-    width: 100vw;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    &::-webkit-scrollbar {
-        display: none;
-    }
-    &--horizontal {
-        height: 100lvh;
-        min-height: fit-content;
-        display: grid;
-        grid-auto-flow: column;
-        overflow-x: auto;
-        overflow-y: hidden;
-    }
-}
-
 .fade-bottom {
     opacity: 0;
     translate: 0 rem(64);

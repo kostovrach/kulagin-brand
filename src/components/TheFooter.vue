@@ -64,7 +64,7 @@
     left: 0;
     width: 100vw;
     mix-blend-mode: difference; // <-----
-    padding: rem(16) rem(64);
+    padding: rem(16) $px;
     pointer-events: none;
     &__container {
         display: flex;

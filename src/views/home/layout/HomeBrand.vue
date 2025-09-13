@@ -2,28 +2,54 @@
     <section class="brand">
         <div class="brand__container">
             <div class="brand__body">
-                <picture class="brand__sticker-container" v-draggable="{ left: -60, top: -75 }">
+                <picture class="brand__sticker-container" v-draggable="{ left: -2, top: -5 }">
                     <img class="brand__sticker" src="/img/stickers/theplace.png" alt="ThePlace" />
                 </picture>
 
                 <ButtonPrimary
-                    style="position: absolute; left: 10%; bottom: -10%"
+                    style="position: absolute; left: 12%; bottom: -5%"
                     type="router-link"
                     to="/blog"
                     variant="red"
                 >
                     Блог
                 </ButtonPrimary>
-                <ButtonPrimary style="position: absolute; left: 70%; top: -10%" type="router-link" to="/" variant="red">
+                <ButtonPrimary
+                    style="position: absolute; left: 55%; top: -10%"
+                    type="router-link"
+                    to="/marketers"
+                    variant="red"
+                >
                     Маркетологам
                 </ButtonPrimary>
-                <picture class="brand__image-container" style="--mask: url('/img/masks/b.svg'); --ratio: 457/692">
+                <picture
+                    class="brand__image-container"
+                    style="
+                        --mask: url('/img/masks/b.svg');
+                        --break-mask: url('/img/masks/b-rotate.svg');
+                        --ratio: 457/692;
+                    "
+                >
                     <img class="brand__image" src="/img/content/personal-views/singing.gif" alt="#" />
                 </picture>
-                <picture class="brand__image-container" style="--mask: url('/img/masks/ra.svg'); --ratio: 256/173">
+                <picture
+                    class="brand__image-container"
+                    style="
+                        --mask: url('/img/masks/ra.svg');
+                        --break-mask: url('/img/masks/ra-rotate.svg');
+                        --ratio: 256/173;
+                    "
+                >
                     <img class="brand__image" src="/img/content/temp.jpg" alt="#" />
                 </picture>
-                <picture class="brand__image-container" style="--mask: url('/img/masks/nd.svg'); --ratio: 1087/692">
+                <picture
+                    class="brand__image-container"
+                    style="
+                        --mask: url('/img/masks/nd.svg');
+                        --break-mask: url('/img/masks/nd-rotate.svg');
+                        --ratio: 1087/692;
+                    "
+                >
                     <img class="brand__image" src="/img/content/personal-views/singing.jpg" alt="#" />
                 </picture>
             </div>
@@ -67,7 +93,7 @@ import FormPrimary from '@/components/FormPrimary/FormPrimary.vue';
 @use '@/assets/abstracts' as *;
 
 .brand {
-    min-width: fit-content;
+    // min-width: fit-content;
     color: $c-F3F2EE;
     background-color: $c-111111;
     &__container {
@@ -111,7 +137,6 @@ import FormPrimary from '@/components/FormPrimary/FormPrimary.vue';
         align-items: flex-end;
     }
     &__footer {
-        height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -135,6 +160,13 @@ import FormPrimary from '@/components/FormPrimary/FormPrimary.vue';
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+        }
+        &__image-container {
+            mask-image: var(--break-mask);
+            // aspect-ratio: 1/2;
+            // width: 100%;
+            // height: 100%;
+            // rotate: 90deg;
         }
     }
 }
