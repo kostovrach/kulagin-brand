@@ -1,9 +1,18 @@
 <template>
     <article class="article__content">
-        <aside class="article__sider">
-            <nav class="article__nav">
+        <aside class="article__sider" v-if="chapters.length">
+            <nav class="article__nav" aria-label="Оглавление">
                 <p class="article__nav-title">Содержание</p>
-                <a class="article__nav-link" href="#"></a>
+                <a
+                    v-for="(ch, index) in chapters"
+                    :key="index"
+                    class="article__nav-link"
+                    :href="`#target-${index}`"
+                    :class="{ active: activeId === `target-${index}` }"
+                    @click.prevent="scrollTo(index)"
+                >
+                    {{ ch.title }}
+                </a>
             </nav>
         </aside>
         <div class="article__main">
@@ -25,6 +34,7 @@
                 <section
                     class="article__chapter"
                     v-else-if="block.type === 'chapter'"
+                    :id="`target-${chapterIndex(block)}`"
                     :aria-label="block.title || null"
                 >
                     <h2 class="article__title" v-if="block.title">{{ block.title }}</h2>
@@ -131,11 +141,53 @@
 </template>
 
 <script setup>
-defineProps({
+import { computed, ref, onMounted, onBeforeUnmount } from 'vue';
+
+const props = defineProps({
     blocks: {
         type: Array,
         default: () => [],
     },
+});
+
+const chapters = computed(() => props.blocks.filter((b) => b.type === 'chapter'));
+
+const activeId = ref(null);
+let observer = null;
+
+function chapterIndex(block) {
+    return chapters.value.indexOf(block);
+}
+
+function scrollTo(index) {
+    const el = document.getElementById(`target-${index}`);
+    if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+onMounted(() => {
+    const options = {
+        root: null,
+        threshold: 0.1,
+    };
+
+    observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                activeId.value = entry.target.id;
+            }
+        });
+    }, options);
+
+    chapters.value.forEach((_, index) => {
+        const el = document.getElementById(`target-${index}`);
+        if (el) observer.observe(el);
+    });
+});
+
+onBeforeUnmount(() => {
+    if (observer) observer.disconnect();
 });
 </script>
 
@@ -146,7 +198,36 @@ defineProps({
     &__content {
         display: grid;
         grid-template-columns: 30% auto;
+        gap: rem(64);
         padding: rem(96) 0;
+    }
+    &__sider {
+        height: 100%;
+        position: relative;
+    }
+    &__nav {
+        position: sticky;
+        top: $py;
+        display: flex;
+        flex-direction: column;
+        gap: rem(16);
+        border: rem(1) solid $c-111111;
+        padding: rem(32);
+        &-title {
+            text-transform: uppercase;
+            font-size: rem(24);
+            font-weight: $fw-bold;
+            margin-bottom: rem(16);
+        }
+        &-link {
+            width: fit-content;
+            font-family: 'Inter', sans-serif;
+            font-size: rem(18);
+            @include gradient-text-hover;
+            &.active {
+                background-position: -160% -200%;
+            }
+        }
     }
     &__main {
         width: 100%;
@@ -167,6 +248,7 @@ defineProps({
     &__video {
         width: 100%;
         height: rem(480);
+        margin-top: rem(32);
     }
     &__image-container {
         img {
@@ -176,6 +258,7 @@ defineProps({
         }
     }
     &__chapter {
+        scroll-margin: $py;
         display: flex;
         flex-direction: column;
         gap: rem(16);
@@ -196,16 +279,30 @@ defineProps({
         width: fit-content;
         display: grid;
         grid-template-columns: repeat(2, auto);
-        align-items: center;
+        align-items: flex-end;
         gap: rem(16) rem(8);
         margin-top: rem(16);
-        // grid-auto-flow: column dense;
     }
     &__value {
         width: fit-content;
         font-size: rem(40);
+        font-weight: $fw-semi;
         line-height: 1;
-        &-desc {
+    }
+    &__table {
+        text-align-last: left;
+        border-spacing: 0;
+        border-collapse: collapse;
+        margin-top: rem(32);
+        tr {
+            th {
+                font-size: rem(18);
+            }
+            th,
+            td {
+                padding: rem(8) rem(24);
+                border: rem(1) solid $c-111111;
+            }
         }
     }
 }

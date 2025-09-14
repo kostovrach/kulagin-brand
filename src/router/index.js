@@ -29,12 +29,18 @@ const router = createRouter({
             component: () => import('@/views/blog/BlogView.vue'),
         },
         {
-            path: '/blog/:slug',
-            name: 'blog-article',
-            component: () => import('@/views/blog/BlogArticleView.vue'),
+            path: '/article/:slug',
+            name: 'article',
+            component: () => import('@/views/article/ArticleView.vue'),
             props: true,
         },
     ],
+    scrollBehavior(to, from, savedPosition) {
+        if (savedPosition) {
+            return savedPosition;
+        }
+        return { left: 0, top: 0, behavior: 'instant' };
+    },
 });
 
 export default router;

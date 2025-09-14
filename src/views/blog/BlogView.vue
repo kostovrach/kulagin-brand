@@ -30,6 +30,6 @@ onMounted(() => {
 const { list } = storeToRefs(blogStore);
 
 function goToArticle(slug) {
-    router.push({ name: 'blog-article', params: { slug } });
+    router.push({ name: 'article', params: { slug } });
 }
 </script>

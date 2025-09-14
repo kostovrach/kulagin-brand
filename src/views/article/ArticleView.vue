@@ -1,7 +1,7 @@
 <template>
     <VerticalLayout class="article">
         <div class="article__container">
-            <header class="article__header" v-if="article">
+            <div class="article__header" v-if="article">
                 <div class="article__titlebox">
                     <time class="article__date" v-if="article.date" :datetime="article.date">
                         {{ formattedDate }}
@@ -16,25 +16,34 @@
                 <picture class="article__cover" v-if="article.cover">
                     <img :src="article.cover" :alt="article.title" />
                 </picture>
-            </header>
-
-            <div class="article__loading" v-if="isLoading">Загрузка...</div>
-
-            <div class="article__error" v-else-if="error">Ошибка: {{ error }}</div>
+            </div>
 
             <div
                 class="article__body"
-                v-else-if="article && article.blocks && article.blocks.length"
+                v-if="article && article.blocks && article.blocks.length"
                 aria-labelledby="article-title"
             >
                 <ArticleRenderer :blocks="article.blocks" />
             </div>
 
-            <div class="article__empty" v-else-if="article && (!article.blocks || !article.blocks.length)">
-                Статья пуста.
+            <div class="article__suggest">
+                <div class="article__suggest-container">
+                    <div class="article__suggest-title">Читать далее</div>
+                    <div class="article__suggest-list">
+                        <router-link
+                            :to="`/article/${article.slug}`"
+                            class="article__suggest-item"
+                            v-for="article in list.slice(0, 4)"
+                            :key="article.slug"
+                        >
+                            <picture class="article__suggest-item-image-container">
+                                <img class="article__suggest-item-image" :src="article.cover" :alt="article.title" />
+                            </picture>
+                            <p class="article__suggest-item-title">{{ article.title }}</p>
+                        </router-link>
+                    </div>
+                </div>
             </div>
-
-            <div v-else class="article__notfound">Статья не найдена.</div>
         </div>
     </VerticalLayout>
 </template>
@@ -42,7 +51,9 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { useRoute, onBeforeRouteUpdate } from 'vue-router';
+import { storeToRefs } from 'pinia';
 import { useBlogStore } from '@/stores/blog';
+
 import ArticleRenderer from './components/ArticleRenderer.vue';
 import VerticalLayout from '@/components/VerticalLayout/VerticalLayout.vue';
 import TheSvgSprite from '@/components/TheSvgSprite.vue';
@@ -73,7 +84,12 @@ async function loadArticle(slug) {
 
 onMounted(() => {
     loadArticle(route.params.slug);
+    if (!blog.articles.length) {
+        blog.fetchList();
+    }
 });
+
+const { list } = storeToRefs(blog);
 
 onBeforeRouteUpdate((to) => {
     loadArticle(to.params.slug);
@@ -96,8 +112,8 @@ const formattedDate = computed(() => {
 <style lang="scss" scoped>
 @use '@/assets/abstracts' as *;
 .article {
-    &__container {
-    }
+    $p: &;
+
     &__header {
         display: flex;
         flex-direction: column;
@@ -177,6 +193,69 @@ const formattedDate = computed(() => {
     &__body {
         width: 100%;
         @include vertical-layout;
+    }
+    &__suggest {
+        color: $c-main;
+        background-color: $c-111111;
+        padding: rem(64) 0 $py 0;
+        &-container {
+            display: flex;
+            flex-direction: column;
+            gap: rem(32);
+            @include vertical-layout;
+        }
+        &-title {
+            text-transform: uppercase;
+            color: $c-9E9595;
+            font-size: lineScale(32, 24, 480, 1440);
+            font-weight: $fw-bold;
+        }
+        &-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: rem(32);
+        }
+        &-item {
+            flex: 1 0 22%;
+            min-width: rem(180);
+            display: flex;
+            flex-direction: column;
+            gap: rem(16);
+            @media (pointer: fine) {
+                &:hover {
+                    #{$p}__suggest-item-image-container::before {
+                        opacity: 0;
+                    }
+                }
+            }
+            &-image-container {
+                position: relative;
+                width: 100%;
+                height: rem(278);
+                &::before {
+                    content: '';
+                    position: absolute;
+                    z-index: 2;
+                    inset: 0;
+                    backdrop-filter: blur(5px) saturate(0);
+                    background-image: url('img/patterns/noise.png');
+                    pointer-events: none;
+                    transition: opacity $td $tf;
+                }
+            }
+            &-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            &-title {
+                text-transform: uppercase;
+                font-family: 'Fira-Extra', sans-serif;
+                font-size: rem(20);
+                font-weight: $fw-bold;
+                @include lineClamp(2);
+            }
+        }
     }
 }
 </style>
