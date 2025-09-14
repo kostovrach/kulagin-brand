@@ -10,7 +10,7 @@
                     textMain="компаний по всему миру"
                 />
                 <Sticker
-                    v-draggable="{ left: 35, top: 70 }"
+                    v-draggable="{ left: 20, top: 90 }"
                     style="rotate: -15deg"
                     variant="black"
                     textAccent="65+"

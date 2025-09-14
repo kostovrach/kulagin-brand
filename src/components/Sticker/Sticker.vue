@@ -1,5 +1,5 @@
 <template>
-    <div :class="['sticker', `sticker--${variant}`]">
+    <div :class="['sticker', `sticker--${variant}`, !props.textAccent ? 'sticker--nowrap' : '']">
         <span v-if="props.textAccent" class="sticker__text sticker__text--accent">{{ props.textAccent }}</span>
         <span v-if="props.textMain" class="sticker__text sticker__text--main">{{ props.textMain }}</span>
     </div>
@@ -21,6 +21,8 @@ const props = defineProps({
 @use '@/assets/abstracts' as *;
 
 .sticker {
+    $p: &;
+
     position: relative;
     width: fit-content;
     max-width: rem(380);
@@ -56,6 +58,12 @@ const props = defineProps({
         &--main {
             max-width: 15ch;
             font-size: lineScale(22, 18, 480, 1440);
+        }
+    }
+    &--nowrap {
+        white-space: nowrap;
+        #{$p}__text--main {
+            max-width: initial;
         }
     }
     &--default {

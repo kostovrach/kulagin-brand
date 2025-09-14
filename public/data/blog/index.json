@@ -1,0 +1,26 @@
+[
+  {
+    "id": "how-to-start",
+    "title": "Как начать проект: пошаговый гайд",
+    "cover": "/img/blog/temp1.jpg",
+    "date": "2025-02-10",
+    "summary": "Практический план — от брифа до первой рабочей версии. Чек-листы, типичные ошибки и примеры.",
+    "tags": [
+      "process",
+      "project"
+    ],
+    "slug": "how-to-start"
+  },
+  {
+    "id": "redesign-company-x",
+    "title": "Редизайн сайта для компании X",
+    "cover": "/img/blog/temp3.jpg",
+    "date": "2024-12-01",
+    "summary": "Кейс по редизайну: что улучшили, какие метрики выросли и как это делали.",
+    "tags": [
+      "case",
+      "ui-ux"
+    ],
+    "slug": "redesign-company-x"
+  }
+]

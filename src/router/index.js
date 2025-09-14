@@ -6,27 +6,33 @@ const router = createRouter({
         {
             path: '/',
             name: 'home',
-            component: () => import('../views/home/HomeView.vue'),
+            component: () => import('@/views/home/HomeView.vue'),
         },
         {
             path: '/projects',
             name: 'projects',
-            component: () => import('../views/projects/ProjectsView.vue'),
+            component: () => import('@/views/projects/ProjectsView.vue'),
         },
         {
             path: '/hobby',
             name: 'hobby',
-            component: () => import('../views/hobby/HobbyView.vue'),
+            component: () => import('@/views/hobby/HobbyView.vue'),
         },
         {
             path: '/contact',
             name: 'contact',
-            component: () => import('../views/contact/ContactView.vue'),
+            component: () => import('@/views/contact/ContactView.vue'),
         },
         {
             path: '/blog',
             name: 'blog',
-            component: () => import('../views/blog/BlogView.vue'),
+            component: () => import('@/views/blog/BlogView.vue'),
+        },
+        {
+            path: '/blog/:slug',
+            name: 'blog-article',
+            component: () => import('@/views/blog/BlogArticleView.vue'),
+            props: true,
         },
     ],
 });

@@ -21,6 +21,11 @@
         gap: rem(128);
     }
 }
+@mixin vertical-layout($max-width: rem(1920), $padding: 0 $px) {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: $padding;
+}
 @mixin horizontal-max-height() {
     max-height: calc(100lvh - $py * 2);
     @media (max-width: 768px) {

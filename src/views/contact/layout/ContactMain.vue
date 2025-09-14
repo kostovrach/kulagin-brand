@@ -2,7 +2,7 @@
     <section class="contact">
         <div class="contact__container">
             <Sticker
-                v-draggable="{ top: 750, left: 1200 }"
+                v-draggable="{ top: 80, left: 65 }"
                 style="rotate: -7deg"
                 variant="grey"
                 textAccent="🔥"

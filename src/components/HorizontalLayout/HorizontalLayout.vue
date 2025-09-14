@@ -1,5 +1,5 @@
 <template>
-    <main :class="['page-horizontal', props.class]" ref="containerRef">
+    <main :class="['page', 'page--horizontal', props.class]" ref="containerRef">
         <ScrollProgressBar :progress="scrollProgress" position="top" :show-when-scrolling="isScrolling" />
         <slot></slot>
     </main>
@@ -19,10 +19,9 @@ const props = defineProps({
 <style lang="scss" scoped>
 @use '@/assets/abstracts' as *;
 
-.page-horizontal {
+.page--horizontal {
     width: 100vw;
     height: 100lvh;
-    // min-height: fit-content;
 
     display: grid;
     grid-auto-flow: column;
