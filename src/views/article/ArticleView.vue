@@ -1,29 +1,35 @@
 <template>
     <VerticalLayout class="article">
         <div class="article__container">
-            <div class="article__header" v-if="article">
-                <div class="article__titlebox">
-                    <time class="article__date" v-if="article.date" :datetime="article.date">
-                        {{ formattedDate }}
-                    </time>
-                    <h1 class="article__title">{{ article.title }}</h1>
-                    <router-link to="/blog" class="article__back-link">
-                        <span class="article__back-link-icon"><TheSvgSprite type="arrow" :size="14" /> </span>
-                        <span class="article__back-link-text">Назад</span>
-                    </router-link>
-                </div>
-
-                <picture class="article__cover" v-if="article.cover">
-                    <img :src="article.cover" :alt="article.title" />
-                </picture>
+            <div class="article__loader" v-if="isLoading">
+                <ArticleLoader />
             </div>
 
-            <div
-                class="article__body"
-                v-if="article && article.blocks && article.blocks.length"
-                aria-labelledby="article-title"
-            >
-                <ArticleRenderer :blocks="article.blocks" />
+            <div class="article__content" v-else>
+                <div class="article__header" v-if="article">
+                    <div class="article__titlebox">
+                        <time class="article__date" v-if="article.date" :datetime="article.date">
+                            {{ formattedDate }}
+                        </time>
+                        <h1 class="article__title">{{ article.title }}</h1>
+                        <router-link to="/blog" class="article__back-link">
+                            <span class="article__back-link-icon"><TheSvgSprite type="arrow" :size="14" /> </span>
+                            <span class="article__back-link-text">Назад</span>
+                        </router-link>
+                    </div>
+
+                    <picture class="article__cover" v-if="article.cover">
+                        <img :src="article.cover" :alt="article.title" />
+                    </picture>
+                </div>
+
+                <div
+                    class="article__body"
+                    v-if="article && article.blocks && article.blocks.length"
+                    aria-labelledby="article-title"
+                >
+                    <ArticleRenderer :blocks="article.blocks" />
+                </div>
             </div>
 
             <div class="article__suggest">
@@ -57,6 +63,7 @@ import { useBlogStore } from '@/stores/blog';
 import ArticleRenderer from './components/ArticleRenderer.vue';
 import VerticalLayout from '@/components/VerticalLayout/VerticalLayout.vue';
 import TheSvgSprite from '@/components/TheSvgSprite.vue';
+import ArticleLoader from './components/ArticleLoader.vue';
 
 const route = useRoute();
 const blog = useBlogStore();

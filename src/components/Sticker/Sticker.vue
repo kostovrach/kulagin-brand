@@ -12,7 +12,7 @@ const props = defineProps({
     variant: {
         type: String,
         default: 'default',
-        validator: (value) => ['default', 'red', 'black', 'grey'].includes(value),
+        validator: (value) => ['default', 'red', 'black', 'black-2', 'grey'].includes(value),
     },
 });
 </script>
@@ -82,6 +82,13 @@ const props = defineProps({
     }
     &--black {
         color: $c-accent;
+        background-color: $c-111111;
+        &::before {
+            background-position: 120% 100%;
+        }
+    }
+    &--black-2 {
+        color: $c-main;
         background-color: $c-111111;
         &::before {
             background-position: 120% 100%;

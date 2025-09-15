@@ -200,6 +200,10 @@ onBeforeUnmount(() => {
         grid-template-columns: 30% auto;
         gap: rem(64);
         padding: rem(96) 0;
+        @media (max-width: 768px) {
+            display: flex;
+            flex-direction: column;
+        }
     }
     &__sider {
         height: 100%;

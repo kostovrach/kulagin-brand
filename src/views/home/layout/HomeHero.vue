@@ -35,8 +35,14 @@
                     to="/hobby"
                     variant="grey"
                 >
-                    Увлечения
+                    Мои хобби
                 </ButtonPrimary>
+                <img
+                    v-draggable="{ top: -5, left: 75 }"
+                    src="/img/stickers/youtube.png"
+                    style="pointer-events: auto; width: 264px; rotate: -19deg"
+                    alt="#"
+                />
                 <Sticker
                     v-draggable="{ left: -3, top: 55 }"
                     style="rotate: -10deg"

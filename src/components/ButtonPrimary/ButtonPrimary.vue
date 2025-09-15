@@ -109,6 +109,7 @@ const secondPart = computed(() => {
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
+    white-space: nowrap;
     font-size: lineScale(32, 24, 480, 1440);
     font-weight: $fw-bold;
     border-radius: 50%;

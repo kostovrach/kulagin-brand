@@ -6,23 +6,24 @@
                 <div class="projects__item--type1">
                     <img
                         class="projects__item--type1-interactive"
-                        v-draggable="{ left: 95, top: -20 }"
-                        style="width: 297px; max-height: 136px; object-fit: cover; pointer-events: auto"
+                        v-draggable="{ left: 85, top: 50 }"
+                        style="width: 154px; rotate: 12deg; object-fit: cover; pointer-events: auto"
                         src="/img/content/arabeska/image2.jpg"
                         alt="#"
                     />
                     <img
                         class="projects__item--type1-interactive"
                         v-draggable="{ left: 50, top: 70 }"
-                        style="rotate: -12deg; max-width: 120px; pointer-events: auto"
-                        src="/img/content/flower.gif"
+                        style="rotate: -12deg; max-width: 220px; pointer-events: auto"
+                        src="/img/content/arabeska/flower.png"
                         alt="#"
                     />
                     <Sticker
                         class="projects__item--type1-interactive"
-                        v-draggable="{ left: 18, top: 60 }"
+                        v-draggable="{ left: 10, top: 60 }"
                         style="rotate: 7deg"
-                        variant="red"
+                        variant="black-2"
+                        textAccent="от 120%"
                         textMain="средний рост конверсии"
                     />
                     <div class="projects__item--type1-wrapper">
@@ -37,14 +38,7 @@
                         <picture class="projects__item--type1-image-container">
                             <img
                                 class="projects__item--type1-image"
-                                src="/img/content/arabeska/logo.png"
-                                alt="Arabeska"
-                            />
-                        </picture>
-                        <picture class="projects__item--type1-image-container">
-                            <img
-                                class="projects__item--type1-image"
-                                src="/img/content/arabeska/image.jpg"
+                                src="/img/content/arabeska/logo.svg"
                                 alt="Arabeska"
                             />
                         </picture>
@@ -54,14 +48,7 @@
                         <picture class="projects__item--type1-image-container">
                             <img
                                 class="projects__item--type1-image"
-                                src="/img/content/arabeska/image1.jpg"
-                                alt="Arabeska"
-                            />
-                        </picture>
-                        <picture class="projects__item--type1-image-container">
-                            <img
-                                class="projects__item--type1-image"
-                                src="/img/content/arabeska/image3.jpg"
+                                src="/img/content/arabeska/flowers.gif"
                                 alt="Arabeska"
                             />
                         </picture>
@@ -81,56 +68,45 @@
             <div class="projects__item--type2">
                 <img
                     class="projects__item--type2-interactive"
-                    v-draggable="{ left: 25, top: 20 }"
-                    style="rotate: 5deg; max-width: 120px; pointer-events: auto"
-                    src="/img/content/temp.jpg"
-                    alt="#"
-                />
-                <img
-                    class="projects__item--type2-interactive"
-                    v-draggable="{ left: 55, top: 0 }"
-                    style="rotate: -12deg; max-width: 160px; pointer-events: auto"
-                    src="/img/content/personal-views/singing.gif"
-                    alt="#"
-                />
-                <img
-                    class="projects__item--type2-interactive"
-                    v-draggable="{ left: 57, top: 65 }"
-                    style="rotate: -12deg; max-width: 96px; pointer-events: auto"
-                    src="/img/content/temp.jpg"
+                    v-draggable="{ left: 50, top: 25 }"
+                    style="rotate: 5deg; max-width: 220px; pointer-events: auto"
+                    src="/img/stickers/theplace-white.png"
                     alt="#"
                 />
                 <Sticker
                     class="projects__item--type2-interactive"
-                    v-draggable="{ left: 75, top: 80 }"
-                    style="rotate: -12deg"
+                    v-draggable="{ left: 60, top: 80 }"
+                    style="rotate: 12deg"
                     variant="red"
-                    textMain="средний рост конверсии"
+                    textMain="100% средний рост конверсии"
                 />
                 <div class="projects__item--type2-wrapper">
                     <picture class="projects__item--type2-image-container">
                         <img class="projects__item--type2-image" src="/img/content/theplace/temp.jpg" alt="ThePlace" />
                     </picture>
                     <picture class="projects__item--type2-image-container">
-                        <img class="projects__item--type2-image" src="/img/content/theplace/temp.jpg" alt="ThePlace" />
+                        <img class="projects__item--type2-image" src="/img/content/theplace/logo.svg" alt="ThePlace" />
                     </picture>
-                    <h3 class="projects__item--type2-title">The place: веб-студия</h3>
                     <picture class="projects__item--type2-image-container">
-                        <img class="projects__item--type2-image" src="/img/content/theplace/temp.jpg" alt="ThePlace" />
+                        <img
+                            class="projects__item--type2-image"
+                            src="/img/content/theplace/mockup.png"
+                            alt="ThePlace"
+                        />
                     </picture>
                     <p class="projects__item--type2-desc">
-                        работы, в которых творчество встречается с&nbsp;результатом
+                        диджитал студия, в&nbsp;котоой творчество встречается с&nbsp;результатом
                     </p>
                     <picture class="projects__item--type2-image-container">
-                        <img class="projects__item--type2-image" src="/img/content/theplace/temp.jpg" alt="ThePlace" />
+                        <img class="projects__item--type2-image" src="/img/content/theplace/team.jpg" alt="ThePlace" />
                     </picture>
                     <picture class="projects__item--type2-image-container">
-                        <img class="projects__item--type2-image" src="/img/content/theplace/temp.jpg" alt="ThePlace" />
+                        <img class="projects__item--type2-image" src="/img/content/theplace/temp1.jpg" alt="ThePlace" />
                     </picture>
                 </div>
             </div>
             <div class="projects__divider--type2">
-                <ButtonPrimary type="router-link" to="/projects" variant="black">Все проекты</ButtonPrimary>
+                <ButtonPrimary type="router-link" to="/projects" variant="red">Все проекты</ButtonPrimary>
                 <img class="projects__divider--type2-arrow" src="/img/arrow-small.svg" />
             </div>
             <div class="projects__footer">
@@ -138,6 +114,12 @@
                     <img v-draggable="{ container: 'parent', axis: 'y', top: 64 }" src="/img/flag.png" alt="#" />
                 </div>
                 <Contact />
+                <div class="projects__footer-runline">
+                    <span v-for="n in 2" :key="n">
+                        Для лиц 21+. сайт несет развлекательный характер. все совпадения случайны, персонажи вымышлены,
+                        перед употреблением проконсультируйтесь со специалистом
+                    </span>
+                </div>
             </div>
         </div>
     </section>
@@ -154,7 +136,6 @@ import Contact from '@/components/Contact/Contact.vue';
 
 .projects {
     position: relative;
-    // min-width: fit-content;
     &__container {
         @include horizontal-layout($gap: 0);
     }
@@ -174,16 +155,16 @@ import Contact from '@/components/Contact/Contact.vue';
             &-wrapper {
                 height: 100%;
                 display: grid;
-                grid-template-columns: repeat(13, auto);
+                grid-template-columns: repeat(12, auto);
                 grid-template-rows: repeat(6, auto);
                 gap: 0 rem(16);
                 grid-template-areas:
-                    'title title title title image-1 image-1 image-1 image-1 image-2 image-3 . . .'
-                    '. . . . image-1 image-1 image-1 image-1 desc desc desc desc desc'
-                    '. . . . image-1 image-1 image-1 image-1 image-4 image-4 image-4 image-4 .'
-                    '. . . . image-1 image-1 image-1 image-1 image-4 image-4 image-4 image-4 .'
-                    '. . . . image-1 image-1 image-1 image-1 image-4 image-4 image-4 image-4 .'
-                    '. . . . image-1 image-1 image-1 image-1 image-4 image-4 image-4 image-4 image-5';
+                    'title title title title image-1 image-1 image-1 image-1 image-2 image-2 image-2 image-2'
+                    '. . . . image-1 image-1 image-1 image-1 desc desc desc desc'
+                    '. . . . image-1 image-1 image-1 image-1 image-3 image-3 image-3 image-3'
+                    '. . . . image-1 image-1 image-1 image-1 image-3 image-3 image-3 image-3'
+                    '. . . . image-1 image-1 image-1 image-1 image-3 image-3 image-3 image-3'
+                    '. . . . image-1 image-1 image-1 image-1 image-3 image-3 image-3 image-3';
             }
             &-title {
                 grid-area: title;
@@ -196,6 +177,7 @@ import Contact from '@/components/Contact/Contact.vue';
                 grid-area: desc;
                 max-width: 30ch;
                 text-transform: uppercase;
+                color: $c-9E9595;
                 font-size: lineScale(32, 24, 480, 1440);
                 line-height: 1.2;
                 font-weight: $fw-bold;
@@ -208,22 +190,16 @@ import Contact from '@/components/Contact/Contact.vue';
                 }
                 &:nth-of-type(2) {
                     grid-area: image-2;
-                    max-width: rem(82);
-                    max-height: rem(60);
+                    max-width: rem(380);
                     mix-blend-mode: darken;
+                    img {
+                        object-fit: contain;
+                    }
                 }
                 &:nth-of-type(3) {
                     grid-area: image-3;
-                    max-width: rem(82);
-                    max-height: rem(60);
-                }
-                &:nth-of-type(4) {
-                    grid-area: image-4;
                     max-width: rem(380);
-                }
-                &:nth-of-type(5) {
-                    grid-area: image-5;
-                    max-width: rem(154);
+                    aspect-ratio: 1;
                 }
             }
             &-image {
@@ -239,37 +215,46 @@ import Contact from '@/components/Contact/Contact.vue';
             &-wrapper {
                 height: 100%;
                 display: grid;
-                grid-template-columns: repeat(10, auto);
-                grid-template-rows: repeat(4, auto);
+                grid-template-columns: repeat(5, auto);
+                grid-template-rows: repeat(3, auto);
                 grid-template-areas:
-                    '. image-2 image-2 image-2 . . . . . .'
-                    '. image-2 image-2 image-2 image-3 image-3 image-3 image-3 desc desc'
-                    'image-1 image-2 image-2 image-2 image-3 image-3 image-3 image-3 image-4 .'
-                    'title title title title image-3 image-3 image-3 image-3 image-4 image-5'
-                    '. . . . image-3 image-3 image-3 image-3 . image-5';
-                gap: rem(24);
+                    'image-1 image-3 image-3 desc desc'
+                    'image-1 image-3 image-3 image-4 image-5'
+                    'image-2 image-3 image-3 image-4 image-5';
             }
             &-image-container {
                 max-height: 100%;
                 &:nth-of-type(1) {
                     grid-area: image-1;
-                    max-width: rem(81);
+                    max-width: rem(277);
                 }
                 &:nth-of-type(2) {
                     grid-area: image-2;
-                    max-width: rem(227);
+                    max-width: rem(273);
+                    max-height: rem(99);
+                    align-self: center;
+                    img {
+                        object-fit: contain;
+                    }
                 }
                 &:nth-of-type(3) {
                     grid-area: image-3;
-                    max-width: rem(343);
+                    max-width: rem(530);
+                    img {
+                        scale: 1.2;
+                        object-fit: contain;
+                    }
                 }
                 &:nth-of-type(4) {
                     grid-area: image-4;
-                    max-width: rem(260);
+                    max-width: rem(200);
+                    align-self: center;
                 }
                 &:nth-of-type(5) {
                     grid-area: image-5;
                     max-width: rem(154);
+                    height: rem(228);
+                    align-self: flex-end;
                 }
             }
             &-image {
@@ -277,18 +262,13 @@ import Contact from '@/components/Contact/Contact.vue';
                 height: 100%;
                 object-fit: cover;
             }
-            &-title {
-                grid-area: title;
-                text-transform: uppercase;
-                font-size: lineScale(32, 24, 480, 1440);
-                line-height: 1.2;
-                font-weight: $fw-bold;
-            }
             &-desc {
                 grid-area: desc;
+                align-self: flex-end;
                 height: fit-content;
                 max-width: 25ch;
                 text-transform: uppercase;
+                color: $c-9E9595;
                 font-size: lineScale(32, 24, 480, 1440);
                 line-height: 1.2;
                 font-weight: $fw-bold;
@@ -320,6 +300,32 @@ import Contact from '@/components/Contact/Contact.vue';
     }
     &__footer {
         position: relative;
+        &-runline {
+            position: absolute;
+            top: 0;
+            right: -117%;
+            rotate: -90deg;
+            height: 1em;
+            white-space: nowrap;
+            text-transform: uppercase;
+            font-family: 'Fira-Extra', sans-serif;
+            font-size: rem(22);
+            color: $c-9E9595;
+            display: flex;
+            > span {
+                display: block;
+                will-change: translate;
+                animation: runline 15s linear infinite;
+            }
+        }
+        @keyframes runline {
+            0% {
+                translate: 0 0;
+            }
+            100% {
+                translate: -100% 0;
+            }
+        }
     }
     &__interactive {
         width: rem(282);

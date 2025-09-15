@@ -32,6 +32,7 @@ const props = defineProps({
 .navigator {
     $p: &;
 
+    position: relative;
     min-width: fit-content;
     color: $c-main;
     background-color: $c-111111;

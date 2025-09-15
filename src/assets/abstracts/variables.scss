@@ -1,7 +1,7 @@
 @use './functions' as *;
 
 $py: lineScale-y(114, 64, 480, 1200); // layout padding-y
-$px: lineScale(64, 32, 480, 1440); // layout padding-x
+$px: lineScale(64, 16, 480, 1440); // layout padding-x
 
 $td: 0.6s;
 $tf: ease;

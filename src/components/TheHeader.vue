@@ -7,13 +7,27 @@
             </div>
             <div class="header__controls">
                 <nav class="header__nav">
-                    <router-link class="header__nav-link" to="/">Обо мне</router-link>
-                    <router-link class="header__nav-link" to="/">Услуги</router-link>
-                    <router-link class="header__nav-link" to="/projects">Все Проекты</router-link>
-                    <router-link class="header__nav-link" to="/hobby">Хобби</router-link>
-                    <router-link class="header__nav-link" to="/blog">Блог</router-link>
-                    <router-link class="header__nav-link" to="/">Маркетологам</router-link>
-                    <router-link class="header__nav-link" to="/contact">Контакты</router-link>
+                    <router-link :class="['header__nav-link', { current: currentRoute == 'about' }]" to="/"
+                        >Обо мне</router-link
+                    >
+                    <router-link :class="['header__nav-link', { current: currentRoute == 'services' }]" to="/"
+                        >Услуги</router-link
+                    >
+                    <router-link :class="['header__nav-link', { current: currentRoute == 'projects' }]" to="/projects"
+                        >Все Проекты</router-link
+                    >
+                    <router-link :class="['header__nav-link', { current: currentRoute == 'hobby' }]" to="/hobby"
+                        >Хобби</router-link
+                    >
+                    <router-link :class="['header__nav-link', { current: currentRoute == 'blog' }]" to="/blog"
+                        >Блог</router-link
+                    >
+                    <router-link :class="['header__nav-link', { current: currentRoute == 'marketers' }]" to="/marketers"
+                        >Маркетологам</router-link
+                    >
+                    <router-link :class="['header__nav-link', { current: currentRoute == 'contact' }]" to="/contact"
+                        >Контакты</router-link
+                    >
                 </nav>
                 <router-link class="header__button" to="/contact">Связаться со мной</router-link>
             </div>
@@ -21,7 +35,14 @@
     </header>
 </template>
 
-<script setup></script>
+<script setup>
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+
+const currentRoute = computed(() => route.name);
+</script>
 
 <style lang="scss" scoped>
 @use '@/assets/abstracts' as *;
@@ -77,6 +98,10 @@
             font-weight: $fw-semi;
             pointer-events: auto;
             @include gradient-text-hover($main-color: $c-FFFFFF, $accent-color: $c-0FD2D3); // <-----
+            &.current {
+                background-position: -160% -200%;
+                pointer-events: none;
+            }
         }
     }
     &__button {

@@ -10,47 +10,59 @@
                     style="position: absolute; left: 12%; bottom: -5%"
                     type="router-link"
                     to="/blog"
-                    variant="red"
+                    variant="grey"
                 >
                     Блог
                 </ButtonPrimary>
+                <img
+                    v-draggable="{ top: -5, left: 35 }"
+                    src="/img/stickers/smile.png"
+                    alt="#"
+                    style="pointer-events: auto; width: 288px; rotate: 15deg"
+                />
+                <img
+                    v-draggable="{ top: 70, left: 55 }"
+                    src="/img/stickers/thunder.png"
+                    alt="#"
+                    style="pointer-events: auto; width: 180px; rotate: 7deg"
+                />
                 <ButtonPrimary
-                    style="position: absolute; left: 55%; top: -10%"
+                    style="position: absolute; left: 75%; top: -10%; rotate: -5deg"
                     type="router-link"
                     to="/marketers"
-                    variant="red"
+                    variant="grey"
                 >
                     Маркетологам
                 </ButtonPrimary>
                 <picture
                     class="brand__image-container"
-                    style="
-                        --mask: url('/img/masks/b.svg');
-                        --break-mask: url('/img/masks/b-rotate.svg');
-                        --ratio: 457/692;
-                    "
+                    style="--mask: url('/img/masks/b.svg'); --break-mask: url('/img/masks/b-rotate.svg')"
                 >
                     <img class="brand__image" src="/img/content/personal-views/singing.gif" alt="#" />
                 </picture>
                 <picture
                     class="brand__image-container"
-                    style="
-                        --mask: url('/img/masks/ra.svg');
-                        --break-mask: url('/img/masks/ra-rotate.svg');
-                        --ratio: 256/173;
-                    "
+                    style="--mask: url('/img/masks/r.svg'); --break-mask: url('/img/masks/r-rotate.svg')"
                 >
-                    <img class="brand__image" src="/img/content/temp.jpg" alt="#" />
+                    <img class="brand__image" src="/img/content/personal-views/temp4.jpg" alt="#" />
                 </picture>
                 <picture
                     class="brand__image-container"
-                    style="
-                        --mask: url('/img/masks/nd.svg');
-                        --break-mask: url('/img/masks/nd-rotate.svg');
-                        --ratio: 1087/692;
-                    "
+                    style="--mask: url('/img/masks/a.svg'); --break-mask: url('/img/masks/a-rotate.svg')"
                 >
-                    <img class="brand__image" src="/img/content/personal-views/singing.jpg" alt="#" />
+                    <img class="brand__image" src="/img/content/personal-views/temp2.jpg" alt="#" />
+                </picture>
+                <picture
+                    class="brand__image-container"
+                    style="--mask: url('/img/masks/n.svg'); --break-mask: url('/img/masks/n-rotate.svg')"
+                >
+                    <img class="brand__image" src="/img/content/personal-views/temp5.jpg" alt="#" />
+                </picture>
+                <picture
+                    class="brand__image-container"
+                    style="--mask: url('/img/masks/d.svg'); --break-mask: url('/img/masks/d-rotate.svg')"
+                >
+                    <img class="brand__image" src="/img/content/personal-views/temp6.jpg" alt="#" />
                 </picture>
             </div>
             <div class="brand__hint">
@@ -63,6 +75,45 @@
                     <template #media-description>уникальный опыт</template>
                 </SectionHint>
             </div>
+            <div class="brand__services">
+                <ButtonPrimary
+                    style="position: absolute; left: 55%; bottom: 10%; rotate: -6deg"
+                    type="router-link"
+                    to="/services"
+                    variant="red"
+                >
+                    Услуги
+                </ButtonPrimary>
+                <h2 class="brand__services-title">Развиваю личные бренды</h2>
+                <picture class="brand__services-image-container">
+                    <img class="brand__services-image" src="/img/content/temp.jpg" alt="#" />
+                </picture>
+                <picture class="brand__services-image-container">
+                    <img class="brand__services-image" src="/img/content/personal-views/angry.jpg" alt="#" />
+                </picture>
+                <picture class="brand__services-image-container">
+                    <img class="brand__services-image" src="/img/content/snapshot.gif" alt="#" />
+                </picture>
+                <picture class="brand__services-image-container">
+                    <img class="brand__services-image" src="/img/content/blog/temp5.jpg" alt="#" />
+                </picture>
+                <picture class="brand__services-image-container">
+                    <img class="brand__services-image" src="/img/content/personal-views/circle.jpg" alt="#" />
+                </picture>
+                <picture class="brand__services-image-container">
+                    <img class="brand__services-image" src="/img/content/gt-club.gif" alt="#" />
+                </picture>
+                <picture class="brand__services-image-container">
+                    <img class="brand__services-image" src="/img/content/blog/temp1.jpg" alt="#" />
+                </picture>
+                <picture class="brand__services-image-container">
+                    <img class="brand__services-image" src="/img/content/personal-views/eating.jpg" alt="#" />
+                </picture>
+                <picture class="brand__services-image-container">
+                    <img class="brand__services-image" src="/img/content/arabeska/arabeska.gif" alt="#" />
+                </picture>
+            </div>
+
             <FormPrimary image="/img/content/temp.jpg">
                 <template #title>Ваш бренд не приносит прибыль?</template>
                 <template #description>
@@ -71,6 +122,14 @@
                 </template>
             </FormPrimary>
             <div class="brand__footer">
+                <ButtonPrimary
+                    style="position: absolute; left: 0%; bottom: 0%"
+                    type="router-link"
+                    to="/contact"
+                    variant="grey"
+                >
+                    Контакты
+                </ButtonPrimary>
                 <picture class="brand__footer-image-container">
                     <img
                         class="brand__footer-image"
@@ -121,7 +180,7 @@ import FormPrimary from '@/components/FormPrimary/FormPrimary.vue';
         position: relative;
         z-index: 1;
         height: 100%;
-        aspect-ratio: var(--ratio);
+        width: rem(560);
         mask-image: var(--mask);
         mask-repeat: no-repeat;
         mask-size: 100% 100%;
@@ -136,7 +195,103 @@ import FormPrimary from '@/components/FormPrimary/FormPrimary.vue';
         display: flex;
         align-items: flex-end;
     }
+    &__services {
+        position: relative;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(6, auto);
+        grid-template-rows: repeat(5, 1fr);
+        grid-template-areas:
+            '. . image-3 image-3 . .'
+            '. image-2 image-3 image-3 image-4 image-5'
+            'image-1 image-2 image-3 image-3 image-4 image-5'
+            'image-1 image-6 image-6 image-7 image-8 image-9'
+            '. image-6 image-6 . image-8 .';
+        padding: 0 $px;
+        @include horizontal-max-height;
+        &-title {
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            white-space: nowrap;
+            text-transform: uppercase;
+            font-family: 'Fira-Extra', sans-serif;
+            font-size: lineScale(120, 64, 480, 1440);
+            font-weight: $fw-bold;
+            mix-blend-mode: exclusion;
+        }
+        &-image-container {
+            &:nth-of-type(1) {
+                grid-area: image-1;
+                max-width: rem(326);
+                max-height: rem(326);
+                rotate: 9deg;
+                translate: 20% 0;
+            }
+            &:nth-of-type(2) {
+                grid-area: image-2;
+                max-width: rem(230);
+                max-height: rem(319);
+                rotate: -3deg;
+            }
+            &:nth-of-type(3) {
+                grid-area: image-3;
+                max-width: rem(464);
+                max-height: rem(464);
+                rotate: 2.55deg;
+            }
+            &:nth-of-type(4) {
+                grid-area: image-4;
+                max-width: rem(416);
+                max-height: rem(350);
+                rotate: -8deg;
+                translate: -10% 0;
+            }
+            &:nth-of-type(5) {
+                grid-area: image-5;
+                max-width: rem(400);
+                max-height: rem(350);
+                rotate: 7deg;
+                translate: -20% 0;
+            }
+            &:nth-of-type(6) {
+                grid-area: image-6;
+                max-width: rem(326);
+                max-height: rem(326);
+                rotate: 13deg;
+                translate: 10% -10%;
+            }
+            &:nth-of-type(7) {
+                grid-area: image-7;
+                max-width: rem(326);
+                max-height: rem(326);
+                rotate: 17deg;
+            }
+            &:nth-of-type(8) {
+                grid-area: image-8;
+                max-width: rem(326);
+                max-height: rem(326);
+                rotate: -6deg;
+                translate: -40% 0;
+            }
+            &:nth-of-type(9) {
+                grid-area: image-9;
+                max-width: rem(180);
+                max-height: rem(326);
+                rotate: 12deg;
+                translate: -80% 0;
+            }
+        }
+        &-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
     &__footer {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
