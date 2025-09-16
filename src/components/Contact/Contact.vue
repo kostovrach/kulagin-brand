@@ -1,5 +1,5 @@
 <template>
-    <div class="contact">
+    <div :class="['contact', `contact--${props.orientation}`]">
         <div class="contact__container">
             <div class="contact__body">
                 <a
@@ -35,6 +35,14 @@
 
 <script setup>
 import TheSvgSprite from '../TheSvgSprite.vue';
+
+const props = defineProps({
+    orientation: {
+        type: String,
+        default: 'horizontal',
+        validator: (val) => ['horizontal', 'vertical'].includes(val),
+    },
+});
 
 const socials = [
     {
@@ -75,9 +83,13 @@ const socials = [
 @use '@/assets/abstracts' as *;
 
 .contact {
+    $p: &;
+
     height: 100%;
-    &__container {
-        @include horizontal-layout($padding: 0);
+    &--horizontal {
+        #{$p}__container {
+            @include horizontal-layout($padding: 0);
+        }
     }
     &__body {
         display: grid;

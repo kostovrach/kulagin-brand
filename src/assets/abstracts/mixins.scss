@@ -2,8 +2,8 @@
 @use './colors' as *;
 @use './variables' as *;
 
-@mixin horizontal-layout($gap: rem(64), $padding: $py $px) {
-    min-width: max-content;
+@mixin horizontal-layout($gap: rem(64), $padding: $py $px, $min-width: max-content) {
+    min-width: $min-width;
     height: 100%;
     min-height: fit-content;
     display: grid;

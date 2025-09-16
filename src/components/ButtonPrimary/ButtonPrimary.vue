@@ -33,7 +33,7 @@ const props = defineProps({
     },
     logic: {
         type: String,
-        validator: (val) => ['double'].includes(val),
+        validator: (val) => ['double', 'noanim'].includes(val),
     },
     to: { type: String },
     href: { type: String },
@@ -88,7 +88,7 @@ const slotText = computed(() => {
 });
 
 const firstPart = computed(() => {
-    if (!props.logic) {
+    if (props.logic !== 'double') {
         const len = slotText.value.length;
         const half = Math.ceil(len / 2);
         return slotText.value.slice(0, half);
@@ -101,7 +101,7 @@ const firstPart = computed(() => {
 });
 
 const secondPart = computed(() => {
-    if (!props.logic) {
+    if (props.logic !== 'double') {
         const len = slotText.value.length;
         const half = Math.ceil(len / 2);
         return slotText.value.slice(half);
@@ -149,7 +149,7 @@ const secondPart = computed(() => {
     }
 
     @media (pointer: fine) {
-        &:hover {
+        &:not(#{$p}--noanim):hover {
             background-color: $c-111111;
             &::before {
                 opacity: 0;
@@ -218,6 +218,7 @@ const secondPart = computed(() => {
         }
     }
     &--double {
+        font-size: lineScale(22, 18, 480, 1440);
         #{$p}__body {
             overflow: hidden;
             flex-direction: column;

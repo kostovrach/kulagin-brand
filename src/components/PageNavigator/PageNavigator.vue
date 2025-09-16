@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="to" class="navigator fade-right">
+    <router-link :to="to" :class="['navigator', `navigator--${props.orientation}`, 'fade-right']">
         <div class="navigator__container">
             <div class="navigator__body">
                 <div class="navigator__titlebox">
@@ -23,6 +23,11 @@ import TheSvgSprite from '../TheSvgSprite.vue';
 const props = defineProps({
     image: { type: String },
     to: { type: String },
+    orientation: {
+        type: String,
+        default: 'vertical',
+        validator: (val) => ['vertical', 'horizontal'].includes(val),
+    },
 });
 </script>
 
@@ -33,9 +38,33 @@ const props = defineProps({
     $p: &;
 
     position: relative;
-    min-width: fit-content;
+    display: block;
     color: $c-main;
     background-color: $c-111111;
+    &--vertical {
+        min-width: fit-content;
+        #{$p}__body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+    &--horizontal {
+        width: 100%;
+        #{$p}__body {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap-reverse;
+            gap: rem(32);
+        }
+        #{$p}__image-container {
+            max-width: rem(600);
+        }
+    }
     @media (pointer: fine) {
         &:hover {
             #{$p}__icon svg {
@@ -46,13 +75,6 @@ const props = defineProps({
     &__container {
         height: 100%;
         @include horizontal-layout;
-    }
-    &__body {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
     }
     &__titlebox {
         display: flex;
@@ -70,7 +92,7 @@ const props = defineProps({
         @include block-title;
     }
     &__image-container {
-        width: rem(200);
+        max-width: rem(200);
         height: rem(300);
     }
     &__image {
@@ -79,6 +101,7 @@ const props = defineProps({
         object-fit: cover;
     }
     &__icon {
+        height: fit-content;
         rotate: 45deg;
         overflow: hidden;
     }

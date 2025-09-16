@@ -222,7 +222,7 @@ onMounted(() => {
             z-index: 5;
             right: 0;
             bottom: 0;
-            translate: 20% 25%;
+            translate: 20% 20%;
             opacity: 0;
             scale: 0.7;
             transition:
