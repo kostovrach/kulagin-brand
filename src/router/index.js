@@ -9,6 +9,11 @@ const router = createRouter({
             component: () => import('@/views/home/HomeView.vue'),
         },
         {
+            path: '/services',
+            name: 'services',
+            component: () => import('@/views/services/ServicesView.vue'),
+        },
+        {
             path: '/projects',
             name: 'projects',
             component: () => import('@/views/projects/ProjectsView.vue'),
@@ -17,11 +22,6 @@ const router = createRouter({
             path: '/hobby',
             name: 'hobby',
             component: () => import('@/views/hobby/HobbyView.vue'),
-        },
-        {
-            path: '/contact',
-            name: 'contact',
-            component: () => import('@/views/contact/ContactView.vue'),
         },
         {
             path: '/blog',
@@ -33,6 +33,11 @@ const router = createRouter({
             name: 'article',
             component: () => import('@/views/article/ArticleView.vue'),
             props: true,
+        },
+        {
+            path: '/contact',
+            name: 'contact',
+            component: () => import('@/views/contact/ContactView.vue'),
         },
     ],
     scrollBehavior(to, from, savedPosition) {

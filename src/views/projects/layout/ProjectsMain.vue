@@ -38,8 +38,19 @@
                         </picture>
                     </div>
                     <div class="hero__list fade-right" style="animation-delay: 0.6s">
-                        <ul class="hero__list-wrapper" v-if="!projectsLoading">
-                            <li class="hero__item" v-for="item in projects" :key="item.id">
+                        <div class="hero__list-loader" v-if="projectsLoading">
+                            <li class="hero__list-loader-item" v-for="loader in 10" :key="loader">
+                                <Skeleton
+                                    v-for="n in 3"
+                                    :key="n"
+                                    height="100%"
+                                    borderRadius="1rem"
+                                    :dt="{ root: { background: '#ececec', animationBackground: '#f7f9f7' } }"
+                                />
+                            </li>
+                        </div>
+                        <ul class="hero__list-wrapper" v-else>
+                            <li class="hero__item" v-for="item in projects" :key="item.key">
                                 <div class="hero__item-titlebox">
                                     <span class="hero__item-tag">{{ item.location }}</span>
                                     <h2 class="hero__item-title">{{ item.title }}</h2>
@@ -63,17 +74,6 @@
                                 </a>
                             </li>
                         </ul>
-                        <div class="hero__list-loader" v-else>
-                            <li class="hero__list-loader-item" v-for="loader in 10" :key="loader">
-                                <Skeleton
-                                    v-for="n in 3"
-                                    :key="n"
-                                    height="100%"
-                                    borderRadius="1rem"
-                                    :dt="{ root: { background: '#ececec', animationBackground: '#f7f9f7' } }"
-                                />
-                            </li>
-                        </div>
                     </div>
                 </div>
             </div>

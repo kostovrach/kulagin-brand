@@ -7,10 +7,10 @@
             </div>
             <div class="header__controls">
                 <nav class="header__nav">
-                    <router-link :class="['header__nav-link', { current: currentRoute == 'about' }]" to="/"
+                    <router-link :class="['header__nav-link', { current: currentRoute == 'home' }]" to="/"
                         >Обо мне</router-link
                     >
-                    <router-link :class="['header__nav-link', { current: currentRoute == 'services' }]" to="/"
+                    <router-link :class="['header__nav-link', { current: currentRoute == 'services' }]" to="/services"
                         >Услуги</router-link
                     >
                     <router-link :class="['header__nav-link', { current: currentRoute == 'projects' }]" to="/projects"

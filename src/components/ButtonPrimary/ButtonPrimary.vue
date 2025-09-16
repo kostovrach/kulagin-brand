@@ -3,15 +3,17 @@
         :is="componentTag"
         v-bind="{ ...attrs, ...$attrs }"
         :id="id || undefined"
-        :class="['button-primary', `button-primary--${props.variant}`]"
+        :class="['button-primary', `button-primary--${props.variant}`, `button-primary--${props.logic}`]"
     >
-        <span v-if="firstPart">{{ firstPart }}</span>
-        <div class="button-primary__icon">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="button-primary__body">
+            <span v-if="firstPart">{{ firstPart }}</span>
+            <span v-if="secondPart">{{ secondPart }}</span>
+            <div class="button-primary__icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-        <span v-if="secondPart">{{ secondPart }}</span>
     </component>
 </template>
 
@@ -28,6 +30,10 @@ const props = defineProps({
         type: String,
         default: 'red',
         validator: (val) => ['red', 'grey', 'black'].includes(val),
+    },
+    logic: {
+        type: String,
+        validator: (val) => ['double'].includes(val),
     },
     to: { type: String },
     href: { type: String },
@@ -82,15 +88,29 @@ const slotText = computed(() => {
 });
 
 const firstPart = computed(() => {
-    const len = slotText.value.length;
-    const half = Math.ceil(len / 2);
-    return slotText.value.slice(0, half);
+    if (!props.logic) {
+        const len = slotText.value.length;
+        const half = Math.ceil(len / 2);
+        return slotText.value.slice(0, half);
+    } else if (props.logic === 'double') {
+        const text = slotText.value;
+        const words = text.split(' ');
+        const firstLine = words.slice(0, 1);
+        return firstLine.toString();
+    } else return '';
 });
 
 const secondPart = computed(() => {
-    const len = slotText.value.length;
-    const half = Math.ceil(len / 2);
-    return slotText.value.slice(half);
+    if (!props.logic) {
+        const len = slotText.value.length;
+        const half = Math.ceil(len / 2);
+        return slotText.value.slice(half);
+    } else if (props.logic === 'double') {
+        const text = slotText.value;
+        const words = text.split(' ');
+        const secondLine = words.slice(1, 2);
+        return secondLine.toString();
+    } else return '';
 });
 </script>
 
@@ -139,7 +159,7 @@ const secondPart = computed(() => {
                     background-position: 100% 100%;
                 }
             }
-            > span {
+            #{$p}__body > span {
                 &:first-of-type {
                     translate: rem(-64) 0;
                     opacity: 0;
@@ -151,11 +171,16 @@ const secondPart = computed(() => {
             }
         }
     }
-    > span {
-        position: relative;
-        z-index: 2;
-        display: block;
-        transition: all $td $tf;
+    &__body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        > span {
+            position: relative;
+            z-index: 2;
+            display: block;
+            transition: all $td $tf;
+        }
     }
     &__icon {
         position: absolute;
@@ -190,6 +215,26 @@ const secondPart = computed(() => {
             top: rem(-9);
             right: rem(35);
             rotate: 90deg;
+        }
+    }
+    &--double {
+        #{$p}__body {
+            overflow: hidden;
+            flex-direction: column;
+        }
+        @media (pointer: fine) {
+            &:hover {
+                #{$p}__body > span {
+                    &:first-of-type {
+                        translate: 0 rem(-32);
+                        opacity: 0;
+                    }
+                    &:last-of-type {
+                        translate: 0 rem(32);
+                        opacity: 0;
+                    }
+                }
+            }
         }
     }
     &--red {

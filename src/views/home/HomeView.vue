@@ -3,7 +3,7 @@
         <HomeHero />
         <HomeBrand />
         <HomeProjects />
-        <PageNavigator to="/" image="/img/content/personal-views/singing.gif">
+        <PageNavigator to="/services" image="/img/content/personal-views/singing.gif">
             <template #tag>Далее</template>
             <template #title>Услуги</template>
         </PageNavigator>

@@ -9,9 +9,9 @@ function slugify(value = '') {
         .toLowerCase()
         .trim()
         .replace(/[\s_]+/g, '-')
-        .replace(/[^a-z0-9\-]+/g, '')
-        .replace(/\-+/g, '-')
-        .replace(/^\-+|\-+$/g, '');
+        .replace(/[^a-z0-9-]+/g, '')
+        .replace(/-+/g, '-')
+        .replace(/^-+|-+$/g, '');
 }
 export const useBlogStore = defineStore('blog', () => {
     // state
@@ -118,7 +118,9 @@ export const useBlogStore = defineStore('blog', () => {
     async function prefetchArticle(slug) {
         try {
             await fetchArticle(slug);
-        } catch (err) {}
+        } catch (err) {
+            console.error(err);
+        }
     }
 
     function getArticle(slug) {

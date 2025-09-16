@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="to" class="navigator">
+    <router-link :to="to" class="navigator fade-right">
         <div class="navigator__container">
             <div class="navigator__body">
                 <div class="navigator__titlebox">

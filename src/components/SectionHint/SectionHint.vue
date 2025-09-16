@@ -123,7 +123,7 @@ const props = defineProps({
                 position: absolute;
                 z-index: 2;
                 inset: 0;
-                backdrop-filter: blur(5px);
+                backdrop-filter: blur(5px) saturate(0);
                 background-image: url('img/patterns/noise.png');
                 pointer-events: none;
                 transition: opacity $td $tf;

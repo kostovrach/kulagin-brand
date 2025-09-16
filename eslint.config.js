@@ -5,7 +5,7 @@ import pluginVue from 'eslint-plugin-vue';
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting';
 
 export default defineConfig([
-   globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
+   globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**', '**/scripts/**']),
    
     js.configs.recommended,
 

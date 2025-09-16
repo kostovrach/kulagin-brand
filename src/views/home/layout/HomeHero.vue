@@ -17,7 +17,12 @@
                 <!-- -->
             </div>
             <div class="hero__body fade-right" style="animation-delay: 0.6s">
-                <ButtonPrimary style="position: absolute; left: 12%; top: 15%" type="router-link" to="/" variant="red">
+                <ButtonPrimary
+                    style="position: absolute; left: 12%; top: 15%"
+                    type="router-link"
+                    to="/services"
+                    variant="red"
+                >
                     Услуги
                 </ButtonPrimary>
                 <ButtonPrimary

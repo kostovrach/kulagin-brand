@@ -29,7 +29,7 @@ export function useHorizontalScroll(options = {}) {
     let rafId = null;
     let lastWheelTime = 0;
     let mediaQuery = null;
-    let resizeObserver = null;
+    // let resizeObserver = null;
 
     const wheelDebounceTime = 16;
 

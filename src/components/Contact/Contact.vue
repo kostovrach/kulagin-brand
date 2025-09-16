@@ -75,6 +75,7 @@ const socials = [
 @use '@/assets/abstracts' as *;
 
 .contact {
+    height: 100%;
     &__container {
         @include horizontal-layout($padding: 0);
     }

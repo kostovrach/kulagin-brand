@@ -42,6 +42,7 @@
                 />
                 <Skeleton
                     v-for="n in 10"
+                    :key="n"
                     class="article-loader__item"
                     width="100%"
                     height="1rem"
@@ -59,6 +60,7 @@
                 />
                 <Skeleton
                     v-for="n in 10"
+                    :key="n"
                     class="article-loader__item"
                     width="100%"
                     height="1rem"

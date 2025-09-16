@@ -1,6 +1,6 @@
 [
     {
-        "id": 1,
+        "key": 1,
         "location": "КАНАДА",
         "title": "Home wright",
         "services": ["Брендинг", "Сайт", "Поддержка"],
@@ -8,7 +8,7 @@
         "link": "/"
     },
     {
-        "id": 2,
+        "key": 2,
         "location": "Китай",
         "title": "Современный Дом",
         "services": ["Поддержка"],
@@ -16,7 +16,7 @@
         "link": "/"
     },
     {
-        "id": 3,
+        "key": 3,
         "location": "Россия, москва",
         "title": "квадратика",
         "services": ["Брендинг", "Сайт"],
@@ -24,15 +24,15 @@
         "link": "/"
     },
     {
-        "id": 4,
+        "key": 4,
         "location": "германия",
-        "title": "SolidHome",
+        "title": "SolkeyHome",
         "services": ["Брендинг", "Сайт", "Поддержка"],
         "description": "Сайт для инспекторов недвижимости",
         "link": "/"
     },
     {
-        "id": 5,
+        "key": 5,
         "location": "Россия, Самара",
         "title": "TrustBuild",
         "services": ["Брендинг", "Сайт"],
@@ -40,7 +40,7 @@
         "link": "/"
     },
     {
-        "id": 6,
+        "key": 6,
         "location": "КАНАДА",
         "title": "Дом Строй",
         "services": ["Брендинг", "Сайт"],
@@ -48,7 +48,7 @@
         "link": "/"
     },
     {
-        "id": 7,
+        "key": 7,
         "location": "Казахстан",
         "title": "ModernHome",
         "services": ["Брендинг", "Сайт"],
@@ -56,7 +56,7 @@
         "link": "/"
     },
     {
-        "id": 8,
+        "key": 8,
         "location": "КАНАДА",
         "title": "Home wright",
         "services": ["Брендинг", "Сайт", "Поддержка"],
@@ -64,7 +64,7 @@
         "link": "/"
     },
     {
-        "id": 9,
+        "key": 9,
         "location": "Китай",
         "title": "Современный Дом",
         "services": ["Поддержка"],
@@ -72,7 +72,7 @@
         "link": "/"
     },
     {
-        "id": 10,
+        "key": 10,
         "location": "Россия, москва",
         "title": "квадратика",
         "services": ["Брендинг", "Сайт"],
@@ -80,15 +80,15 @@
         "link": "/"
     },
     {
-        "id": 11,
+        "key": 11,
         "location": "германия",
-        "title": "SolidHome",
+        "title": "SolkeyHome",
         "services": ["Брендинг", "Сайт", "Поддержка"],
         "description": "Сайт для инспекторов недвижимости",
         "link": "/"
     },
     {
-        "id": 12,
+        "key": 12,
         "location": "Россия, Самара",
         "title": "TrustBuild",
         "services": ["Брендинг", "Сайт"],
@@ -96,7 +96,7 @@
         "link": "/"
     },
     {
-        "id": 13,
+        "key": 13,
         "location": "КАНАДА",
         "title": "Дом Строй",
         "services": ["Брендинг", "Сайт"],
@@ -104,7 +104,7 @@
         "link": "/"
     },
     {
-        "id": 14,
+        "key": 14,
         "location": "Казахстан",
         "title": "ModernHome",
         "services": ["Брендинг", "Сайт"],
