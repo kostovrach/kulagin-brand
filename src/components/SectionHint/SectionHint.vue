@@ -1,5 +1,5 @@
 <template>
-    <div class="section-hint">
+    <div class="section-hint" @click="openVideo">
         <h3 class="section-hint__title">
             <slot name="title"></slot>
         </h3>
@@ -12,7 +12,7 @@
             <picture v-if="props.image" class="section-hint__media-image-container">
                 <img class="section-hint__media-image" :src="props.image" alt="" />
             </picture>
-            <video v-if="props.video" class="section-hint__media-video">
+            <video v-if="props.video" class="section-hint__media-video" autoplay muted loop playsinline>
                 <source :src="props.video" type="video/mp4" />
             </video>
 
@@ -29,10 +29,19 @@
 <script setup>
 import TheSvgSprite from '../TheSvgSprite.vue';
 
+import { useModal } from '@/composables/useModal';
+
 const props = defineProps({
     image: { type: String },
     video: { type: String },
+    modalMedia: { type: String },
 });
+
+const { openModal } = useModal();
+
+function openVideo() {
+    openModal('video', { url: props.modalMedia, title: 'Про уникальный опыт' });
+}
 </script>
 
 <style lang="scss" scoped>

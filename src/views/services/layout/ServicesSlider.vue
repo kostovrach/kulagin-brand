@@ -58,7 +58,7 @@
                             </ul>
                         </div>
                         <div class="services__slide-button">
-                            <ButtonPrimary type="router-link" to="/contact" variant="red" logic="double"
+                            <ButtonPrimary type="router-link" to="/contact" variant="red" logic="double-line"
                                 >Обсудить детали</ButtonPrimary
                             >
                         </div>
@@ -80,8 +80,8 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
-import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Navigation } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/navigation';

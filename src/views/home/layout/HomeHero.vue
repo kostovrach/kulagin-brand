@@ -94,7 +94,11 @@
                     textAccent="от 120%"
                     textMain="средний рост конверсии"
                 />
-                <SectionHint class="hero__hint" image="/img/content/personal-views/smiling.gif">
+                <SectionHint
+                    class="hero__hint"
+                    image="/img/content/personal-views/smiling.gif"
+                    modal-media="/videos/404.mp4"
+                >
                     <template #title>Как превратить свой бренд в источник дохода?</template>
                     <template #text>
                         Мой опыт и&nbsp;знания смогут сократить путь к&nbsp;результатам, экономя несколько лет усилий.

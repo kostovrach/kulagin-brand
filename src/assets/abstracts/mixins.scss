@@ -88,6 +88,7 @@
     line-height: 1;
     font-weight: $fw-bold;
     padding: $padding;
+    white-space: nowrap;
     border: rem(2) solid $border-color;
     border-radius: rem(32);
     transition: color $td $tf;

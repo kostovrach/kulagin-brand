@@ -33,7 +33,7 @@ const props = defineProps({
     },
     logic: {
         type: String,
-        validator: (val) => ['double', 'noanim'].includes(val),
+        validator: (val) => ['double-line', 'noanim'].includes(val),
     },
     to: { type: String },
     href: { type: String },
@@ -88,11 +88,11 @@ const slotText = computed(() => {
 });
 
 const firstPart = computed(() => {
-    if (props.logic !== 'double') {
+    if (props.logic !== 'double-line') {
         const len = slotText.value.length;
         const half = Math.ceil(len / 2);
         return slotText.value.slice(0, half);
-    } else if (props.logic === 'double') {
+    } else if (props.logic === 'double-line') {
         const text = slotText.value;
         const words = text.split(' ');
         const firstLine = words.slice(0, 1);
@@ -101,11 +101,11 @@ const firstPart = computed(() => {
 });
 
 const secondPart = computed(() => {
-    if (props.logic !== 'double') {
+    if (props.logic !== 'double-line') {
         const len = slotText.value.length;
         const half = Math.ceil(len / 2);
         return slotText.value.slice(half);
-    } else if (props.logic === 'double') {
+    } else if (props.logic === 'double-line') {
         const text = slotText.value;
         const words = text.split(' ');
         const secondLine = words.slice(1, 2);
@@ -159,6 +159,8 @@ const secondPart = computed(() => {
                     background-position: 100% 100%;
                 }
             }
+        }
+        &:not(#{$p}--double-line, #{$p}--noanim):hover {
             #{$p}__body > span {
                 &:first-of-type {
                     translate: rem(-64) 0;
@@ -217,7 +219,7 @@ const secondPart = computed(() => {
             rotate: 90deg;
         }
     }
-    &--double {
+    &--double-line {
         font-size: lineScale(22, 18, 480, 1440);
         #{$p}__body {
             overflow: hidden;

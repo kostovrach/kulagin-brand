@@ -16,7 +16,7 @@ const props = defineProps({
 .page--vertical {
     max-width: 100vw;
     min-height: 100%;
-    margin-top: $py;
+    padding-top: $py;
     overflow-x: clip;
 }
 </style>

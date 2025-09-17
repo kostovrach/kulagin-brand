@@ -44,6 +44,16 @@ const router = createRouter({
             name: 'marketers',
             component: () => import('@/views/marketers/MarketersView.vue'),
         },
+        {
+            path: '/billboard',
+            name: 'billboard',
+            component: () => import('@/views/billboard/BillboardView.vue'),
+        },
+        {
+            path: '/:catchAll(.*)',
+            name: 'not-found',
+            component: () => import('../views/not-found/NotFoundView.vue'),
+        },
     ],
     scrollBehavior(to, from, savedPosition) {
         if (savedPosition) {

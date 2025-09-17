@@ -8,9 +8,13 @@ import App from './App.vue';
 import router from './router';
 
 import PrimeVue from 'primevue/config';
+
+//directives
 import AnimateOnScroll from 'primevue/animateonscroll';
 import draggable from './directives/draggable.js';
 import followCursor from './directives/followCursor';
+import accordion from './directives/accordion';
+//
 
 const app = createApp(App);
 
@@ -20,5 +24,6 @@ app.use(PrimeVue);
 app.directive('animateonscroll', AnimateOnScroll);
 app.directive('draggable', draggable);
 app.directive('follow-cursor', followCursor);
+app.directive('accordion', accordion);
 
 app.mount('#app');

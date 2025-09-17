@@ -1,10 +1,12 @@
 <template>
     <TheHeader />
     <RouterView />
+    <ModalRoot />
     <TheFooter />
 </template>
 
 <script setup>
+import ModalRoot from './components/ModalRoot.vue';
 import TheFooter from './components/TheFooter.vue';
 import TheHeader from './components/TheHeader.vue';
 </script>
