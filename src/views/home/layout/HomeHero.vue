@@ -44,8 +44,14 @@
                 </ButtonPrimary>
                 <img
                     v-draggable="{ top: -5, left: 75 }"
-                    src="/img/stickers/youtube.png"
-                    style="pointer-events: auto; width: 264px; rotate: -19deg"
+                    src="/img/stickers/igor.png"
+                    style="pointer-events: auto; width: 220px; rotate: 9deg"
+                    alt="#"
+                />
+                <img
+                    v-draggable="{ top: 30, left: 55 }"
+                    src="/img/stickers/theplace-white.png"
+                    style="pointer-events: auto; width: 220px; rotate: 5deg"
                     alt="#"
                 />
                 <Sticker
@@ -66,13 +72,6 @@
                     v-draggable="{ left: 35, top: 80 }"
                     style="rotate: -15deg"
                     variant="red"
-                    textAccent="от 120%"
-                    textMain="средний рост конверсии"
-                />
-                <Sticker
-                    v-draggable="{ left: 55, top: 40 }"
-                    style="rotate: 2deg"
-                    variant="grey"
                     textAccent="от 120%"
                     textMain="средний рост конверсии"
                 />

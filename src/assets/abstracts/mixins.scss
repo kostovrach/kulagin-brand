@@ -4,6 +4,7 @@
 
 @mixin horizontal-layout($gap: rem(64), $padding: $py $px, $min-width: max-content) {
     min-width: $min-width;
+    // max-height: calc(100lvh - ($py * 2));
     height: 100%;
     min-height: fit-content;
     display: grid;
@@ -27,7 +28,7 @@
     padding: $padding;
 }
 @mixin horizontal-max-height() {
-    max-height: calc(100lvh - $py * 2);
+    max-height: calc(100lvh - ($py * 2));
     @media (max-width: 768px) {
         max-height: 100%;
     }
@@ -62,6 +63,31 @@
         @media (pointer: fine) {
             &:hover {
                 color: $c-accent;
+            }
+        }
+    }
+}
+@mixin hover-underline($color: currentColor) {
+    position: relative;
+    width: fit-content;
+    line-height: 150%;
+    transition: all $td $tf;
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: rem(2);
+        width: 0;
+        background-color: $color;
+        transition: $td $tf;
+    }
+    @media (pointer: fine) {
+        &:hover {
+            color: $color;
+            &::after {
+                width: 100%;
             }
         }
     }
@@ -142,5 +168,12 @@
             translate: 0 0;
             opacity: 1;
         }
+    }
+}
+@mixin hide-scrollbar() {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+        display: none;
     }
 }

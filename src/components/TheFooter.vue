@@ -43,16 +43,24 @@
                     ></a>
                 </div>
                 <div class="footer__links">
-                    <a class="footer__link" href="/">Конфиденциальность</a>
-                    <a class="footer__link" href="/">Оферта</a>
-                    <a class="footer__link" href="/">Пользовательское соглашение</a>
+                    <button class="footer__link" @click="openPrivacy">Конфиденциальность</button>
+                    <button class="footer__link" @click="openPrivacy">Оферта</button>
+                    <button class="footer__link" @click="openPrivacy">Пользовательское соглашение</button>
                 </div>
             </div>
         </div>
     </footer>
 </template>
 
-<script setup></script>
+<script setup>
+import { useModal } from '@/composables/useModal';
+
+const { openModal } = useModal();
+
+function openPrivacy() {
+    openModal('privacy');
+}
+</script>
 
 <style lang="scss" scoped>
 @use '@/assets/abstracts' as *;
@@ -92,7 +100,8 @@
             will-change: rotate;
             @media (pointer: fine) {
                 &:hover {
-                    background: var(--color);
+                    // background: var(--color);
+                    translate: 0 -5%;
                     &:nth-of-type(4n + 1) {
                         rotate: -6deg;
                     }
@@ -100,7 +109,7 @@
                         rotate: -9deg;
                     }
                     &:nth-of-type(4n + 3) {
-                        rotate: -4deg;
+                        rotate: -5deg;
                     }
                     &:nth-of-type(4n + 4) {
                         rotate: -13deg;

@@ -2,6 +2,7 @@
     <HorizontalLayout>
         <HomeHero />
         <HomeBrand />
+        <HomeInterview />
         <HomeProjects />
         <PageNavigator to="/services" image="/img/content/personal-views/singing.gif">
             <template #tag>Далее</template>
@@ -18,4 +19,5 @@ import HomeBrand from './layout/HomeBrand.vue';
 import HomeProjects from './layout/HomeProjects.vue';
 
 import PageNavigator from '@/components/PageNavigator/PageNavigator.vue';
+import HomeInterview from './layout/HomeInterview.vue';
 </script>

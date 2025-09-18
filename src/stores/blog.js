@@ -1,8 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref, reactive } from 'vue';
 
-const RAW_BASE = import.meta.env.VITE_BLOG_URL;
-const BASE = RAW_BASE.replace(/\/$/, '');
+const BASE = import.meta.env.VITE_BLOG_URL;
 
 function slugify(value = '') {
     return String(value)

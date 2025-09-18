@@ -85,6 +85,8 @@
                     Услуги
                 </ButtonPrimary>
                 <h2 class="brand__services-title">Развиваю личные бренды</h2>
+                <p class="brand__services-subtitle">На личность — идет&nbsp;наличность</p>
+
                 <picture class="brand__services-image-container">
                     <img class="brand__services-image" src="/img/content/temp.jpg" alt="#" />
                 </picture>
@@ -209,6 +211,11 @@ import FormPrimary from '@/components/FormPrimary/FormPrimary.vue';
             '. image-6 image-6 . image-8 .';
         padding: 0 $px;
         @include horizontal-max-height;
+        &-title,
+        &-subtitle {
+            text-shadow: 1px 1px 5px $c-111111;
+            // mix-blend-mode: exclusion;
+        }
         &-title {
             position: absolute;
             z-index: 1;
@@ -220,7 +227,16 @@ import FormPrimary from '@/components/FormPrimary/FormPrimary.vue';
             font-family: 'Fira-Extra', sans-serif;
             font-size: lineScale(120, 64, 480, 1440);
             font-weight: $fw-bold;
-            mix-blend-mode: exclusion;
+        }
+        &-subtitle {
+            position: absolute;
+            z-index: 1;
+            top: 60%;
+            left: 25%;
+            max-width: 15ch;
+            text-transform: uppercase;
+            font-size: lineScale(32, 24, 480, 1440);
+            font-weight: $fw-bold;
         }
         &-image-container {
             &:nth-of-type(1) {

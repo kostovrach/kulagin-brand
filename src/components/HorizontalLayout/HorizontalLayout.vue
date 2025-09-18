@@ -29,11 +29,8 @@ const props = defineProps({
     overflow-x: auto;
     overflow-y: hidden;
 
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    &::-webkit-scrollbar {
-        display: none;
-    }
+    @include hide-scrollbar;
+
     @media (max-width: 768px) {
         height: initial;
 

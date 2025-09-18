@@ -1,21 +1,24 @@
 export default {
-    mounted(el) {
-        const items = Array.from(el.children);
-        let activeIndex = 0;
+    mounted(el, binding) {
+        const options = binding.value || {};
+        const { hover = false, defaultIndex = null } = options;
 
-        if (items.length > 0) {
-            items[0].classList.add('active');
+        const items = Array.from(el.children);
+
+        if (defaultIndex !== null && Number.isInteger(defaultIndex) && items[defaultIndex]) {
+            items[defaultIndex].classList.add('active');
         }
 
-        items.forEach((item, index) => {
-            const activate = () => {
-                items.forEach((el) => el.classList.remove('active'));
-                item.classList.add('active');
-                activeIndex = index;
-            };
+        const activate = (index) => {
+            items.forEach((el) => el.classList.remove('active'));
+            items[index].classList.add('active');
+        };
 
-            item.addEventListener('mouseenter', activate);
-            item.addEventListener('click', activate);
+        items.forEach((item, index) => {
+            if (hover) {
+                item.addEventListener('mouseenter', () => activate(index));
+            }
+            item.addEventListener('click', () => activate(index));
         });
     },
 };

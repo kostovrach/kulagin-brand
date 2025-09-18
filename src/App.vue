@@ -2,10 +2,12 @@
     <TheHeader />
     <RouterView />
     <ModalRoot />
+    <CookieNotify />
     <TheFooter />
 </template>
 
 <script setup>
+import CookieNotify from './components/modals/CookieNotify/CookieNotify.vue';
 import ModalRoot from './components/ModalRoot.vue';
 import TheFooter from './components/TheFooter.vue';
 import TheHeader from './components/TheHeader.vue';

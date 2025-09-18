@@ -1,114 +1,156 @@
 <template>
     <section class="projects">
         <div class="projects__container">
-            <div class="projects__section">
-                <h2 class="projects__title">собственные проекты.</h2>
-                <div class="projects__item--type1">
-                    <img
-                        class="projects__item--type1-interactive"
-                        v-draggable="{ left: 85, top: 50 }"
-                        style="width: 154px; rotate: 12deg; object-fit: cover; pointer-events: auto"
-                        src="/img/content/arabeska/image2.jpg"
-                        alt="#"
-                    />
-                    <img
-                        class="projects__item--type1-interactive"
-                        v-draggable="{ left: 50, top: 70 }"
-                        style="rotate: -12deg; max-width: 220px; pointer-events: auto"
-                        src="/img/content/arabeska/flower.png"
-                        alt="#"
-                    />
-                    <Sticker
-                        class="projects__item--type1-interactive"
-                        v-draggable="{ left: 10, top: 60 }"
-                        style="rotate: 7deg"
-                        variant="black-2"
-                        textAccent="от 120%"
-                        textMain="средний рост конверсии"
-                    />
-                    <div class="projects__item--type1-wrapper">
-                        <h3 class="projects__item--type1-title">Арабеска: <br />цветочный магазин</h3>
-                        <picture class="projects__item--type1-image-container">
+            <div class="projects__body">
+                <div class="projects__titlebox">
+                    <h2 class="projects__title">собственные проекты.</h2>
+                </div>
+                <div class="projects__content">
+                    <div class="projects__item projects__item--type1">
+                        <img
+                            class="projects__item--type1-interactive"
+                            v-draggable="{ left: 85, top: 50 }"
+                            style="width: 154px; rotate: 12deg; object-fit: cover; pointer-events: auto"
+                            src="/img/content/arabeska/image2.jpg"
+                            alt="#"
+                        />
+                        <img
+                            class="projects__item--type1-interactive"
+                            v-draggable="{ left: 50, top: 70 }"
+                            style="rotate: -12deg; max-width: 220px; pointer-events: auto"
+                            src="/img/content/arabeska/flower.png"
+                            alt="#"
+                        />
+                        <Sticker
+                            class="projects__item--type1-interactive"
+                            v-draggable="{ left: 10, top: 60 }"
+                            style="rotate: 7deg"
+                            variant="black-2"
+                            textAccent="от 120%"
+                            textMain="средний рост конверсии"
+                        />
+                        <div class="projects__item--type1-wrapper">
+                            <h3 class="projects__item--type1-title">Арабеска: <br />цветочный магазин</h3>
+                            <picture class="projects__item--type1-image-container">
+                                <img
+                                    class="projects__item--type1-image"
+                                    src="/img/content/arabeska/mockup.jpg"
+                                    alt="Arabeska"
+                                />
+                            </picture>
+                            <picture class="projects__item--type1-image-container">
+                                <img
+                                    class="projects__item--type1-image"
+                                    src="/img/content/arabeska/logo.svg"
+                                    alt="Arabeska"
+                                />
+                            </picture>
+                            <p class="projects__item--type1-desc">
+                                работы, в которых творчество встречается с&nbsp;результатом
+                            </p>
+                            <picture class="projects__item--type1-image-container">
+                                <img
+                                    class="projects__item--type1-image"
+                                    src="/img/content/arabeska/flowers.gif"
+                                    alt="Arabeska"
+                                />
+                            </picture>
+                            <a
+                                class="projects__item--type1-link"
+                                href="https://cvety63.ru"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                ><TheSvgSprite type="arrow" :size="72"
+                            /></a>
+                        </div>
+                    </div>
+                    <div class="projects__item projects__divider--type1">
+                        <img class="projects__divider--type1-arrow" src="/img/arrow.svg" />
+                        <picture class="projects__divider--type1-image-container">
                             <img
-                                class="projects__item--type1-image"
-                                src="/img/content/arabeska/mockup.jpg"
-                                alt="Arabeska"
-                            />
-                        </picture>
-                        <picture class="projects__item--type1-image-container">
-                            <img
-                                class="projects__item--type1-image"
-                                src="/img/content/arabeska/logo.svg"
-                                alt="Arabeska"
-                            />
-                        </picture>
-                        <p class="projects__item--type1-desc">
-                            работы, в которых творчество встречается с&nbsp;результатом
-                        </p>
-                        <picture class="projects__item--type1-image-container">
-                            <img
-                                class="projects__item--type1-image"
-                                src="/img/content/arabeska/flowers.gif"
-                                alt="Arabeska"
+                                class="projects__divider--type1-image"
+                                src="/img/content/personal-views/igor.png"
+                                alt="Игорь Кулагин"
                             />
                         </picture>
                     </div>
-                </div>
-            </div>
-            <div class="projects__divider--type1">
-                <img class="projects__divider--type1-arrow" src="/img/arrow.svg" />
-                <picture class="projects__divider--type1-image-container">
-                    <img
-                        class="projects__divider--type1-image"
-                        src="/img/content/personal-views/igor.png"
-                        alt="Игорь Кулагин"
-                    />
-                </picture>
-            </div>
-            <div class="projects__item--type2">
-                <img
-                    class="projects__item--type2-interactive"
-                    v-draggable="{ left: 50, top: 25 }"
-                    style="rotate: 5deg; max-width: 220px; pointer-events: auto"
-                    src="/img/stickers/theplace-white.png"
-                    alt="#"
-                />
-                <Sticker
-                    class="projects__item--type2-interactive"
-                    v-draggable="{ left: 60, top: 80 }"
-                    style="rotate: 12deg"
-                    variant="red"
-                    textMain="100% средний рост конверсии"
-                />
-                <div class="projects__item--type2-wrapper">
-                    <picture class="projects__item--type2-image-container">
-                        <img class="projects__item--type2-image" src="/img/content/theplace/temp.jpg" alt="ThePlace" />
-                    </picture>
-                    <picture class="projects__item--type2-image-container">
-                        <img class="projects__item--type2-image" src="/img/content/theplace/logo.svg" alt="ThePlace" />
-                    </picture>
-                    <picture class="projects__item--type2-image-container">
+                    <div class="projects__item projects__item--type2">
                         <img
-                            class="projects__item--type2-image"
-                            src="/img/content/theplace/mockup.png"
-                            alt="ThePlace"
+                            class="projects__item--type2-interactive"
+                            v-draggable="{ left: 15, top: -10 }"
+                            style="rotate: -5deg; max-width: 220px; pointer-events: auto"
+                            src="/img/stickers/youtube.png"
+                            alt="#"
                         />
-                    </picture>
-                    <p class="projects__item--type2-desc">
-                        диджитал студия, в&nbsp;котоой творчество встречается с&nbsp;результатом
-                    </p>
-                    <picture class="projects__item--type2-image-container">
-                        <img class="projects__item--type2-image" src="/img/content/theplace/team.jpg" alt="ThePlace" />
-                    </picture>
-                    <picture class="projects__item--type2-image-container">
-                        <img class="projects__item--type2-image" src="/img/content/theplace/temp1.jpg" alt="ThePlace" />
-                    </picture>
+                        <img
+                            class="projects__item--type2-interactive"
+                            v-draggable="{ left: 15, top: 55 }"
+                            style="rotate: -15deg; max-width: 220px; pointer-events: auto"
+                            src="/img/stickers/like.png"
+                            alt="#"
+                        />
+                        <img
+                            class="projects__item--type2-interactive"
+                            v-draggable="{ left: 55, top: 70 }"
+                            style="max-width: 100px"
+                            src="/img/stickers/since.png"
+                            alt="#"
+                        />
+                        <div class="projects__item--type2-wrapper">
+                            <picture class="projects__item--type2-image-container">
+                                <img
+                                    class="projects__item--type2-image"
+                                    src="/img/content/theplace/temp.jpg"
+                                    alt="ThePlace"
+                                />
+                            </picture>
+                            <picture class="projects__item--type2-image-container">
+                                <img
+                                    class="projects__item--type2-image"
+                                    src="/img/content/theplace/logo.svg"
+                                    alt="ThePlace"
+                                />
+                            </picture>
+                            <picture class="projects__item--type2-image-container">
+                                <img
+                                    class="projects__item--type2-image"
+                                    src="/img/content/theplace/team.jpg"
+                                    alt="ThePlace"
+                                />
+                            </picture>
+                            <p class="projects__item--type2-desc">
+                                диджитал студия, в&nbsp;котоой творчество встречается с&nbsp;результатом
+                            </p>
+                            <picture class="projects__item--type2-image-container">
+                                <img
+                                    class="projects__item--type2-image"
+                                    src="/img/content/theplace/mockup.png"
+                                    alt="ThePlace"
+                                />
+                            </picture>
+                            <picture class="projects__item--type2-image-container">
+                                <img
+                                    class="projects__item--type2-image"
+                                    src="/img/content/theplace/mockup2.jpg"
+                                    alt="ThePlace"
+                                />
+                            </picture>
+                            <a
+                                class="projects__item--type2-link"
+                                href="https://kulaginbrand.ru"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                ><TheSvgSprite type="arrow" :size="72"
+                            /></a>
+                        </div>
+                    </div>
+                    <div class="projects__item projects__divider--type2">
+                        <ButtonPrimary type="router-link" to="/projects" variant="red">Все проекты</ButtonPrimary>
+                        <img class="projects__divider--type2-arrow" src="/img/arrow-small.svg" />
+                    </div>
                 </div>
             </div>
-            <div class="projects__divider--type2">
-                <ButtonPrimary type="router-link" to="/projects" variant="red">Все проекты</ButtonPrimary>
-                <img class="projects__divider--type2-arrow" src="/img/arrow-small.svg" />
-            </div>
+
             <div class="projects__footer">
                 <div class="projects__interactive">
                     <img v-draggable="{ container: 'parent', axis: 'y', top: 64 }" src="/img/flag.png" alt="#" />
@@ -129,6 +171,7 @@
 import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
 import Sticker from '@/components/Sticker/Sticker.vue';
 import Contact from '@/components/Contact/Contact.vue';
+import TheSvgSprite from '@/components/TheSvgSprite.vue';
 </script>
 
 <style lang="scss" scoped>
@@ -139,19 +182,21 @@ import Contact from '@/components/Contact/Contact.vue';
     &__container {
         @include horizontal-layout($gap: 0);
     }
-    &__section {
+    &__body {
+        @include horizontal-max-height;
+    }
+    &__content {
         display: flex;
-        flex-direction: column;
-        gap: rem(48);
+        margin-top: rem(48);
     }
     &__title {
         @include block-title;
     }
     &__item {
+        height: 100%;
         &--type1 {
             position: relative;
             width: fit-content;
-            height: 100%;
             &-wrapper {
                 height: 100%;
                 display: grid;
@@ -161,10 +206,10 @@ import Contact from '@/components/Contact/Contact.vue';
                 grid-template-areas:
                     'title title title title image-1 image-1 image-1 image-1 image-2 image-2 image-2 image-2'
                     '. . . . image-1 image-1 image-1 image-1 desc desc desc desc'
-                    '. . . . image-1 image-1 image-1 image-1 image-3 image-3 image-3 image-3'
-                    '. . . . image-1 image-1 image-1 image-1 image-3 image-3 image-3 image-3'
-                    '. . . . image-1 image-1 image-1 image-1 image-3 image-3 image-3 image-3'
-                    '. . . . image-1 image-1 image-1 image-1 image-3 image-3 image-3 image-3';
+                    '. . . . image-1 image-1 image-1 image-1 image-3 image-3 image-3 link'
+                    '. . . . image-1 image-1 image-1 image-1 image-3 image-3 image-3 .'
+                    '. . . . image-1 image-1 image-1 image-1 image-3 image-3 image-3 .'
+                    '. . . . image-1 image-1 image-1 image-1 image-3 image-3 image-3 .';
             }
             &-title {
                 grid-area: title;
@@ -191,7 +236,6 @@ import Contact from '@/components/Contact/Contact.vue';
                 &:nth-of-type(2) {
                     grid-area: image-2;
                     max-width: rem(380);
-                    mix-blend-mode: darken;
                     img {
                         object-fit: contain;
                     }
@@ -207,20 +251,52 @@ import Contact from '@/components/Contact/Contact.vue';
                 height: 100%;
                 object-fit: cover;
             }
+            &-link {
+                grid-area: link;
+                width: fit-content;
+                height: fit-content;
+                rotate: -45deg;
+                overflow: hidden;
+                @media (pointer: fine) {
+                    &:hover svg {
+                        animation: arrow-translate $td $tf;
+                    }
+                }
+                @keyframes arrow-translate {
+                    0% {
+                        translate: 0 0;
+                        opacity: 1;
+                    }
+                    45% {
+                        translate: 100% 0;
+                        opacity: 0;
+                    }
+                    55% {
+                        translate: -100% 0;
+                        opacity: 0;
+                    }
+                    100% {
+                        translate: 0 0;
+                        opacity: 1;
+                    }
+                }
+            }
         }
         &--type2 {
+            translate: 0 -20%;
             position: relative;
             width: fit-content;
-            height: 100%;
             &-wrapper {
                 height: 100%;
                 display: grid;
-                grid-template-columns: repeat(5, auto);
-                grid-template-rows: repeat(3, auto);
+                grid-template-columns: repeat(8, auto);
+                grid-template-columns: repeat(4, auto);
                 grid-template-areas:
-                    'image-1 image-3 image-3 desc desc'
-                    'image-1 image-3 image-3 image-4 image-5'
-                    'image-2 image-3 image-3 image-4 image-5';
+                    'image-1 image-1 . image-2 image-2 . . .'
+                    'image-1 image-1 image-3 image-3 image-3 desc desc desc'
+                    '. . image-3 image-3 image-3 image-4 image-4 link'
+                    '. image-5 image-3 image-3 image-3 image-4 image-4 link';
+                gap: rem(16);
             }
             &-image-container {
                 max-height: 100%;
@@ -239,22 +315,22 @@ import Contact from '@/components/Contact/Contact.vue';
                 }
                 &:nth-of-type(3) {
                     grid-area: image-3;
-                    max-width: rem(530);
-                    img {
-                        scale: 1.2;
-                        object-fit: contain;
-                    }
+                    position: relative;
+                    max-width: rem(380);
+                    aspect-ratio: 1;
                 }
                 &:nth-of-type(4) {
                     grid-area: image-4;
-                    max-width: rem(200);
-                    align-self: center;
+                    max-width: rem(322);
+                    img {
+                        scale: 1.5;
+                        object-fit: contain;
+                    }
                 }
                 &:nth-of-type(5) {
                     grid-area: image-5;
-                    max-width: rem(154);
-                    height: rem(228);
-                    align-self: flex-end;
+                    max-width: rem(160);
+                    aspect-ratio: 1;
                 }
             }
             &-image {
@@ -273,26 +349,62 @@ import Contact from '@/components/Contact/Contact.vue';
                 line-height: 1.2;
                 font-weight: $fw-bold;
             }
+            &-link {
+                grid-area: link;
+                width: fit-content;
+                height: fit-content;
+                rotate: -45deg;
+                overflow: hidden;
+                @media (pointer: fine) {
+                    &:hover svg {
+                        animation: arrow-translate $td $tf;
+                    }
+                }
+                @keyframes arrow-translate {
+                    0% {
+                        translate: 0 0;
+                        opacity: 1;
+                    }
+                    45% {
+                        translate: 100% 0;
+                        opacity: 0;
+                    }
+                    55% {
+                        translate: -100% 0;
+                        opacity: 0;
+                    }
+                    100% {
+                        translate: 0 0;
+                        opacity: 1;
+                    }
+                }
+            }
         }
     }
     &__divider {
         &--type1 {
+            position: relative;
             width: fit-content;
             height: fit-content;
-            align-self: flex-end;
-            position: relative;
             left: rem(-96);
-            bottom: calc($py * -1);
+            bottom: calc($py * -0.5);
             user-select: none;
+            pointer-events: none;
             &-arrow {
                 translate: 20% 100%;
+            }
+            &-image-container {
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
             }
         }
         &--type2 {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             &-arrow {
                 translate: rem(32) rem(-48);
             }

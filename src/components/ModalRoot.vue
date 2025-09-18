@@ -14,10 +14,12 @@ import ModalWrapper from '@/components/ModalWrapper.vue';
 
 // registry
 import VideoModal from '@/components/modals/VideoModal.vue';
+import PrivacyModal from '@/components/modals/PrivacyModal/PrivacyModal.vue';
 //
 
 const registry = {
     video: VideoModal,
+    privacy: PrivacyModal,
 };
 
 const store = useModalStore();

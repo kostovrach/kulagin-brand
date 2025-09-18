@@ -18,7 +18,7 @@
                             Симбиоз талантливых и неординарных личностей, создающих нечто более, чем просто продукт
                         </p>
                     </div>
-                    <ul class="billboard__item--agency-list" v-accordion>
+                    <ul class="billboard__item--agency-list" v-accordion="{ hover: true, defaultIndex: 0 }">
                         <li class="billboard__item--agency-item">
                             <h3 class="billboard__item--agency-item-title">Брендинг</h3>
                             <picture class="billboard__item--agency-item-image-container">

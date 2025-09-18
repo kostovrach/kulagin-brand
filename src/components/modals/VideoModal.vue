@@ -1,25 +1,23 @@
 <template>
-    <transition name="slide-up">
-        <div class="modal-video">
-            <div class="modal-video__header">
-                <h2 class="modal-video__title">{{ payload.title }}</h2>
-                <button class="modal-video__button" aria-label="Закрыть" @click="close">
-                    <TheSvgSprite type="cross" :size="32" />
-                </button>
-            </div>
-            <div class="modal-video__body">
-                <video class="modal-video__video" v-if="payload.url" controls playsinline>
-                    <source :src="payload.url" type="video/mp4" />
-                </video>
-                <p class="modal-video__error" v-else>Кажется видео потерялось 🔍</p>
-            </div>
+    <div class="modal-video">
+        <div class="modal-video__header">
+            <h2 class="modal-video__title">{{ payload.title }}</h2>
+            <button class="modal-video__button" aria-label="Закрыть" @click="close">
+                <TheSvgSprite type="cross" :size="32" />
+            </button>
         </div>
-    </transition>
+        <div class="modal-video__body">
+            <video class="modal-video__video" v-if="payload.url" controls playsinline>
+                <source :src="payload.url" type="video/mp4" />
+            </video>
+            <p class="modal-video__error" v-else>Кажется видео потерялось 🔍</p>
+        </div>
+    </div>
 </template>
 
 <script setup>
 import { useModal } from '@/composables/useModal';
-import TheSvgSprite from '../TheSvgSprite.vue';
+import TheSvgSprite from '@/components/TheSvgSprite.vue';
 
 const props = defineProps({
     payload: { type: Object, default: () => ({}) },
@@ -49,8 +47,6 @@ function close() {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        // display: grid;
-        // grid-template-columns: auto 10%;
         border-bottom: rem(1) solid $c-111111;
     }
     &__title {
@@ -100,15 +96,4 @@ function close() {
         }
     }
 }
-
-// .slide-up-enter-active,
-// .slide-up-leave-active {
-//     transition: all $td $tf;
-// }
-
-// .slide-up-enter-from,
-// .slide-up-leave-to {
-//     translate: 0 100%;
-//     opacity: 0;
-// }
 </style>
