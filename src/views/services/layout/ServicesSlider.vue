@@ -3,6 +3,7 @@
         <div class="services__container">
             <h1 class="services__title fade-bottom-rotate">Развиваю ваш личный&nbsp;бренд.</h1>
             <Swiper
+                v-if="!servicesLoading"
                 class="services__slider fade-bottom"
                 style="animation-delay: 0.4s"
                 :modules="modules"

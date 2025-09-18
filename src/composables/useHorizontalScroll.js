@@ -16,8 +16,9 @@ export function useHorizontalScroll(options = {}) {
     const isScrolling = ref(false);
     const isDesktop = ref(true);
     const isEnabled = ref(true);
+    const forceMode = ref(false);
 
-    const isActive = computed(() => isDesktop.value && isEnabled.value);
+    const isActive = computed(() => (forceMode.value || isDesktop.value) && isEnabled.value);
 
     let current = 0;
     let target = 0;
@@ -188,6 +189,8 @@ export function useHorizontalScroll(options = {}) {
     }
 
     function handleMediaQueryChange(e) {
+        if (forceMode.value) return; // игнорируем, если форс включен
+
         isDesktop.value = e.matches;
 
         if (!isDesktop.value) {
@@ -311,6 +314,24 @@ export function useHorizontalScroll(options = {}) {
         }
     }
 
+    function setForceMode(state) {
+        forceMode.value = state;
+        if (state) {
+            // Принудительно активируем десктопный режим
+            isDesktop.value = true;
+            syncWithNativeScroll();
+            if (containerRef.value) {
+                setupListeners();
+            }
+        } else {
+            // Возвращаемся к стандартной логике
+            if (mediaQuery) {
+                isDesktop.value = mediaQuery.matches;
+                handleMediaQueryChange(mediaQuery);
+            }
+        }
+    }
+
     onMounted(() => {
         setupMediaQuery();
 
@@ -334,6 +355,8 @@ export function useHorizontalScroll(options = {}) {
         isDesktop,
         isEnabled,
         isActive,
+        forceMode,
+        setForceMode,
         scrollTo,
         scrollBy,
         enable,

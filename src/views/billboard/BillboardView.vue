@@ -9,74 +9,78 @@
                         target="_blank"
                         variant="black"
                         logic="double-line"
-                        style="font-size: 1.5rem; position: absolute; top: 2%; right: 5%; rotate: 7deg"
+                        style="font-size: 1.125rem; position: absolute; top: -5%; right: -25px; rotate: 7deg"
                         >Заказать проект</ButtonPrimary
                     >
-                    <div class="billboard__item--agency-titlebox">
-                        <h2 class="billboard__item-title billboard__item--agency-title">digital Agency</h2>
-                        <p class="billboard__item-desc billboard__item--agency-desc">
-                            Симбиоз талантливых и неординарных личностей, создающих нечто более, чем просто продукт
-                        </p>
+                    <div class="billboard__item--agency-wrapper">
+                        <div class="billboard__item--agency-titlebox">
+                            <h2 class="billboard__item-title billboard__item--agency-title">digital Agency</h2>
+                            <p class="billboard__item-desc billboard__item--agency-desc">
+                                Симбиоз талантливых и неординарных личностей, создающих нечто более, чем просто продукт
+                            </p>
+                        </div>
+                        <ul class="billboard__item--agency-list" v-accordion="{ hover: true, defaultIndex: 0 }">
+                            <li class="billboard__item--agency-item">
+                                <h3 class="billboard__item--agency-item-title">Брендинг</h3>
+                                <picture class="billboard__item--agency-item-image-container">
+                                    <img
+                                        class="bilboard__item--agency-item-image"
+                                        src="/img/content/theplace/temp1.jpg"
+                                        alt="#"
+                                    />
+                                </picture>
+                            </li>
+                            <li class="billboard__item--agency-item">
+                                <h3 class="billboard__item--agency-item-title">Создание сайтов</h3>
+                                <picture class="billboard__item--agency-item-image-container">
+                                    <img
+                                        class="bilboard__item--agency-item-image"
+                                        src="/img/content/theplace/temp.jpg"
+                                        alt="#"
+                                    />
+                                </picture>
+                            </li>
+                            <li class="billboard__item--agency-item">
+                                <h3 class="billboard__item--agency-item-title">Продвижение</h3>
+                                <picture class="billboard__item--agency-item-image-container">
+                                    <img
+                                        class="bilboard__item--agency-item-image"
+                                        src="/img/content/theplace/mockup1.jpg"
+                                        alt="#"
+                                    />
+                                </picture>
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="billboard__item--agency-list" v-accordion="{ hover: true, defaultIndex: 0 }">
-                        <li class="billboard__item--agency-item">
-                            <h3 class="billboard__item--agency-item-title">Брендинг</h3>
-                            <picture class="billboard__item--agency-item-image-container">
-                                <img
-                                    class="bilboard__item--agency-item-image"
-                                    src="/img/content/theplace/temp1.jpg"
-                                    alt="#"
-                                />
-                            </picture>
-                        </li>
-                        <li class="billboard__item--agency-item">
-                            <h3 class="billboard__item--agency-item-title">Создание сайтов</h3>
-                            <picture class="billboard__item--agency-item-image-container">
-                                <img
-                                    class="bilboard__item--agency-item-image"
-                                    src="/img/content/theplace/temp.jpg"
-                                    alt="#"
-                                />
-                            </picture>
-                        </li>
-                        <li class="billboard__item--agency-item">
-                            <h3 class="billboard__item--agency-item-title">Продвижение</h3>
-                            <picture class="billboard__item--agency-item-image-container">
-                                <img
-                                    class="bilboard__item--agency-item-image"
-                                    src="/img/content/theplace/mockup1.jpg"
-                                    alt="#"
-                                />
-                            </picture>
-                        </li>
-                    </ul>
                 </div>
                 <div class="billboard__item billboard__item--view fade-bottom">
                     <ButtonPrimary
                         type="router-link"
                         to="/"
                         variant="red"
-                        style="font-size: 1.2rem; position: absolute; top: 45%; left: 45%; rotate: -7deg"
+                        style="font-size: 1rem; position: absolute; top: 50%; left: 50%; rotate: -7deg"
                         >Познакомиться</ButtonPrimary
                     >
-                    <div class="billboard__item--view-body">
-                        <div class="billboard__item--view-titlebox">
-                            <h1 class="billboard__item-title billboard__item--view-title">
-                                Привет, я Игорь&nbsp;Кулагин
-                            </h1>
-                            <p class="billboard__item-desc billboard__item--view-desc">
-                                Мой опыт и&nbsp;знания смогут сократить путь к&nbsp;результатам, экономя несколько лет
-                                усилий
-                            </p>
+                    <div class="billboard__item--view-wrapper">
+                        <div class="billboard__item--view-body">
+                            <div class="billboard__item--view-titlebox">
+                                <h1 class="billboard__item-title billboard__item--view-title">
+                                    Привет, я Игорь&nbsp;Кулагин
+                                </h1>
+                                <p class="billboard__item-desc billboard__item--view-desc">
+                                    Мой опыт и&nbsp;знания смогут сократить путь к&nbsp;результатам, экономя несколько
+                                    лет усилий
+                                </p>
+                            </div>
+                            <div class="billboard__item--view-contact">
+                                <a class="billboard__item--view-link" href="tel:" target="_blank">+7 927 714-33-39</a>
+                                <a class="billboard__item--view-link" href="mailto:" target="_blank">kulagin@mail.ru</a>
+                            </div>
                         </div>
-                        <div class="billboard__item--view-contact">
-                            <a class="billboard__item--view-link" href="tel:" target="_blank">+7 927 714-33-39</a>
-                            <a class="billboard__item--view-link" href="mailto:" target="_blank">kulagin@mail.ru</a>
-                        </div>
+                        <picture class="billboard__item--view-image-container">
+                            <img class="billboard__item--view-image" src="/img/content/personal-views/igor1.png" />
+                        </picture>
                     </div>
-                    <picture class="billboard__item--view-image-container">
-                        <img class="billboard__item--view-image" src="/img/content/personal-views/igor1.png" />
-                    </picture>
                 </div>
                 <a
                     class="billboard__item billboard__item--project billboard__item--primary fade-bottom"
@@ -85,16 +89,18 @@
                     rel="noopener noreferrer"
                 >
                     <div class="billboard__item--primary-wrapper">
-                        <h2 class="billboard__item-title billboard__item--primary-title">Arabeska</h2>
-                        <span class="billboard__item--primary-icon"><TheSvgSprite type="arrow" :size="48" /></span>
+                        <div class="billboard__item--primary-content">
+                            <h2 class="billboard__item-title billboard__item--primary-title">Arabeska</h2>
+                            <span class="billboard__item--primary-icon"><TheSvgSprite type="arrow" :size="48" /></span>
+                        </div>
+                        <picture class="billboard__item--primary-image-container">
+                            <img
+                                class="billboard__item--primary-image"
+                                src="/img/content/arabeska/arabeska.gif"
+                                alt="arabeska"
+                            />
+                        </picture>
                     </div>
-                    <picture class="billboard__item--primary-image-container">
-                        <img
-                            class="billboard__item--primary-image"
-                            src="/img/content/arabeska/arabeska.gif"
-                            alt="arabeska"
-                        />
-                    </picture>
                 </a>
                 <a
                     class="billboard__item billboard__item--club billboard__item--primary fade-bottom"
@@ -103,57 +109,61 @@
                     rel="noopener noreferrer"
                 >
                     <div class="billboard__item--primary-wrapper">
-                        <h2 class="billboard__item-title billboard__item--primary-title">GT-club</h2>
-                        <span class="billboard__item--primary-icon"><TheSvgSprite type="arrow" :size="48" /></span>
-                    </div>
+                        <div class="billboard__item--primary-content">
+                            <h2 class="billboard__item-title billboard__item--primary-title">GT-club</h2>
+                            <span class="billboard__item--primary-icon"><TheSvgSprite type="arrow" :size="48" /></span>
+                        </div>
 
-                    <picture class="billboard__item--primary-image-container">
-                        <img class="billboard__item--primary-image" src="/img/content/gt-club.gif" alt="gt-club" />
-                    </picture>
+                        <picture class="billboard__item--primary-image-container">
+                            <img class="billboard__item--primary-image" src="/img/content/gt-club.gif" alt="gt-club" />
+                        </picture>
+                    </div>
                 </a>
                 <div class="billboard__item billboard__item--contact fade-bottom">
-                    <h2 class="billboard__item-title billboard__item--contact-title">Соцсети</h2>
-                    <div class="billboard__item--contact-list">
-                        <a
-                            class="billboard__item--contact-item"
-                            href="https://example.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <img src="/img/stickers/vk.png" alt="vk" />
-                        </a>
-                        <a
-                            class="billboard__item--contact-item"
-                            href="https://example.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <img src="/img/stickers/tg.png" alt="tg" />
-                        </a>
-                        <a
-                            class="billboard__item--contact-item"
-                            href="https://example.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <img src="/img/stickers/whatsapp.png" alt="whatsapp" />
-                        </a>
-                        <a
-                            class="billboard__item--contact-item"
-                            href="https://example.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <img src="/img/stickers/ok.png" alt="ok" />
-                        </a>
-                        <a
-                            class="billboard__item--contact-item"
-                            href="https://example.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <img src="/img/stickers/tiktok.png" alt="tiktok" />
-                        </a>
+                    <div class="billboard__item--contact-wrapper">
+                        <h2 class="billboard__item-title billboard__item--contact-title">Соцсети</h2>
+                        <div class="billboard__item--contact-list">
+                            <a
+                                class="billboard__item--contact-item"
+                                href="https://example.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <img src="/img/stickers/vk.png" alt="vk" />
+                            </a>
+                            <a
+                                class="billboard__item--contact-item"
+                                href="https://example.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <img src="/img/stickers/tg.png" alt="tg" />
+                            </a>
+                            <a
+                                class="billboard__item--contact-item"
+                                href="https://example.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <img src="/img/stickers/whatsapp.png" alt="whatsapp" />
+                            </a>
+                            <a
+                                class="billboard__item--contact-item"
+                                href="https://example.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <img src="/img/stickers/ok.png" alt="ok" />
+                            </a>
+                            <a
+                                class="billboard__item--contact-item"
+                                href="https://example.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <img src="/img/stickers/tiktok.png" alt="tiktok" />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -189,7 +199,7 @@ import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
             'agency agency view view'
             'project club contact contact'
             'project club contact contact';
-        gap: rem(16);
+        gap: rem(16) lineScale(16, 8, 480, 1440);
         @for $i from 0 through 5 {
             :nth-child(5n + #{$i}) {
                 $delay: calc($i / 10);
@@ -199,13 +209,12 @@ import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
     }
     &__item {
         background-color: $c-main;
-        border-radius: rem(32);
-        overflow: hidden;
-        padding: rem(24);
+        border-radius: rem(20);
+        padding: rem(18);
         &-title {
             text-transform: uppercase;
             font-family: 'Fira-Extra', sans-serif;
-            font-size: lineScale(64, 18, 480, 1440);
+            font-size: lineScale(64, 32, 480, 1440);
             font-weight: $fw-bold;
         }
         &-desc {
@@ -216,17 +225,24 @@ import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
         }
         &--agency {
             grid-area: agency;
-            display: flex;
-            flex-direction: column;
-            gap: rem(32);
+            position: relative;
+            z-index: 1;
+            &-wrapper {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                gap: rem(32);
+            }
             &-titlebox {
                 flex: 0 0 30%;
-                max-width: 55ch;
+                max-width: 80%;
             }
             &-list {
                 flex: 1 1 60%;
                 display: flex;
-                gap: rem(16);
+                gap: lineScale(16, 8, 480, 1440);
                 min-height: 0;
                 will-change: flex;
             }
@@ -234,6 +250,7 @@ import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
                 flex: 1 1 10%;
                 position: relative;
                 height: 100%;
+                min-height: rem(180);
                 overflow: hidden;
                 transition: flex 1.5s $tf-spring;
                 &.active {
@@ -276,8 +293,13 @@ import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
         }
         &--view {
             grid-area: view;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            overflow: hidden;
+            &-wrapper {
+                width: 100%;
+                height: 100%;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
             &-body {
                 height: 100%;
                 display: flex;
@@ -299,18 +321,20 @@ import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
             }
             &-image-container {
                 position: relative;
-                width: 105%;
-                height: 105%;
+                width: 100%;
+                height: 100%;
                 user-select: none;
                 img {
-                    width: 100%;
-                    height: 100%;
+                    position: absolute;
+                    inset: 0;
+                    width: 110%;
+                    height: 105%;
                     object-fit: cover;
                 }
             }
         }
         &--primary {
-            position: relative;
+            padding: initial;
             &#{$p}__item--project {
                 grid-area: project;
             }
@@ -325,6 +349,14 @@ import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
                 }
             }
             &-wrapper {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                border-radius: inherit;
+                padding: rem(18);
+            }
+            &-content {
                 position: relative;
                 z-index: 1;
                 width: 100%;
@@ -372,8 +404,16 @@ import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
         }
         &--contact {
             grid-area: contact;
-            display: flex;
-            flex-direction: column;
+            padding: 0;
+            &-wrapper {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: rem(18);
+                overflow: hidden;
+            }
             &-list {
                 display: flex;
                 translate: 0 50%;
@@ -403,6 +443,24 @@ import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
                     object-fit: contain;
                 }
             }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .billboard {
+        height: initial;
+        &__container {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(4, auto);
+            grid-template-areas:
+                'view view'
+                'project club'
+                'agency agency'
+                'contact contact';
+        }
+        &__item {
+            min-height: rem(256);
         }
     }
 }

@@ -133,7 +133,7 @@ const secondPart = computed(() => {
     font-size: lineScale(32, 24, 480, 1440);
     font-weight: $fw-bold;
     border-radius: 50%;
-    padding: rem(34);
+    padding: lineScale(32, 24, 480, 1440);
     box-shadow: rem(1) rem(1) rem(1) $c-111111;
     overflow: hidden;
     transition: background-color $td $tf;

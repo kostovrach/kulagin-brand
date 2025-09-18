@@ -59,8 +59,11 @@ const props = defineProps({
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap-reverse;
+            flex-wrap: wrap;
             gap: rem(32);
+            @media (max-width: 768px) {
+                justify-content: center;
+            }
         }
         #{$p}__image-container {
             max-width: rem(600);
@@ -95,6 +98,9 @@ const props = defineProps({
     &__image-container {
         max-width: rem(200);
         height: rem(300);
+        @media (max-width: 768px) {
+            max-width: rem(600);
+        }
     }
     &__image {
         width: 100%;

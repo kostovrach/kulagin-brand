@@ -8,7 +8,12 @@
                 class="hobby__slider fade-bottom"
                 style="animation-delay: 0.4s"
                 :modules="modules"
-                :slides-per-view="3"
+                :slides-per-view="1"
+                :breakpoints="{
+                    1100: {
+                        slidesPerView: 3,
+                    },
+                }"
                 :space-between="96"
                 loop
                 centered-slides
@@ -173,6 +178,7 @@ const modules = [Navigation];
         &-image {
             width: 100%;
             height: 100%;
+            aspect-ratio: 2/1; // <-----
             object-fit: cover;
         }
         &-title {
@@ -215,6 +221,65 @@ const modules = [Navigation];
         cursor: pointer;
         &--prev {
             transform: scaleX(-1);
+        }
+    }
+}
+
+@media (max-width: 1100px) {
+    .hobby {
+        &__container {
+            display: flex;
+            flex-direction: column;
+            gap: rem(64);
+        }
+        &__titlebox {
+            position: initial;
+        }
+        &__slider {
+            height: fit-content;
+            &-wrapper {
+                height: fit-content;
+            }
+        }
+        &__slide {
+            &-wrapper {
+                display: grid;
+                grid-template-areas:
+                    'image title'
+                    'image . '
+                    'image desc';
+            }
+            &-image-container {
+                grid-area: image;
+                width: rem(320);
+                height: rem(480);
+            }
+            &-title,
+            &-desc {
+                position: static;
+                min-width: initial;
+            }
+            &-title {
+                grid-area: title;
+            }
+            &-desc {
+                grid-area: desc;
+            }
+        }
+    }
+}
+
+@media (max-width: 560px) {
+    .hobby {
+        &__slide {
+            &-wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: rem(24);
+            }
+            &-image-container {
+                align-self: center;
+            }
         }
     }
 }

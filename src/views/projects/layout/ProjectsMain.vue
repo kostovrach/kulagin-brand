@@ -1,8 +1,9 @@
 <template>
-    <section class="hero">
-        <div class="hero__container">
-            <div class="hero__body">
+    <section class="projects">
+        <div class="projects__container">
+            <div class="projects__body">
                 <Sticker
+                    class="projects__sticker"
                     v-draggable="{ left: 50, top: 15 }"
                     style="rotate: 15deg"
                     variant="red"
@@ -10,21 +11,22 @@
                     textMain="компаний по всему миру"
                 />
                 <Sticker
+                    class="projects__sticker"
                     v-draggable="{ left: 20, top: 90 }"
                     style="rotate: -15deg"
                     variant="black"
                     textAccent="65+"
                     textMain="российских компаний"
                 />
-                <div class="hero__titlebox">
-                    <h1 class="hero__title fade-bottom-rotate">Ускоряю развитие&nbsp;бизнеса.</h1>
+                <div class="projects__titlebox">
+                    <h1 class="projects__title fade-bottom-rotate">Ускоряю развитие&nbsp;бизнеса.</h1>
                 </div>
-                <div class="hero__content">
-                    <div class="hero__map fade-scale" style="animation-delay: 0.4s">
+                <div class="projects__content">
+                    <div class="projects__map fade-scale" style="animation-delay: 0.4s">
                         <img
                             v-for="point in points"
                             :key="point.id"
-                            class="hero__map-icon"
+                            class="projects__map-icon"
                             :style="{
                                 position: 'absolute',
                                 top: `${point.position.top}%`,
@@ -33,13 +35,13 @@
                             src="/img/icon-fire.gif"
                             alt="Точка"
                         />
-                        <picture class="hero__map-image-container">
-                            <img class="hero__map-image" src="/img/map.svg" alt="Карта мира" />
+                        <picture class="projects__map-image-container">
+                            <img class="projects__map-image" src="/img/map.svg" alt="Карта мира" />
                         </picture>
                     </div>
-                    <div class="hero__list fade-right" style="animation-delay: 0.6s">
-                        <div class="hero__list-loader" v-if="projectsLoading">
-                            <li class="hero__list-loader-item" v-for="loader in 10" :key="loader">
+                    <div class="projects__list fade-right" style="animation-delay: 0.6s">
+                        <div class="projects__list-loader" v-if="projectsLoading">
+                            <li class="projects__list-loader-item" v-for="loader in 10" :key="loader">
                                 <Skeleton
                                     v-for="n in 3"
                                     :key="n"
@@ -49,26 +51,26 @@
                                 />
                             </li>
                         </div>
-                        <ul class="hero__list-wrapper" v-else>
-                            <li class="hero__item" v-for="item in projects" :key="item.key">
-                                <div class="hero__item-titlebox">
-                                    <span class="hero__item-tag">{{ item.location }}</span>
-                                    <h2 class="hero__item-title">{{ item.title }}</h2>
+                        <ul class="projects__list-wrapper" v-else>
+                            <li class="projects__item" v-for="item in projects" :key="item.key">
+                                <div class="projects__item-titlebox">
+                                    <span class="projects__item-tag">{{ item.location }}</span>
+                                    <h2 class="projects__item-title">{{ item.title }}</h2>
                                 </div>
-                                <div class="hero__item-body">
-                                    <ul class="hero__item-list">
+                                <div class="projects__item-body">
+                                    <ul class="projects__item-list">
                                         <li v-for="service in item.services" :key="service">{{ service }}</li>
                                     </ul>
-                                    <p class="hero__item-desc">{{ item.description }}</p>
+                                    <p class="projects__item-desc">{{ item.description }}</p>
                                 </div>
                                 <a
-                                    class="hero__item-button"
+                                    class="projects__item-button"
                                     :href="item.link"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <span class="hero__item-button-text">Открыть проект</span>
-                                    <span class="hero__item-button-icon">
+                                    <span class="projects__item-button-text">Открыть проект</span>
+                                    <span class="projects__item-button-icon">
                                         <TheSvgSprite type="arrow" :size="10" />
                                     </span>
                                 </a>
@@ -187,7 +189,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 @use '@/assets/abstracts' as *;
 
-.hero {
+.projects {
     &__container {
         @include horizontal-layout;
     }
@@ -209,14 +211,17 @@ onMounted(() => {
     }
     &__content {
         width: fit-content;
+        max-width: 100%;
         display: grid;
         grid-auto-flow: column;
         gap: rem(128);
     }
     &__map {
         position: relative;
+        width: 100%;
         max-height: 100%;
         &-image-container {
+            width: 100%;
             max-width: rem(800);
             max-height: rem(470);
         }
@@ -334,6 +339,28 @@ onMounted(() => {
                 font-size: rem(14);
                 font-weight: $fw-bold;
             }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .projects {
+        &__sticker {
+            display: none;
+        }
+        &__body {
+            gap: rem(64);
+        }
+        &__content {
+            display: flex;
+            flex-direction: column;
+        }
+        &__list {
+            width: 100%;
+            overflow-x: auto;
+        }
+        &__item {
+            width: rem(320);
         }
     }
 }

@@ -2,6 +2,7 @@
     <section class="contact">
         <div class="contact__container">
             <Sticker
+                class="contact__sticker"
                 v-draggable="{ top: 80, left: 65 }"
                 style="rotate: -7deg"
                 variant="grey"
@@ -95,6 +96,21 @@ import Sticker from '@/components/Sticker/Sticker.vue';
                     @include gradient-text-hover;
                 }
             }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .contact {
+        &__sticker {
+            display: none;
+        }
+        &__content {
+            display: flex;
+            flex-direction: column;
+        }
+        &__list {
+            align-self: flex-start;
         }
     }
 }

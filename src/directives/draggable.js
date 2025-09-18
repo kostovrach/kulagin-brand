@@ -84,7 +84,7 @@ function initDraggable(el, options = {}) {
     let topPercent = options.top ?? 0;
 
     el.style.position = 'absolute';
-    el.style.zIndex = '5';
+    el.style.zIndex = '10';
     el.style.cursor = 'grab';
     el.style.willChange = 'left, top';
 

@@ -1,5 +1,5 @@
 <template>
-    <HorizontalLayout>
+    <HorizontalLayout :force-mode="true">
         <section class="blog">
             <div class="blog__container">
                 <div class="blog__titlebox">
@@ -55,7 +55,13 @@ const { list } = storeToRefs(blogStore);
 
     position: relative;
     &__container {
-        @include horizontal-layout;
+        min-width: max-content;
+        height: 100%;
+        min-height: fit-content;
+        display: grid;
+        grid-auto-flow: column;
+        gap: rem(64);
+        padding: $py $px;
     }
     &__titlebox {
         position: fixed;
@@ -99,18 +105,20 @@ const { list } = storeToRefs(blogStore);
             gap: rem(16);
         }
         &-image-container {
-            position: relative;
             width: 100%;
             height: 100%;
-            &::before {
-                content: '';
-                position: absolute;
-                z-index: 2;
-                inset: 0;
-                backdrop-filter: blur(5px) saturate(0);
-                background-image: url('img/patterns/noise.png');
-                pointer-events: none;
-                transition: opacity $td $tf;
+            @media (pointer: fine) {
+                position: relative;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    z-index: 2;
+                    inset: 0;
+                    backdrop-filter: blur(5px) saturate(0);
+                    background-image: url('img/patterns/noise.png');
+                    pointer-events: none;
+                    transition: opacity $td $tf;
+                }
             }
         }
         &-image {
@@ -123,6 +131,7 @@ const { list } = storeToRefs(blogStore);
             font-family: 'Fira-Extra', sans-serif;
             font-size: lineScale(20, 18, 480, 1440);
             font-weight: $fw-bold;
+            text-shadow: 1px 1px 5px $c-main;
         }
         &:nth-child(6n + 1) {
             width: rem(230);
