@@ -1,21 +1,48 @@
 export default {
     mounted(el, binding) {
-        initDraggable(el, binding.value);
+        setupDraggable(el, binding.value);
     },
     updated(el, binding) {
         if (JSON.stringify(binding.value) !== JSON.stringify(binding.oldValue)) {
-            el._draggableCleanup?.();
-            initDraggable(el, binding.value);
+            el._draggableDestroy?.();
+            setupDraggable(el, binding.value);
         }
     },
     unmounted(el) {
-        el._draggableCleanup?.();
-        delete el._draggableCleanup;
+        el._draggableDestroy?.();
+        delete el._draggableDestroy;
+        delete el._toggleDraggable;
         delete el._getCurrentPercentage;
     },
 };
 
-// const INTERACTIVE_TAGS = ['A', 'BUTTON', 'INPUT', 'TEXTAREA', 'VIDEO']; // <-----
+const INTERACTIVE_TAGS = ['A', 'BUTTON', 'INPUT', 'TEXTAREA', 'VIDEO'];
+
+function setupDraggable(el, options) {
+    initDraggable(el, options);
+
+    const mm = window.matchMedia('(pointer: coarse)');
+
+    function checkPointerType() {
+        if (mm.matches) {
+            el._toggleDraggable(false);
+        } else {
+            el._toggleDraggable(true);
+        }
+    }
+
+    window.addEventListener('resize', checkPointerType, { passive: true });
+    mm.addEventListener('change', checkPointerType);
+
+    checkPointerType();
+
+    const oldDestroy = el._draggableDestroy;
+    el._draggableDestroy = () => {
+        window.removeEventListener('resize', checkPointerType);
+        mm.removeEventListener('change', checkPointerType);
+        oldDestroy?.();
+    };
+}
 
 function initDraggable(el, options = {}) {
     if (options === false) return;
@@ -38,35 +65,11 @@ function initDraggable(el, options = {}) {
 
     el.style.position = 'absolute';
     el.style.zIndex = '5';
-    el.style.cursor = 'grab';
     el.style.willChange = 'left, top';
-
-    function getReferenceSize() {
-        if (referenceContainer === document.documentElement) {
-            return { width: window.innerWidth, height: window.innerHeight };
-        } else {
-            const rect = referenceContainer.getBoundingClientRect();
-            return { width: rect.width, height: rect.height };
-        }
+    if (!el.style.left || !el.style.top) {
+        el.style.left = (leftPercent / 100) * referenceContainer.offsetWidth + 'px';
+        el.style.top = (topPercent / 100) * referenceContainer.offsetHeight + 'px';
     }
-
-    function applyPercentagePosition() {
-        const { width, height } = getReferenceSize();
-        const leftPx = (leftPercent / 100) * width;
-        const topPx = (topPercent / 100) * height;
-        el.style.left = leftPx + 'px';
-        el.style.top = topPx + 'px';
-    }
-
-    function convertToPercentage(leftPx, topPx) {
-        const { width, height } = getReferenceSize();
-        return {
-            left: (leftPx / width) * 100,
-            top: (topPx / height) * 100,
-        };
-    }
-
-    applyPercentagePosition();
 
     let dragging = false;
     let startX = 0,
@@ -81,7 +84,7 @@ function initDraggable(el, options = {}) {
 
     function onPointerDown(e) {
         if (e.pointerType === 'mouse' && e.button !== 0) return;
-        // if (INTERACTIVE_TAGS.includes(e.target.tagName)) return; // <-----
+        if (INTERACTIVE_TAGS.includes(e.target.tagName)) return;
 
         dragging = true;
         el.classList.add('dragging');
@@ -159,9 +162,9 @@ function initDraggable(el, options = {}) {
         const finalLeftPx = parseFloat(el.style.left) || 0;
         const finalTopPx = parseFloat(el.style.top) || 0;
 
-        const percentages = convertToPercentage(finalLeftPx, finalTopPx);
-        leftPercent = percentages.left;
-        topPercent = percentages.top;
+        const { width, height } = referenceContainer.getBoundingClientRect();
+        leftPercent = (finalLeftPx / width) * 100;
+        topPercent = (finalTopPx / height) * 100;
 
         if (options.onPositionChange) {
             options.onPositionChange(leftPercent, topPercent);
@@ -170,41 +173,42 @@ function initDraggable(el, options = {}) {
 
     function onResize() {
         if (!dragging) {
-            applyPercentagePosition();
+            const { width, height } = referenceContainer.getBoundingClientRect();
+            el.style.left = (leftPercent / 100) * width + 'px';
+            el.style.top = (topPercent / 100) * height + 'px';
         } else {
             containerRect = constraintContainer?.getBoundingClientRect() || null;
             elRect = el.getBoundingClientRect();
         }
     }
 
-    el.addEventListener('pointerdown', onPointerDown);
-    window.addEventListener('pointermove', onPointerMove, { passive: false });
-    window.addEventListener('pointerup', onPointerUp, { passive: true });
-    window.addEventListener('resize', onResize, { passive: true });
-
-    let resizeObserver = null;
-    if (referenceContainer !== document.documentElement) {
-        resizeObserver = new ResizeObserver(() => {
-            if (!dragging) {
-                applyPercentagePosition();
-            } else {
-                containerRect = constraintContainer?.getBoundingClientRect() || null;
-                elRect = el.getBoundingClientRect();
-            }
-        });
-        resizeObserver.observe(referenceContainer);
+    function addListeners() {
+        el.addEventListener('pointerdown', onPointerDown);
+        window.addEventListener('pointermove', onPointerMove, { passive: false });
+        window.addEventListener('pointerup', onPointerUp, { passive: true });
+        window.addEventListener('resize', onResize, { passive: true });
     }
 
-    el._draggableCleanup = () => {
+    function removeListeners() {
         el.removeEventListener('pointerdown', onPointerDown);
         window.removeEventListener('pointermove', onPointerMove);
         window.removeEventListener('pointerup', onPointerUp);
         window.removeEventListener('resize', onResize);
-        if (resizeObserver) resizeObserver.disconnect();
-        if (frameId) {
-            cancelAnimationFrame(frameId);
-            frameId = null;
+    }
+
+    el._toggleDraggable = (enabled) => {
+        if (enabled) {
+            addListeners();
+            el.style.cursor = 'grab';
+        } else {
+            removeListeners();
+            el.style.cursor = 'auto';
         }
+    };
+
+    el._draggableDestroy = () => {
+        removeListeners();
+        if (frameId) cancelAnimationFrame(frameId);
     };
 
     el._getCurrentPercentage = () => ({ left: leftPercent, top: topPercent });
