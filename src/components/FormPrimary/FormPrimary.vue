@@ -173,7 +173,7 @@ async function submitForm() {
         &-text {
             max-width: 40ch;
             text-transform: uppercase;
-            font-size: lineScale(32, 24, 480, 1440);
+            font-size: lineScale(32, 20, 480, 1440);
             font-weight: $fw-bold;
             line-height: 1.2;
             > a {
@@ -291,6 +291,22 @@ async function submitForm() {
             color: red;
             font-weight: $fw-semi;
             pointer-events: none;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .form-primary {
+        &__container {
+            gap: rem(64);
+        }
+        &__body {
+            grid-column: 1 / span 4;
+        }
+        &__subtitle {
+            &-image-container {
+                display: none;
+            }
         }
     }
 }

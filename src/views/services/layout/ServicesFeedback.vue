@@ -23,6 +23,7 @@
                 </template>
             </ul>
             <Sticker
+                class="feedback__sticker"
                 v-draggable="{ left: 50, top: 15 }"
                 style="rotate: 15deg"
                 variant="red"
@@ -30,6 +31,7 @@
                 textMain="компаний по всему миру"
             />
             <Sticker
+                class="feedback__sticker"
                 v-draggable="{ left: 20, top: 90 }"
                 style="rotate: -15deg"
                 variant="black"
@@ -91,7 +93,7 @@ onMounted(() => {
         grid-auto-flow: column dense;
         grid-template-rows: repeat(2, 1fr);
         gap: rem(24);
-        margin-left: lineScale(196, 0, 480, 1440);
+        margin-left: lineScale(196, 0, 768, 1440);
         &-loader {
             width: rem(320);
             display: flex;
@@ -134,6 +136,20 @@ onMounted(() => {
             margin-top: rem(16);
             opacity: 0.8;
             @include lineClamp(7);
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .feedback {
+        &__sticker {
+            display: none;
+        }
+        &__list {
+            overflow-x: auto;
+        }
+        &__item {
+            width: rem(240);
         }
     }
 }

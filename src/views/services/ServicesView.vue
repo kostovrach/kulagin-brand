@@ -4,13 +4,6 @@
         <ServicesFeedback />
         <section class="hint">
             <div class="hint__container">
-                <ButtonPrimary
-                    type="a"
-                    href="https://kulaginbrand.ru"
-                    target="_blank"
-                    style="position: absolute; top: 35%; left: 65%"
-                    >Сайт студии</ButtonPrimary
-                >
                 <SectionHint image="/img/content/personal-views/temp1.jpg">
                     <template #title>Хотите развить свой бренд, но не знаете с чего начать?</template>
                     <template #text>
@@ -18,6 +11,9 @@
                     </template>
                     <template #media-description>Про уникальный опыт</template>
                 </SectionHint>
+                <ButtonPrimary class="hint__button" type="a" href="https://kulaginbrand.ru" target="_blank"
+                    >Сайт студии</ButtonPrimary
+                >
             </div>
         </section>
         <section class="contacts">
@@ -49,12 +45,31 @@ import PageNavigator from '@/components/PageNavigator/PageNavigator.vue';
 
 .hint {
     @include horizontal-layout;
+    @media (max-width: 512px) {
+        display: flex;
+        flex-direction: column;
+    }
     &__container {
         position: relative;
         height: 100%;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
+        gap: rem(32);
+    }
+    &__button {
+        position: absolute;
+        top: 35%;
+        left: 85%;
+        @media (max-width: 512px) {
+            position: relative;
+            top: auto;
+            left: auto;
+            align-self: flex-end;
+            // bottom: -50%;
+            // right: 0;
+        }
     }
 }
 .contacts {

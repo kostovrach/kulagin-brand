@@ -223,7 +223,7 @@ import TheSvgSprite from '@/components/TheSvgSprite.vue';
                 max-width: 30ch;
                 text-transform: uppercase;
                 color: $c-9E9595;
-                font-size: lineScale(32, 24, 480, 1440);
+                font-size: lineScale(32, 18, 480, 1440);
                 line-height: 1.2;
                 font-weight: $fw-bold;
             }
@@ -290,7 +290,7 @@ import TheSvgSprite from '@/components/TheSvgSprite.vue';
                 height: 100%;
                 display: grid;
                 grid-template-columns: repeat(8, auto);
-                grid-template-columns: repeat(4, auto);
+                grid-template-rows: repeat(4, auto);
                 grid-template-areas:
                     'image-1 image-1 . image-2 image-2 . . .'
                     'image-1 image-1 image-3 image-3 image-3 desc desc desc'
@@ -345,7 +345,7 @@ import TheSvgSprite from '@/components/TheSvgSprite.vue';
                 max-width: 25ch;
                 text-transform: uppercase;
                 color: $c-9E9595;
-                font-size: lineScale(32, 24, 480, 1440);
+                font-size: lineScale(32, 18, 480, 1440);
                 line-height: 1.2;
                 font-weight: $fw-bold;
             }
@@ -459,44 +459,64 @@ import TheSvgSprite from '@/components/TheSvgSprite.vue';
         &__interactive {
             display: none;
         }
+        &__content {
+            flex-direction: column;
+            gap: rem(128);
+        }
         &__item {
             &--type1-interactive,
             &--type2-interactive {
                 display: none;
             }
-            &--type1-wrapper {
-                width: fit-content;
-                grid-template-columns: repeat(9, auto);
-                grid-template-rows: repeat(5, auto);
-                grid-template-areas:
-                    ' title title title title image-2 image-3 .'
-                    'image-1 image-1 image-1 image-1 desc desc desc'
-                    'image-1 image-1 image-1 image-1 image-4 image-4 .'
-                    'image-1 image-1 image-1 image-1 image-4 image-4 .'
-                    'image-1 image-1 image-1 image-1 image-4 image-4 image-5';
+            &--type1 {
+                &-wrapper {
+                    width: fit-content;
+                    grid-template-columns: repeat(7, auto);
+                    grid-template-rows: repeat(7, auto);
+                    gap: rem(16);
+                    grid-template-areas:
+                        'title title title title title title link'
+                        'image-1 image-1 image-1 image-1 image-2 image-2 image-2'
+                        'image-1 image-1 image-1 image-1 desc desc desc'
+                        'image-1 image-1 image-1 image-1 image-3 image-3 image-3'
+                        'image-1 image-1 image-1 image-1 image-3 image-3 image-3'
+                        'image-1 image-1 image-1 image-1 image-3 image-3 image-3'
+                        'image-1 image-1 image-1 image-1 image-3 image-3 image-3';
+                }
+                &-link {
+                    scale: 0.6;
+                }
+                &-image-container {
+                    &:nth-of-type(3) {
+                        aspect-ratio: initial;
+                    }
+                }
             }
-            &--type2-wrapper {
-                width: fit-content;
-                grid-template-columns: repeat(7, auto); //10
-                grid-template-rows: repeat(5, auto); // 4
-                gap: rem(8);
-                grid-template-areas:
-                    '. image-2 image-2 image-2 . . . . . .'
-                    '. image-2 image-2 image-2 image-3 image-3 image-3 image-3 desc desc'
-                    'image-1 image-2 image-2 image-2 image-3 image-3 image-3 image-3 image-4 .'
-                    'title title title title image-3 image-3 image-3 image-3 image-4 image-5'
-                    '. . . . image-3 image-3 image-3 image-3 . image-5';
-                grid-template-areas:
-                    '. image-2 image-2 desc desc desc'
-                    'image-1 image-2 image-2 image-3 image-3 image-3'
-                    'title title title image-3 image-3 image-3'
-                    '. image-4 image-4 image-3 image-3 image-3'
-                    '. . . image-5 image-5 .';
+            &--type2 {
+                translate: 0 0;
+                &-wrapper {
+                    width: fit-content;
+                    grid-template-areas:
+                        'desc desc desc link'
+                        'image-1 image-1 . .'
+                        'image-1 image-1 image-2 image-2'
+                        'image-3 image-3 image-3 image-5'
+                        'image-3 image-3 image-3 image-4';
+                }
+                &-link {
+                    scale: 0.6;
+                }
             }
         }
         &__divider {
             &--type1 {
                 display: none;
+            }
+            &--type2 {
+                &-arrow {
+                    width: 100%;
+                    translate: 0 0;
+                }
             }
         }
     }

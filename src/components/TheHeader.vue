@@ -62,6 +62,8 @@ const currentRoute = computed(() => route.name);
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: rem(32);
+        white-space: nowrap;
     }
     &__logo-container {
         display: flex;

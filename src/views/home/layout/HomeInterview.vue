@@ -92,7 +92,7 @@ onMounted(() => {
         user-select: none;
     }
     &__body {
-        margin-left: rem(164);
+        margin-left: lineScale(164, 0, 480, 1440);
         @include horizontal-max-height;
         @include hide-scrollbar;
     }
@@ -135,6 +135,15 @@ onMounted(() => {
             font-weight: $fw-semi;
             color: $c-9E9595;
             @include hover-underline;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .interviews {
+        &__list {
+            display: flex;
+            flex-direction: column;
         }
     }
 }

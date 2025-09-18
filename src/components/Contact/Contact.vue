@@ -207,7 +207,7 @@ const socials = [
         grid-area: button;
         align-self: flex-end;
         margin: rem(32) 0 0 rem(32);
-        @include button-secondary($width: fit-content);
+        @include button-secondary($width: fit-content, $font-size: lineScale(32, 18, 480, 1440));
     }
 }
 
@@ -217,13 +217,47 @@ const socials = [
             grid-template-columns: repeat(5, auto); // 7
             grid-template-rows: repeat(7, auto); // 4
             grid-template-areas:
-                'link-1 desc desc desc desc'
-                '. . link-2 . .'
-                'title title title . link-3'
+                'desc desc desc desc desc'
+                'link-1 link-2 link-3 . .'
+                'title title title . .'
                 'arrow . . . . '
                 'button button button button button'
-                'link-4 . link-5 . link-6 '
+                'link-4 link-5 link-6 . .'
                 'caption caption caption caption caption';
+            gap: rem(32) 0;
+        }
+        &__desc {
+            justify-self: initial;
+        }
+        &__button {
+            margin: 0;
+        }
+        &__link {
+            &:nth-of-type(1) {
+                max-width: rem(120);
+                justify-self: initial;
+                translate: 0 0;
+            }
+            &:nth-of-type(2) {
+                max-width: rem(100);
+                justify-self: initial;
+                translate: 15% 40%;
+            }
+            &:nth-of-type(3) {
+                max-width: rem(120);
+                translate: 25% 0;
+            }
+            &:nth-of-type(4) {
+                max-width: rem(120);
+            }
+            &:nth-of-type(5) {
+                translate: 10% -20%;
+            }
+            &:nth-of-type(6) {
+                align-self: flex-end;
+                justify-self: flex-end;
+                max-width: rem(90);
+            }
         }
     }
 }

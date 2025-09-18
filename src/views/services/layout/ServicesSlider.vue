@@ -6,7 +6,12 @@
                 class="services__slider fade-bottom"
                 style="animation-delay: 0.4s"
                 :modules="modules"
-                :slides-per-view="3"
+                :slides-per-view="1"
+                :breakpoints="{
+                    1024: {
+                        slidesPerView: 3,
+                    },
+                }"
                 :space-between="96"
                 loop
                 centered-slides
@@ -136,6 +141,7 @@ onMounted(() => {
     &__slider {
         height: 100%;
         max-width: calc(100vw - ($px * 2));
+        padding: rem(32);
         &-wrapper {
             align-items: center;
         }
@@ -147,7 +153,9 @@ onMounted(() => {
         color: $c-main;
         transition: scale $td $tf;
         &.swiper-slide-active {
-            scale: 1.2;
+            @media (min-width: 1024px) {
+                scale: 1.2;
+            }
             #{$p}__slide-media::before {
                 opacity: 0;
             }
@@ -241,6 +249,21 @@ onMounted(() => {
         cursor: pointer;
         &--prev {
             transform: scaleX(-1);
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .services {
+        &__slider {
+            max-width: rem(640);
+        }
+    }
+}
+@media (max-width: 768px) {
+    .services {
+        &__slider {
+            max-width: 100%;
         }
     }
 }

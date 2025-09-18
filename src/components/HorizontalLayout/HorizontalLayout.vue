@@ -38,7 +38,7 @@ const props = defineProps({
         flex-direction: column;
 
         overflow-x: clip;
-        overflow-y: initial;
+        // overflow-y: initial;
     }
 }
 </style>

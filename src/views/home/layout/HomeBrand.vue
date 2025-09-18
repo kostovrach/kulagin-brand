@@ -2,20 +2,17 @@
     <section class="brand">
         <div class="brand__container">
             <div class="brand__body">
-                <picture class="brand__sticker-container" v-draggable="{ left: -2, top: -5 }">
-                    <img class="brand__sticker" src="/img/stickers/theplace.png" alt="ThePlace" />
-                </picture>
-
                 <ButtonPrimary
-                    style="position: absolute; left: 12%; bottom: -5%"
+                    style="position: absolute; left: 12%; bottom: -2%"
                     type="router-link"
                     to="/blog"
                     variant="grey"
-                >
-                    Блог
+                    logic="double-line"
+                    >личный блог
                 </ButtonPrimary>
                 <img
                     v-draggable="{ top: -5, left: 35 }"
+                    class="brand__sticker--hide"
                     src="/img/stickers/smile.png"
                     alt="#"
                     style="pointer-events: auto; width: 288px; rotate: 15deg"
@@ -27,7 +24,7 @@
                     style="pointer-events: auto; width: 180px; rotate: 7deg"
                 />
                 <ButtonPrimary
-                    style="position: absolute; left: 75%; top: -10%; rotate: -5deg"
+                    style="position: absolute; right: 0; top: -10%; rotate: -5deg"
                     type="router-link"
                     to="/marketers"
                     variant="grey"
@@ -77,7 +74,7 @@
             </div>
             <div class="brand__services">
                 <ButtonPrimary
-                    style="position: absolute; left: 55%; bottom: 10%; rotate: -6deg"
+                    style="position: absolute; left: 55%; bottom: 0; rotate: -6deg"
                     type="router-link"
                     to="/services"
                     variant="red"
@@ -125,7 +122,7 @@
             </FormPrimary>
             <div class="brand__footer">
                 <ButtonPrimary
-                    style="position: absolute; left: 0%; bottom: 0%"
+                    style="position: absolute; left: 0%; bottom: -5%"
                     type="router-link"
                     to="/contact"
                     variant="grey"
@@ -154,7 +151,6 @@ import FormPrimary from '@/components/FormPrimary/FormPrimary.vue';
 @use '@/assets/abstracts' as *;
 
 .brand {
-    // min-width: fit-content;
     color: $c-F3F2EE;
     background-color: $c-111111;
     &__container {
@@ -225,7 +221,7 @@ import FormPrimary from '@/components/FormPrimary/FormPrimary.vue';
             white-space: nowrap;
             text-transform: uppercase;
             font-family: 'Fira-Extra', sans-serif;
-            font-size: lineScale(120, 64, 480, 1440);
+            font-size: lineScale(120, 48, 480, 1440);
             font-weight: $fw-bold;
         }
         &-subtitle {
@@ -334,10 +330,21 @@ import FormPrimary from '@/components/FormPrimary/FormPrimary.vue';
         }
         &__image-container {
             mask-image: var(--break-mask);
-            // aspect-ratio: 1/2;
-            // width: 100%;
-            // height: 100%;
-            // rotate: 90deg;
+            aspect-ratio: 2/1.5;
+            width: 100%;
+        }
+        &__sticker--hide {
+            display: none;
+        }
+        &__services {
+            &-title {
+                width: 15ch;
+                text-align: center;
+                white-space: initial;
+            }
+            &-subtitle {
+                display: none;
+            }
         }
     }
 }

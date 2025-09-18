@@ -33,7 +33,7 @@
         max-height: 100%;
     }
 }
-@mixin block-title($max-width: 15ch, $font-size: lineScale-y(96, 32, 480, 1080)) {
+@mixin block-title($max-width: 15ch, $font-size: lineScale-y(96, 40, 480, 1080)) {
     font-family: 'Fira-Extra', sans-serif;
     font-weight: $fw-bold;
     font-size: $font-size;
@@ -41,7 +41,7 @@
     text-transform: uppercase;
     max-width: $max-width;
     @media (max-width: 768px) {
-        font-size: lineScale(96, 32, 480, 1440);
+        font-size: lineScale(96, 40, 480, 1440);
     }
 }
 @mixin gradient-text-hover($main-color: $c-111111, $accent-color: $c-accent) {
@@ -95,7 +95,8 @@
 @mixin button-secondary(
     $width: 100%,
     $color: $c-F3F2EE,
-    $padding: rem(14) rem(64),
+    $font-size: lineScale(32, 24, 480, 1440),
+    $padding: rem(14) lineScale(64, 48, 480, 1440),
     $border-color: transparent,
     $background: $c-111111,
     $hover-background: $c-accent
@@ -110,7 +111,7 @@
     gap: rem(32);
     color: $color;
     text-transform: uppercase;
-    font-size: lineScale(32, 24, 480, 1440);
+    font-size: $font-size;
     line-height: 1;
     font-weight: $fw-bold;
     padding: $padding;

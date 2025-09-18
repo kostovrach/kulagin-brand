@@ -124,6 +124,7 @@ onBeforeUnmount(() => {
     gap: rem(64);
     &__container {
         padding-bottom: rem(164);
+        max-height: rem(600);
         overflow-y: auto;
         mask-image: linear-gradient(to bottom, $c-main 60%, transparent 100%);
         @include hide-scrollbar;

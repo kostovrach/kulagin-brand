@@ -1,47 +1,67 @@
 export default {
     mounted(el, binding) {
-        setupDraggable(el, binding.value);
+        initDraggable(el, binding.value);
+        setupPointerToggle(el);
     },
     updated(el, binding) {
         if (JSON.stringify(binding.value) !== JSON.stringify(binding.oldValue)) {
-            el._draggableDestroy?.();
-            setupDraggable(el, binding.value);
+            teardownPointerToggle(el);
+            el._draggableCleanup?.();
+            initDraggable(el, binding.value);
+            setupPointerToggle(el);
         }
     },
     unmounted(el) {
-        el._draggableDestroy?.();
-        delete el._draggableDestroy;
-        delete el._toggleDraggable;
+        teardownPointerToggle(el);
+        el._draggableCleanup?.();
+        delete el._draggableCleanup;
         delete el._getCurrentPercentage;
+        delete el._enableDrag;
+        delete el._disableDrag;
     },
 };
 
 const INTERACTIVE_TAGS = ['A', 'BUTTON', 'INPUT', 'TEXTAREA', 'VIDEO'];
 
-function setupDraggable(el, options) {
-    initDraggable(el, options);
-
+function setupPointerToggle(el) {
     const mm = window.matchMedia('(pointer: coarse)');
 
-    function checkPointerType() {
+    function handle() {
         if (mm.matches) {
-            el._toggleDraggable(false);
+            el._disableDrag?.();
+            // el.style.pointerEvents = 'none';
         } else {
-            el._toggleDraggable(true);
+            // el.style.pointerEvents = '';
+            el._enableDrag?.();
         }
     }
 
-    window.addEventListener('resize', checkPointerType, { passive: true });
-    mm.addEventListener('change', checkPointerType);
+    if (typeof mm.addEventListener === 'function') {
+        mm.addEventListener('change', handle);
+    } else if (typeof mm.addListener === 'function') {
+        mm.addListener(handle);
+    }
 
-    checkPointerType();
+    window.addEventListener('resize', handle, { passive: true });
 
-    const oldDestroy = el._draggableDestroy;
-    el._draggableDestroy = () => {
-        window.removeEventListener('resize', checkPointerType);
-        mm.removeEventListener('change', checkPointerType);
-        oldDestroy?.();
-    };
+    handle();
+
+    el._pointerToggle = { mm, handle };
+}
+
+function teardownPointerToggle(el) {
+    const pt = el._pointerToggle;
+    if (!pt) return;
+    const { mm, handle } = pt;
+    if (mm) {
+        if (typeof mm.removeEventListener === 'function') {
+            mm.removeEventListener('change', handle);
+        } else if (typeof mm.removeListener === 'function') {
+            mm.removeListener(handle);
+        }
+    }
+    window.removeEventListener('resize', handle);
+    delete el._pointerToggle;
 }
 
 function initDraggable(el, options = {}) {
@@ -65,11 +85,35 @@ function initDraggable(el, options = {}) {
 
     el.style.position = 'absolute';
     el.style.zIndex = '5';
+    el.style.cursor = 'grab';
     el.style.willChange = 'left, top';
-    if (!el.style.left || !el.style.top) {
-        el.style.left = (leftPercent / 100) * referenceContainer.offsetWidth + 'px';
-        el.style.top = (topPercent / 100) * referenceContainer.offsetHeight + 'px';
+
+    function getReferenceSize() {
+        if (referenceContainer === document.documentElement) {
+            return { width: window.innerWidth, height: window.innerHeight };
+        } else {
+            const rect = referenceContainer.getBoundingClientRect();
+            return { width: rect.width, height: rect.height };
+        }
     }
+
+    function applyPercentagePosition() {
+        const { width, height } = getReferenceSize();
+        const leftPx = (leftPercent / 100) * width;
+        const topPx = (topPercent / 100) * height;
+        el.style.left = leftPx + 'px';
+        el.style.top = topPx + 'px';
+    }
+
+    function convertToPercentage(leftPx, topPx) {
+        const { width, height } = getReferenceSize();
+        return {
+            left: (leftPx / width) * 100,
+            top: (topPx / height) * 100,
+        };
+    }
+
+    applyPercentagePosition();
 
     let dragging = false;
     let startX = 0,
@@ -162,9 +206,9 @@ function initDraggable(el, options = {}) {
         const finalLeftPx = parseFloat(el.style.left) || 0;
         const finalTopPx = parseFloat(el.style.top) || 0;
 
-        const { width, height } = referenceContainer.getBoundingClientRect();
-        leftPercent = (finalLeftPx / width) * 100;
-        topPercent = (finalTopPx / height) * 100;
+        const percentages = convertToPercentage(finalLeftPx, finalTopPx);
+        leftPercent = percentages.left;
+        topPercent = percentages.top;
 
         if (options.onPositionChange) {
             options.onPositionChange(leftPercent, topPercent);
@@ -173,42 +217,69 @@ function initDraggable(el, options = {}) {
 
     function onResize() {
         if (!dragging) {
-            const { width, height } = referenceContainer.getBoundingClientRect();
-            el.style.left = (leftPercent / 100) * width + 'px';
-            el.style.top = (topPercent / 100) * height + 'px';
+            applyPercentagePosition();
         } else {
             containerRect = constraintContainer?.getBoundingClientRect() || null;
             elRect = el.getBoundingClientRect();
         }
     }
 
-    function addListeners() {
-        el.addEventListener('pointerdown', onPointerDown);
-        window.addEventListener('pointermove', onPointerMove, { passive: false });
-        window.addEventListener('pointerup', onPointerUp, { passive: true });
-        window.addEventListener('resize', onResize, { passive: true });
-    }
-
-    function removeListeners() {
-        el.removeEventListener('pointerdown', onPointerDown);
-        window.removeEventListener('pointermove', onPointerMove);
-        window.removeEventListener('pointerup', onPointerUp);
-        window.removeEventListener('resize', onResize);
-    }
-
-    el._toggleDraggable = (enabled) => {
-        if (enabled) {
-            addListeners();
-            el.style.cursor = 'grab';
-        } else {
-            removeListeners();
-            el.style.cursor = 'auto';
+    function addPointerListeners() {
+        if (!el._pointerListenersAdded) {
+            el.addEventListener('pointerdown', onPointerDown);
+            window.addEventListener('pointermove', onPointerMove, { passive: false });
+            window.addEventListener('pointerup', onPointerUp, { passive: true });
+            el._pointerListenersAdded = true;
         }
+    }
+
+    function removePointerListeners() {
+        if (dragging) {
+            onPointerUp();
+        }
+        if (el._pointerListenersAdded) {
+            el.removeEventListener('pointerdown', onPointerDown);
+            window.removeEventListener('pointermove', onPointerMove);
+            window.removeEventListener('pointerup', onPointerUp);
+            el._pointerListenersAdded = false;
+        }
+    }
+
+    addPointerListeners();
+
+    window.addEventListener('resize', onResize, { passive: true });
+
+    let resizeObserver = null;
+    if (referenceContainer !== document.documentElement) {
+        resizeObserver = new ResizeObserver(() => {
+            if (!dragging) {
+                applyPercentagePosition();
+            } else {
+                containerRect = constraintContainer?.getBoundingClientRect() || null;
+                elRect = el.getBoundingClientRect();
+            }
+        });
+        resizeObserver.observe(referenceContainer);
+    }
+
+    el._disableDrag = () => {
+        removePointerListeners();
+        el.style.cursor = 'auto';
     };
 
-    el._draggableDestroy = () => {
-        removeListeners();
-        if (frameId) cancelAnimationFrame(frameId);
+    el._enableDrag = () => {
+        addPointerListeners();
+        el.style.cursor = 'grab';
+    };
+
+    el._draggableCleanup = () => {
+        removePointerListeners();
+        window.removeEventListener('resize', onResize);
+        if (resizeObserver) resizeObserver.disconnect();
+        if (frameId) {
+            cancelAnimationFrame(frameId);
+            frameId = null;
+        }
     };
 
     el._getCurrentPercentage = () => ({ left: leftPercent, top: topPercent });

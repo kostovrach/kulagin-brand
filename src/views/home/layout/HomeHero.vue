@@ -10,14 +10,15 @@
                 </div>
                 <!-- Временное изображение -->
 
-                <picture class="hero__image-container fade-scale">
+                <picture class="hero__image-container fade-scale" style="animation-delay: 0.3s">
                     <img class="hero__image" src="/img/content/personal-views/face.png" alt="Игорь Кулагин" />
                 </picture>
 
                 <!-- -->
             </div>
-            <div class="hero__body fade-right" style="animation-delay: 0.6s">
+            <div class="hero__body fade-right" style="animation-delay: 0.8s">
                 <ButtonPrimary
+                    class="hero__sticker"
                     style="position: absolute; left: 12%; top: 15%"
                     type="router-link"
                     to="/services"
@@ -26,6 +27,7 @@
                     Услуги
                 </ButtonPrimary>
                 <ButtonPrimary
+                    class="hero__sticker"
                     style="position: absolute; left: 45%; top: 5%"
                     type="a"
                     href="https://kulaginbrand.ru"
@@ -35,33 +37,38 @@
                     Студия
                 </ButtonPrimary>
                 <ButtonPrimary
-                    style="position: absolute; left: 66%; top: 55%"
+                    class="hero__sticker"
+                    style="position: absolute; right: 10%; top: 55%"
                     type="router-link"
                     to="/hobby"
-                    variant="grey"
+                    variant="red"
                 >
                     Мои хобби
                 </ButtonPrimary>
                 <img
+                    class="hero__sticker"
                     v-draggable="{ top: -5, left: 75 }"
                     src="/img/stickers/igor.png"
                     style="pointer-events: auto; width: 220px; rotate: 9deg"
                     alt="#"
                 />
                 <img
+                    class="hero__sticker"
                     v-draggable="{ top: 30, left: 55 }"
                     src="/img/stickers/theplace-white.png"
                     style="pointer-events: auto; width: 220px; rotate: 5deg"
                     alt="#"
                 />
                 <Sticker
-                    v-draggable="{ left: -3, top: 55 }"
+                    class="hero__sticker"
+                    v-draggable="{ left: -3, top: 65 }"
                     style="rotate: -10deg"
                     variant="default"
                     textAccent="от 120%"
                     textMain="средний рост конверсии"
                 />
                 <Sticker
+                    class="hero__sticker"
                     v-draggable="{ left: 25, top: 35 }"
                     style="rotate: 5deg"
                     variant="black"
@@ -69,6 +76,7 @@
                     textMain="средний рост конверсии"
                 />
                 <Sticker
+                    class="hero__sticker"
                     v-draggable="{ left: 35, top: 80 }"
                     style="rotate: -15deg"
                     variant="red"
@@ -87,7 +95,8 @@
             </div>
             <div class="hero__footer">
                 <Sticker
-                    v-draggable="{ left: 0, top: 5 }"
+                    v-draggable="{ left: 0, top: 15 }"
+                    class="hero__sticker--hide"
                     style="rotate: -5deg"
                     variant="black"
                     textAccent="от 120%"
@@ -226,6 +235,12 @@ import Sticker from '@/components/Sticker/Sticker.vue';
     .hero {
         &__image-container {
             position: initial;
+        }
+        img.hero__sticker {
+            display: none;
+        }
+        &__sticker--hide {
+            display: none;
         }
     }
 }

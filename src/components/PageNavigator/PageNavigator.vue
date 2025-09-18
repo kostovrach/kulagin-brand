@@ -49,6 +49,7 @@ const props = defineProps({
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
+            gap: rem(32);
         }
     }
     &--horizontal {
