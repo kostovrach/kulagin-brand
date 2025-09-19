@@ -4,6 +4,13 @@
             <div class="blog__container">
                 <div class="blog__titlebox">
                     <h1 class="blog__title fade-bottom">Личный блог</h1>
+                    <ul class="blog__tags">
+                        <li>мысли</li>
+                        <li>интересные кейсы</li>
+                        <li>работа</li>
+                        <li>хобби</li>
+                        <li>опыт</li>
+                    </ul>
                 </div>
                 <div class="blog__list">
                     <div class="blog__item" v-for="(article, index) in list" :key="article.slug">
@@ -21,7 +28,7 @@
                 </div>
             </div>
         </section>
-        <PageNavigator to="/contact" image="/img/content/personal-views/temp1.jpg">
+        <PageNavigator v-if="!isLoading" to="/contact" image="/img/content/personal-views/temp1.jpg">
             <template #tag>Далее</template>
             <template #title>Связаться</template>
         </PageNavigator>
@@ -29,7 +36,7 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useBlogStore } from '@/stores/blog';
 
@@ -38,13 +45,17 @@ import PageNavigator from '@/components/PageNavigator/PageNavigator.vue';
 
 const blogStore = useBlogStore();
 
+const { list } = storeToRefs(blogStore);
+
+const isLoading = computed(() => {
+    return blogStore.isLoadingList;
+});
+
 onMounted(() => {
     if (!blogStore.articles.length) {
         blogStore.fetchList();
     }
 });
-
-const { list } = storeToRefs(blogStore);
 </script>
 
 <style lang="scss" scoped>
@@ -69,6 +80,8 @@ const { list } = storeToRefs(blogStore);
         top: 50%;
         left: 50%;
         translate: -50% -50%;
+        display: flex;
+        flex-direction: column;
     }
     &__title {
         text-transform: uppercase;
@@ -77,7 +90,21 @@ const { list } = storeToRefs(blogStore);
         font-size: lineScale(256, 72, 480, 1440);
         font-weight: $fw-semi;
         white-space: nowrap;
-        mask-image: linear-gradient(to top, transparent 30%, #000 30%);
+        // mask-image: linear-gradient(to top, transparent 30%, #000 30%);
+        max-height: 1.35ch;
+        overflow: hidden;
+    }
+    &__tags {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        > li {
+            text-transform: uppercase;
+            font-size: rem(14);
+            color: $c-accent;
+            font-weight: $fw-bold;
+            margin-top: rem(6);
+        }
     }
     &__list {
         display: grid;
