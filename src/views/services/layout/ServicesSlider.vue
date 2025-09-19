@@ -135,6 +135,7 @@ onMounted(() => {
         display: flex;
         flex-direction: column;
         gap: rem(28);
+        min-width: calc(100vw - $px * 2);
     }
     &__title {
         @include block-title;

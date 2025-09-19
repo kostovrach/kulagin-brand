@@ -1,6 +1,6 @@
 <template>
     <div class="privacy-modal">
-        <article class="privacy-policy">
+        <article class="privacy-modal__container">
             <header v-if="data">
                 <h1>Политика<br />конфиденциальности</h1>
                 <p v-if="data.date">Последнее обновление: {{ formatDate(data.date) }}</p>
@@ -8,7 +8,23 @@
             </header>
 
             <div v-if="loading">
-                <p>Загрузка...</p>
+                <div class="privacy-modal__loader" v-for="n in 6" :key="n">
+                    <Skeleton
+                        width="30%"
+                        borderRadius="1rem"
+                        :dt="{ root: { background: '#d6d6d66e', animationBackground: '#f7f9f7' } }"
+                    />
+                    <Skeleton
+                        width="100%"
+                        borderRadius="1rem"
+                        :dt="{ root: { background: '#d6d6d66e', animationBackground: '#f7f9f7' } }"
+                    />
+                    <Skeleton
+                        width="100%"
+                        borderRadius="1rem"
+                        :dt="{ root: { background: '#d6d6d66e', animationBackground: '#f7f9f7' } }"
+                    />
+                </div>
             </div>
 
             <div v-else-if="error">
@@ -35,6 +51,7 @@ import { useModal } from '@/composables/useModal';
 
 import PolicyItem from './components/PrivacyItem.vue';
 import TheSvgSprite from '@/components/TheSvgSprite.vue';
+import Skeleton from 'primevue/skeleton';
 
 const props = defineProps({
     modalId: { type: Number, required: true },
@@ -89,70 +106,141 @@ onMounted(async () => {
             transform: translate(0, 0);
         }
     }
-}
-
-.privacy-policy {
-    display: flex;
-    flex-direction: column;
-    gap: rem(64);
-    header {
-        position: relative;
+    &__loader {
         display: flex;
         flex-direction: column;
-        gap: rem(32);
-        h1 {
-            text-transform: uppercase;
-            font-family: 'Fira-Extra', sans-serif;
-            font-size: lineScale(64, 24, 480, 1440);
-            font-weight: $fw-bold;
-        }
-        p {
-            font-family: 'Inter', sans-serif;
-            color: $c-accent;
-        }
-        button {
-            cursor: pointer;
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: fit-content;
-            > svg {
-                will-change: rotate;
-                transition: rotate $td $tf-spring;
+        gap: rem(16);
+        margin-bottom: rem(48);
+        opacity: 0.3;
+    }
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: lineScale(40,24,480,1440);
+        header {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: rem(32);
+            h1 {
+                text-transform: uppercase;
+                font-family: 'Fira-Extra', sans-serif;
+                font-size: lineScale(64, 24, 480, 1440);
+                font-weight: $fw-bold;
             }
-            @media (pointer: fine) {
-                &:hover svg {
-                    rotate: 90deg;
+            p {
+                font-family: 'Inter', sans-serif;
+                color: $c-accent;
+            }
+            button {
+                cursor: pointer;
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: fit-content;
+                > svg {
+                    will-change: rotate;
+                    transition: rotate $td $tf-spring;
+                }
+                @media (pointer: fine) {
+                    &:hover svg {
+                        rotate: 90deg;
+                    }
                 }
             }
         }
-    }
 
-    section {
-        h2 {
-            text-transform: uppercase;
-            font-size: lineScale(32, 18, 480, 1440);
-            font-weight: $fw-bold;
-            margin: rem(64) 0 rem(8);
-        }
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: 'Inter', sans-serif;
-            font-size: rem(16);
-            font-weight: $fw-bold;
-            margin: rem(24) 0 rem(8);
-        }
+        section {
+            h2 {
+                text-transform: uppercase;
+                font-size: lineScale(32, 18, 480, 1440);
+                font-weight: $fw-bold;
+                margin: rem(64) 0 rem(8);
+            }
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-family: 'Inter', sans-serif;
+                font-size: rem(16);
+                font-weight: $fw-bold;
+                margin: rem(24) 0 rem(8);
+            }
 
-        p {
-            font-family: 'Inter', sans-serif;
-            font-size: rem(14);
-            line-height: 1.4;
-            font-weight: $fw-med;
-            color: $c-9E9595;
-            margin: rem(16) 0 rem(8);
+            p {
+                font-family: 'Inter', sans-serif;
+                font-size: rem(14);
+                line-height: 1.4;
+                font-weight: $fw-med;
+                color: $c-9E9595;
+                margin: rem(16) 0 rem(8);
+            }
         }
     }
 }
+
+// .privacy-policy {
+//     display: flex;
+//     flex-direction: column;
+//     gap: rem(64);
+//     header {
+//         position: relative;
+//         display: flex;
+//         flex-direction: column;
+//         gap: rem(32);
+//         h1 {
+//             text-transform: uppercase;
+//             font-family: 'Fira-Extra', sans-serif;
+//             font-size: lineScale(64, 24, 480, 1440);
+//             font-weight: $fw-bold;
+//         }
+//         p {
+//             font-family: 'Inter', sans-serif;
+//             color: $c-accent;
+//         }
+//         button {
+//             cursor: pointer;
+//             position: absolute;
+//             top: 0;
+//             right: 0;
+//             width: fit-content;
+//             > svg {
+//                 will-change: rotate;
+//                 transition: rotate $td $tf-spring;
+//             }
+//             @media (pointer: fine) {
+//                 &:hover svg {
+//                     rotate: 90deg;
+//                 }
+//             }
+//         }
+//     }
+
+//     section {
+//         h2 {
+//             text-transform: uppercase;
+//             font-size: lineScale(32, 18, 480, 1440);
+//             font-weight: $fw-bold;
+//             margin: rem(64) 0 rem(8);
+//         }
+//         h3,
+//         h4,
+//         h5,
+//         h6 {
+//             font-family: 'Inter', sans-serif;
+//             font-size: rem(16);
+//             font-weight: $fw-bold;
+//             margin: rem(24) 0 rem(8);
+//         }
+
+//         p {
+//             font-family: 'Inter', sans-serif;
+//             font-size: rem(14);
+//             line-height: 1.4;
+//             font-weight: $fw-med;
+//             color: $c-9E9595;
+//             margin: rem(16) 0 rem(8);
+//         }
+//     }
+// }
 </style>

@@ -23,8 +23,16 @@
                     type="router-link"
                     to="/services"
                     variant="red"
-                >
-                    Услуги
+                >Услуги
+                </ButtonPrimary>
+                <ButtonPrimary
+                    class="hero__sticker"
+                    style="position: absolute; left: 20%; top: 45%"
+                    type="button"
+                    variant="grey"
+                    logic="double-line"
+                    @click="openInterviews"
+                >Упоминания в&nbsp;СМИ
                 </ButtonPrimary>
                 <ButtonPrimary
                     class="hero__sticker"
@@ -33,8 +41,7 @@
                     href="https://kulaginbrand.ru"
                     target="_blank"
                     variant="grey"
-                >
-                    Студия
+                >Студия
                 </ButtonPrimary>
                 <ButtonPrimary
                     class="hero__sticker"
@@ -42,8 +49,7 @@
                     type="router-link"
                     to="/hobby"
                     variant="red"
-                >
-                    Мои хобби
+                >Мои хобби
                 </ButtonPrimary>
                 <img
                     class="hero__sticker"
@@ -119,9 +125,17 @@
 </template>
 
 <script setup>
+import { useModal } from '@/composables/useModal';
+
 import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
 import SectionHint from '@/components/SectionHint/SectionHint.vue';
 import Sticker from '@/components/Sticker/Sticker.vue';
+
+const { openModal } = useModal();
+
+function openInterviews() {
+    openModal('interviews');
+}
 </script>
 
 <style lang="scss" scoped>

@@ -7,7 +7,9 @@
     >
         <div class="button-primary__body">
             <span v-if="firstPart">{{ firstPart }}</span>
-            <span v-if="secondPart">{{ secondPart }}</span>
+            <span v-if="secondPart"
+                >{{ secondPart }}<TheSvgSprite type="arrow" :size="16" style="rotate: -45deg"
+            /></span>
             <div class="button-primary__icon">
                 <span></span>
                 <span></span>
@@ -19,6 +21,7 @@
 
 <script setup>
 import { computed, useSlots } from 'vue';
+import TheSvgSprite from '../TheSvgSprite.vue';
 
 const props = defineProps({
     type: {
@@ -120,10 +123,10 @@ const secondPart = computed(() => {
 .button-primary {
     $p: &;
 
+    cursor: pointer;
     position: relative;
     z-index: 2;
     width: fit-content;
-    height: fit-content;
     aspect-ratio: 1;
     display: flex;
     align-items: center;
@@ -136,7 +139,10 @@ const secondPart = computed(() => {
     padding: lineScale(32, 24, 480, 1440);
     box-shadow: rem(1) rem(1) rem(1) $c-111111;
     overflow: hidden;
-    transition: background-color $td $tf;
+    // outline: rem(2) dotted transparent;
+    transition:
+        background-color $td $tf,
+        outline-color $td $tf;
     &::before {
         content: '';
         position: absolute;
@@ -151,6 +157,7 @@ const secondPart = computed(() => {
     @media (pointer: fine) {
         &:not(#{$p}--noanim):hover {
             background-color: $c-111111;
+            outline-color: $c-111111;
             &::before {
                 opacity: 0;
             }
@@ -243,14 +250,17 @@ const secondPart = computed(() => {
     &--red {
         background-color: $c-accent;
         color: $c-FFFFFF;
+        outline-color: $c-accent;
     }
     &--grey {
         background-color: $c-FFFFFF;
         color: $c-111111;
+        outline-color: $c-FFFFFF;
     }
     &--black {
         background-color: $c-111111;
         color: $c-FFFFFF;
+        outline-color: $c-111111;
     }
 }
 </style>

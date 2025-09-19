@@ -48,6 +48,12 @@
                     <button class="footer__link" @click="openPrivacy">Пользовательское соглашение</button>
                 </div>
             </div>
+            <div class="footer__label">
+                <p class="footer__label-text">Сайт разработали:</p>
+                <a class="footer__label-link" href="https://kulaginbrand.ru" target="_blank" rel="noopener noreferrer">
+                    kulaginbrand.ru
+                </a>
+            </div>
         </div>
     </footer>
 </template>
@@ -132,6 +138,31 @@ function openPrivacy() {
         font-weight: $fw-semi;
         pointer-events: auto;
         @include gradient-text-hover($main-color: $c-FFFFFF, $accent-color: $c-0FD2D3);
+    }
+    &__label {
+        display: flex;
+        align-items: center;
+        gap: rem(8);
+        text-transform: uppercase;
+        &-text {
+            color: $c-main;
+            font-family: 'Inter', sans-serif;
+            font-weight: $fw-med;
+            font-size: rem(12);
+            opacity: 0.5;
+        }
+        &-link {
+            pointer-events: auto;
+            font-size: rem(14);
+            font-weight: $fw-semi;
+            @include gradient-text-hover($main-color: $c-FFFFFF, $accent-color: $c-0FD2D3);
+        }
+    }
+}
+
+@media (max-width: 1260px){
+    .footer {
+        display: none;
     }
 }
 </style>

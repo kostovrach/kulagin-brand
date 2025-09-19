@@ -15,11 +15,15 @@ import ModalWrapper from '@/components/ModalWrapper.vue';
 // registry
 import VideoModal from '@/components/modals/VideoModal.vue';
 import PrivacyModal from '@/components/modals/PrivacyModal/PrivacyModal.vue';
+import MenuModal from '@/components/modals/MenuModal.vue';
+import InterviewsModal from './modals/InterviewsModal.vue';
 //
 
 const registry = {
     video: VideoModal,
     privacy: PrivacyModal,
+    menu: MenuModal,
+    interviews: InterviewsModal,
 };
 
 const store = useModalStore();

@@ -13,21 +13,24 @@
         >
         <div class="marketers__container">
             <div class="marketers__section">
-                <div class="marketers__section-titlebox">
-                    <h1 class="marketers__section-title">Вечеринки для маркетологов</h1>
-                    <p class="marketers__section-desc">
-                        На вечеринках царит атмосфера креатива, где обмен идеями сочетается с неформальным общением
-                    </p>
-                    <ButtonPrimary
-                        class="marketers__button--touch"
-                        type="a"
-                        href="https://gt-business.ru"
-                        target="_blank"
-                        variant="red"
-                        style="font-size: 1rem"
-                        >Присоединиться</ButtonPrimary
-                    >
+                <div class="marketers__section-title-container">
+                    <div class="marketers__section-titlebox">
+                        <h1 class="marketers__section-title">Вечеринки для маркетологов</h1>
+                        <p class="marketers__section-desc">
+                            На вечеринках царит атмосфера креатива, где обмен идеями сочетается с неформальным общением
+                        </p>
+                        <ButtonPrimary
+                            class="marketers__button--touch"
+                            type="a"
+                            href="https://gt-business.ru"
+                            target="_blank"
+                            variant="red"
+                            style="font-size: 1rem"
+                            >Присоединиться</ButtonPrimary
+                        >
+                    </div>
                 </div>
+
                 <div class="marketers__section-gallery">
                     <picture
                         class="marketers__section-image-container"
@@ -50,23 +53,27 @@
                 </div>
             </div>
             <div class="marketers__section">
-                <div class="marketers__section-titlebox">
-                    <h2 class="marketers__section-title">Веселье ради сильного бренда</h2>
-                    <p class="marketers__section-desc">
-                        Объединение предпринимателей и бизнесменов для совместного роста, обмена опытом, знаниями и
-                        возможностями. Это экосистема, отражающая все аспекты жизни: бизнес, финансы, развитие, семья,
-                        здоровье, спорт, дружба, увлечения, активный отдых. А я являюсь резидентом этого клуба.
-                    </p>
-                    <ButtonPrimary
-                        class="marketers__button--touch"
-                        type="a"
-                        href="https://gt-business.ru"
-                        target="_blank"
-                        variant="red"
-                        style="font-size: 1rem"
-                        >Присоединиться</ButtonPrimary
-                    >
+                <div class="marketers__section-title-container">
+                    <div class="marketers__section-titlebox">
+                        <h2 class="marketers__section-title">Веселье ради сильного бренда</h2>
+                        <p class="marketers__section-desc">
+                            Объединение предпринимателей и бизнесменов для совместного роста, обмена опытом, знаниями и
+                            возможностями. Это экосистема, отражающая все аспекты жизни: бизнес, финансы, развитие,
+                            семья, здоровье, спорт, дружба, увлечения, активный отдых. А я являюсь резидентом этого
+                            клуба.
+                        </p>
+                        <ButtonPrimary
+                            class="marketers__button--touch"
+                            type="a"
+                            href="https://gt-business.ru"
+                            target="_blank"
+                            variant="red"
+                            style="font-size: 1rem"
+                            >Присоединиться</ButtonPrimary
+                        >
+                    </div>
                 </div>
+
                 <div class="marketers__section-gallery">
                     <picture
                         class="marketers__section-image-container"
@@ -103,7 +110,7 @@ import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
     $p: &;
 
     position: relative;
-    overflow: hidden;
+    overflow: clip;
     @include vertical-layout;
     &__container {
         display: flex;
@@ -111,28 +118,43 @@ import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
         gap: rem(128);
     }
     &__section {
-        display: flex;
-        flex-direction: column;
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         gap: rem(96);
         &:nth-child(odd) {
+            grid-template-areas:
+                'titlebox gallery'
+                'titlebox gallery';
             #{$p}__section-gallery {
                 align-self: flex-end;
             }
         }
         &:nth-child(even) {
+            grid-template-areas:
+                'gallery titlebox'
+                'gallery titlebox';
             #{$p}__section-titlebox {
                 align-items: flex-end;
                 text-align: right;
             }
         }
-        &-titlebox {
+        &-title-container {
+            grid-area: titlebox;
             position: relative;
+            z-index: 1;
+            height: 100%;
+        }
+        &-titlebox {
+            position: sticky;
+            top: $py;
+            height: fit-content;
             display: flex;
             flex-direction: column;
             gap: rem(32);
         }
         &-title {
-            @include block-title($font-size: lineScale(96, 32, 480, 1440));
+            @include block-title($font-size: lineScale(96, 24, 480, 1440));
         }
         &-desc {
             max-width: 60ch;
@@ -140,7 +162,8 @@ import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
             font-size: lineScale(22, 18, 480, 1440);
         }
         &-gallery {
-            max-width: 60%;
+            grid-area: gallery;
+            // max-width: 60%;
             display: flex;
             flex-direction: column;
             gap: rem(34);
@@ -176,6 +199,8 @@ import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
         $p: &;
 
         &__section {
+            display: flex;
+            flex-direction: column;
             &:nth-child(even) {
                 #{$p}__section-titlebox {
                     align-items: initial;

@@ -199,6 +199,7 @@ onMounted(() => {
         flex-direction: column;
         justify-content: space-between;
         gap: rem(24);
+        min-width: calc(100vw - $px * 2);
     }
     &__titlebox {
         position: relative;

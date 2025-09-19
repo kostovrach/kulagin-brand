@@ -60,13 +60,19 @@ onMounted(() => {
     z-index: 10;
     top: auto;
     left: auto;
-    bottom: rem(32);
-    right: rem(32);
+    bottom: lineScale(32, 16, 480, 1440);
+    right: lineScale(32, 0, 480, 1440);
+
     width: 100%;
     max-width: rem(440);
+
     border-radius: rem(4);
     background-color: $c-main;
     box-shadow: 1px 1px 5px rgba($c-111111, 0.3);
+
+    translate: 0 100%;
+    opacity: 0;
+    animation: slideIn $td $tf 1s forwards;
     &__container {
         position: relative;
         display: flex;
@@ -115,6 +121,16 @@ onMounted(() => {
                     text-decoration: none;
                 }
             }
+        }
+    }
+    @keyframes slideIn {
+        from {
+            translate: 0 100%;
+            opacity: 0;
+        }
+        to {
+            translate: 0 0;
+            opacity: 1;
         }
     }
 }

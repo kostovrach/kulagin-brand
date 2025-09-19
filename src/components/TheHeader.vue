@@ -32,6 +32,9 @@
                     >
                 </nav>
                 <router-link class="header__button" to="/contact">Связаться со мной</router-link>
+                <div class="header__menu">
+                    <Burger />
+                </div>
             </div>
         </div>
     </header>
@@ -40,6 +43,8 @@
 <script setup>
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
+
+import Burger from './Burger/Burger.vue';
 
 const route = useRoute();
 
@@ -156,6 +161,29 @@ const currentRoute = computed(() => route.name);
             &::before {
                 display: none;
             }
+        }
+    }
+    &__menu {
+        pointer-events: auto;
+        display: none;
+    }
+}
+
+@media (max-width: 1260px) {
+    .header {
+        &__sublogo {
+            display: none;
+        }
+        &__nav {
+            &-link {
+                display: none;
+            }
+        }
+        &__button {
+            display: none;
+        }
+        &__menu {
+            display: initial;
         }
     }
 }
