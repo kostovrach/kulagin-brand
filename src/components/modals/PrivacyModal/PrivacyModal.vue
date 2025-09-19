@@ -116,7 +116,7 @@ onMounted(async () => {
     &__container {
         display: flex;
         flex-direction: column;
-        gap: lineScale(40,24,480,1440);
+        gap: lineScale(40, 24, 480, 1440);
         header {
             position: relative;
             display: flex;

@@ -1,83 +1,46 @@
 <template>
     <section class="services">
         <div class="services__container">
-            <h1 class="services__title fade-bottom-rotate">Развиваю ваш личный&nbsp;бренд.</h1>
-            <Swiper
-                v-if="!servicesLoading"
-                class="services__slider fade-bottom"
-                style="animation-delay: 0.4s"
-                :modules="modules"
-                :slides-per-view="1"
-                :breakpoints="{
-                    1024: {
-                        slidesPerView: 3,
-                    },
-                }"
-                :space-between="96"
-                loop
-                centered-slides
-                :speed="800"
-                :navigation="{
-                    nextEl: '.services__button--next',
-                    prevEl: '.services__button--prev',
-                }"
-                wrapper-class="services__slider-wrapper"
-            >
-                <SwiperSlide class="services__slide" v-for="card in services" :key="card.key">
-                    <div class="services__slide-wrapper">
-                        <div class="services__slide-header">
-                            <h2 class="services__slide-title">{{ card.title }}</h2>
-                            <p class="services__slide-desc" v-if="card.description">{{ card.description }}</p>
+            <div class="services__titlebox">
+                <h1 class="services__title">Развиваю ваш личный&nbsp;бренд.</h1>
+                <p class="services__subtitle">
+                    Консультации по&nbsp;рекламе и&nbsp;брендингу, по&nbsp;личностному росту и ведению бизнеса.
+                </p>
+            </div>
+            <div class="services__body">
+                <ul class="services__list">
+                    <li class="services__item" v-for="(item, index) in services" :key="index">
+                        <div class="services__item-wrapper">
+                            <picture class="services__item-image-container">
+                                <img class="services__item-image" :src="item.image" :alt="item.title" />
+                            </picture>
+                            <div class="services__item-content">
+                                <div class="services__item-titlebox">
+                                    <p class="services__item-desc">{{ item.description }}</p>
+                                    <h2 class="services__item-title">{{ item.title }}</h2>
+                                </div>
+                                <ul class="services__item-values">
+                                    <li>
+                                        {{
+                                            typeof item.priceOld === 'number'
+                                                ? item.priceOld.toLocaleString('ru-RU')
+                                                : item.priceOld
+                                        }}
+                                        &#8381;
+                                    </li>
+                                    <li>
+                                        {{
+                                            typeof item.price === 'number'
+                                                ? item.price.toLocaleString('ru-RU')
+                                                : item.price
+                                        }}
+                                        &#8381;
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <picture class="services__slide-media services__slide-media--image" v-if="card.image">
-                            <img class="services__slide-image" :src="card.image" :alt="card.title" />
-                        </picture>
-                        <video
-                            class="services__slide-media services__slide-media--video"
-                            v-else-if="card.video"
-                            autoplay
-                            muted
-                            loop
-                            playsinline
-                        >
-                            <source :src="card.video.src" :type="card.video.type || 'video/mp4'" />
-                        </video>
-                        <div class="services__slide-footer">
-                            <ul class="services__slide-list">
-                                <li
-                                    class="services__slide-list-value services__slide-list-value--crossed"
-                                    v-if="card.price && typeof card.price === 'number'"
-                                >
-                                    {{
-                                        typeof card.price === 'number'
-                                            ? ((card.price / 100) * 160).toLocaleString('ru-RU')
-                                            : ''
-                                    }}
-                                    &#8381;
-                                </li>
-                                <li class="services__slide-list-value" v-if="card.price">
-                                    {{
-                                        typeof card.price === 'number' ? card.price.toLocaleString('ru-RU') : card.price
-                                    }}
-                                    &#8381;
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="services__slide-button">
-                            <ButtonPrimary type="router-link" to="/contact" variant="red" logic="double-line"
-                                >Обсудить детали</ButtonPrimary
-                            >
-                        </div>
-                    </div>
-                </SwiperSlide>
-            </Swiper>
-            <div class="services__controls">
-                <button class="services__button services__button--prev">
-                    <TheSvgSprite type="arrow" :size="32" />
-                </button>
-                <button class="services__button services__button--next">
-                    <TheSvgSprite type="arrow" :size="32" />
-                </button>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
@@ -86,17 +49,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Navigation } from 'swiper/modules';
-
-import 'swiper/css';
-import 'swiper/css/navigation';
-
-import TheSvgSprite from '@/components/TheSvgSprite.vue';
-import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
-// import Skeleton from 'primevue/skeleton';
-
-const modules = [Navigation];
+// import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
 
 const SERVICES_URL = import.meta.env.VITE_SERVICES_URL;
 
@@ -124,7 +77,7 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @use '@/assets/abstracts' as *;
 
 .services {
@@ -134,138 +87,100 @@ onMounted(() => {
     &__container {
         display: flex;
         flex-direction: column;
-        gap: rem(28);
-        min-width: calc(100vw - $px * 2);
+        justify-content: space-between;
+        gap: rem(40);
+    }
+    &__titlebox {
+        display: flex;
+        gap: rem(64);
     }
     &__title {
         @include block-title;
     }
-    &__slider {
-        height: 100%;
-        max-width: calc(100vw - ($px * 2));
-        padding: rem(32);
-        &-wrapper {
-            align-items: center;
-        }
+    &__subtitle {
+        max-width: 40ch;
+        text-transform: uppercase;
+        font-size: lineScale(22, 18, 480, 1440);
+        font-weight: $fw-semi;
+        line-height: 1.4;
     }
-    &__slide {
-        position: relative;
-        height: 80%;
-        max-height: rem(285);
-        color: $c-main;
-        transition: scale $td $tf;
-        &.swiper-slide-active {
-            @media (min-width: 1024px) {
-                scale: 1.2;
-            }
-            #{$p}__slide-media::before {
-                opacity: 0;
-            }
-            #{$p}__slide-button {
-                opacity: 1;
-                scale: 0.9;
-            }
-        }
+    &__list {
+        height: fit-content;
+        display: flex;
+        gap: rem(64);
+    }
+    &__item {
+        width: rem(640);
+        height: fit-content;
         &-wrapper {
             width: 100%;
             height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: rem(64);
-            padding: rem(24);
         }
-        &-media {
-            position: absolute;
-            z-index: -1;
-            inset: 0;
-            pointer-events: none;
-            &::before {
-                content: '';
-                position: absolute;
-                inset: 0;
-                pointer-events: none;
-                backdrop-filter: blur(10px) saturate(0);
-                background-image: url('img/patterns/noise.png');
-                transition: opacity $td $tf;
-            }
-            &--image {
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                }
-            }
-            &--video {
+        &-image-container {
+            width: 100%;
+            height: lineScale-y(380, 240, 480, 1440);
+            img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
             }
         }
-        &-title {
-            max-width: 15ch;
-            text-transform: uppercase;
-            font-family: 'Fira-Extra', sans-serif;
-            font-size: lineScale(40, 24, 480, 1440);
-            font-weight: $fw-med;
-            text-shadow: 1px 1px 5px $c-111111;
+        &-content {
+            display: flex;
+            justify-content: space-between;
+            gap: rem(96);
+            margin-top: rem(16);
         }
         &-desc {
             font-family: 'Inter', sans-serif;
-            font-size: rem(14);
-            left: 1.25;
+            color: $c-accent;
+            font-size: lineScale(22, 18, 480, 1440);
+            font-weight: $fw-bold;
         }
-        &-list {
+        &-title {
+            text-transform: uppercase;
             font-family: 'Fira-Extra', sans-serif;
+            font-size: lineScale(48, 24, 480, 1440);
             font-weight: $fw-med;
-            font-size: lineScale(32, 24, 480, 1440);
-            &-value {
-                &--crossed {
+        }
+        &-values {
+            display: flex;
+            flex-direction: column;
+            gap: rem(8);
+            li {
+                font-family: 'Fira-Extra', sans-serif;
+                white-space: nowrap;
+                &:first-child {
+                    font-size: lineScale(22, 18, 480, 1440);
                     text-decoration: line-through;
-                    font-size: lineScale(18, 14, 480, 1440);
                     opacity: 0.8;
                 }
+                &:last-child {
+                    font-size: lineScale(48, 24, 480, 1440);
+                    font-weight: $fw-med;
+                }
             }
-        }
-        &-button {
-            position: absolute;
-            z-index: 5;
-            right: 0;
-            bottom: 0;
-            translate: 20% 20%;
-            opacity: 0;
-            scale: 0.7;
-            transition:
-                scale $td $tf-spring,
-                opacity $td $tf;
-        }
-    }
-    &__controls {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: rem(32);
-    }
-    &__button {
-        cursor: pointer;
-        &--prev {
-            transform: scaleX(-1);
         }
     }
 }
 
-@media (max-width: 1024px) {
-    .services {
-        &__slider {
-            max-width: rem(640);
-        }
-    }
-}
 @media (max-width: 768px) {
     .services {
-        &__slider {
-            max-width: 100%;
+        &__titlebox {
+            display: flex;
+            flex-direction: column;
+            gap: rem(32);
+        }
+        &__body {
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+        &__list {
+            min-width: max-content;
+            gap: rem(24);
+        }
+        &__item {
+            width: rem(320);
         }
     }
 }

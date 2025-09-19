@@ -1,58 +1,34 @@
 [
     {
+        "key": "personal-consultation",
+        "title": "Личная консультация",
+        "image": "/img/content/personal-views/temp3.jpg",
+        "description": "120 минут",
+        "price": 25000,
+        "priceOld": 80000
+    },
+    {
         "key": "group-consultation",
         "title": "групповая консультация",
         "image": "/img/content/personal-views/temp3.jpg",
         "description": "90 минут",
-        "price": "5000"
+        "price": "5000",
+        "priceOld": 600000
+    },
+    {
+        "key": "group-consultation",
+        "title": "Онлайн-тренинг",
+        "image": "/img/content/personal-views/temp3.jpg",
+        "description": "90 минут",
+        "price": 5000,
+        "priceOld": 600000
     },
     {
         "key": "mentoring",
         "title": "Наставничество",
         "image": "/img/content/personal-views/temp3.jpg",
         "description": "2 месяца",
-        "price": 1000000
-    },
-    {
-        "key": "personal-consultation",
-        "title": "Личная консультация",
-        "image": "/img/content/personal-views/temp3.jpg",
-        "description": "120 минут",
-        "price": 25000
-    },
-    {
-        "key": "group-consultation",
-        "title": "групповая консультация",
-        "image": "/img/content/personal-views/temp3.jpg",
-        "description": "90 минут",
-        "price": 5000
-    },
-    {
-        "key": "group-consultation1",
-        "title": "групповая консультация",
-        "image": "/img/content/personal-views/temp3.jpg",
-        "description": "90 минут",
-        "price": 5000
-    },
-    {
-        "key": "mentoring1",
-        "title": "Наставничество",
-        "image": "/img/content/personal-views/temp3.jpg",
-        "description": "2 месяца",
-        "price": 1000000
-    },
-    {
-        "key": "personal-consultation1",
-        "title": "Личная консультация",
-        "image": "/img/content/personal-views/temp3.jpg",
-        "description": "120 минут",
-        "price": 25000
-    },
-    {
-        "key": "group-consultation1",
-        "title": "групповая консультация",
-        "image": "/img/content/personal-views/temp3.jpg",
-        "description": "90 минут",
-        "price": 5000
+        "price": 1000000,
+        "priceOld": 600000
     }
 ]

@@ -187,7 +187,7 @@ onMounted(() => {
     }
 }
 
-@media (max-width: 512px){
+@media (max-width: 512px) {
     .interviews-modal {
         &__list {
             display: flex;

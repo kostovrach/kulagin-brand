@@ -5,28 +5,49 @@
                 <TheSvgSprite type="cross" :size="32" />
             </button>
             <nav class="menu-modal__nav">
-                <router-link :class="['menu-modal__link', { current: currentRoute == 'billboard' }]" to="/billboard"  @click="close"
+                <router-link
+                    :class="['menu-modal__link', { current: currentRoute == 'billboard' }]"
+                    to="/billboard"
+                    @click="close"
                     >Kulagin brand</router-link
                 >
-                <router-link :class="['menu-modal__link', { current: currentRoute == 'home' }]" to="/"  @click="close"
+                <router-link :class="['menu-modal__link', { current: currentRoute == 'home' }]" to="/" @click="close"
                     >Обо мне</router-link
                 >
-                <router-link :class="['menu-modal__link', { current: currentRoute == 'services' }]" to="/services"  @click="close"
+                <router-link
+                    :class="['menu-modal__link', { current: currentRoute == 'services' }]"
+                    to="/services"
+                    @click="close"
                     >Услуги</router-link
                 >
-                <router-link :class="['menu-modal__link', { current: currentRoute == 'projects' }]" to="/projects"  @click="close"
+                <router-link
+                    :class="['menu-modal__link', { current: currentRoute == 'projects' }]"
+                    to="/projects"
+                    @click="close"
                     >Все проекты</router-link
                 >
-                <router-link :class="['menu-modal__link', { current: currentRoute == 'hobby' }]" to="/hobby"  @click="close"
+                <router-link
+                    :class="['menu-modal__link', { current: currentRoute == 'hobby' }]"
+                    to="/hobby"
+                    @click="close"
                     >Хобби</router-link
                 >
-                <router-link :class="['menu-modal__link', { current: currentRoute == 'marketers' }]" to="/marketers"  @click="close"
+                <router-link
+                    :class="['menu-modal__link', { current: currentRoute == 'marketers' }]"
+                    to="/marketers"
+                    @click="close"
                     >Маркетологам</router-link
                 >
-                <router-link :class="['menu-modal__link', { current: currentRoute == 'blog' }]" to="/blog"  @click="close"
+                <router-link
+                    :class="['menu-modal__link', { current: currentRoute == 'blog' }]"
+                    to="/blog"
+                    @click="close"
                     >Блог</router-link
                 >
-                <router-link :class="['menu-modal__link', { current: currentRoute == 'contact' }]" to="/contact"  @click="close"
+                <router-link
+                    :class="['menu-modal__link', { current: currentRoute == 'contact' }]"
+                    to="/contact"
+                    @click="close"
                     >Контакты</router-link
                 >
             </nav>

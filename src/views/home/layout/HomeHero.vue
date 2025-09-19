@@ -23,7 +23,7 @@
                     type="router-link"
                     to="/services"
                     variant="red"
-                >Услуги
+                    >Услуги
                 </ButtonPrimary>
                 <ButtonPrimary
                     class="hero__sticker"
@@ -32,7 +32,7 @@
                     variant="grey"
                     logic="double-line"
                     @click="openInterviews"
-                >Упоминания в&nbsp;СМИ
+                    >Упоминания в&nbsp;СМИ
                 </ButtonPrimary>
                 <ButtonPrimary
                     class="hero__sticker"
@@ -41,7 +41,7 @@
                     href="https://kulaginbrand.ru"
                     target="_blank"
                     variant="grey"
-                >Студия
+                    >Студия
                 </ButtonPrimary>
                 <ButtonPrimary
                     class="hero__sticker"
@@ -49,7 +49,7 @@
                     type="router-link"
                     to="/hobby"
                     variant="red"
-                >Мои хобби
+                    >Мои хобби
                 </ButtonPrimary>
                 <img
                     class="hero__sticker"

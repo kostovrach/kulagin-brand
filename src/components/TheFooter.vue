@@ -160,7 +160,7 @@ function openPrivacy() {
     }
 }
 
-@media (max-width: 1260px){
+@media (max-width: 1260px) {
     .footer {
         display: none;
     }
