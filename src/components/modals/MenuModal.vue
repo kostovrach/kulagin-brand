@@ -138,7 +138,7 @@ function close() {
     right: 0;
     width: 100%;
     max-width: rem(360);
-    height: 100lvh;
+    height: 100vh;
     color: $c-main;
     background-color: $c-111111;
     padding: rem(16) rem(16) rem(64);

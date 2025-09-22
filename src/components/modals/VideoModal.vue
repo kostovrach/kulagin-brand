@@ -41,6 +41,7 @@ function close() {
     translate: -50% -50%;
     width: 100%;
     max-width: rem(512);
+    max-height: 85lvh;
     background-color: $c-main;
     animation: translateIn $td $tf-spring;
     &__header {
@@ -77,8 +78,7 @@ function close() {
     }
     &__video {
         width: 100%;
-        min-height: rem(730);
-        max-height: 80lvh;
+        height: 100%;
         object-fit: cover;
     }
     &__error {

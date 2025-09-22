@@ -56,7 +56,7 @@
                 <div class="billboard__item billboard__item--view fade-bottom">
                     <ButtonPrimary
                         type="router-link"
-                        to="/"
+                        to="/about"
                         variant="red"
                         style="font-size: 1rem; position: absolute; top: 50%; left: 50%; rotate: -7deg"
                         >Познакомиться</ButtonPrimary

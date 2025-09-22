@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
+import AboutView from '@/views/about/AboutView.vue';
 import HomeView from '@/views/home/HomeView.vue';
 
 const router = createRouter({
@@ -9,6 +10,12 @@ const router = createRouter({
             path: '/',
             name: 'home',
             component: HomeView,
+            meta: { hideLayout: true },
+        },
+        {
+            path: '/about',
+            name: 'about',
+            component: AboutView,
         },
         {
             path: '/services',
@@ -45,11 +52,6 @@ const router = createRouter({
             path: '/marketers',
             name: 'marketers',
             component: () => import('@/views/marketers/MarketersView.vue'),
-        },
-        {
-            path: '/billboard',
-            name: 'billboard',
-            component: () => import('@/views/billboard/BillboardView.vue'),
         },
         {
             path: '/:catchAll(.*)',

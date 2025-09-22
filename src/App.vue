@@ -1,16 +1,17 @@
 <template>
-    <TheHeader />
+    <TheHeader v-if="!$route.meta.hideLayout" />
     <RouterView />
     <ModalRoot />
     <CookieNotify />
-    <TheFooter />
+    <TheFooter v-if="!$route.meta.hideLayout" />
 </template>
 
 <script setup>
-import CookieNotify from './components/modals/CookieNotify/CookieNotify.vue';
-import ModalRoot from './components/ModalRoot.vue';
 import TheFooter from './components/TheFooter.vue';
 import TheHeader from './components/TheHeader.vue';
+
+import CookieNotify from './components/modals/CookieNotify/CookieNotify.vue';
+import ModalRoot from './components/ModalRoot.vue';
 </script>
 
 <style lang="scss">

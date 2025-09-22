@@ -155,18 +155,6 @@ const secondPart = computed(() => {
     }
 
     @media (pointer: fine) {
-        &:not(#{$p}--noanim):hover {
-            background-color: $c-111111;
-            outline-color: $c-111111;
-            &::before {
-                opacity: 0;
-            }
-            #{$p}__icon {
-                > * {
-                    background-position: 100% 100%;
-                }
-            }
-        }
         &:not(#{$p}--double-line, #{$p}--noanim):hover {
             #{$p}__body > span {
                 &:first-of-type {
@@ -176,6 +164,18 @@ const secondPart = computed(() => {
                 &:last-of-type {
                     translate: rem(64) 0;
                     opacity: 0;
+                }
+            }
+        }
+        &:not(#{$p}--noanim):hover {
+            background-color: $c-111111;
+            outline-color: $c-111111;
+            &::before {
+                opacity: 0;
+            }
+            #{$p}__icon {
+                > * {
+                    background-position: 100% 100%;
                 }
             }
         }

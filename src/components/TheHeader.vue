@@ -2,14 +2,12 @@
     <header class="header">
         <div class="header__container">
             <div class="header__logo-container">
-                <router-link class="header__logo" to="/">игорь кулагин</router-link>
-                <router-link :class="['header__sublogo', { current: currentRoute == 'billboard' }]" to="/billboard"
-                    >KULAGIN GROUP</router-link
-                >
+                <router-link class="header__logo" to="/about">игорь кулагин</router-link>
+                <router-link class="header__sublogo" to="/">KULAGIN GROUP</router-link>
             </div>
             <div class="header__controls">
                 <nav class="header__nav">
-                    <router-link :class="['header__nav-link', { current: currentRoute == 'home' }]" to="/"
+                    <router-link :class="['header__nav-link', { current: currentRoute == 'about' }]" to="/about"
                         >Обо мне</router-link
                     >
                     <router-link :class="['header__nav-link', { current: currentRoute == 'services' }]" to="/services"

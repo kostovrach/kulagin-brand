@@ -82,6 +82,9 @@ onMounted(() => {
         translate: -50% -50%;
         display: flex;
         flex-direction: column;
+        @media (max-width: 768px) {
+            opacity: 0.6;
+        }
     }
     &__title {
         text-transform: uppercase;
@@ -90,7 +93,6 @@ onMounted(() => {
         font-size: lineScale(256, 72, 480, 1440);
         font-weight: $fw-semi;
         white-space: nowrap;
-        // mask-image: linear-gradient(to top, transparent 30%, #000 30%);
         max-height: 1.35ch;
         overflow: hidden;
     }
@@ -104,6 +106,9 @@ onMounted(() => {
             color: $c-accent;
             font-weight: $fw-bold;
             margin-top: rem(6);
+            @media (max-width: 768px) {
+                scale: 0.6;
+            }
         }
     }
     &__list {
