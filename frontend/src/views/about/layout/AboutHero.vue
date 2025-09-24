@@ -3,9 +3,9 @@
         <div class="hero__container">
             <div class="hero__head">
                 <div class="layout__titlebox">
-                    <h1 class="hero__title fade-bottom-rotate">Помогаю бизнесу зарабатывать</h1>
+                    <h1 class="hero__title fade-bottom-rotate">{{ content?.title }}</h1>
                     <p class="hero__subtitle fade-bottom-rotate" style="animation-delay: 0.2s">
-                        Консультации по&nbsp;рекламе и&nbsp;брендингу, по&nbsp;личностному росту и ведению бизнеса.
+                        {{ content?.description }}
                     </p>
                 </div>
                 <!-- Временное изображение -->
@@ -110,14 +110,12 @@
                 />
                 <SectionHint
                     class="hero__hint"
-                    image="/img/content/personal-views/smiling.gif"
-                    modal-media="/videos/404.mp4"
+                    :video="content?.hint?.video_url"
+                    :modal-media="content?.hint?.video_url"
                 >
-                    <template #title>Как превратить свой бренд в источник дохода?</template>
-                    <template #text>
-                        Мой опыт и&nbsp;знания смогут сократить путь к&nbsp;результатам, экономя несколько лет усилий.
-                    </template>
-                    <template #media-description>Про уникальный опыт</template>
+                    <template #title>{{ content?.hint?.title }}</template>
+                    <template #text>{{ content?.hint?.description }}</template>
+                    <template #media-description>{{ content?.hint?.button_text }}</template>
                 </SectionHint>
             </div>
         </div>
@@ -130,6 +128,10 @@ import { useModal } from '@/composables/useModal';
 import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
 import SectionHint from '@/components/SectionHint/SectionHint.vue';
 import Sticker from '@/components/Sticker/Sticker.vue';
+
+defineProps({
+    content: { type: Object, default: () => ({}) },
+});
 
 const { openModal } = useModal();
 

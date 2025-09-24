@@ -1,20 +1,22 @@
 <template>
-    <div class="section-hint" @click="openVideo">
+    <div class="section-hint">
         <h3 class="section-hint__title">
             <slot name="title"></slot>
         </h3>
         <p class="section-hint__text">
             <slot name="text"></slot>
         </p>
-        <button class="section-hint__media">
+        <button class="section-hint__media" @click="openVideo">
             <span class="section-hint__media-icon"><TheSvgSprite type="arrow" :size="30" /></span>
 
             <picture v-if="props.image" class="section-hint__media-image-container">
                 <img class="section-hint__media-image" :src="props.image" alt="" />
             </picture>
-            <video v-if="props.video" class="section-hint__media-video" autoplay muted loop playsinline>
-                <source :src="props.video" type="video/mp4" />
-            </video>
+            <div v-if="props.video" class="section-hint__media-video-container">
+                <video class="section-hint__media-video" autoplay muted loop playsinline>
+                    <source :src="props.video" />
+                </video>
+            </div>
 
             <div class="section-hint__media-button">
                 <span> <TheSvgSprite type="play" :size="11" /></span>
@@ -88,7 +90,7 @@ function openVideo() {
                     animation: arrow-translate calc($td * 1.2) $tf;
                 }
                 #{$p}__media-image-container,
-                #{$p}__media-video {
+                #{$p}__media-video-container {
                     &::before {
                         opacity: 0;
                     }
@@ -120,9 +122,10 @@ function openVideo() {
             }
         }
         &-image-container,
-        &-video {
+        &-video-container {
             grid-area: media;
             position: relative;
+            z-index: 0;
             width: rem(160);
             aspect-ratio: 1;
             height: 100%;
@@ -138,7 +141,8 @@ function openVideo() {
                 transition: opacity $td $tf;
             }
         }
-        &-image {
+        &-image,
+        &-video {
             width: 100%;
             height: 100%;
             object-fit: cover;
