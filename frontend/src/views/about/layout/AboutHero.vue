@@ -5,7 +5,7 @@
                 <div class="layout__titlebox">
                     <h1 class="hero__title fade-bottom-rotate">{{ content?.title }}</h1>
                     <p class="hero__subtitle fade-bottom-rotate" style="animation-delay: 0.2s">
-                        {{ content?.description }}
+                        {{ content?.subtitle }}
                     </p>
                 </div>
                 <!-- Временное изображение -->

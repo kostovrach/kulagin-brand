@@ -22,9 +22,5 @@ import PageNavigator from '@/components/PageNavigator/PageNavigator.vue';
 // content management
 import { usePage } from '@/composables/usePage';
 
-const { first: page } = usePage('about', [
-    { section: 'about_hero', with: ['hint'] },
-    { section: 'about_brand' },
-    { section: 'about_projects' },
-]);
+const { page, loading, error } = usePage('about', ['sections.item.hint.*'], { resolveFiles: true });
 </script>
