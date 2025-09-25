@@ -2,19 +2,15 @@
     <section class="hero">
         <div class="hero__container">
             <div class="hero__head">
-                <div class="layout__titlebox">
+                <div class="hero__titlebox">
                     <h1 class="hero__title fade-bottom-rotate">{{ content?.title }}</h1>
                     <p class="hero__subtitle fade-bottom-rotate" style="animation-delay: 0.2s">
                         {{ content?.subtitle }}
                     </p>
                 </div>
-                <!-- Временное изображение -->
-
                 <picture class="hero__image-container fade-scale" style="animation-delay: 0.3s">
-                    <img class="hero__image" src="/img/content/personal-views/face.png" alt="Игорь Кулагин" />
+                    <img class="hero__image" :src="content?.image_url" alt="Игорь Кулагин" />
                 </picture>
-
-                <!-- -->
             </div>
             <div class="hero__body fade-right" style="animation-delay: 0.8s">
                 <ButtonPrimary
