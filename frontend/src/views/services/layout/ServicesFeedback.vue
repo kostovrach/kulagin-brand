@@ -1,26 +1,13 @@
 <template>
     <section class="feedback">
         <div class="feedback__container">
-            <h2 class="feedback__title">Вместе приходим к&nbsp;успеху.</h2>
+            <h2 class="feedback__title">{{ content?.title }}</h2>
             <ul class="feedback__list">
-                <template v-if="feedbackLoading">
-                    <li class="feedback__list-loader" v-for="loader in 10" :key="loader">
-                        <Skeleton
-                            v-for="n in 3"
-                            :key="n"
-                            height="100%"
-                            borderRadius="1rem"
-                            :dt="{ root: { background: '#ececec', animationBackground: '#f7f9f7' } }"
-                        />
-                    </li>
-                </template>
-                <template v-else>
-                    <li class="feedback__item" v-for="(item, index) in feedbackList" :key="index">
-                        <span class="feedback__item-tag">{{ item.company }}</span>
-                        <h3 class="feedback__item-title">{{ item.name }}</h3>
-                        <p class="feedback__item-text">{{ item.text }}</p>
-                    </li>
-                </template>
+                <li class="feedback__item" v-for="item in content?.feedback_item" :key="item.id">
+                    <span class="feedback__item-tag">{{ item.feedback_item_id.company }}</span>
+                    <h3 class="feedback__item-title">{{ item.feedback_item_id.name }}</h3>
+                    <p class="feedback__item-text">{{ item.feedback_item_id.text }}</p>
+                </li>
             </ul>
             <Sticker
                 class="feedback__sticker"
@@ -43,32 +30,10 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import Skeleton from 'primevue/skeleton';
 import Sticker from '@/components/Sticker/Sticker.vue';
 
-const FEEDBACK_URL = import.meta.env.VITE_FEEDBACK_URL;
-
-const feedbackList = ref([]);
-const feedbackLoading = ref(false);
-
-async function fetchFeedback() {
-    feedbackLoading.value = true;
-    try {
-        const response = await fetch(FEEDBACK_URL);
-
-        if (!response.ok) throw new Error(response.status);
-
-        feedbackList.value = await response.json();
-    } catch (err) {
-        console.error('Ошибка загрузки отзывов:', err);
-    } finally {
-        feedbackLoading.value = false;
-    }
-}
-
-onMounted(() => {
-    fetchFeedback();
+defineProps({
+    content: { type: Object, default: () => ({}) },
 });
 </script>
 

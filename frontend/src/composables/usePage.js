@@ -20,6 +20,7 @@ export function usePage(pageCollection, withRelations = [], opts = {}) {
         const FILE_NAMES = new Set([
             'video',
             'poster',
+            'logo',
             'image',
             'file',
             'files',
@@ -39,7 +40,7 @@ export function usePage(pageCollection, withRelations = [], opts = {}) {
             if (typeof node !== 'object') return;
 
             for (const [k, v] of Object.entries(node)) {
-                if (typeof v === 'string' && UUID_RE.test(v) && FILE_NAMES.has(k)) {
+                if (typeof v === 'string' && UUID_RE.test(v) && FILE_NAMES.add(k)) {
                     if (!node[`${k}_url`]) node[`${k}_url`] = assetUrl(v);
                 } else if (v && typeof v === 'object') {
                     walk(v);
@@ -58,7 +59,7 @@ export function usePage(pageCollection, withRelations = [], opts = {}) {
             const res = await directus.request(
                 readItems(pageCollection, {
                     limit: 1,
-                    fields: ['*', 'sections.collection', 'sections.item.*', ...withRelations],
+                    fields: ['*', ...withRelations],
                 }),
             );
 

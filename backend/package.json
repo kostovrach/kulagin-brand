@@ -1,0 +1,9 @@
+{
+  "name": "kulagin-brand-backend",
+  "version": "1.0.0",
+  "scripts": {
+    "db:backup": "docker exec -t directus_postgres pg_dump -U directus directus > backup.sql",
+    "db:restore": "docker exec -i directus_postgres psql -U directus -d directus < backup.sql"
+  },
+  "packageManager": "pnpm@10.17.1"
+}

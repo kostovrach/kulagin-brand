@@ -3,7 +3,7 @@
         <div class="projects__container">
             <div class="projects__body">
                 <div class="projects__titlebox">
-                    <h2 class="projects__title">собственные проекты.</h2>
+                    <h2 class="projects__title">{{ content?.title }}</h2>
                 </div>
                 <div class="projects__content">
                     <div class="projects__item projects__item--type1">
@@ -30,34 +30,32 @@
                             textMain="средний рост конверсии"
                         />
                         <div class="projects__item--type1-wrapper">
-                            <h3 class="projects__item--type1-title">Арабеска: <br />цветочный магазин</h3>
+                            <h3 class="projects__item--type1-title">{{ content?.arabeska?.title }}</h3>
                             <picture class="projects__item--type1-image-container">
                                 <img
                                     class="projects__item--type1-image"
-                                    src="/img/content/arabeska/mockup.jpg"
+                                    :src="content?.arabeska?.image1_url"
                                     alt="Arabeska"
                                 />
                             </picture>
                             <picture class="projects__item--type1-image-container">
                                 <img
                                     class="projects__item--type1-image"
-                                    src="/img/content/arabeska/logo.svg"
+                                    :src="content?.arabeska?.logo_url"
                                     alt="Arabeska"
                                 />
                             </picture>
-                            <p class="projects__item--type1-desc">
-                                работы, в которых творчество встречается с&nbsp;результатом
-                            </p>
+                            <p class="projects__item--type1-desc">{{ content?.arabeska?.subtitle }}</p>
                             <picture class="projects__item--type1-image-container">
                                 <img
                                     class="projects__item--type1-image"
-                                    src="/img/content/arabeska/flowers.gif"
+                                    :src="content?.arabeska?.image2_url"
                                     alt="Arabeska"
                                 />
                             </picture>
                             <a
                                 class="projects__item--type1-link"
-                                href="https://cvety63.ru"
+                                :href="content?.arabeska?.link"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 ><TheSvgSprite type="arrow" :size="72"
@@ -100,44 +98,42 @@
                             <picture class="projects__item--type2-image-container">
                                 <img
                                     class="projects__item--type2-image"
-                                    src="/img/content/theplace/temp.jpg"
+                                    :src="content?.theplace?.image1_url"
                                     alt="ThePlace"
                                 />
                             </picture>
                             <picture class="projects__item--type2-image-container">
                                 <img
                                     class="projects__item--type2-image"
-                                    src="/img/content/theplace/logo.svg"
+                                    :src="content?.theplace?.logo_url"
                                     alt="ThePlace"
                                 />
                             </picture>
                             <picture class="projects__item--type2-image-container">
                                 <img
                                     class="projects__item--type2-image"
-                                    src="/img/content/theplace/team.jpg"
+                                    :src="content?.theplace?.image2_url"
                                     alt="ThePlace"
                                 />
                             </picture>
-                            <p class="projects__item--type2-desc">
-                                диджитал студия, в&nbsp;котоой творчество встречается с&nbsp;результатом
-                            </p>
+                            <p class="projects__item--type2-desc">{{ content?.theplace?.title }}</p>
                             <picture class="projects__item--type2-image-container">
                                 <img
                                     class="projects__item--type2-image"
-                                    src="/img/content/theplace/mockup.png"
+                                    :src="content?.theplace?.image3_url"
                                     alt="ThePlace"
                                 />
                             </picture>
                             <picture class="projects__item--type2-image-container">
                                 <img
                                     class="projects__item--type2-image"
-                                    src="/img/content/theplace/mockup2.jpg"
+                                    :src="content?.theplace?.image4_url"
                                     alt="ThePlace"
                                 />
                             </picture>
                             <a
                                 class="projects__item--type2-link"
-                                href="https://kulaginbrand.ru"
+                                :href="content?.theplace?.link"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 ><TheSvgSprite type="arrow" :size="72"
@@ -172,6 +168,10 @@ import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
 import Sticker from '@/components/Sticker/Sticker.vue';
 import Contact from '@/components/Contact/Contact.vue';
 import TheSvgSprite from '@/components/TheSvgSprite.vue';
+
+defineProps({
+    content: { type: Object, default: () => ({}) },
+});
 </script>
 
 <style lang="scss" scoped>
@@ -213,6 +213,7 @@ import TheSvgSprite from '@/components/TheSvgSprite.vue';
             }
             &-title {
                 grid-area: title;
+                max-width: 18ch;
                 text-transform: uppercase;
                 font-size: lineScale(32, 24, 480, 1440);
                 line-height: 1.2;
@@ -323,7 +324,7 @@ import TheSvgSprite from '@/components/TheSvgSprite.vue';
                     grid-area: image-4;
                     max-width: rem(322);
                     img {
-                        scale: 1.5;
+                        scale: 1.3;
                         object-fit: contain;
                     }
                 }

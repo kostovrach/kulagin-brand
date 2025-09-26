@@ -31,45 +31,31 @@
                 >
                     Маркетологам
                 </ButtonPrimary>
-                <picture
-                    class="brand__image-container"
-                    style="--mask: url('/img/masks/b.svg'); --break-mask: url('/img/masks/b-rotate.svg')"
-                >
-                    <img class="brand__image" src="/img/content/personal-views/singing.gif" alt="#" />
+                <picture class="brand__image-container">
+                    <img class="brand__image" :src="content?.image1_url" alt="#" />
                 </picture>
-                <picture
-                    class="brand__image-container"
-                    style="--mask: url('/img/masks/r.svg'); --break-mask: url('/img/masks/r-rotate.svg')"
-                >
-                    <img class="brand__image" src="/img/content/personal-views/temp4.jpg" alt="#" />
+                <picture class="brand__image-container">
+                    <img class="brand__image" :src="content?.image2_url" alt="#" />
                 </picture>
-                <picture
-                    class="brand__image-container"
-                    style="--mask: url('/img/masks/a.svg'); --break-mask: url('/img/masks/a-rotate.svg')"
-                >
-                    <img class="brand__image" src="/img/content/personal-views/temp2.jpg" alt="#" />
+                <picture class="brand__image-container">
+                    <img class="brand__image" :src="content?.image3_url" alt="#" />
                 </picture>
-                <picture
-                    class="brand__image-container"
-                    style="--mask: url('/img/masks/n.svg'); --break-mask: url('/img/masks/n-rotate.svg')"
-                >
-                    <img class="brand__image" src="/img/content/personal-views/temp5.jpg" alt="#" />
+                <picture class="brand__image-container">
+                    <img class="brand__image" :src="content?.image4_url" alt="#" />
                 </picture>
-                <picture
-                    class="brand__image-container"
-                    style="--mask: url('/img/masks/d.svg'); --break-mask: url('/img/masks/d-rotate.svg')"
-                >
-                    <img class="brand__image" src="/img/content/personal-views/temp6.jpg" alt="#" />
+                <picture class="brand__image-container">
+                    <img class="brand__image" :src="content?.image5_url" alt="#" />
                 </picture>
             </div>
             <div class="brand__hint">
-                <SectionHint class="home-hero__hint" image="/img/content/personal-views/singing.jpg">
-                    <template #title>Пир для маркетологов</template>
-                    <template #text>
-                        Мы обсудим эффективность и&nbsp;скорость бизнес-процессов. Мы поговорим о том, как принести
-                        и&nbsp;удержать больше лидов.
-                    </template>
-                    <template #media-description>уникальный опыт</template>
+                <SectionHint
+                    class="home-hero__hint"
+                    :video="content?.hint?.video_url"
+                    :modal-media="content?.hint?.video_url"
+                >
+                    <template #title>{{ content?.hint?.title }}</template>
+                    <template #text>{{ content?.hint?.description }}</template>
+                    <template #media-description>{{ content?.hint?.button_text }}</template>
                 </SectionHint>
             </div>
             <div class="brand__services">
@@ -81,35 +67,35 @@
                 >
                     Услуги
                 </ButtonPrimary>
-                <h2 class="brand__services-title">Развиваю личные бренды</h2>
+                <h2 class="brand__services-title">{{ content?.collage?.title }}</h2>
                 <p class="brand__services-subtitle">На личность — идет&nbsp;наличность</p>
 
                 <picture class="brand__services-image-container">
-                    <img class="brand__services-image" src="/img/content/temp.jpg" alt="#" />
+                    <img class="brand__services-image" :src="content?.collage?.image1_url" alt="#" />
                 </picture>
                 <picture class="brand__services-image-container">
-                    <img class="brand__services-image" src="/img/content/personal-views/angry.jpg" alt="#" />
+                    <img class="brand__services-image" :src="content?.collage?.image2_url" alt="#" />
                 </picture>
                 <picture class="brand__services-image-container">
-                    <img class="brand__services-image" src="/img/content/snapshot.gif" alt="#" />
+                    <img class="brand__services-image" :src="content?.collage?.image3_url" alt="#" />
                 </picture>
                 <picture class="brand__services-image-container">
-                    <img class="brand__services-image" src="/img/content/blog/temp5.jpg" alt="#" />
+                    <img class="brand__services-image" :src="content?.collage?.image4_url" alt="#" />
                 </picture>
                 <picture class="brand__services-image-container">
-                    <img class="brand__services-image" src="/img/content/personal-views/circle.jpg" alt="#" />
+                    <img class="brand__services-image" :src="content?.collage?.image5_url" alt="#" />
                 </picture>
                 <picture class="brand__services-image-container">
-                    <img class="brand__services-image" src="/img/content/gt-club.gif" alt="#" />
+                    <img class="brand__services-image" :src="content?.collage?.image6_url" alt="#" />
                 </picture>
                 <picture class="brand__services-image-container">
-                    <img class="brand__services-image" src="/img/content/blog/temp1.jpg" alt="#" />
+                    <img class="brand__services-image" :src="content?.collage?.image7_url" alt="#" />
                 </picture>
                 <picture class="brand__services-image-container">
-                    <img class="brand__services-image" src="/img/content/personal-views/eating.jpg" alt="#" />
+                    <img class="brand__services-image" :src="content?.collage?.image8_url" alt="#" />
                 </picture>
                 <picture class="brand__services-image-container">
-                    <img class="brand__services-image" src="/img/content/arabeska/arabeska.gif" alt="#" />
+                    <img class="brand__services-image" :src="content?.collage?.image9_url" alt="#" />
                 </picture>
             </div>
 
@@ -132,7 +118,7 @@
                 <picture class="brand__footer-image-container">
                     <img
                         class="brand__footer-image"
-                        src="/img/content/personal-views/smiling.gif"
+                        :src="content?.footer_image_url"
                         alt="Игорь Кулагин"
                     />
                 </picture>
@@ -145,6 +131,10 @@
 import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
 import SectionHint from '@/components/SectionHint/SectionHint.vue';
 import FormPrimary from '@/components/FormPrimary/FormPrimary.vue';
+
+defineProps({
+    content: { type: Object, default: () => ({}) },
+});
 </script>
 
 <style lang="scss" scoped>
@@ -179,10 +169,39 @@ import FormPrimary from '@/components/FormPrimary/FormPrimary.vue';
         z-index: 1;
         height: 100%;
         width: rem(560);
-        mask-image: var(--mask);
         mask-repeat: no-repeat;
         mask-size: 100% 100%;
         @include horizontal-max-height;
+        &:nth-of-type(5n + 1) {
+            mask-image: url(/img/masks/b.svg);
+            @media (max-width: 768px) {
+                mask-image: url(/img/masks/b-rotate.svg);
+            }
+        }
+        &:nth-of-type(5n + 2) {
+            mask-image: url(/img/masks/r.svg);
+            @media (max-width: 768px) {
+                mask-image: url(/img/masks/r-rotate.svg);
+            }
+        }
+        &:nth-of-type(5n + 3) {
+            mask-image: url(/img/masks/a.svg);
+            @media (max-width: 768px) {
+                mask-image: url(/img/masks/a-rotate.svg);
+            }
+        }
+        &:nth-of-type(5n + 4) {
+            mask-image: url(/img/masks/n.svg);
+            @media (max-width: 768px) {
+                mask-image: url(/img/masks/n-rotate.svg);
+            }
+        }
+        &:nth-of-type(5n + 5) {
+            mask-image: url(/img/masks/d.svg);
+            @media (max-width: 768px) {
+                mask-image: url(/img/masks/d-rotate.svg);
+            }
+        }
     }
     &__image {
         width: 100%;
@@ -329,7 +348,6 @@ import FormPrimary from '@/components/FormPrimary/FormPrimary.vue';
             align-items: flex-start;
         }
         &__image-container {
-            mask-image: var(--break-mask);
             aspect-ratio: 2/1.5;
             width: 100%;
         }

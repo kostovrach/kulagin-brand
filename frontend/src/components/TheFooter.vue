@@ -6,21 +6,21 @@
                     <a
                         class="footer__socials-icon"
                         style="--mask: url(/img/icons/vk.svg); --color: #016fcc"
-                        href="https://example.com"
+                        :href="page?.vk?.link"
                         target="_blank"
                         rel="noopener noreferrer"
                     ></a>
                     <a
                         class="footer__socials-icon"
                         style="--mask: url(/img/icons/tg.svg); --color: #03a4df"
-                        href="https://example.com"
+                        :href="page?.telegram?.link"
                         target="_blank"
                         rel="noopener noreferrer"
                     ></a>
                     <a
                         class="footer__socials-icon"
                         style="--mask: url(/img/icons/ok.svg); --color: #ff7700"
-                        href="https://example.com"
+                        :href="page?.ok?.link"
                         target="_blank"
                         rel="noopener noreferrer"
                     ></a>
@@ -37,7 +37,7 @@
                                 #4f5bd5 100%
                             );
                         "
-                        href="https://example.com"
+                        :href="page?.instagram?.link"
                         target="_blank"
                         rel="noopener noreferrer"
                     ></a>
@@ -60,6 +60,18 @@
 
 <script setup>
 import { useModal } from '@/composables/useModal';
+
+// content management
+import { usePage } from '@/composables/usePage';
+
+const { page, loading, error } = usePage(
+    'socials',
+    ['vk.*', 'instagram.*', 'whatsapp.*', 'tiktok.*', 'telegram.*', 'ok.*'],
+    {
+        resolveFiles: true,
+    },
+);
+//
 
 const { openModal } = useModal();
 

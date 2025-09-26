@@ -2,16 +2,34 @@
     <div :class="['contact', `contact--${props.orientation}`]">
         <div class="contact__container">
             <div class="contact__body">
-                <a
-                    v-for="item in socials"
-                    :key="item.name"
-                    :class="['contact__link', item.modifier ? `contact__link--${item.modifier}` : '']"
-                    :href="item.href"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a class="contact__link contact__link--tagging" :href="page?.instagram?.link">
                     <picture class="contact__link-image-container">
-                        <img class="contact__link-image" :src="item.image" :alt="item.name" />
+                        <img class="contact__link-image" src="/img/stickers/instagram.png" alt="instagram" />
+                    </picture>
+                </a>
+                <a class="contact__link" :href="page?.whatsapp?.link">
+                    <picture class="contact__link-image-container">
+                        <img class="contact__link-image" src="/img/stickers/whatsapp.png" alt="whatsapp" />
+                    </picture>
+                </a>
+                <a class="contact__link" :href="page?.tiktok?.link">
+                    <picture class="contact__link-image-container">
+                        <img class="contact__link-image" src="/img/stickers/tiktok.png" alt="tiktok" />
+                    </picture>
+                </a>
+                <a class="contact__link" :href="page?.vk?.link">
+                    <picture class="contact__link-image-container">
+                        <img class="contact__link-image" src="/img/stickers/vk.png" alt="vk" />
+                    </picture>
+                </a>
+                <a class="contact__link" :href="page?.telegram?.link">
+                    <picture class="contact__link-image-container">
+                        <img class="contact__link-image" src="/img/stickers/tg.png" alt="tg" />
+                    </picture>
+                </a>
+                <a class="contact__link" :href="page?.ok?.link">
+                    <picture class="contact__link-image-container">
+                        <img class="contact__link-image" src="/img/stickers/ok.png" alt="ok" />
                     </picture>
                 </a>
                 <p class="contact__desc">Ваша уникальность — ваш главный актив. Инвестируйте в неё мудро!</p>
@@ -36,6 +54,18 @@
 <script setup>
 import TheSvgSprite from '../TheSvgSprite.vue';
 
+// content management
+import { usePage } from '@/composables/usePage';
+
+const { page, loading, error } = usePage(
+    'socials',
+    ['vk.*', 'instagram.*', 'whatsapp.*', 'tiktok.*', 'telegram.*', 'ok.*'],
+    {
+        resolveFiles: true,
+    },
+);
+//
+
 const props = defineProps({
     orientation: {
         type: String,
@@ -43,40 +73,6 @@ const props = defineProps({
         validator: (val) => ['horizontal', 'vertical'].includes(val),
     },
 });
-
-const socials = [
-    {
-        name: 'instagram',
-        image: '/img/stickers/instagram.png',
-        href: '/',
-        modifier: 'tagging',
-    },
-    {
-        name: 'whatsapp',
-        image: '/img/stickers/whatsapp.png',
-        href: '/',
-    },
-    {
-        name: 'tiktok',
-        image: '/img/stickers/tiktok.png',
-        href: '/',
-    },
-    {
-        name: 'vk',
-        image: '/img/stickers/vk.png',
-        href: '/',
-    },
-    {
-        name: 'tg',
-        image: '/img/stickers/tg.png',
-        href: '/',
-    },
-    {
-        name: 'ok',
-        image: '/img/stickers/ok.png',
-        href: '/',
-    },
-];
 </script>
 
 <style lang="scss" scoped>

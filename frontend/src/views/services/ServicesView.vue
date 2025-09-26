@@ -1,15 +1,17 @@
 <template>
     <HorizontalLayout>
-        <ServicesSlider />
-        <ServicesFeedback />
+        <ServicesSlider :content="page?.services_list" />
+        <ServicesFeedback :content="page?.services_feedback" />
         <section class="hint">
             <div class="hint__container">
-                <SectionHint image="/img/content/personal-views/temp1.jpg">
-                    <template #title>Хотите развить свой бренд, но не знаете с чего начать?</template>
-                    <template #text>
-                        Мой опыт и&nbsp;знания смогут сократить путь к&nbsp;результатам, экономя несколько лет усилий.
-                    </template>
-                    <template #media-description>Про уникальный опыт</template>
+                <SectionHint
+                    class="hero__hint"
+                    :video="page?.services_hint.video_url"
+                    :modal-media="page?.services_hint.video_url"
+                 >
+                    <template #title>{{ page?.services_hint.title }}</template>
+                    <template #text>{{ page?.services_hint.description }}</template>
+                    <template #media-description>{{ page?.services_hint.button_text }}</template>
                 </SectionHint>
                 <ButtonPrimary class="hint__button" type="a" href="https://kulaginbrand.ru" target="_blank"
                     >Сайт студии</ButtonPrimary
@@ -32,12 +34,33 @@
 import HorizontalLayout from '@/components/HorizontalLayout/HorizontalLayout.vue';
 
 import SectionHint from '@/components/SectionHint/SectionHint.vue';
+import PageNavigator from '@/components/PageNavigator/PageNavigator.vue';
+import Contact from '@/components/Contact/Contact.vue';
 
 import ServicesSlider from './layout/ServicesSlider.vue';
 import ServicesFeedback from './layout/ServicesFeedback.vue';
 import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
-import Contact from '@/components/Contact/Contact.vue';
-import PageNavigator from '@/components/PageNavigator/PageNavigator.vue';
+
+// content management
+import { usePage } from '@/composables/usePage';
+
+const { page, loading, error } = usePage(
+    'services',
+    [
+        'services_list.*',
+        'services_list.item.*',
+        'services_list.item.item_id.*',
+
+        'services_feedback.*',
+        'services_feedback.feedback_item.*',
+        'services_feedback.feedback_item.feedback_item_id.*',
+
+        'services_hint.*'
+    ],
+    {
+        resolveFiles: true,
+    },
+);
 </script>
 
 <style lang="scss" scoped>

@@ -2,78 +2,35 @@
     <section class="services">
         <div class="services__container">
             <div class="services__titlebox">
-                <h1 class="services__title">Развиваю ваш личный&nbsp;бренд.</h1>
-                <p class="services__subtitle">
-                    Консультации по&nbsp;рекламе и&nbsp;брендингу, по&nbsp;личностному росту и ведению бизнеса.
-                </p>
+                <h1 class="services__title">{{ content?.title }}</h1>
+                <p class="services__subtitle">{{ content?.subtitle }}</p>
             </div>
-            <div class="services__body">
-                <ul class="services__list">
-                    <li class="services__item" v-for="(item, index) in services" :key="index">
-                        <div class="services__item-wrapper">
-                            <picture class="services__item-image-container">
-                                <img class="services__item-image" :src="item.image" :alt="item.title" />
-                            </picture>
-                            <div class="services__item-content">
-                                <div class="services__item-titlebox">
-                                    <p class="services__item-desc">{{ item.description }}</p>
-                                    <h2 class="services__item-title">{{ item.title }}</h2>
-                                </div>
-                                <ul class="services__item-values">
-                                    <li>
-                                        {{
-                                            typeof item.priceOld === 'number'
-                                                ? item.priceOld.toLocaleString('ru-RU')
-                                                : item.priceOld
-                                        }}
-                                        &#8381;
-                                    </li>
-                                    <li>
-                                        {{
-                                            typeof item.price === 'number'
-                                                ? item.price.toLocaleString('ru-RU')
-                                                : item.price
-                                        }}
-                                        &#8381;
-                                    </li>
-                                </ul>
+            <ul class="services__list">
+                <li class="services__item" v-for="item in content?.item" :key="item.id">
+                    <div class="services__item-wrapper">
+                        <picture class="services__item-image-container">
+                            <img class="services__item-image" :src="item.item_id.image_url" :alt="item.item_id.title" />
+                        </picture>
+                        <div class="services__item-content">
+                            <div class="services__item-titlebox">
+                                <p class="services__item-desc">{{ item.item_id.tag }}</p>
+                                <h2 class="services__item-title">{{ item.item_id.title }}</h2>
                             </div>
+                            <ul class="services__item-values">
+                                <li>{{ item.item_id.price_old }} &#8381;</li>
+                                <li>{{ item.item_id.price }} &#8381;</li>
+                            </ul>
                         </div>
-                    </li>
-                </ul>
-            </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </section>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-
-// import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
-
-const SERVICES_URL = import.meta.env.VITE_SERVICES_URL;
-
-const services = ref([]);
-const servicesLoading = ref(false);
-
-async function fetchServices() {
-    servicesLoading.value = true;
-
-    try {
-        const response = await fetch(SERVICES_URL);
-
-        if (!response.ok) throw new Error(response.status);
-
-        services.value = await response.json();
-    } catch (err) {
-        console.error('Ошибка загрузки списка услуг', err);
-    } finally {
-        servicesLoading.value = false;
-    }
-}
-
-onMounted(() => {
-    fetchServices();
+defineProps({
+    content: { type: Object, default: () => ({}) },
 });
 </script>
 
@@ -134,13 +91,13 @@ onMounted(() => {
         &-desc {
             font-family: 'Inter', sans-serif;
             color: $c-accent;
-            font-size: lineScale(22, 18, 480, 1440);
+            font-size: lineScale(18, 16, 480, 1440);
             font-weight: $fw-bold;
         }
         &-title {
             text-transform: uppercase;
             font-family: 'Fira-Extra', sans-serif;
-            font-size: lineScale(48, 24, 480, 1440);
+            font-size: lineScale(40, 24, 480, 1440);
             font-weight: $fw-med;
         }
         &-values {
@@ -171,16 +128,14 @@ onMounted(() => {
             flex-direction: column;
             gap: rem(32);
         }
-        &__body {
-            overflow-x: auto;
-            overflow-y: hidden;
-        }
         &__list {
-            min-width: max-content;
-            gap: rem(24);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: rem(64);
         }
         &__item {
-            width: rem(320);
+            width: 100%;
         }
     }
 }

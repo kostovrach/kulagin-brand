@@ -1,8 +1,8 @@
 <template>
     <HorizontalLayout>
         <AboutHero :content="page?.about_hero" />
-        <AboutBrand />
-        <AboutProjects />
+        <AboutBrand :content="page?.about_brand" />
+        <AboutProjects :content="page?.about_projects" />
         <PageNavigator to="/services" image="/img/content/personal-views/singing.gif">
             <template #tag>Далее</template>
             <template #title>Услуги</template>
@@ -22,5 +22,23 @@ import PageNavigator from '@/components/PageNavigator/PageNavigator.vue';
 // content management
 import { usePage } from '@/composables/usePage';
 
-const { page, loading, error } = usePage('about', ['sections.item.hint.*'], { resolveFiles: true });
+const { page, loading, error } = usePage(
+    'about',
+    [
+        'about_hero.*',
+        'about_hero.hint.*',
+
+        'about_brand.*',
+        'about_brand.hint.*',
+        'about_brand.collage.*',
+
+        'about_projects.*',
+        'about_projects.arabeska.*',
+        'about_projects.theplace.*',
+    ],
+    {
+        resolveFiles: true,
+    },
+);
+
 </script>
