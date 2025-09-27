@@ -20,7 +20,7 @@
                             :to="`/article/${article.slug}`"
                         >
                             <picture class="blog__item-image-container">
-                                <img class="blog__item-image" :src="article.cover" :alt="article.title" />
+                                <img class="blog__item-image" :src="article.cover_url" :alt="article.title" />
                             </picture>
                             <h2 class="blog__item-title">{{ article.title }}</h2>
                         </router-link>

@@ -2,101 +2,54 @@
     <section class="hobby">
         <div class="hobby__container">
             <div class="hobby__titlebox">
-                <h1 class="hobby__title fade-bottom-rotate">Факты обо мне вне&nbsp;формата.</h1>
+                <h1 class="hobby__title fade-bottom-rotate">{{ props.content?.title }}</h1>
             </div>
+
             <Swiper
+                v-if="props.content?.hobby_item?.length"
                 class="hobby__slider fade-bottom"
-                style="animation-delay: 0.4s"
                 :modules="modules"
                 :slides-per-view="1"
-                :breakpoints="{
-                    1100: {
-                        slidesPerView: 3,
-                    },
-                }"
+                :breakpoints="{ 1100: { slidesPerView: 3 } }"
                 :space-between="96"
                 loop
                 centered-slides
                 :speed="800"
-                :navigation="{
-                    nextEl: '.hobby__button--next',
-                    prevEl: '.hobby__button--prev',
-                }"
+                :navigation="{ nextEl: '.hobby__button--next', prevEl: '.hobby__button--prev' }"
                 wrapper-class="hobby__slider-wrapper"
             >
-                <SwiperSlide class="hobby__slide">
+                <SwiperSlide class="hobby__slide" v-for="(slide, index) in props.content.hobby_item" :key="slide.id">
                     <div class="hobby__slide-wrapper">
-                        <h2 class="hobby__slide-title">Музыка — ритм души и&nbsp;источник энергии</h2>
-                        <picture class="hobby__slide-image-container" style="--mask: url('/img/masks/guitar.svg')">
-                            <img class="hobby__slide-image" src="/img/content/personal-views/singing.gif" alt="" />
+                        <h2 class="hobby__slide-title">{{ slide.hobby_item_id?.title }}</h2>
+                        <picture
+                            v-if="isImage(slide.hobby_item_id?.media)"
+                            class="hobby__slide-image-container"
+                            :style="{ '--mask': `url('${masks[index % masks.length]}')` }"
+                        >
+                            <img
+                                class="hobby__slide-image"
+                                :src="slide.hobby_item_id?.media_url"
+                                :alt="slide.hobby_item_id?.title"
+                            />
                         </picture>
-                        <p class="hobby__slide-desc">
-                            МУЗЫКА ПОМОГАЕТ НАХОДИТЬСЯ В ГАРМОНИИ С&nbsp;СОБОЙ, ДАРИТ СВОБОДУ И ВДОХНОВЕНИЕ, КОТОРЫЕ
-                            Я&nbsp;ПЕРЕНОШУ В СВОЮ РАБОТУ С&nbsp;КЛИЕНТАМИ.
-                        </p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide class="hobby__slide">
-                    <div class="hobby__slide-wrapper">
-                        <h2 class="hobby__slide-title">Рыцарь дорог: негласное прозвище</h2>
-                        <picture class="hobby__slide-image-container" style="--mask: url('/img/masks/helmet.svg')">
-                            <img class="hobby__slide-image" src="/img/content/personal-views/smiling.gif" alt="" />
-                        </picture>
-                        <p class="hobby__slide-desc">
-                            МУЗЫКА ПОМОГАЕТ НАХОДИТЬСЯ В ГАРМОНИИ С&nbsp;СОБОЙ, ДАРИТ СВОБОДУ И ВДОХНОВЕНИЕ, КОТОРЫЕ
-                            Я&nbsp;ПЕРЕНОШУ В СВОЮ РАБОТУ С&nbsp;КЛИЕНТАМИ.
-                        </p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide class="hobby__slide">
-                    <div class="hobby__slide-wrapper">
-                        <h2 class="hobby__slide-title">Музыка — ритм души и&nbsp;источник энергии</h2>
-                        <picture class="hobby__slide-image-container" style="--mask: url('/img/masks/guitar.svg')">
-                            <img class="hobby__slide-image" src="/img/content/personal-views/singing.gif" alt="" />
-                        </picture>
-                        <p class="hobby__slide-desc">
-                            МУЗЫКА ПОМОГАЕТ НАХОДИТЬСЯ В ГАРМОНИИ С&nbsp;СОБОЙ, ДАРИТ СВОБОДУ И ВДОХНОВЕНИЕ, КОТОРЫЕ
-                            Я&nbsp;ПЕРЕНОШУ В СВОЮ РАБОТУ С&nbsp;КЛИЕНТАМИ.
-                        </p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide class="hobby__slide">
-                    <div class="hobby__slide-wrapper">
-                        <h2 class="hobby__slide-title">Рыцарь дорог: негласное прозвище</h2>
-                        <picture class="hobby__slide-image-container" style="--mask: url('/img/masks/helmet.svg')">
-                            <img class="hobby__slide-image" src="/img/content/personal-views/smiling.gif" alt="" />
-                        </picture>
-                        <p class="hobby__slide-desc">
-                            МУЗЫКА ПОМОГАЕТ НАХОДИТЬСЯ В ГАРМОНИИ С&nbsp;СОБОЙ, ДАРИТ СВОБОДУ И ВДОХНОВЕНИЕ, КОТОРЫЕ
-                            Я&nbsp;ПЕРЕНОШУ В СВОЮ РАБОТУ С&nbsp;КЛИЕНТАМИ.
-                        </p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide class="hobby__slide">
-                    <div class="hobby__slide-wrapper">
-                        <h2 class="hobby__slide-title">Музыка — ритм души и&nbsp;источник энергии</h2>
-                        <picture class="hobby__slide-image-container" style="--mask: url('/img/masks/guitar.svg')">
-                            <img class="hobby__slide-image" src="/img/content/personal-views/singing.gif" alt="" />
-                        </picture>
-                        <p class="hobby__slide-desc">
-                            МУЗЫКА ПОМОГАЕТ НАХОДИТЬСЯ В ГАРМОНИИ С&nbsp;СОБОЙ, ДАРИТ СВОБОДУ И ВДОХНОВЕНИЕ, КОТОРЫЕ
-                            Я&nbsp;ПЕРЕНОШУ В СВОЮ РАБОТУ С&nbsp;КЛИЕНТАМИ.
-                        </p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide class="hobby__slide">
-                    <div class="hobby__slide-wrapper">
-                        <h2 class="hobby__slide-title">Рыцарь дорог: негласное прозвище</h2>
-                        <picture class="hobby__slide-image-container" style="--mask: url('/img/masks/helmet.svg')">
-                            <img class="hobby__slide-image" src="/img/content/personal-views/smiling.gif" alt="" />
-                        </picture>
-                        <p class="hobby__slide-desc">
-                            МУЗЫКА ПОМОГАЕТ НАХОДИТЬСЯ В ГАРМОНИИ С&nbsp;СОБОЙ, ДАРИТ СВОБОДУ И ВДОХНОВЕНИЕ, КОТОРЫЕ
-                            Я&nbsp;ПЕРЕНОШУ В СВОЮ РАБОТУ С&nbsp;КЛИЕНТАМИ.
-                        </p>
+                        <div
+                            v-else-if="isVideo(slide.hobby_item_id?.media)"
+                            class="hobby__slide-video-container"
+                            :style="{ '--mask': `url('${masks[index % masks.length]}')` }"
+                        >
+                            <video class="hobby__slide-video" muted autoplay loop playsinline>
+                                <source
+                                    :src="slide.hobby_item_id?.media_url"
+                                    :type="getFileType(slide.hobby_item_id?.media)"
+                                />
+                            </video>
+                        </div>
+
+                        <p class="hobby__slide-desc">{{ slide.hobby_item_id?.description }}</p>
                     </div>
                 </SwiperSlide>
             </Swiper>
+
             <div class="hobby__controls">
                 <button class="hobby__button hobby__button--prev">
                     <TheSvgSprite type="arrow" :size="32" />
@@ -110,15 +63,70 @@
 </template>
 
 <script setup>
+import { ref, watch } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Navigation } from 'swiper/modules';
+import TheSvgSprite from '@/components/TheSvgSprite.vue';
+import { fetchFilesMetaBulk } from '@/services/directus';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-import TheSvgSprite from '@/components/TheSvgSprite.vue';
-
 const modules = [Navigation];
+
+const masks = ['/img/masks/guitar.svg', '/img/masks/helmet.svg'];
+
+// content management
+const props = defineProps({
+    content: { type: Object, default: () => ({}) },
+});
+
+const fileMetas = ref({});
+const metasLoading = ref(false);
+
+watch(
+    () => props.content,
+    async (newContent, oldContent, onInvalidate) => {
+        fileMetas.value = {};
+        metasLoading.value = false;
+
+        if (!newContent?.hobby_item?.length) return;
+
+        const ids = Array.from(new Set(newContent.hobby_item.map((i) => i?.hobby_item_id?.media).filter(Boolean)));
+
+        if (!ids.length) return;
+
+        metasLoading.value = true;
+        let cancelled = false;
+        onInvalidate(() => {
+            cancelled = true;
+        });
+
+        try {
+            const metas = await fetchFilesMetaBulk(ids, ['id', 'type']);
+            if (cancelled) return;
+            fileMetas.value = Object.fromEntries((metas || []).map((m) => [m.id, m]));
+        } catch (err) {
+            console.error('fetchFilesMetaBulk failed', err);
+            if (!cancelled) fileMetas.value = {};
+        } finally {
+            if (!cancelled) metasLoading.value = false;
+        }
+    },
+    { immediate: true, deep: false },
+);
+
+// helpers
+function getFileType(id) {
+    if (!id) return null;
+    return fileMetas.value[id]?.type || null;
+}
+function isImage(id) {
+    return getFileType(id)?.startsWith('image/');
+}
+function isVideo(id) {
+    return getFileType(id)?.startsWith('video/');
+}
 </script>
 
 <style lang="scss" scoped>
@@ -130,9 +138,6 @@ const modules = [Navigation];
     @include horizontal-layout;
     &__container {
         position: relative;
-        // display: flex;
-        // flex-direction: column;
-        // gap: rem(28);
     }
     &__titlebox {
         position: absolute;
@@ -155,6 +160,7 @@ const modules = [Navigation];
         height: 100%;
         will-change: scale;
         transition: scale $td $tf;
+        user-select: none;
         &:not(.swiper-slide-active) {
             scale: 0.5;
             #{$p}__slide-title,
@@ -167,7 +173,8 @@ const modules = [Navigation];
             width: 100%;
             height: 100%;
         }
-        &-image-container {
+        &-image-container,
+        &-video-container {
             width: 100%;
             height: 100%;
             mask-image: var(--mask);
@@ -175,9 +182,11 @@ const modules = [Navigation];
             mask-repeat: no-repeat;
             user-select: none;
         }
-        &-image {
+        &-image,
+        &-video {
             width: 100%;
             height: 100%;
+            min-height: rem(480);
             aspect-ratio: 2/1; // <-----
             object-fit: cover;
         }

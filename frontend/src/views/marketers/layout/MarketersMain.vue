@@ -12,13 +12,11 @@
             >Присоединиться</ButtonPrimary
         >
         <div class="marketers__container">
-            <div class="marketers__section">
+            <div class="marketers__section" v-for="section in content" :key="section.id">
                 <div class="marketers__section-title-container">
                     <div class="marketers__section-titlebox">
-                        <h1 class="marketers__section-title">Вечеринки для маркетологов</h1>
-                        <p class="marketers__section-desc">
-                            На вечеринках царит атмосфера креатива, где обмен идеями сочетается с неформальным общением
-                        </p>
+                        <h1 class="marketers__section-title">{{ section.marketers_sections_id?.title }}</h1>
+                        <p class="marketers__section-desc">{{ section.marketers_sections_id?.description }}</p>
                         <ButtonPrimary
                             class="marketers__button--touch"
                             type="a"
@@ -33,65 +31,16 @@
 
                 <div class="marketers__section-gallery">
                     <picture
+                        v-for="image in section.marketers_sections_id?.gallery?.images"
+                        :key="image.id"
                         class="marketers__section-image-container"
                         v-animateonscroll="{ enterClass: 'fade-bottom' }"
                     >
-                        <img class="marketers__section-image" src="/img/content/blog/temp5.jpg" alt="#" />
-                    </picture>
-                    <picture
-                        class="marketers__section-image-container"
-                        v-animateonscroll="{ enterClass: 'fade-bottom' }"
-                    >
-                        <img class="marketers__section-image" src="/img/content/blog/temp4.jpg" alt="#" />
-                    </picture>
-                    <picture
-                        class="marketers__section-image-container"
-                        v-animateonscroll="{ enterClass: 'fade-bottom' }"
-                    >
-                        <img class="marketers__section-image" src="/img/content/gt-club.gif" alt="#" />
-                    </picture>
-                </div>
-            </div>
-            <div class="marketers__section">
-                <div class="marketers__section-title-container">
-                    <div class="marketers__section-titlebox">
-                        <h2 class="marketers__section-title">Веселье ради сильного бренда</h2>
-                        <p class="marketers__section-desc">
-                            Объединение предпринимателей и бизнесменов для совместного роста, обмена опытом, знаниями и
-                            возможностями. Это экосистема, отражающая все аспекты жизни: бизнес, финансы, развитие,
-                            семья, здоровье, спорт, дружба, увлечения, активный отдых. А я являюсь резидентом этого
-                            клуба.
-                        </p>
-                        <ButtonPrimary
-                            class="marketers__button--touch"
-                            type="a"
-                            href="https://gt-business.ru"
-                            target="_blank"
-                            variant="red"
-                            style="font-size: 1rem"
-                            >Присоединиться</ButtonPrimary
-                        >
-                    </div>
-                </div>
-
-                <div class="marketers__section-gallery">
-                    <picture
-                        class="marketers__section-image-container"
-                        v-animateonscroll="{ enterClass: 'fade-bottom' }"
-                    >
-                        <img class="marketers__section-image" src="/img/content/blog/temp3.jpg" alt="#" />
-                    </picture>
-                    <picture
-                        class="marketers__section-image-container"
-                        v-animateonscroll="{ enterClass: 'fade-bottom' }"
-                    >
-                        <img class="marketers__section-image" src="/img/content/blog/temp2.jpg" alt="#" />
-                    </picture>
-                    <picture
-                        class="marketers__section-image-container"
-                        v-animateonscroll="{ enterClass: 'fade-bottom' }"
-                    >
-                        <img class="marketers__section-image" src="/img/content/blog/temp1.jpg" alt="#" />
+                        <img
+                            class="marketers__section-image"
+                            :src="image.marketers_setions_gallery_image_id?.image_url"
+                            alt="#"
+                        />
                     </picture>
                 </div>
             </div>
@@ -101,6 +50,10 @@
 
 <script setup>
 import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
+
+defineProps({
+    content: { type: Object, default: () => ({}) },
+});
 </script>
 
 <style lang="scss" scoped>

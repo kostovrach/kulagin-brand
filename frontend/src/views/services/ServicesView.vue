@@ -8,7 +8,7 @@
                     class="hero__hint"
                     :video="page?.services_hint.video_url"
                     :modal-media="page?.services_hint.video_url"
-                 >
+                >
                     <template #title>{{ page?.services_hint.title }}</template>
                     <template #text>{{ page?.services_hint.description }}</template>
                     <template #media-description>{{ page?.services_hint.button_text }}</template>
@@ -55,7 +55,7 @@ const { page, loading, error } = usePage(
         'services_feedback.feedback_item.*',
         'services_feedback.feedback_item.feedback_item_id.*',
 
-        'services_hint.*'
+        'services_hint.*',
     ],
     {
         resolveFiles: true,

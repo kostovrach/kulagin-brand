@@ -19,11 +19,11 @@
                     <router-link :class="['header__nav-link', { current: currentRoute == 'hobby' }]" to="/hobby"
                         >Хобби</router-link
                     >
-                    <router-link :class="['header__nav-link', { current: currentRoute == 'blog' }]" to="/blog"
-                        >Блог</router-link
-                    >
                     <router-link :class="['header__nav-link', { current: currentRoute == 'marketers' }]" to="/marketers"
                         >Маркетологам</router-link
+                    >
+                    <router-link :class="['header__nav-link', { current: currentRoute == 'blog' }]" to="/blog"
+                        >Блог</router-link
                     >
                     <router-link :class="['header__nav-link', { current: currentRoute == 'contact' }]" to="/contact"
                         >Контакты</router-link

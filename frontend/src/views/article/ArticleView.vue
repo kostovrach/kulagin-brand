@@ -5,10 +5,10 @@
                 <ArticleLoader />
             </div>
 
-            <div class="article__content" v-else>
-                <div class="article__header" v-if="article">
+            <article class="article__body" v-else>
+                <header class="article__header" v-if="article">
                     <div class="article__titlebox">
-                        <time class="article__date" v-if="article.date" :datetime="article.date">
+                        <time class="article__date" v-if="article.date_created" :datetime="article.date_created">
                             {{ formattedDate }}
                         </time>
                         <h1 class="article__title">{{ article.title }}</h1>
@@ -18,19 +18,14 @@
                         </router-link>
                     </div>
 
-                    <picture class="article__cover" v-if="article.cover">
-                        <img :src="article.cover" :alt="article.title" />
+                    <picture class="article__cover" v-if="article.cover_url">
+                        <img :src="article.cover_url" :alt="article.title" />
                     </picture>
+                </header>
+                <div class="article__main">
+                    <ArticleContent :content="article?.content" :summary="article?.summary" />
                 </div>
-
-                <div
-                    class="article__body"
-                    v-if="article && article.blocks && article.blocks.length"
-                    aria-labelledby="article-title"
-                >
-                    <ArticleRenderer :blocks="article.blocks" />
-                </div>
-            </div>
+            </article>
 
             <div class="article__suggest">
                 <div class="article__suggest-container">
@@ -43,7 +38,11 @@
                             :key="article.slug"
                         >
                             <picture class="article__suggest-item-image-container">
-                                <img class="article__suggest-item-image" :src="article.cover" :alt="article.title" />
+                                <img
+                                    class="article__suggest-item-image"
+                                    :src="article.cover_url"
+                                    :alt="article.title"
+                                />
                             </picture>
                             <p class="article__suggest-item-title">{{ article.title }}</p>
                         </router-link>
@@ -60,10 +59,10 @@ import { useRoute, onBeforeRouteUpdate } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useBlogStore } from '@/stores/blog';
 
-import ArticleRenderer from './components/ArticleRenderer.vue';
 import VerticalLayout from '@/components/VerticalLayout/VerticalLayout.vue';
 import TheSvgSprite from '@/components/TheSvgSprite.vue';
 import ArticleLoader from './components/ArticleLoader.vue';
+import ArticleContent from './components/ArticleContent.vue';
 
 const route = useRoute();
 const blog = useBlogStore();
@@ -103,15 +102,15 @@ onBeforeRouteUpdate((to) => {
 });
 
 const formattedDate = computed(() => {
-    if (!article.value?.date) return '';
+    if (!article.value?.date_created) return '';
     try {
-        return new Date(article.value.date).toLocaleDateString('ru-RU', {
+        return new Date(article.value.date_created).toLocaleDateString('ru-RU', {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
         });
     } catch {
-        return article.value.date;
+        return article.value.date_created;
     }
 });
 </script>
@@ -197,7 +196,7 @@ const formattedDate = computed(() => {
             object-fit: cover;
         }
     }
-    &__body {
+    &__main {
         width: 100%;
         @include vertical-layout;
     }

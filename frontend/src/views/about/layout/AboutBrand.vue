@@ -116,11 +116,7 @@
                     Контакты
                 </ButtonPrimary>
                 <picture class="brand__footer-image-container">
-                    <img
-                        class="brand__footer-image"
-                        :src="content?.footer_image_url"
-                        alt="Игорь Кулагин"
-                    />
+                    <img class="brand__footer-image" :src="content?.footer_image_url" alt="Игорь Кулагин" />
                 </picture>
             </div>
         </div>

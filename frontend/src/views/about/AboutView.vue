@@ -40,5 +40,4 @@ const { page, loading, error } = usePage(
         resolveFiles: true,
     },
 );
-
 </script>
