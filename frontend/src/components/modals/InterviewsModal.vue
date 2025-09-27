@@ -9,15 +9,20 @@
             </div>
             <div class="interviews-modal__body">
                 <ul class="interviews-modal__list">
-                    <li v-for="(item, index) in interviews" :key="index" class="interviews-modal__item">
+                    <li v-for="item in page?.interviews_item" :key="item.id" class="interviews-modal__item">
                         <picture class="interviews-modal__item-image-container">
-                            <img class="interviews-modal__item-image" :src="item.image" :alt="item.title" />
+                            <img
+                                class="interviews-modal__item-image"
+                                :src="item.interviews_item_id?.logo_url"
+                                :alt="item.interviews_item_id?.title"
+                            />
                         </picture>
                         <div class="interviews-modal__item-content">
-                            <h3 class="interviews-modal__item-title">{{ item.title }}</h3>
+                            <h3 class="interviews-modal__item-title">{{ item.interviews_item_id?.title }}</h3>
                             <a
+                                v-if="item.interviews_item_id?.link"
                                 class="interviews-modal__item-button"
-                                :href="item.link"
+                                :href="item.interviews_item_id?.link"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
@@ -35,47 +40,26 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
 import { useModal } from '@/composables/useModal';
 import TheSvgSprite from '@/components/TheSvgSprite.vue';
+
+// content management
+import { usePage } from '@/composables/usePage';
+
+const { page } = usePage('interviews', ['interviews_item.*', 'interviews_item.interviews_item_id.*'], {
+    resolveFiles: true,
+});
+//
 
 const props = defineProps({
     modalId: { type: Number, required: true },
 });
 
-const INTERVIEWS_URL = import.meta.env.VITE_INTERVIEWS_URL;
-
 const { closeModal } = useModal();
-
-const interviews = ref([]);
-const isLoading = ref(false);
-const error = ref(false);
-
-async function fetchInterviews() {
-    isLoading.value = true;
-
-    try {
-        const response = await fetch(INTERVIEWS_URL);
-
-        if (!response.ok) {
-            error.value = true;
-        }
-
-        interviews.value = await response.json();
-    } catch (err) {
-        console.error(err);
-    } finally {
-        isLoading.value = false;
-    }
-}
 
 function close() {
     closeModal(props.modalId);
 }
-
-onMounted(() => {
-    fetchInterviews();
-});
 </script>
 
 <style lang="scss" scoped>

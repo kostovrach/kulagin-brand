@@ -14,16 +14,22 @@ import ModalWrapper from '@/components/ModalWrapper.vue';
 
 // registry
 import VideoModal from '@/components/modals/VideoModal.vue';
-import PrivacyModal from '@/components/modals/PrivacyModal/PrivacyModal.vue';
 import MenuModal from '@/components/modals/MenuModal.vue';
 import InterviewsModal from './modals/InterviewsModal.vue';
+
+import PrivacyModal from '@/components/modals/PrivacyModal/PrivacyModal.vue';
+import OfferModal from '@/components/modals/OfferModal/OfferModal.vue';
+import AgreementModal from '@/components/modals/AgreementModal/AgreementModal.vue';
 //
 
 const registry = {
     video: VideoModal,
-    privacy: PrivacyModal,
     menu: MenuModal,
     interviews: InterviewsModal,
+
+    privacy: PrivacyModal,
+    offer: OfferModal,
+    agreement: AgreementModal,
 };
 
 const store = useModalStore();

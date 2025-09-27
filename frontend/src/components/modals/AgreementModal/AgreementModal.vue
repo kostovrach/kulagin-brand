@@ -46,7 +46,7 @@ import Skeleton from 'primevue/skeleton';
 // content management
 import { usePage } from '@/composables/usePage';
 
-const { page, loading, error } = usePage('privacy', [], {
+const { page, loading, error } = usePage('agreement', [], {
     resolveFiles: true,
 });
 //

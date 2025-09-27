@@ -60,7 +60,7 @@ export function usePage(pageCollection, withRelations = [], opts = {}) {
         try {
             const res = await directus.request(
                 readItems(pageCollection, {
-                    limit: 1,
+                    // limit: 1,
                     fields: ['*', ...withRelations],
                 }),
             );

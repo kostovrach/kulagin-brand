@@ -22,26 +22,29 @@
                     </template>
                 </FormPrimary>
                 <div class="contact__list fade-right" style="animation-delay: 0.3s">
-                    <div class="contact__item">
+                    <div class="contact__item" v-if="content?.phone">
                         <p class="contact__item-title">Можно позвонить</p>
-                        <a class="contact__item-link" href="tel:">+7 999 874-42-47</a>
+                        <a class="contact__item-link" :href="`tel:${content?.phone}`">{{ content?.phone }}</a>
                     </div>
-                    <div class="contact__item">
+                    <div class="contact__item" v-if="content?.links?.length">
                         <p class="contact__item-title">А можно написать</p>
-                        <a class="contact__item-link" href="/">vk.com/kulagin</a>
-                        <a class="contact__item-link" href="/">t.me/kulagin</a>
-                        <a class="contact__item-link" href="/">kulagin@mail.ru</a>
+                        <a
+                            v-for="link in content?.links"
+                            :key="link.contact_links_id.id"
+                            class="contact__item-link"
+                            :href="link.contact_links_id?.link"
+                            >{{ link.contact_links_id?.title }}</a
+                        >
                     </div>
-                    <div class="contact__item">
+                    <div class="contact__item" v-if="content?.adress">
                         <p class="contact__item-title">Или даже придти в гости!</p>
                         <a
                             class="contact__item-link contact__item-link--caption"
-                            href="https://kulaginbrand.ru"
+                            :href="content?.adress?.link"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <p>г. Самара, ул. Конноармейская 17</p>
-                            <span>(офис Kulaginbrand)</span>
+                            <p>{{ content?.adress?.title }}</p>
                         </a>
                     </div>
                 </div>
@@ -53,6 +56,10 @@
 <script setup>
 import FormPrimary from '@/components/FormPrimary/FormPrimary.vue';
 import Sticker from '@/components/Sticker/Sticker.vue';
+
+defineProps({
+    content: { type: Object, default: () => ({}) },
+});
 </script>
 
 <style lang="scss" scoped>
@@ -88,6 +95,7 @@ import Sticker from '@/components/Sticker/Sticker.vue';
         }
         &-link {
             font-size: lineScale(22, 18, 480, 1440);
+            width: fit-content;
             &:not(#{$p}__item-link--caption) {
                 @include gradient-text-hover;
             }

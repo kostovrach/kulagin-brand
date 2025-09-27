@@ -41,6 +41,7 @@ services:
         volumes:
             - ./uploads:/directus/uploads
             - ./extensions:/directus/extensions
+            - ./backups:/directus/backups
         depends_on:
             - postgres
 

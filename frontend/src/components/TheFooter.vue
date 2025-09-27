@@ -43,9 +43,9 @@
                     ></a>
                 </div>
                 <div class="footer__links">
-                    <button class="footer__link" @click="openPrivacy">Конфиденциальность</button>
-                    <button class="footer__link" @click="openPrivacy">Оферта</button>
-                    <button class="footer__link" @click="openPrivacy">Пользовательское соглашение</button>
+                    <button class="footer__link" @click="openPolicy('privacy')">Конфиденциальность</button>
+                    <button class="footer__link" @click="openPolicy('offer')">Оферта</button>
+                    <button class="footer__link" @click="openPolicy('agreement')">Пользовательское соглашение</button>
                 </div>
             </div>
             <div class="footer__label">
@@ -64,19 +64,15 @@ import { useModal } from '@/composables/useModal';
 // content management
 import { usePage } from '@/composables/usePage';
 
-const { page, loading, error } = usePage(
-    'socials',
-    ['vk.*', 'instagram.*', 'whatsapp.*', 'tiktok.*', 'telegram.*', 'ok.*'],
-    {
-        resolveFiles: true,
-    },
-);
+const { page } = usePage('socials', ['vk.*', 'instagram.*', 'telegram.*', 'ok.*'], {
+    resolveFiles: true,
+});
 //
 
 const { openModal } = useModal();
 
-function openPrivacy() {
-    openModal('privacy');
+function openPolicy(name) {
+    openModal(name);
 }
 </script>
 

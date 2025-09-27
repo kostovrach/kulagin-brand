@@ -56,36 +56,38 @@
                     <a
                         class="menu-modal__socials-item"
                         style="--mask: url(/img/icons/vk.svg)"
-                        href="https://example.com"
+                        :href="page?.vk?.link"
                         target="_blank"
                         rel="noopener noreferrer"
                     ></a>
                     <a
                         class="menu-modal__socials-item"
                         style="--mask: url(/img/icons/tg.svg)"
-                        href="https://example.com"
+                        :href="page?.telegram?.link"
                         target="_blank"
                         rel="noopener noreferrer"
                     ></a>
                     <a
                         class="menu-modal__socials-item"
                         style="--mask: url(/img/icons/ok.svg)"
-                        href="https://example.com"
+                        :href="page?.ok?.link"
                         target="_blank"
                         rel="noopener noreferrer"
                     ></a>
                     <a
                         class="menu-modal__socials-item"
                         style="--mask: url(/img/icons/instagram.svg)"
-                        href="https://example.com"
+                        :href="page?.instagram?.link"
                         target="_blank"
                         rel="noopener noreferrer"
                     ></a>
                 </div>
                 <div class="menu-modal__links">
-                    <button class="menu-modal__links-item" @click="openPrivacy">Конфиденциальность</button>
-                    <button class="menu-modal__links-item" @click="openPrivacy">Оферта</button>
-                    <button class="menu-modal__links-item" @click="openPrivacy">Пользовательское соглашение</button>
+                    <button class="menu-modal__links-item" @click="openPolicy('privacy')">Конфиденциальность</button>
+                    <button class="menu-modal__links-item" @click="openPolicy('offer')">Оферта</button>
+                    <button class="menu-modal__links-item" @click="openPolicy('agreement')">
+                        Пользовательское соглашение
+                    </button>
                 </div>
                 <div class="menu-modal__label">
                     <p class="menu-modal__label-text">Сайт разработали:</p>
@@ -110,6 +112,14 @@ import { useModal } from '@/composables/useModal';
 
 import TheSvgSprite from '@/components/TheSvgSprite.vue';
 
+// content management
+import { usePage } from '@/composables/usePage';
+
+const { page } = usePage('socials', ['vk.*', 'instagram.*', 'telegram.*', 'ok.*'], {
+    resolveFiles: true,
+});
+//
+
 const props = defineProps({
     modalId: { type: Number, required: true },
 });
@@ -119,8 +129,8 @@ const route = useRoute();
 
 const currentRoute = computed(() => route.name);
 
-function openPrivacy() {
-    openModal('privacy');
+function openPolicy(name) {
+    openModal(name);
 }
 
 function close() {
