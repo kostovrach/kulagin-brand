@@ -618,14 +618,14 @@ collections:
       collection: interviews_interviews_item
       color: null
       display_template: null
-      group: null
+      group: interviews_item
       hidden: true
       icon: import_export
       item_duplication_fields: null
       note: null
       preview_url: null
       singleton: false
-      sort: null
+      sort: 1
       sort_field: null
       translations: null
       unarchive_value: null
@@ -3621,13 +3621,13 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 3
+      sort: 2
       special:
         - date-created
       translations: null
       validation: null
       validation_message: null
-      width: half
+      width: full
     schema:
       name: date_created
       table: article
@@ -3664,7 +3664,9 @@ fields:
       required: true
       sort: 4
       special: null
-      translations: null
+      translations:
+        - language: ru-RU
+          translation: Заголовок
       validation: null
       validation_message: null
       width: half
@@ -3690,19 +3692,25 @@ fields:
     type: string
     meta:
       collection: article
-      conditions: null
+      conditions:
+        - name: Slugify
+          options:
+            slug: true
+          rule: null
       display: null
       display_options: null
       field: slug
       group: null
       hidden: false
       interface: input
-      note: null
+      note: >-
+        Уникальный идентификатор статьи, заполнять только в формате
+        word-word-word. Исключить пробелы и заглавные буквы
       options:
         iconLeft: add_link
       readonly: false
       required: true
-      sort: 2
+      sort: 3
       special: null
       translations: null
       validation: null
@@ -3717,7 +3725,7 @@ fields:
       numeric_precision: null
       numeric_scale: null
       is_nullable: true
-      is_unique: false
+      is_unique: true
       is_indexed: false
       is_primary_key: false
       is_generated: false
@@ -3737,16 +3745,18 @@ fields:
       group: null
       hidden: false
       interface: input-multiline
-      note: null
+      note: Располагается отдельно, над основным содержимым статьи
       options: null
       readonly: false
       required: false
       sort: 5
       special: null
-      translations: null
+      translations:
+        - language: ru-RU
+          translation: Предисловие
       validation: null
       validation_message: null
-      width: half
+      width: full
     schema:
       name: summary
       table: article
@@ -3783,7 +3793,9 @@ fields:
       sort: 6
       special:
         - file
-      translations: null
+      translations:
+        - language: ru-RU
+          translation: Обложка
       validation: null
       validation_message: null
       width: full
@@ -3839,7 +3851,9 @@ fields:
       required: true
       sort: 7
       special: null
-      translations: null
+      translations:
+        - language: ru-RU
+          translation: Основное содержимое статьи
       validation: null
       validation_message: null
       width: full

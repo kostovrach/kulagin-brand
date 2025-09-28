@@ -1,9 +1,11 @@
 <template>
     <section class="services">
         <div class="services__container">
-            <div class="services__titlebox fade-bottom-rotate">
-                <h1 class="services__title">{{ content?.title }}</h1>
-                <p class="services__subtitle">{{ content?.subtitle }}</p>
+            <div class="services__titlebox">
+                <h1 class="services__title fade-bottom-rotate">{{ content?.title }}</h1>
+                <p class="services__subtitle fade-bottom-rotate" style="animation-delay: 0.2s">
+                    {{ content?.subtitle }}
+                </p>
             </div>
             <ul class="services__list fade-right" style="animation-delay: 0.5s">
                 <li class="services__item" v-for="item in content?.item" :key="item.id">

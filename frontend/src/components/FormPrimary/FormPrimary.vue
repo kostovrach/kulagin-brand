@@ -43,11 +43,27 @@
                         <label for="email">Электронная почта</label>
                         <span class="form-primary__error">{{ errors.email }}</span>
                     </div>
+                    <label class="form-primary__agreement" for="agreement">
+                        <div class="form-primary__agreement-checkbox">
+                            <input v-model="form.checkbox" type="checkbox" id="agreement" />
+                        </div>
+                        <span
+                            >Я даю согласие на обработку персональных в соотвествии с
+                            <span role="button" @click.prevent="openPolicy('agreement')"
+                                >пользовательским соглашением</span
+                            >
+                            и
+                            <span role="button" @click.prevent="openPolicy('privacy')"
+                                >политикой конфиденциальности</span
+                            ></span
+                        >
+                    </label>
+
                     <button class="form-primary__button" type="submit" :disabled="isSubmitting">
                         <span class="form-primary__button-text">{{ isSubmitting ? 'Отправка...' : 'Отправить' }}</span>
                         <span class="form-primary__button-icon"><TheSvgSprite type="arrow" /></span>
                     </button>
-                    <span class="form-primary__error--general">{{ errors.general }}</span>
+                    <span class="form-primary__error--general">{{ errors.general || errors.agreement }}</span>
                 </form>
             </div>
         </div>
@@ -56,6 +72,7 @@
 
 <script setup>
 import { reactive, ref } from 'vue';
+import { useModal } from '@/composables/useModal';
 
 import InputMask from 'primevue/inputmask';
 import TheSvgSprite from '../TheSvgSprite.vue';
@@ -65,10 +82,18 @@ const props = defineProps({
     image: { type: String },
 });
 
+const { openModal } = useModal();
+
+function openPolicy(name) {
+    openModal(name);
+}
+
+// form data
 const form = reactive({
     name: '',
     tel: '',
     email: '',
+    checkbox: true,
 });
 
 const errors = reactive({
@@ -76,21 +101,25 @@ const errors = reactive({
     email: '',
     message: '',
     general: '',
+    agreement: '',
 });
 
 const isSubmitting = ref(false);
 
+// validation
 function validate() {
     let valid = true;
 
     errors.email = form.email ? (/\S+@\S+\.\S+/.test(form.email) ? '' : 'Неверный e-mail') : '';
     errors.general = !form.tel && !form.email ? 'Заполните хотя бы одно из полей контактной информации' : '';
+    errors.agreement = !form.checkbox ? 'Необходимо дать согласие на обработку данных' : '';
 
-    if (errors.email || errors.general) valid = false;
+    if (errors.email || errors.general || errors.agreement) valid = false;
 
     return valid;
 }
 
+// sending
 async function submitForm() {
     if (!validate()) return;
 
@@ -267,6 +296,28 @@ async function submitForm() {
         &:has(input:not(:placeholder-shown)) label {
             font-size: rem(12);
             translate: 0 rem(-32);
+        }
+    }
+    &__agreement {
+        display: flex;
+        align-items: center;
+        gap: rem(8);
+        &-checkbox {
+            @include checkbox;
+        }
+        > span {
+            font-size: rem(14);
+            line-height: 1.5;
+            > span[role='button'] {
+                cursor: pointer;
+                color: $c-accent;
+                text-decoration: underline;
+                @media (pointer: fine) {
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
         }
     }
     &__error {

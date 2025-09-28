@@ -12,12 +12,12 @@
 
 ```
 backend/
-   .env
+   backups/
+    schema.yaml             # backup схемы данных directus
+    backup.sql              # польный backup postgres, включая все загруженные данные
+   uploads/                 # файлы загруженные с cms
    docker-compose.yml       # основная конфигурация directus и postgres
    Dockerfile               # доп. сервисы для directus
-   uploads/                 # файлы загруженные с cms
-   backups/schema.yaml      # backup схемы данных directus
-   backup.sql               # польный backup postgres, включая все загруженные данные
 ```
 
 ### Frontend

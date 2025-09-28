@@ -1,60 +1,6 @@
 import { defineStore } from 'pinia';
 import { ref, reactive } from 'vue';
-import { directus, assetUrl } from '@/services/directus';
-import { readItems } from '@directus/sdk';
-
-// helpers
-function normalizeListResponse(r) {
-    if (!r) return [];
-    if (Array.isArray(r)) return r;
-    if (r && Array.isArray(r.data)) return r.data;
-    return [];
-}
-function normalizeSingleResponse(r) {
-    if (!r) return null;
-    if (Array.isArray(r)) return r[0] ?? null;
-    if (r && Array.isArray(r.data)) return r.data[0] ?? null;
-    if (r && typeof r === 'object') return r;
-    return null;
-}
-
-function addFileUrls(obj) {
-    if (!obj) return;
-    const FILE_NAMES = new Set([
-        'video',
-        'poster',
-        'logo',
-        'image',
-        'file',
-        'media',
-        'files',
-        'avatar',
-        'cover',
-        'thumbnail',
-        'attachment',
-        'poster_image',
-    ]);
-    const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-
-    const walk = (node) => {
-        if (!node) return;
-        if (Array.isArray(node)) {
-            node.forEach(walk);
-            return;
-        }
-        if (typeof node !== 'object') return;
-
-        for (const [k, v] of Object.entries(node)) {
-            if (typeof v === 'string' && UUID_RE.test(v) && FILE_NAMES.has(k)) {
-                if (!node[`${k}_url`]) node[`${k}_url`] = assetUrl(v);
-            } else if (v && typeof v === 'object') {
-                walk(v);
-            }
-        }
-    };
-
-    walk(obj);
-}
+import { getArticlesList, getArticleBySlug, clearListCache as clearRepoListCache } from '@/repositories/blogRepository';
 
 export const useBlogStore = defineStore('blog', () => {
     // state
@@ -67,29 +13,19 @@ export const useBlogStore = defineStore('blog', () => {
     const pendingFetches = {};
 
     // --- LIST ---
-    async function fetchList({ force = false } = {}) {
+    async function fetchList({ force = false, fields } = {}) {
         if (list.value.length && !force) return list.value;
 
         isLoadingList.value = true;
         errors.list = null;
 
         try {
-            const res = await directus.request(
-                readItems('article', {
-                    fields: ['id', 'title', 'slug', 'cover', 'date_created', 'summary'],
-                    sort: ['-date_created'],
-                }),
-            );
-
-            const data = normalizeListResponse(res);
-
-            data.forEach((item) => addFileUrls(item));
-
-            list.value = data.map((item) => ({
+            const data = await getArticlesList({ fields, force });
+            list.value = (data || []).map((item) => ({
                 ...item,
-                slug: item.slug ?? (item.title ? String(item.title).toLowerCase().replace(/\s+/g, '-') : item.id),
+                slug:
+                    item.slug ?? (item.title ? String(item.title).toLowerCase().replace(/\s+/g, '-') : String(item.id)),
             }));
-
             return list.value;
         } catch (err) {
             console.error('[BlogStore] fetchList error', err);
@@ -113,31 +49,22 @@ export const useBlogStore = defineStore('blog', () => {
 
         const promise = (async () => {
             try {
-                const res = await directus.request(
-                    readItems('article', {
-                        filter: { slug: { _eq: slug } },
-                        limit: 1,
-                        fields: ['id', 'title', 'slug', 'cover', 'date_created', 'summary', 'content'],
-                    }),
-                );
-
-                const data = normalizeSingleResponse(res);
+                const data = await getArticleBySlug(slug, { force });
                 if (!data) throw new Error(`Article "${slug}" not found`);
-
-                addFileUrls(data);
 
                 articles[slug] = data;
 
                 const idx = list.value.findIndex((i) => i.slug === slug);
-                const preview = {
-                    id: data.id,
-                    title: data.title,
-                    slug: data.slug,
-                    cover: data.cover ?? null,
-                    summary: data.summary ?? null,
-                    date_created: data.date_created ?? null,
-                };
-                if (idx !== -1) list.value[idx] = { ...list.value[idx], ...preview };
+                if (idx !== -1) {
+                    list.value[idx] = {
+                        ...list.value[idx],
+                        id: data.id,
+                        title: data.title,
+                        cover: data.cover ?? null,
+                        summary: data.summary ?? null,
+                        date_created: data.date_created ?? null,
+                    };
+                }
 
                 return data;
             } catch (err) {
@@ -159,7 +86,7 @@ export const useBlogStore = defineStore('blog', () => {
         try {
             await fetchArticle(slug);
         } catch (err) {
-            console.error(err);
+            // silent
         }
     }
 
@@ -186,6 +113,11 @@ export const useBlogStore = defineStore('blog', () => {
         list.value = [];
         isLoadingList.value = false;
         errors.list = null;
+        try {
+            clearRepoListCache();
+        } catch (e) {
+            // ignore
+        }
     }
 
     return {
