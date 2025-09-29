@@ -1436,7 +1436,6 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        enableCreate: false
         enableSelect: false
         template: '{{image}}{{title}}'
       readonly: false
@@ -1482,7 +1481,6 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        enableCreate: false
         enableSelect: false
         template: '{{image1}}{{image2}}{{image3}}{{image4}}{{image5}}'
       readonly: false
@@ -1528,7 +1526,6 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        enableCreate: false
         enableSelect: false
         template: '{{title}}'
       readonly: false
@@ -1639,7 +1636,6 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        enableCreate: false
         enableSelect: false
         template: '{{title}}'
       readonly: false
@@ -5205,7 +5201,6 @@ fields:
       interface: select-dropdown-m2o
       note: null
       options:
-        enableCreate: false
         enableSelect: false
         template: '{{title}}{{image1}}{{image2}}{{image3}}'
       readonly: false

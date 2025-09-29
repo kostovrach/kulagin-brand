@@ -1,5 +1,6 @@
 <template>
-    <HorizontalLayout>
+    <PageLoader v-if="loading" />
+    <HorizontalLayout v-else>
         <ServicesSlider :content="page?.services_list" />
         <ServicesFeedback :content="page?.services_feedback" />
         <section class="hint">
@@ -32,6 +33,7 @@
 
 <script setup>
 import HorizontalLayout from '@/components/HorizontalLayout/HorizontalLayout.vue';
+import PageLoader from '@/components/PageLoader/PageLoader.vue';
 
 import SectionHint from '@/components/SectionHint/SectionHint.vue';
 import PageNavigator from '@/components/PageNavigator/PageNavigator.vue';
@@ -44,7 +46,7 @@ import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
 // content management
 import { usePage } from '@/composables/usePage';
 
-const { page, loading, error } = usePage(
+const { page, loading } = usePage(
     'services',
     [
         'services_list.*',

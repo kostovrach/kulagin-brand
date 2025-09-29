@@ -16,7 +16,7 @@ import HomeNavigator from './layout/HomeNavigator.vue';
 // content management
 import { usePage } from '@/composables/usePage';
 
-const { page, loading, error } = usePage('home', ['home_agency.*', 'home_view.*'], {
+const { page } = usePage('home', ['home_agency.*', 'home_view.*'], {
     resolveFiles: true,
 });
 </script>

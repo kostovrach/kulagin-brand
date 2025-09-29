@@ -12,6 +12,7 @@
                 :slides-per-view="1"
                 :breakpoints="{ 1100: { slidesPerView: 3 } }"
                 :space-between="96"
+                :mousewheel="true"
                 loop
                 centered-slides
                 :speed="800"
@@ -65,14 +66,17 @@
 <script setup>
 import { ref, watch } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
+
 import { Navigation } from 'swiper/modules';
+import { Mousewheel } from 'swiper/modules';
+
 import TheSvgSprite from '@/components/TheSvgSprite.vue';
 import { fetchFilesMetaBulk } from '@/services/directus';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-const modules = [Navigation];
+const modules = [Navigation, Mousewheel];
 
 const masks = ['/img/masks/guitar.svg', '/img/masks/helmet.svg'];
 

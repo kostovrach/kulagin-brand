@@ -71,7 +71,7 @@ import ButtonPrimary from '@/components/ButtonPrimary/ButtonPrimary.vue';
 // content management
 import { usePage } from '@/composables/usePage';
 
-const { page, loading, error } = usePage('socials', ['vk.*', 'whatsapp.*', 'tiktok.*', 'telegram.*', 'ok.*'], {
+const { page } = usePage('socials', ['vk.*', 'whatsapp.*', 'tiktok.*', 'telegram.*', 'ok.*'], {
     resolveFiles: true,
 });
 //

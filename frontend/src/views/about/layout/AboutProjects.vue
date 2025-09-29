@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <div class="projects__item projects__divider--type1">
-                        <img class="projects__divider--type1-arrow" src="/img/arrow.svg" />
+                        <img class="projects__divider--type1-arrow" src="/img/arrow.svg" alt="#" />
                         <picture class="projects__divider--type1-image-container">
                             <img
                                 class="projects__divider--type1-image"

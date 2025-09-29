@@ -1,5 +1,6 @@
 <template>
-    <VerticalLayout>
+    <PageLoader v-if="loading" />
+    <VerticalLayout v-else>
         <MarketersMain :content="page?.sections" />
         <section class="contacts">
             <div class="contacts__container">
@@ -15,6 +16,7 @@
 
 <script setup>
 import VerticalLayout from '@/components/VerticalLayout/VerticalLayout.vue';
+import PageLoader from '@/components/PageLoader/PageLoader.vue';
 import MarketersMain from './layout/MarketersMain.vue';
 import Contact from '@/components/Contact/Contact.vue';
 import PageNavigator from '@/components/PageNavigator/PageNavigator.vue';
@@ -22,7 +24,7 @@ import PageNavigator from '@/components/PageNavigator/PageNavigator.vue';
 // content management
 import { usePage } from '@/composables/usePage';
 
-const { page, loading, error } = usePage(
+const { page, loading } = usePage(
     'marketers',
     [
         'sections.*',

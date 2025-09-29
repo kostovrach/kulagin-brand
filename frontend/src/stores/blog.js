@@ -86,7 +86,7 @@ export const useBlogStore = defineStore('blog', () => {
         try {
             await fetchArticle(slug);
         } catch (err) {
-            // silent
+            console.error(err);
         }
     }
 
@@ -116,7 +116,8 @@ export const useBlogStore = defineStore('blog', () => {
         try {
             clearRepoListCache();
         } catch (e) {
-            // ignore
+            console.error(e);
+            
         }
     }
 

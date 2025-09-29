@@ -13,18 +13,29 @@
                     </ul>
                 </div>
                 <div class="blog__list">
-                    <div class="blog__item" v-for="(article, index) in list" :key="article.slug">
-                        <router-link
-                            class="blog__item-wrapper fade-bottom"
-                            :style="`animation-delay: ${0.1 * (index + 1)}s`"
-                            :to="`/article/${article.slug}`"
-                        >
-                            <picture class="blog__item-image-container">
-                                <img class="blog__item-image" :src="article.cover_url" :alt="article.title" />
-                            </picture>
-                            <h2 class="blog__item-title">{{ article.title }}</h2>
-                        </router-link>
-                    </div>
+                    <template v-if="isLoading">
+                        <div class="blog__item" v-for="n in 10" :key="n">
+                            <Skeleton
+                                :dt="{ root: { background: '#ececec', animationBackground: '#f7f9f7' } }"
+                                height="20rem"
+                                border-radius="1rem"
+                            />
+                        </div>
+                    </template>
+                    <template v-else>
+                        <div class="blog__item" v-for="(article, index) in list" :key="article.slug">
+                            <router-link
+                                class="blog__item-wrapper fade-bottom"
+                                :style="`animation-delay: ${0.1 * (index + 1)}s`"
+                                :to="`/article/${article.slug}`"
+                            >
+                                <picture class="blog__item-image-container">
+                                    <img class="blog__item-image" :src="article.cover_url" :alt="article.title" />
+                                </picture>
+                                <h2 class="blog__item-title">{{ article.title }}</h2>
+                            </router-link>
+                        </div>
+                    </template>
                 </div>
             </div>
         </section>
@@ -42,6 +53,7 @@ import { useBlogStore } from '@/stores/blog';
 
 import HorizontalLayout from '@/components/HorizontalLayout/HorizontalLayout.vue';
 import PageNavigator from '@/components/PageNavigator/PageNavigator.vue';
+import Skeleton from 'primevue/skeleton';
 
 const blogStore = useBlogStore();
 

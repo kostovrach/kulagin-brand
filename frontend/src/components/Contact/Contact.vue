@@ -57,13 +57,9 @@ import TheSvgSprite from '../TheSvgSprite.vue';
 // content management
 import { usePage } from '@/composables/usePage';
 
-const { page, loading, error } = usePage(
-    'socials',
-    ['vk.*', 'instagram.*', 'whatsapp.*', 'tiktok.*', 'telegram.*', 'ok.*'],
-    {
-        resolveFiles: true,
-    },
-);
+const { page } = usePage('socials', ['vk.*', 'instagram.*', 'whatsapp.*', 'tiktok.*', 'telegram.*', 'ok.*'], {
+    resolveFiles: true,
+});
 //
 
 const props = defineProps({

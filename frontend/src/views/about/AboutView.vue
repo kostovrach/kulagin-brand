@@ -1,5 +1,6 @@
 <template>
-    <HorizontalLayout>
+    <PageLoader v-if="loading" />
+    <HorizontalLayout v-else>
         <AboutHero :content="page?.about_hero" />
         <AboutBrand :content="page?.about_brand" />
         <AboutProjects :content="page?.about_projects" />
@@ -12,6 +13,7 @@
 
 <script setup>
 import HorizontalLayout from '@/components/HorizontalLayout/HorizontalLayout.vue';
+import PageLoader from '@/components/PageLoader/PageLoader.vue';
 
 // layout
 import AboutHero from './layout/AboutHero.vue';
@@ -22,7 +24,7 @@ import PageNavigator from '@/components/PageNavigator/PageNavigator.vue';
 // content management
 import { usePage } from '@/composables/usePage';
 
-const { page, loading, error } = usePage(
+const { page, loading } = usePage(
     'about',
     [
         'about_hero.*',
