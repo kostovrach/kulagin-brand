@@ -12,6 +12,26 @@ import TheHeader from './components/TheHeader.vue';
 
 import CookieNotify from './components/modals/CookieNotify/CookieNotify.vue';
 import ModalRoot from './components/ModalRoot.vue';
+
+// seo
+import { storeToRefs } from 'pinia';
+import { useHead } from '@vueuse/head';
+import { useSeoStore } from '@/stores/seo';
+
+const seoStore = useSeoStore();
+
+const { seo } = storeToRefs(seoStore);
+
+useHead({
+    title: () => seo.value?.title || 'Default Title',
+    meta: [
+        { name: 'description', content: () => seo.value?.description || '' },
+        { name: 'keywords', content: () => seo.value?.keywords || '' },
+        { property: 'og:title', content: () => seo.value?.title || '' },
+        { property: 'og:description', content: () => seo.value?.description || '' },
+    ],
+    link: [{ rel: 'icon', href: () => seo.value?.favicon_url }],
+});
 </script>
 
 <style lang="scss">

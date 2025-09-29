@@ -18,6 +18,7 @@ const FILE_NAMES = new Set([
     'image9',
     'file',
     'media',
+    'favicon',
     'files',
     'avatar',
     'cover',
