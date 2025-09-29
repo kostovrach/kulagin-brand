@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict MkgFUXPVgNHcEK3PK0yYVL1OWNBnkgjd5B9XZv0qtGvlQArCXEdDdeosBg7sxtL
+\restrict ZEvBgbeaTIhEtNUNYO159cE4go0mxsAuYPtOcYbsYErl5aAsPiJypljL5xc1ZWh
 
 -- Dumped from database version 15.14 (Debian 15.14-1.pgdg13+1)
 -- Dumped by pg_dump version 15.14 (Debian 15.14-1.pgdg13+1)
@@ -1600,6 +1600,21 @@ ALTER TABLE public.projects_projects_item_id_seq OWNER TO directus;
 
 ALTER SEQUENCE public.projects_projects_item_id_seq OWNED BY public.projects_projects_item.id;
 
+
+--
+-- Name: seo_settings; Type: TABLE; Schema: public; Owner: directus
+--
+
+CREATE TABLE public.seo_settings (
+    id uuid NOT NULL,
+    title character varying(255),
+    description text,
+    keywords character varying(255),
+    favicon uuid
+);
+
+
+ALTER TABLE public.seo_settings OWNER TO directus;
 
 --
 -- Name: services; Type: TABLE; Schema: public; Owner: directus
@@ -4313,6 +4328,35 @@ COPY public.directus_activity (id, action, "user", "timestamp", ip, user_agent, 
 2239	update	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 11:23:28.065+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_fields	169	http://localhost:8055
 2240	update	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 11:23:32.712+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_fields	169	http://localhost:8055
 2241	update	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 11:23:49.988+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_fields	75	http://localhost:8055
+2242	create	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 11:53:51.678+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_fields	308	http://localhost:8055
+2243	create	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 11:53:51.687+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_collections	seo_settings	http://localhost:8055
+2244	create	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 11:54:26.471+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_fields	309	http://localhost:8055
+2245	create	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 11:54:48.397+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_fields	310	http://localhost:8055
+2246	create	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 11:56:14.601+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_fields	311	http://localhost:8055
+2247	create	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 11:56:35.589+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_fields	312	http://localhost:8055
+2248	update	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 11:56:55.549+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_fields	312	http://localhost:8055
+2249	update	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 11:57:39.794+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_fields	309	http://localhost:8055
+2250	update	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 11:58:07.474+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_fields	310	http://localhost:8055
+2251	update	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 11:58:57.073+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_fields	311	http://localhost:8055
+2252	create	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 11:59:43.648+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_permissions	94	http://localhost:8055
+2253	update	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 11:59:43.657+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_policies	0ebd2596-0f11-4b3e-a362-ab02a1d2c3dc	http://localhost:8055
+2254	update	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 11:59:43.678+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_access	a8ecb9f0-8afe-4b50-8e24-be19c8f9e904	http://localhost:8055
+2255	update	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 11:59:43.706+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_users	a593f42e-1881-4328-9ce4-78ebd0d0d559	http://localhost:8055
+2256	update	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 12:02:04.617+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_collections	seo_settings	http://localhost:8055
+2257	update	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 12:02:04.625+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_collections	pages	http://localhost:8055
+2258	update	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 12:02:04.631+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_collections	article	http://localhost:8055
+2259	update	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 12:02:04.636+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_collections	socials	http://localhost:8055
+2260	update	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 12:02:04.645+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_collections	interviews	http://localhost:8055
+2261	update	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 12:02:04.65+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_collections	docs	http://localhost:8055
+2262	update	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 12:02:59.526+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_collections	seo_settings	http://localhost:8055
+2263	update	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 12:03:12.129+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_collections	seo_settings	http://localhost:8055
+2264	create	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 12:04:19.76+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_files	da5df0ee-e325-4ebf-b868-36ec4154d634	http://localhost:8055
+2265	create	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 12:04:22.058+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	seo_settings	2d041385-4a56-40e4-82e2-d0233d7ae7d5	http://localhost:8055
+2266	update	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 12:11:52.432+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	seo_settings	2d041385-4a56-40e4-82e2-d0233d7ae7d5	http://localhost:8055
+2267	update	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 12:12:02.633+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	seo_settings	2d041385-4a56-40e4-82e2-d0233d7ae7d5	http://localhost:8055
+2268	update	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 12:15:07.962+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	seo_settings	2d041385-4a56-40e4-82e2-d0233d7ae7d5	http://localhost:8055
+2269	create	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 12:15:34.854+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	directus_files	7b71cf8d-3628-4039-85e5-77e39813ded7	http://localhost:8055
+2270	update	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 12:15:36.846+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	seo_settings	2d041385-4a56-40e4-82e2-d0233d7ae7d5	http://localhost:8055
 \.
 
 
@@ -4369,13 +4413,14 @@ marketers_setions_gallery	\N	\N	\N	t	f	\N	\N	t	\N	\N	\N	all	\N	\N	2	marketers_se
 offer	manufacturing	\N	\N	f	t	[{"language":"ru-RU","translation":"Оферта"}]	\N	t	\N	\N	\N	all	\N	\N	2	docs	open	\N	f
 agreement	user_attributes	\N	\N	f	t	[{"language":"ru-RU","translation":"Пользовательское соглашение"}]	\N	t	\N	\N	\N	all	\N	\N	3	docs	open	\N	f
 privacy	privacy_tip	\N	\N	f	t	[{"language":"ru-RU","translation":"Политика конфиденциальности"}]	\N	t	\N	\N	\N	all	\N	\N	1	docs	open	\N	f
-pages	folder	Страницы	\N	f	f	[{"language":"ru-RU","translation":"Страницы"}]	\N	t	\N	\N	\N	all	\N	\N	1	\N	open	\N	f
-article	article	\N	{{title}}	f	f	[{"language":"ru-RU","translation":"Статьи","singular":"Статья","plural":"Статьи"}]	\N	t	\N	\N	\N	all	\N	\N	2	\N	open	\N	f
-socials	alternate_email	Ссылки на социальные сети. Редактирование данной коллекции меняет ссылки на социальные сети на всем сайте	\N	f	t	[{"language":"ru-RU","translation":"Соц. сети"}]	\N	t	\N	\N	\N	all	\N	\N	3	\N	open	\N	f
-interviews	mic_double	\N	\N	f	t	[{"language":"ru-RU","translation":"Список интервью"}]	\N	t	\N	\N	\N	all	\N	\N	4	\N	open	\N	f
 interviews_item	\N	\N	\N	t	f	\N	\N	t	\N	\N	\N	all	\N	\N	1	interviews	open	\N	f
 interviews_interviews_item	import_export	\N	\N	t	f	\N	\N	t	\N	\N	\N	all	\N	\N	1	interviews_item	open	\N	f
-docs	folder	\N	\N	f	f	[{"language":"ru-RU","translation":"Документы"}]	\N	t	\N	\N	\N	all	\N	\N	5	\N	open	\N	f
+pages	folder	Страницы	\N	f	f	[{"language":"ru-RU","translation":"Страницы"}]	\N	t	\N	\N	\N	all	\N	\N	2	\N	open	\N	f
+article	article	\N	{{title}}	f	f	[{"language":"ru-RU","translation":"Статьи","singular":"Статья","plural":"Статьи"}]	\N	t	\N	\N	\N	all	\N	\N	3	\N	open	\N	f
+socials	alternate_email	Ссылки на социальные сети. Редактирование данной коллекции меняет ссылки на социальные сети на всем сайте	\N	f	t	[{"language":"ru-RU","translation":"Соц. сети"}]	\N	t	\N	\N	\N	all	\N	\N	4	\N	open	\N	f
+seo_settings	settings_suggest	\N	\N	f	t	\N	\N	t	\N	\N	\N	all	\N	\N	1	\N	open	\N	f
+interviews	mic_double	\N	\N	f	t	[{"language":"ru-RU","translation":"Список интервью"}]	\N	t	\N	\N	\N	all	\N	\N	5	\N	open	\N	f
+docs	folder	\N	\N	f	f	[{"language":"ru-RU","translation":"Документы"}]	\N	t	\N	\N	\N	all	\N	\N	6	\N	open	\N	f
 \.
 
 
@@ -4629,6 +4674,11 @@ COPY public.directus_fields (id, collection, field, special, interface, options,
 157	home	home_agency	m2o	select-dropdown-m2o	{"template":"{{title}}{{image1}}{{image2}}{{image3}}","enableSelect":false}	\N	\N	f	f	2	full	[{"language":"ru-RU","translation":"Блок со слайдером"}]	\N	\N	f	\N	\N	\N
 82	about	about_hero	m2o	select-dropdown-m2o	{"template":"{{image}}{{title}}","enableSelect":false}	\N	{"template":"{{image}}{{title}}"}	f	f	2	full	[{"language":"ru-RU","translation":"Первый блок страницы"}]	\N	\N	f	\N	\N	\N
 169	services	services_list	m2o	select-dropdown-m2o	{"template":"{{title}}","enableSelect":false,"enableCreate":false}	\N	\N	f	f	2	full	[{"language":"ru-RU","translation":"Список услуг"}]	\N	\N	f	\N	\N	\N
+308	seo_settings	id	uuid	input	\N	\N	\N	t	t	1	full	\N	\N	\N	f	\N	\N	\N
+312	seo_settings	favicon	file	file	\N	\N	\N	f	f	5	full	[{"language":"ru-RU","translation":"Фавиконка"}]	\N	\N	t	\N	\N	\N
+309	seo_settings	title	\N	input	{"iconLeft":"title"}	\N	\N	f	f	2	full	[{"language":"ru-RU","translation":"Заголовок сайта"}]	(отображается в названии вкладки браузера)	\N	t	\N	\N	\N
+310	seo_settings	description	\N	input-multiline	\N	\N	\N	f	f	3	full	[{"language":"ru-RU","translation":"Описание"}]	\N	\N	f	\N	\N	\N
+311	seo_settings	keywords	\N	input	{"iconLeft":"format_list_bulleted"}	\N	\N	f	f	4	full	[{"language":"ru-RU","translation":"Ключевые слова"}]	\N	\N	f	\N	\N	\N
 \.
 
 
@@ -4695,6 +4745,8 @@ aad9bcbb-5e80-433b-928c-8a1f545bd3f8	local	aad9bcbb-5e80-433b-928c-8a1f545bd3f8.
 0531c73d-4bb2-4785-b502-cfff67764ca9	local	0531c73d-4bb2-4785-b502-cfff67764ca9.png	temp4.png	Temp4	image/png	\N	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-27 21:25:53.481+00	\N	2025-09-27 21:25:53.505+00	\N	36398	772	770	\N	\N	\N	\N	\N	{}	\N	\N	\N	\N	2025-09-27 21:25:53.504+00
 c3c13478-ebf7-4019-a0df-bf411959961e	local	c3c13478-ebf7-4019-a0df-bf411959961e.png	temp1.png	Temp1	image/png	\N	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-27 21:26:16.959+00	\N	2025-09-27 21:26:16.987+00	\N	18737	240	240	\N	\N	\N	\N	\N	{}	\N	\N	\N	\N	2025-09-27 21:26:16.986+00
 05ab606e-34fd-4f51-bcd2-3839292b12db	local	05ab606e-34fd-4f51-bcd2-3839292b12db.png	temp2.png	Temp2	image/png	\N	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-27 21:26:26.065+00	\N	2025-09-27 21:26:26.113+00	\N	98663	819	283	\N	\N	\N	\N	\N	{}	\N	\N	\N	\N	2025-09-27 21:26:26.113+00
+da5df0ee-e325-4ebf-b868-36ec4154d634	local	da5df0ee-e325-4ebf-b868-36ec4154d634.svg	🔥.svg	🔥	image/svg+xml	\N	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 12:04:19.756+00	\N	2025-09-29 12:04:19.773+00	\N	154	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2025-09-29 12:04:19.773+00
+7b71cf8d-3628-4039-85e5-77e39813ded7	local	7b71cf8d-3628-4039-85e5-77e39813ded7.png	🔥.png	🔥	image/png	\N	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 12:15:34.852+00	\N	2025-09-29 12:15:34.891+00	\N	1928	32	33	\N	\N	\N	\N	\N	{}	\N	\N	\N	\N	2025-09-29 12:15:34.889+00
 \.
 
 
@@ -4898,6 +4950,7 @@ COPY public.directus_permissions (id, collection, action, permissions, validatio
 91	interviews	read	\N	\N	\N	*	0ebd2596-0f11-4b3e-a362-ab02a1d2c3dc
 92	interviews_interviews_item	read	\N	\N	\N	*	0ebd2596-0f11-4b3e-a362-ab02a1d2c3dc
 93	interviews_item	read	\N	\N	\N	*	0ebd2596-0f11-4b3e-a362-ab02a1d2c3dc
+94	seo_settings	read	\N	\N	\N	*	0ebd2596-0f11-4b3e-a362-ab02a1d2c3dc
 \.
 
 
@@ -5010,6 +5063,7 @@ COPY public.directus_relations (id, many_collection, many_field, one_collection,
 102	interviews_item	logo	directus_files	\N	\N	\N	\N	\N	nullify
 104	interviews_interviews_item	interviews_item_id	interviews_item	\N	\N	\N	interviews_id	\N	nullify
 105	interviews_interviews_item	interviews_id	interviews	interviews_item	\N	\N	interviews_item_id	\N	nullify
+106	seo_settings	favicon	directus_files	\N	\N	\N	\N	\N	nullify
 \.
 
 
@@ -6780,6 +6834,7 @@ COPY public.directus_revisions (id, activity, collection, item, data, delta, par
 1774	1975	directus_collections	marketers_setions_gallery_marketers_setions_gallery_image	{"collection":"marketers_setions_gallery_marketers_setions_gallery_image","icon":"import_export","note":null,"display_template":null,"hidden":true,"singleton":false,"translations":null,"archive_field":null,"archive_app_filter":true,"archive_value":null,"unarchive_value":null,"sort_field":null,"accountability":"all","color":null,"item_duplication_fields":null,"sort":5,"group":null,"collapse":"open","preview_url":null,"versioning":false}	{"sort":5,"group":null}	\N	\N
 1775	1976	directus_collections	contact_contact_links	{"collection":"contact_contact_links","icon":"import_export","note":null,"display_template":null,"hidden":true,"singleton":false,"translations":null,"archive_field":null,"archive_app_filter":true,"archive_value":null,"unarchive_value":null,"sort_field":null,"accountability":"all","color":null,"item_duplication_fields":null,"sort":6,"group":null,"collapse":"open","preview_url":null,"versioning":false}	{"sort":6,"group":null}	\N	\N
 1776	1977	directus_fields	276	{"sort":2,"special":null,"interface":"input","translations":[{"language":"ru-RU","translation":"Заголовок"}],"note":"Как ссылка будет отображаться","options":{"iconLeft":"title"},"collection":"contact_adress","field":"title"}	{"sort":2,"special":null,"interface":"input","translations":[{"language":"ru-RU","translation":"Заголовок"}],"note":"Как ссылка будет отображаться","options":{"iconLeft":"title"},"collection":"contact_adress","field":"title"}	\N	\N
+2032	2269	directus_files	7b71cf8d-3628-4039-85e5-77e39813ded7	{"title":"🔥","filename_download":"🔥.png","type":"image/png","storage":"local"}	{"title":"🔥","filename_download":"🔥.png","type":"image/png","storage":"local"}	\N	\N
 1777	1978	directus_fields	277	{"sort":3,"special":null,"interface":"input","note":"Ссылка в формате https://...","translations":[{"language":"ru-RU","translation":"Ссылка"}],"options":{"iconLeft":"add_link"},"collection":"contact_adress","field":"link"}	{"sort":3,"special":null,"interface":"input","note":"Ссылка в формате https://...","translations":[{"language":"ru-RU","translation":"Ссылка"}],"options":{"iconLeft":"add_link"},"collection":"contact_adress","field":"link"}	\N	\N
 1778	1979	directus_fields	278	{"sort":4,"interface":"select-dropdown-m2o","special":["m2o"],"options":{"enableSelect":false},"collection":"contact","field":"adress"}	{"sort":4,"interface":"select-dropdown-m2o","special":["m2o"],"options":{"enableSelect":false},"collection":"contact","field":"adress"}	\N	\N
 1779	1980	directus_fields	278	{"id":278,"collection":"contact","field":"adress","special":["m2o"],"interface":"select-dropdown-m2o","options":{"enableSelect":false},"display":null,"display_options":null,"readonly":false,"hidden":false,"sort":4,"width":"full","translations":[{"language":"ru-RU","translation":"Секция \\"Или даже придти в гости!\\""}],"note":null,"conditions":null,"required":false,"group":null,"validation":null,"validation_message":null}	{"collection":"contact","field":"adress","translations":[{"language":"ru-RU","translation":"Секция \\"Или даже придти в гости!\\""}]}	\N	\N
@@ -6797,6 +6852,7 @@ COPY public.directus_revisions (id, activity, collection, item, data, delta, par
 1790	1991	contact_contact_links	3	{"contact_links_id":{"title":"kulagin@mail.ru","link":"mailto:example@gmail.com"},"contact_id":"cb01e082-8576-4720-92eb-aeaa70f8ced1"}	{"contact_links_id":{"title":"kulagin@mail.ru","link":"mailto:example@gmail.com"},"contact_id":"cb01e082-8576-4720-92eb-aeaa70f8ced1"}	\N	\N
 1789	1990	contact_links	10a25060-971e-4499-b0a6-996a1f051117	{"title":"kulagin@mail.ru","link":"mailto:example@gmail.com"}	{"title":"kulagin@mail.ru","link":"mailto:example@gmail.com"}	1790	\N
 1793	1995	directus_collections	contact_links	{"collection":"contact_links","icon":null,"note":null,"display_template":null,"hidden":true,"singleton":false,"translations":null,"archive_field":null,"archive_app_filter":true,"archive_value":null,"unarchive_value":null,"sort_field":null,"accountability":"all","color":null,"item_duplication_fields":null,"sort":1,"group":"contact","collapse":"open","preview_url":null,"versioning":false}	{"hidden":true}	\N	\N
+2009	2244	directus_fields	309	{"sort":2,"special":null,"interface":"input","options":{"iconLeft":"title"},"collection":"seo_settings","field":"title"}	{"sort":2,"special":null,"interface":"input","options":{"iconLeft":"title"},"collection":"seo_settings","field":"title"}	\N	\N
 1795	1997	directus_collections	marketers_marketers_sections	{"collection":"marketers_marketers_sections","icon":"import_export","note":null,"display_template":null,"hidden":true,"singleton":false,"translations":null,"archive_field":null,"archive_app_filter":true,"archive_value":null,"unarchive_value":null,"sort_field":null,"accountability":"all","color":null,"item_duplication_fields":null,"sort":1,"group":"marketers_sections","collapse":"open","preview_url":null,"versioning":false}	{"sort":1,"group":"marketers_sections"}	\N	\N
 1796	1998	directus_collections	marketers_setions_gallery	{"collection":"marketers_setions_gallery","icon":null,"note":null,"display_template":null,"hidden":true,"singleton":false,"translations":null,"archive_field":null,"archive_app_filter":true,"archive_value":null,"unarchive_value":null,"sort_field":null,"accountability":"all","color":null,"item_duplication_fields":null,"sort":2,"group":"marketers_sections","collapse":"open","preview_url":null,"versioning":false}	{"sort":2,"group":"marketers_sections"}	\N	\N
 1797	1999	directus_collections	pages	{"collection":"pages","icon":"folder","note":"Страницы","display_template":null,"hidden":false,"singleton":false,"translations":[{"language":"ru-RU","translation":"Страницы"}],"archive_field":null,"archive_app_filter":true,"archive_value":null,"unarchive_value":null,"sort_field":null,"accountability":"all","color":null,"item_duplication_fields":null,"sort":1,"group":null,"collapse":"open","preview_url":null,"versioning":false}	{"sort":1,"group":null}	\N	\N
@@ -6890,6 +6946,7 @@ COPY public.directus_revisions (id, activity, collection, item, data, delta, par
 1888	2097	directus_fields	293	{"sort":3,"collection":"agreement","field":"title","special":null,"interface":"input","options":{"iconLeft":"title"},"display":null,"display_options":null,"readonly":false,"hidden":false,"width":"full","translations":[{"language":"ru-RU","translation":"Заголовок"}],"note":null,"conditions":null,"required":false,"validation":null,"validation_message":null}	{"sort":3,"collection":"agreement","field":"title","special":null,"interface":"input","options":{"iconLeft":"title"},"display":null,"display_options":null,"readonly":false,"hidden":false,"width":"full","translations":[{"language":"ru-RU","translation":"Заголовок"}],"note":null,"conditions":null,"required":false,"validation":null,"validation_message":null}	\N	\N
 1889	2098	directus_fields	294	{"sort":4,"collection":"agreement","field":"content","special":null,"interface":"input-rich-text-html","options":{"toolbar":["bold","italic","underline","h2","h3","h4","h5","h6","indent","numlist","bullist","removeformat","customLink","fullscreen"]},"display":null,"display_options":null,"readonly":false,"hidden":false,"width":"full","translations":[{"language":"ru-RU","translation":"Основное наполнение"}],"note":null,"conditions":null,"required":false,"validation":null,"validation_message":null}	{"sort":4,"collection":"agreement","field":"content","special":null,"interface":"input-rich-text-html","options":{"toolbar":["bold","italic","underline","h2","h3","h4","h5","h6","indent","numlist","bullist","removeformat","customLink","fullscreen"]},"display":null,"display_options":null,"readonly":false,"hidden":false,"width":"full","translations":[{"language":"ru-RU","translation":"Основное наполнение"}],"note":null,"conditions":null,"required":false,"validation":null,"validation_message":null}	\N	\N
 1903	2119	directus_collections	interviews	{"singleton":false,"collection":"interviews"}	{"singleton":false,"collection":"interviews"}	\N	\N
+2007	2242	directus_fields	308	{"sort":1,"hidden":true,"readonly":true,"interface":"input","special":["uuid"],"field":"id","collection":"seo_settings"}	{"sort":1,"hidden":true,"readonly":true,"interface":"input","special":["uuid"],"field":"id","collection":"seo_settings"}	\N	\N
 1890	2104	directus_collections	privacy	{"collection":"privacy","icon":"privacy_tip","note":null,"display_template":null,"hidden":false,"singleton":true,"translations":[{"language":"ru-RU","translation":"Политика конфиденциальности"}],"archive_field":null,"archive_app_filter":true,"archive_value":null,"unarchive_value":null,"sort_field":null,"accountability":"all","color":null,"item_duplication_fields":null,"sort":1,"group":"docs","collapse":"open","preview_url":null,"versioning":false}	{"sort":1,"group":"docs"}	\N	\N
 1891	2105	directus_collections	offer	{"collection":"offer","icon":"manufacturing","note":null,"display_template":null,"hidden":false,"singleton":true,"translations":[{"language":"ru-RU","translation":"Оферта"}],"archive_field":null,"archive_app_filter":true,"archive_value":null,"unarchive_value":null,"sort_field":null,"accountability":"all","color":null,"item_duplication_fields":null,"sort":2,"group":"docs","collapse":"open","preview_url":null,"versioning":false}	{"sort":2,"group":"docs"}	\N	\N
 1892	2106	directus_collections	agreement	{"collection":"agreement","icon":null,"note":null,"display_template":null,"hidden":false,"singleton":false,"translations":null,"archive_field":null,"archive_app_filter":true,"archive_value":null,"unarchive_value":null,"sort_field":null,"accountability":"all","color":null,"item_duplication_fields":null,"sort":3,"group":"docs","collapse":"open","preview_url":null,"versioning":false}	{"sort":3,"group":"docs"}	\N	\N
@@ -6955,6 +7012,7 @@ COPY public.directus_revisions (id, activity, collection, item, data, delta, par
 1964	2194	interviews_item	fb212e34-4ab0-4223-9d65-26e65f15113c	{"title":"TK «TERRA»","link":"https://example.com","logo":"0531c73d-4bb2-4785-b502-cfff67764ca9"}	{"title":"TK «TERRA»","link":"https://example.com","logo":"0531c73d-4bb2-4785-b502-cfff67764ca9"}	1965	\N
 1967	2197	interviews_interviews_item	4	{"interviews_item_id":{"title":"Самарская газета","link":"https://example.com","logo":"3d365eb7-bb23-4ee0-8d2f-76707a9cfdc7"},"interviews_id":"d148ffe2-a048-44c1-823c-0dbad5e826fa"}	{"interviews_item_id":{"title":"Самарская газета","link":"https://example.com","logo":"3d365eb7-bb23-4ee0-8d2f-76707a9cfdc7"},"interviews_id":"d148ffe2-a048-44c1-823c-0dbad5e826fa"}	\N	\N
 1966	2196	interviews_item	323891e1-76e8-492f-9970-8a7ed596b377	{"title":"Самарская газета","link":"https://example.com","logo":"3d365eb7-bb23-4ee0-8d2f-76707a9cfdc7"}	{"title":"Самарская газета","link":"https://example.com","logo":"3d365eb7-bb23-4ee0-8d2f-76707a9cfdc7"}	1967	\N
+2008	2243	directus_collections	seo_settings	{"singleton":false,"collection":"seo_settings"}	{"singleton":false,"collection":"seo_settings"}	\N	\N
 1969	2199	interviews_interviews_item	5	{"interviews_item_id":{"title":"Телеканал \\"Губерния\\"","link":"https://example.com","logo":"05ab606e-34fd-4f51-bcd2-3839292b12db"},"interviews_id":"d148ffe2-a048-44c1-823c-0dbad5e826fa"}	{"interviews_item_id":{"title":"Телеканал \\"Губерния\\"","link":"https://example.com","logo":"05ab606e-34fd-4f51-bcd2-3839292b12db"},"interviews_id":"d148ffe2-a048-44c1-823c-0dbad5e826fa"}	\N	\N
 1968	2198	interviews_item	4692f933-9449-4440-92d5-2c21dd4bb1cb	{"title":"Телеканал \\"Губерния\\"","link":"https://example.com","logo":"05ab606e-34fd-4f51-bcd2-3839292b12db"}	{"title":"Телеканал \\"Губерния\\"","link":"https://example.com","logo":"05ab606e-34fd-4f51-bcd2-3839292b12db"}	1969	\N
 1970	2201	directus_collections	interviews_interviews_item	{"collection":"interviews_interviews_item","icon":"import_export","note":null,"display_template":null,"hidden":true,"singleton":false,"translations":null,"archive_field":null,"archive_app_filter":true,"archive_value":null,"unarchive_value":null,"sort_field":null,"accountability":"all","color":null,"item_duplication_fields":null,"sort":1,"group":"interviews_item","collapse":"open","preview_url":null,"versioning":false}	{"sort":1,"group":"interviews_item"}	\N	\N
@@ -6994,6 +7052,29 @@ COPY public.directus_revisions (id, activity, collection, item, data, delta, par
 2004	2239	directus_fields	169	{"id":169,"collection":"services","field":"services_list","special":["m2o"],"interface":"select-dropdown-m2o","options":{"template":"{{title}}","enableSelect":false},"display":null,"display_options":null,"readonly":false,"hidden":false,"sort":2,"width":"full","translations":[{"language":"ru-RU","translation":"Список услуг"}],"note":null,"conditions":null,"required":false,"group":null,"validation":null,"validation_message":null}	{"collection":"services","field":"services_list","options":{"template":"{{title}}","enableSelect":false}}	\N	\N
 2005	2240	directus_fields	169	{"id":169,"collection":"services","field":"services_list","special":["m2o"],"interface":"select-dropdown-m2o","options":{"template":"{{title}}","enableSelect":false,"enableCreate":false},"display":null,"display_options":null,"readonly":false,"hidden":false,"sort":2,"width":"full","translations":[{"language":"ru-RU","translation":"Список услуг"}],"note":null,"conditions":null,"required":false,"group":null,"validation":null,"validation_message":null}	{"collection":"services","field":"services_list","options":{"template":"{{title}}","enableSelect":false,"enableCreate":false}}	\N	\N
 2006	2241	directus_fields	75	{"id":75,"collection":"about_brand","field":"hint","special":["m2o"],"interface":"select-dropdown-m2o","options":{"template":"{{title}}","enableSelect":false},"display":null,"display_options":null,"readonly":false,"hidden":false,"sort":4,"width":"full","translations":[{"language":"ru-RU","translation":"Блок с видео подсказкой"}],"note":null,"conditions":null,"required":false,"group":null,"validation":null,"validation_message":null}	{"collection":"about_brand","field":"hint","options":{"template":"{{title}}","enableSelect":false}}	\N	\N
+2010	2245	directus_fields	310	{"sort":3,"special":null,"interface":"input-multiline","collection":"seo_settings","field":"description"}	{"sort":3,"special":null,"interface":"input-multiline","collection":"seo_settings","field":"description"}	\N	\N
+2011	2246	directus_fields	311	{"sort":4,"special":null,"interface":"input","options":{"iconLeft":"format_list_bulleted"},"collection":"seo_settings","field":"keywords"}	{"sort":4,"special":null,"interface":"input","options":{"iconLeft":"format_list_bulleted"},"collection":"seo_settings","field":"keywords"}	\N	\N
+2012	2247	directus_fields	312	{"sort":5,"interface":"file","special":["file"],"collection":"seo_settings","field":"favicon"}	{"sort":5,"interface":"file","special":["file"],"collection":"seo_settings","field":"favicon"}	\N	\N
+2013	2248	directus_fields	312	{"id":312,"collection":"seo_settings","field":"favicon","special":["file"],"interface":"file","options":null,"display":null,"display_options":null,"readonly":false,"hidden":false,"sort":5,"width":"full","translations":[{"language":"ru-RU","translation":"Фавиконка"}],"note":null,"conditions":null,"required":true,"group":null,"validation":null,"validation_message":null}	{"collection":"seo_settings","field":"favicon","translations":[{"language":"ru-RU","translation":"Фавиконка"}],"required":true}	\N	\N
+2014	2249	directus_fields	309	{"id":309,"collection":"seo_settings","field":"title","special":null,"interface":"input","options":{"iconLeft":"title"},"display":null,"display_options":null,"readonly":false,"hidden":false,"sort":2,"width":"full","translations":[{"language":"ru-RU","translation":"Заголовок сайта"}],"note":"(отображается в названии вкладки браузера)","conditions":null,"required":true,"group":null,"validation":null,"validation_message":null}	{"collection":"seo_settings","field":"title","translations":[{"language":"ru-RU","translation":"Заголовок сайта"}],"note":"(отображается в названии вкладки браузера)","required":true}	\N	\N
+2015	2250	directus_fields	310	{"id":310,"collection":"seo_settings","field":"description","special":null,"interface":"input-multiline","options":null,"display":null,"display_options":null,"readonly":false,"hidden":false,"sort":3,"width":"full","translations":[{"language":"ru-RU","translation":"Описание"}],"note":null,"conditions":null,"required":false,"group":null,"validation":null,"validation_message":null}	{"collection":"seo_settings","field":"description","translations":[{"language":"ru-RU","translation":"Описание"}]}	\N	\N
+2016	2251	directus_fields	311	{"id":311,"collection":"seo_settings","field":"keywords","special":null,"interface":"input","options":{"iconLeft":"format_list_bulleted"},"display":null,"display_options":null,"readonly":false,"hidden":false,"sort":4,"width":"full","translations":[{"language":"ru-RU","translation":"Ключевые слова"}],"note":null,"conditions":null,"required":false,"group":null,"validation":null,"validation_message":null}	{"collection":"seo_settings","field":"keywords","translations":[{"language":"ru-RU","translation":"Ключевые слова"}],"note":null}	\N	\N
+2017	2252	directus_permissions	94	{"policy":"0ebd2596-0f11-4b3e-a362-ab02a1d2c3dc","permissions":null,"validation":null,"fields":["*"],"presets":null,"collection":"seo_settings","action":"read"}	{"policy":"0ebd2596-0f11-4b3e-a362-ab02a1d2c3dc","permissions":null,"validation":null,"fields":["*"],"presets":null,"collection":"seo_settings","action":"read"}	\N	\N
+2018	2254	directus_access	a8ecb9f0-8afe-4b50-8e24-be19c8f9e904	{"id":"a8ecb9f0-8afe-4b50-8e24-be19c8f9e904","role":null,"user":"a593f42e-1881-4328-9ce4-78ebd0d0d559","policy":"0ebd2596-0f11-4b3e-a362-ab02a1d2c3dc","sort":1}	{"policy":"0ebd2596-0f11-4b3e-a362-ab02a1d2c3dc"}	\N	\N
+2019	2256	directus_collections	seo_settings	{"collection":"seo_settings","icon":null,"note":null,"display_template":null,"hidden":false,"singleton":false,"translations":null,"archive_field":null,"archive_app_filter":true,"archive_value":null,"unarchive_value":null,"sort_field":null,"accountability":"all","color":null,"item_duplication_fields":null,"sort":1,"group":null,"collapse":"open","preview_url":null,"versioning":false}	{"sort":1,"group":null}	\N	\N
+2020	2257	directus_collections	pages	{"collection":"pages","icon":"folder","note":"Страницы","display_template":null,"hidden":false,"singleton":false,"translations":[{"language":"ru-RU","translation":"Страницы"}],"archive_field":null,"archive_app_filter":true,"archive_value":null,"unarchive_value":null,"sort_field":null,"accountability":"all","color":null,"item_duplication_fields":null,"sort":2,"group":null,"collapse":"open","preview_url":null,"versioning":false}	{"sort":2,"group":null}	\N	\N
+2021	2258	directus_collections	article	{"collection":"article","icon":"article","note":null,"display_template":"{{title}}","hidden":false,"singleton":false,"translations":[{"language":"ru-RU","translation":"Статьи","singular":"Статья","plural":"Статьи"}],"archive_field":null,"archive_app_filter":true,"archive_value":null,"unarchive_value":null,"sort_field":null,"accountability":"all","color":null,"item_duplication_fields":null,"sort":3,"group":null,"collapse":"open","preview_url":null,"versioning":false}	{"sort":3,"group":null}	\N	\N
+2022	2259	directus_collections	socials	{"collection":"socials","icon":"alternate_email","note":"Ссылки на социальные сети. Редактирование данной коллекции меняет ссылки на социальные сети на всем сайте","display_template":null,"hidden":false,"singleton":true,"translations":[{"language":"ru-RU","translation":"Соц. сети"}],"archive_field":null,"archive_app_filter":true,"archive_value":null,"unarchive_value":null,"sort_field":null,"accountability":"all","color":null,"item_duplication_fields":null,"sort":4,"group":null,"collapse":"open","preview_url":null,"versioning":false}	{"sort":4,"group":null}	\N	\N
+2023	2260	directus_collections	interviews	{"collection":"interviews","icon":"mic_double","note":null,"display_template":null,"hidden":false,"singleton":true,"translations":[{"language":"ru-RU","translation":"Список интервью"}],"archive_field":null,"archive_app_filter":true,"archive_value":null,"unarchive_value":null,"sort_field":null,"accountability":"all","color":null,"item_duplication_fields":null,"sort":5,"group":null,"collapse":"open","preview_url":null,"versioning":false}	{"sort":5,"group":null}	\N	\N
+2024	2261	directus_collections	docs	{"collection":"docs","icon":"folder","note":null,"display_template":null,"hidden":false,"singleton":false,"translations":[{"language":"ru-RU","translation":"Документы"}],"archive_field":null,"archive_app_filter":true,"archive_value":null,"unarchive_value":null,"sort_field":null,"accountability":"all","color":null,"item_duplication_fields":null,"sort":6,"group":null,"collapse":"open","preview_url":null,"versioning":false}	{"sort":6,"group":null}	\N	\N
+2025	2262	directus_collections	seo_settings	{"collection":"seo_settings","icon":"settings_suggest","note":null,"display_template":null,"hidden":false,"singleton":false,"translations":null,"archive_field":null,"archive_app_filter":true,"archive_value":null,"unarchive_value":null,"sort_field":null,"accountability":"all","color":null,"item_duplication_fields":null,"sort":1,"group":null,"collapse":"open","preview_url":null,"versioning":false}	{"icon":"settings_suggest"}	\N	\N
+2026	2263	directus_collections	seo_settings	{"collection":"seo_settings","icon":"settings_suggest","note":null,"display_template":null,"hidden":false,"singleton":true,"translations":null,"archive_field":null,"archive_app_filter":true,"archive_value":null,"unarchive_value":null,"sort_field":null,"accountability":"all","color":null,"item_duplication_fields":null,"sort":1,"group":null,"collapse":"open","preview_url":null,"versioning":false}	{"singleton":true}	\N	\N
+2028	2265	seo_settings	2d041385-4a56-40e4-82e2-d0233d7ae7d5	{"title":"Kulagin Brand","description":"some description","keywords":"anyKey anyKey","favicon":"da5df0ee-e325-4ebf-b868-36ec4154d634"}	{"title":"Kulagin Brand","description":"some description","keywords":"anyKey anyKey","favicon":"da5df0ee-e325-4ebf-b868-36ec4154d634"}	\N	\N
+2029	2266	seo_settings	2d041385-4a56-40e4-82e2-d0233d7ae7d5	{"id":"2d041385-4a56-40e4-82e2-d0233d7ae7d5","title":"test","description":"some description","keywords":"anyKey anyKey","favicon":"da5df0ee-e325-4ebf-b868-36ec4154d634"}	{"title":"test"}	\N	\N
+2027	2264	directus_files	da5df0ee-e325-4ebf-b868-36ec4154d634	{"title":"🔥","filename_download":"🔥.svg","type":"image/svg+xml","storage":"local"}	{"title":"🔥","filename_download":"🔥.svg","type":"image/svg+xml","storage":"local"}	\N	\N
+2030	2267	seo_settings	2d041385-4a56-40e4-82e2-d0233d7ae7d5	{"id":"2d041385-4a56-40e4-82e2-d0233d7ae7d5","title":"Kulagin Brand","description":"some description","keywords":"anyKey anyKey","favicon":"da5df0ee-e325-4ebf-b868-36ec4154d634"}	{"title":"Kulagin Brand"}	\N	\N
+2031	2268	seo_settings	2d041385-4a56-40e4-82e2-d0233d7ae7d5	{"id":"2d041385-4a56-40e4-82e2-d0233d7ae7d5","title":"Kulagin Brand","description":"some description","keywords":"anyKey anyKey","favicon":"1be98eb2-e40b-4e0a-91f0-4144b0836e3f"}	{"favicon":"1be98eb2-e40b-4e0a-91f0-4144b0836e3f"}	\N	\N
+2033	2270	seo_settings	2d041385-4a56-40e4-82e2-d0233d7ae7d5	{"id":"2d041385-4a56-40e4-82e2-d0233d7ae7d5","title":"Kulagin Brand","description":"some description","keywords":"anyKey anyKey","favicon":"7b71cf8d-3628-4039-85e5-77e39813ded7"}	{"favicon":"7b71cf8d-3628-4039-85e5-77e39813ded7"}	\N	\N
 \.
 
 
@@ -7012,8 +7093,8 @@ d20f436f-9c41-4919-b0ed-765680dbbe53	Administrator	verified	$t:admin_description
 
 COPY public.directus_sessions (token, "user", expires, ip, user_agent, share, origin, next_token) FROM stdin;
 pvwkEG2CHVG7mPM0l4dncqfciBCVf_WhrxJCIwPU56QiETnsDxnLU3zOyR_5PhET	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 14:06:19.451+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition Yx GX 03)	\N	http://localhost:8055	\N
-6qQD0wBxnNciBrexOrKw8URbnqAP7nygbmcMd5iEX6zZamirFENqQNZlGPAgggpM	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 11:24:33.909+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	\N	http://localhost:8055	gLP8c3BV1JavJQJQ4P8JPbRMgjkSX-pdz45m7z77_96h6sSo0auypeBK6mVoWUIM
-gLP8c3BV1JavJQJQ4P8JPbRMgjkSX-pdz45m7z77_96h6sSo0auypeBK6mVoWUIM	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-30 11:24:23.909+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	\N	http://localhost:8055	\N
+gLP8c3BV1JavJQJQ4P8JPbRMgjkSX-pdz45m7z77_96h6sSo0auypeBK6mVoWUIM	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-29 11:53:45.444+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	\N	http://localhost:8055	BNr9FEQ6-YixLjapu6lS44DcZBgcxqWwge8mYL-9_NdQ1T3CX4F2wwvS0awu7YmK
+BNr9FEQ6-YixLjapu6lS44DcZBgcxqWwge8mYL-9_NdQ1T3CX4F2wwvS0awu7YmK	3a8116c3-a73d-4839-b86f-2b4f79520ad9	2025-09-30 11:53:35.444+00	172.18.0.1	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0 (Edition std-2)	\N	http://localhost:8055	\N
 \.
 
 
@@ -7048,7 +7129,7 @@ COPY public.directus_translations (id, language, key, value) FROM stdin;
 
 COPY public.directus_users (id, first_name, last_name, email, password, location, title, description, tags, avatar, language, tfa_secret, status, role, token, last_access, last_page, provider, external_identifier, auth_data, email_notifications, appearance, theme_dark, theme_light, theme_light_overrides, theme_dark_overrides, text_direction) FROM stdin;
 a593f42e-1881-4328-9ce4-78ebd0d0d559	frontend	\N	\N	$argon2id$v=19$m=65536,t=3,p=4$zfIwR8RS0WAdd0yZiIlTow$ZJbuL6z1hF5TH2CkydC9pQSuOrD0hYe80cVszavT9Z0	\N	\N	\N	\N	\N	\N	\N	active	\N	img7pR2XiPgR5e1ML1E_wC-EzKJTEKht	\N	\N	default	\N	\N	f	\N	\N	\N	\N	\N	auto
-3a8116c3-a73d-4839-b86f-2b4f79520ad9	Admin	User	admin@example.com	$argon2id$v=19$m=65536,t=3,p=4$kSg8HMcYzWklYvy6e52gVw$PgWj8HCuZoC//bGboyD01UNuKxTLwKniPT7ZO2uJrrI	\N	\N	\N	\N	\N	\N	\N	active	d20f436f-9c41-4919-b0ed-765680dbbe53	\N	2025-09-29 11:24:23.914+00	/content/contact	default	\N	\N	t	\N	\N	Directus Minimal	\N	\N	auto
+3a8116c3-a73d-4839-b86f-2b4f79520ad9	Admin	User	admin@example.com	$argon2id$v=19$m=65536,t=3,p=4$kSg8HMcYzWklYvy6e52gVw$PgWj8HCuZoC//bGboyD01UNuKxTLwKniPT7ZO2uJrrI	\N	\N	\N	\N	\N	\N	\N	active	d20f436f-9c41-4919-b0ed-765680dbbe53	\N	2025-09-29 11:53:35.449+00	/content/seo_settings	default	\N	\N	t	\N	\N	Directus Minimal	\N	\N	auto
 \.
 
 
@@ -7380,6 +7461,15 @@ COPY public.projects_projects_item (id, projects_id, projects_item_id) FROM stdi
 
 
 --
+-- Data for Name: seo_settings; Type: TABLE DATA; Schema: public; Owner: directus
+--
+
+COPY public.seo_settings (id, title, description, keywords, favicon) FROM stdin;
+2d041385-4a56-40e4-82e2-d0233d7ae7d5	Kulagin Brand	some description	anyKey anyKey	7b71cf8d-3628-4039-85e5-77e39813ded7
+\.
+
+
+--
 -- Data for Name: services; Type: TABLE DATA; Schema: public; Owner: directus
 --
 
@@ -7518,14 +7608,14 @@ SELECT pg_catalog.setval('public.contact_contact_links_id_seq', 3, true);
 -- Name: directus_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: directus
 --
 
-SELECT pg_catalog.setval('public.directus_activity_id_seq', 2241, true);
+SELECT pg_catalog.setval('public.directus_activity_id_seq', 2270, true);
 
 
 --
 -- Name: directus_fields_id_seq; Type: SEQUENCE SET; Schema: public; Owner: directus
 --
 
-SELECT pg_catalog.setval('public.directus_fields_id_seq', 307, true);
+SELECT pg_catalog.setval('public.directus_fields_id_seq', 312, true);
 
 
 --
@@ -7539,7 +7629,7 @@ SELECT pg_catalog.setval('public.directus_notifications_id_seq', 1, false);
 -- Name: directus_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: directus
 --
 
-SELECT pg_catalog.setval('public.directus_permissions_id_seq', 93, true);
+SELECT pg_catalog.setval('public.directus_permissions_id_seq', 94, true);
 
 
 --
@@ -7553,14 +7643,14 @@ SELECT pg_catalog.setval('public.directus_presets_id_seq', 11, true);
 -- Name: directus_relations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: directus
 --
 
-SELECT pg_catalog.setval('public.directus_relations_id_seq', 105, true);
+SELECT pg_catalog.setval('public.directus_relations_id_seq', 106, true);
 
 
 --
 -- Name: directus_revisions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: directus
 --
 
-SELECT pg_catalog.setval('public.directus_revisions_id_seq', 2006, true);
+SELECT pg_catalog.setval('public.directus_revisions_id_seq', 2033, true);
 
 
 --
@@ -8286,6 +8376,14 @@ ALTER TABLE ONLY public.projects
 
 ALTER TABLE ONLY public.projects_projects_item
     ADD CONSTRAINT projects_projects_item_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: seo_settings seo_settings_pkey; Type: CONSTRAINT; Schema: public; Owner: directus
+--
+
+ALTER TABLE ONLY public.seo_settings
+    ADD CONSTRAINT seo_settings_pkey PRIMARY KEY (id);
 
 
 --
@@ -9225,6 +9323,14 @@ ALTER TABLE ONLY public.projects_projects_item
 
 
 --
+-- Name: seo_settings seo_settings_favicon_foreign; Type: FK CONSTRAINT; Schema: public; Owner: directus
+--
+
+ALTER TABLE ONLY public.seo_settings
+    ADD CONSTRAINT seo_settings_favicon_foreign FOREIGN KEY (favicon) REFERENCES public.directus_files(id) ON DELETE SET NULL;
+
+
+--
 -- Name: services_feedback_feedback_item services_feedback_feedback_item_feedback_item_id_foreign; Type: FK CONSTRAINT; Schema: public; Owner: directus
 --
 
@@ -9380,5 +9486,5 @@ ALTER TABLE ONLY public.theplace
 -- PostgreSQL database dump complete
 --
 
-\unrestrict MkgFUXPVgNHcEK3PK0yYVL1OWNBnkgjd5B9XZv0qtGvlQArCXEdDdeosBg7sxtL
+\unrestrict ZEvBgbeaTIhEtNUNYO159cE4go0mxsAuYPtOcYbsYErl5aAsPiJypljL5xc1ZWh
 
