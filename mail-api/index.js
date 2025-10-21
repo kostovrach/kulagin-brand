@@ -61,7 +61,7 @@ app.post('https://mail.kulaginbrand.ru/form', async (req, res) => {
     const text = `Новая заявка:\n\nИмя: ${payload.name}\nТелефон: ${payload.tel || '-'}\nEmail: ${payload.email || '-'}\n`;
 
     await transporter.sendMail({
-      from: process.env.MAIL_FROM,
+      // from: process.env.MAIL_FROM,
       to: mailTo,
       subject,
       text,
