@@ -25,17 +25,6 @@ services:
             - MAIL_FROM=${MAIL_FROM}
             - SMTP_HOST=${SMTP_HOST}
             - SMTP_PORT=${SMTP_PORT}
-        depends_on:
-            - mailhog
-        networks:
-            - prod
-        restart: unless-stopped
-
-    mailhog:
-        image: mailhog/mailhog
-        ports:
-            - '8025:8025'
-            - '1025:1025'
         networks:
             - prod
         restart: unless-stopped

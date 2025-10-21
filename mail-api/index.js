@@ -11,7 +11,7 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-const DEBUG = process.env.DEBUG === '1';
+const DEBUG = process.env.DEBUG === '0';
 
 function validatePayload({ name, tel, email }) {
   const errors = [];
@@ -28,7 +28,7 @@ function validatePayload({ name, tel, email }) {
   return { ok: errors.length === 0, errors };
 }
 
-app.post('/api/form', async (req, res) => {
+app.post('https://mail.kulaginbrand.ru/form', async (req, res) => {
   try {
     const payload = {
       name: (req.body.name || '').trim(),
@@ -42,7 +42,7 @@ app.post('/api/form', async (req, res) => {
     if (!ok) return res.status(400).json({ ok: false, errors });
 
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'mailhog',
+      host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT || 1025),
       secure: process.env.SMTP_SECURE === 'true',
       auth: process.env.SMTP_USER ? {
@@ -61,7 +61,7 @@ app.post('/api/form', async (req, res) => {
     const text = `Новая заявка:\n\nИмя: ${payload.name}\nТелефон: ${payload.tel || '-'}\nEmail: ${payload.email || '-'}\n`;
 
     await transporter.sendMail({
-      from: process.env.MAIL_FROM || 'no-reply@example.com',
+      from: process.env.MAIL_FROM,
       to: mailTo,
       subject,
       text,
