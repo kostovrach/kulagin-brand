@@ -36,8 +36,8 @@ services:
             STORAGE_LOCATIONS: ${STORAGE_LOCATIONS}
             STORAGE_LOCAL_DRIVER: ${STORAGE_LOCAL_DRIVER}
             STORAGE_LOCAL_ROOT: ${STORAGE_LOCAL_ROOT}
-            CORS_ENABLED: true
-            CORS_ORIGIN: http://localhost:5173
+            CORS_ENABLED: ${CORS_ENABLED}
+            CORS_ORIGIN: ${CORS_ORIGIN}
         volumes:
             - ${PWD}/uploads:/directus/uploads
             - ${PWD}/extensions:/directus/extensions
